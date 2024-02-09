@@ -1,0 +1,11 @@
+# dependencies
+node_modules
+
+# misc
+.esbuild
+.DS_Store
+.env
+.envrc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

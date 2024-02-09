@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": ["off"],
+    "@typescript-eslint/no-explicit-any": ["error"],
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "indent": ["off"],
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-extra-boolean-cast": ["error", { "enforceForLogicalOperands": false }],
+    "no-implicit-coercion": "error",
+    "no-duplicate-imports": "error",
+    "quotes": ["error", "single", { "avoidEscape": false, "allowTemplateLiterals": true }],
+    "semi": ["error", "always"],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [["^\\u0000"], ["^\\w"], ["^@"], ["^"], ["^\\.\\."], ["^\\."]]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["tests/**/*"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": ["off"]
+      },
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
