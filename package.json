@@ -4,11 +4,13 @@
   "description": "Tools to render waypoint-style documents.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "target": "ES2022",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "prepublish": "./node_modules/.bin/tsc",
+    "build": "npx tsc",
+    "prepublish": "npx tsc --project tsconfig.build.json",
     "test": "npx jest"
   },
   "author": "carlos@usewaypoint.com",
