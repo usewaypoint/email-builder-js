@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "npx tsc",
-    "prepublish": "./node_modules/.bin/tsc",
+    "prepublish": "npx tsc --project tsconfig.build.json",
     "test": "npx jest"
   },
   "author": "carlos@usewaypoint.com",
