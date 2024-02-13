@@ -22,6 +22,6 @@
     "strictPropertyInitialization": true,
     "strictNullChecks": true
   },
-  "include": ["./jest.config.ts", "src/**/*.ts", "tests/**/*.ts", "src/**/*.tsx", "tests/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
 }
