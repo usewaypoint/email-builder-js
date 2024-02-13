@@ -6,9 +6,10 @@
   "types": "dist/index.d.ts",
   "target": "ES2022",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
+    "build": "npx tsc",
     "prepublish": "./node_modules/.bin/tsc",
     "test": "npx jest"
   },

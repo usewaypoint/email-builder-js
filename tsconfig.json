@@ -8,19 +8,12 @@
     "outDir": "dist",
     "strict": true,
     "sourceMap": true,
-    "noImplicitAny": true,
-    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "declarationMap": true,
     "declaration": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "inlineSources": true,
-    "strictPropertyInitialization": true,
-    "strictNullChecks": true
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
