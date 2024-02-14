@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`builders buildBlockComponent renders the specified component 1`] = `
+exports[`builders/buildBlockComponent renders the specified component 1`] = `
 <DocumentFragment>
   <div>
     TEST TEXT!
