@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import buildDocumentReader from '../../src/builders/buildDocumentReader';
 
 describe('builders/buildDocumentReader', () => {
-  const { DocumentReaderProvider, Block, useBlock } = buildDocumentReader({
+  const { DocumentReaderProvider, Block, useBlock, useDocument } = buildDocumentReader({
     SampleBlock: {
       schema: z.object({ text: z.string() }),
       Component: ({ text }) => <div>{text.toUpperCase()}</div>,
@@ -21,19 +21,45 @@ describe('builders/buildDocumentReader', () => {
     },
   };
 
+  describe('#useDocument', () => {
+    it('gets the configurations dictionary', () => {
+      let RESULT;
+      const ViewBlockConfig = () => {
+        RESULT = useDocument();
+        return <pre>{JSON.stringify(RESULT)}</pre>;
+      };
+      render(
+        <DocumentReaderProvider value={SAMPLE_DATA}>
+          <ViewBlockConfig />
+        </DocumentReaderProvider>
+      );
+      expect(RESULT).toEqual({
+        'my id': {
+          id: 'my id',
+          type: 'SampleBlock',
+          data: { text: 'Test text!' },
+        },
+      });
+    });
+  });
+
   describe('#useBlock', () => {
     it('gets the value given an id', () => {
-      const ViewBlockConfig = ({ id }: { id: string }) => {
-        const c = useBlock(id);
-        return <pre>{JSON.stringify(c)}</pre>;
+      let RESULT;
+      const ViewBlockConfig = () => {
+        RESULT = useBlock('my id');
+        return <pre>{JSON.stringify(RESULT)}</pre>;
       };
-      expect(
-        render(
-          <DocumentReaderProvider value={SAMPLE_DATA}>
-            <ViewBlockConfig id="my id" />
-          </DocumentReaderProvider>
-        ).queryAllByText('{"id":"my id","type":"SampleBlock","data":{"text":"Test text!"}}')
-      ).toHaveLength(1);
+      render(
+        <DocumentReaderProvider value={SAMPLE_DATA}>
+          <ViewBlockConfig />
+        </DocumentReaderProvider>
+      );
+      expect(RESULT).toEqual({
+        id: 'my id',
+        type: 'SampleBlock',
+        data: { text: 'Test text!' },
+      });
     });
   });
 

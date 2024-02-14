@@ -24,6 +24,7 @@ export default function buildDocumentReader<T extends BaseZodDictionary>(blocks:
   const useBlock = (id: string) => useDocument()[id];
 
   return {
+    useDocument,
     useBlock,
     Block: ({ id }: { id: string }) => {
       const block = useBlock(id);

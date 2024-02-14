@@ -6,7 +6,7 @@ import { act, render } from '@testing-library/react';
 import buildDocumentEditor from '../../src/builders/buildDocumentEditor';
 
 describe('builders/buildDocumentEditor', () => {
-  const { useBlockState, Block, DocumentEditorProvider } = buildDocumentEditor({
+  const { useDocumentState, useBlockState, Block, DocumentEditorProvider } = buildDocumentEditor({
     SampleBlock: {
       schema: z.object({ text: z.string() }),
       Component: ({ text }) => <div>{text.toUpperCase()}</div>,
@@ -21,50 +21,81 @@ describe('builders/buildDocumentEditor', () => {
     },
   };
 
-  describe('#useBlockState', () => {
+  describe('#useDocumentState', () => {
     it('returns a getter and a setter tuple', () => {
-      let value: any;
-      let setValue: any;
-      const ViewBlockConfig = ({ id }: { id: string }) => {
-        const tuple = useBlockState(id);
-        value = tuple[0];
-        setValue = tuple[1];
-        return (
-          <pre>
-            {tuple[0].type} - {tuple[0].data.text}
-          </pre>
-        );
+      let tuple: any;
+      const ViewBlockConfig = () => {
+        tuple = useDocumentState();
+        return <pre>{JSON.stringify(tuple[0])}</pre>;
       };
 
-      expect(
-        render(
-          <DocumentEditorProvider value={SAMPLE_DATA}>
-            <ViewBlockConfig id="my id" />
-          </DocumentEditorProvider>
-        ).queryAllByText('SampleBlock - Test text!')
-      ).toHaveLength(1);
+      const NODE = (
+        <DocumentEditorProvider value={SAMPLE_DATA}>
+          <ViewBlockConfig />
+        </DocumentEditorProvider>
+      );
+      const { rerender } = render(NODE);
+      expect(tuple[0]).toEqual({
+        'my id': {
+          id: 'my id',
+          type: 'SampleBlock',
+          data: { text: 'Test text!' },
+        },
+      });
 
       act(() => {
-        setValue({
-          id: 'my id',
+        tuple[1]({
+          'another id': {
+            id: 'another id',
+            type: 'SampleBlock',
+            data: { text: 'changed text?' },
+          },
+        });
+      });
+
+      rerender(NODE);
+      expect(tuple[0]).toEqual({
+        'another id': {
+          id: 'another id',
           type: 'SampleBlock' as const,
+          data: { text: 'changed text?' },
+        },
+      });
+    });
+  });
+
+  describe('#useBlockState', () => {
+    it('returns a getter and a setter tuple', () => {
+      let tuple: any;
+      const ViewBlockConfig = () => {
+        tuple = useBlockState('my id');
+        return <pre>{JSON.stringify(tuple[0])}</pre>;
+      };
+
+      const NODE = (
+        <DocumentEditorProvider value={SAMPLE_DATA}>
+          <ViewBlockConfig />
+        </DocumentEditorProvider>
+      );
+      const { rerender } = render(NODE);
+      expect(tuple[0]).toEqual({
+        id: 'my id',
+        type: 'SampleBlock',
+        data: { text: 'Test text!' },
+      });
+
+      act(() => {
+        tuple[1]({
+          ...tuple[0],
           data: { text: 'changed text?' },
         });
       });
 
-      expect(
-        render(
-          <DocumentEditorProvider value={SAMPLE_DATA}>
-            <ViewBlockConfig id="my id" />
-          </DocumentEditorProvider>
-        ).queryAllByText('SampleBlock - changed text?')
-      ).toHaveLength(1);
-      expect(value).toEqual({
+      rerender(NODE);
+      expect(tuple[0]).toEqual({
         id: 'my id',
         type: 'SampleBlock',
-        data: {
-          text: 'Test text!',
-        },
+        data: { text: 'changed text?' },
       });
     });
   });
