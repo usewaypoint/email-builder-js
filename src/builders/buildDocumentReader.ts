@@ -9,6 +9,7 @@ import buildBlockConfigurationByIdSchema from './buildBlockConfigurationByIdSche
 /**
  * @typedef {Object} DocumentReader
  * @property DocumentReaderProvider - Entry point to the DocumentReader
+ * @property DocumentConfigurationSchema - zod schema compatible with the value that DocumentReaderProvider expects
  * @property Block - Component to render a block given an id
  * @property useDocument - Hook that returns the current Document
  * @property useBlock - Hook that returns the block given an id
@@ -38,6 +39,7 @@ export default function buildDocumentReader<T extends BaseZodDictionary>(blocks:
   return {
     useDocument,
     useBlock,
+    DocumentConfigurationSchema: schema,
     Block: ({ id }: { id: string }) => {
       const block = useBlock(id);
       if (!block) {

@@ -9,6 +9,7 @@ import buildBlockConfigurationByIdSchema from './buildBlockConfigurationByIdSche
 /**
  * @typedef {Object} DocumentEditor
  * @property DocumentEditorProvider - Entry point to the DocumentEditor
+ * @property DocumentConfigurationSchema - zod schema compatible with the value that DocumentReaderProvider expects
  * @property Block - Component to render a block given an id
  * @property useDocumentState - Hook that returns the current DocumentState and a setter
  * @property useBlockState - Hook that returns the Block value and setter given an id
@@ -50,6 +51,7 @@ export default function buildDocumentEditor<T extends BaseZodDictionary>(blocks:
   return {
     useDocumentState,
     useBlockState,
+    DocumentConfigurationSchema: schema,
     Block: ({ id }: { id: string }) => {
       const state = useBlockState(id);
       if (state === null || !state[0]) {
