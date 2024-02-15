@@ -12,14 +12,12 @@ describe('builders/buildBlockConfigurationSchema', () => {
       },
     });
     const parsedData = blockConfigurationSchema.safeParse({
-      id: 'my id',
       type: 'SampleBlock',
       data: { text: 'Test text!' },
     });
     expect(parsedData).toEqual({
       success: true,
       data: {
-        id: 'my id',
         type: 'SampleBlock',
         data: { text: 'Test text!' },
       },

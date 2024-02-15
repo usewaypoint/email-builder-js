@@ -13,7 +13,6 @@ describe('builders/buildBlockConfigurationByIdSchema', () => {
     });
     const parsedData = schema.safeParse({
       'my id': {
-        id: 'my id',
         type: 'SampleBlock',
         data: { text: 'Test text!' },
       },
@@ -22,7 +21,6 @@ describe('builders/buildBlockConfigurationByIdSchema', () => {
       success: true,
       data: {
         'my id': {
-          id: 'my id',
           type: 'SampleBlock',
           data: { text: 'Test text!' },
         },

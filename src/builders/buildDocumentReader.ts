@@ -6,6 +6,19 @@ import { BaseZodDictionary, BlockNotFoundError, DocumentBlocksDictionary } from 
 import buildBlockComponent from './buildBlockComponent';
 import buildBlockConfigurationByIdSchema from './buildBlockConfigurationByIdSchema';
 
+/**
+ * @typedef {Object} DocumentReader
+ * @property DocumentReaderProvider - Entry point to the DocumentReader
+ * @property DocumentConfigurationSchema - zod schema compatible with the value that DocumentReaderProvider expects
+ * @property Block - Component to render a block given an id
+ * @property useDocument - Hook that returns the current Document
+ * @property useBlock - Hook that returns the block given an id
+ */
+
+/**
+ * @param {DocumentBlocksDictionary} blocks root configuration
+ * @returns {DocumentReader}
+ */
 export default function buildDocumentReader<T extends BaseZodDictionary>(blocks: DocumentBlocksDictionary<T>) {
   const schema = buildBlockConfigurationByIdSchema(blocks);
   const BlockComponent = buildBlockComponent(blocks);
@@ -26,6 +39,7 @@ export default function buildDocumentReader<T extends BaseZodDictionary>(blocks:
   return {
     useDocument,
     useBlock,
+    DocumentConfigurationSchema: schema,
     Block: ({ id }: { id: string }) => {
       const block = useBlock(id);
       if (!block) {

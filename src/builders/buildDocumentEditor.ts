@@ -6,6 +6,19 @@ import { BaseZodDictionary, BlockNotFoundError, DocumentBlocksDictionary } from 
 import buildBlockComponent from './buildBlockComponent';
 import buildBlockConfigurationByIdSchema from './buildBlockConfigurationByIdSchema';
 
+/**
+ * @typedef {Object} DocumentEditor
+ * @property DocumentEditorProvider - Entry point to the DocumentEditor
+ * @property DocumentConfigurationSchema - zod schema compatible with the value that DocumentReaderProvider expects
+ * @property Block - Component to render a block given an id
+ * @property useDocumentState - Hook that returns the current DocumentState and a setter
+ * @property useBlockState - Hook that returns the Block value and setter given an id
+ */
+
+/**
+ * @param {DocumentBlocksDictionary} blocks root configuration
+ * @returns {DocumentEditor}
+ */
 export default function buildDocumentEditor<T extends BaseZodDictionary>(blocks: DocumentBlocksDictionary<T>) {
   const schema = buildBlockConfigurationByIdSchema(blocks);
   const BlockComponent = buildBlockComponent(blocks);
@@ -21,28 +34,30 @@ export default function buildDocumentEditor<T extends BaseZodDictionary>(blocks:
   };
 
   const useDocumentState = () => useContext(Context);
-  const useBlockState = (id: string) => {
+  const useBlockState = (id: string | null | undefined) => {
     const [value, setValue] = useDocumentState();
-    return useMemo(
-      () =>
-        [
-          value[id],
-          (block: TValue[string]) => {
-            setValue({ ...value, [id]: block });
-          },
-        ] as const,
-      [value, setValue, id]
-    );
+    return useMemo(() => {
+      if (id === null || id === undefined) {
+        return null;
+      }
+      return [
+        value[id],
+        (block: TValue[string]) => {
+          setValue({ ...value, [id]: block });
+        },
+      ] as const;
+    }, [value, setValue, id]);
   };
   return {
     useDocumentState,
     useBlockState,
+    DocumentConfigurationSchema: schema,
     Block: ({ id }: { id: string }) => {
-      const [block] = useBlockState(id);
-      if (!block) {
+      const state = useBlockState(id);
+      if (state === null || !state[0]) {
         throw new BlockNotFoundError(id);
       }
-      const { type, data } = block;
+      const { type, data } = state[0];
       return React.createElement(BlockComponent, { type, data });
     },
     DocumentEditorProvider: ({ value, children }: TProviderProps) => {

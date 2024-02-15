@@ -9,6 +9,13 @@ export type DocumentBlocksDictionary<T extends BaseZodDictionary> = {
   };
 };
 
+export type BlockConfiguration<T extends BaseZodDictionary> = {
+  [TType in keyof T]: {
+    type: TType;
+    data: z.infer<T[TType]>;
+  };
+}[keyof T];
+
 export class BlockNotFoundError extends Error {
   blockId: string;
   constructor(blockId: string) {

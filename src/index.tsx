@@ -3,4 +3,4 @@ export { default as buildBlockConfigurationSchema } from './builders/buildBlockC
 export { default as buildBlockConfigurationByIdSchema } from './builders/buildBlockConfigurationByIdSchema';
 export { default as buildDocumentReader } from './builders/buildDocumentReader';
 export { default as buildDocumentEditor } from './builders/buildDocumentEditor';
-export { DocumentBlocksDictionary } from './utils';
+export { BlockConfiguration, DocumentBlocksDictionary } from './utils';
