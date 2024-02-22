@@ -1,18 +1,18 @@
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useContext } from 'react';
 import { z } from 'zod';
 
 import { BaseZodDictionary, BlockNotFoundError, DocumentBlocksDictionary } from '../utils';
 
 import buildBlockComponent from './buildBlockComponent';
-import buildBlockConfigurationByIdSchema from './buildBlockConfigurationByIdSchema';
+import buildBlockConfigurationSchema from './buildBlockConfigurationSchema';
 
 /**
  * @typedef {Object} DocumentReader
- * @property DocumentReaderProvider - Entry point to the DocumentReader
- * @property DocumentConfigurationSchema - zod schema compatible with the value that DocumentReaderProvider expects
- * @property Block - Component to render a block given an id
+ * @property DocumentProvider - Entry point to the DocumentReader
+ * @property BlockSchema - zod schema for a Document block
+ * @property DocumentSchema - zod schema compatible with the value that DocumentReaderProvider expects
+ * @property Block - React Component to render a block by type/data as defined by the DocumentSchema
  * @property useDocument - Hook that returns the current Document
- * @property useBlock - Hook that returns the block given an id
  */
 
 /**
@@ -20,37 +20,29 @@ import buildBlockConfigurationByIdSchema from './buildBlockConfigurationByIdSche
  * @returns {DocumentReader}
  */
 export default function buildDocumentReader<T extends BaseZodDictionary>(blocks: DocumentBlocksDictionary<T>) {
-  const schema = buildBlockConfigurationByIdSchema(blocks);
-  const BlockComponent = buildBlockComponent(blocks);
+  const RawBlock = buildBlockComponent(blocks);
 
-  type TValue = z.infer<typeof schema>;
-  type TDocumentContextState = { value: TValue };
+  const BlockSchema = buildBlockConfigurationSchema(blocks);
+  const DocumentSchema = z.record(z.string(), BlockSchema);
 
-  const Context = createContext<TDocumentContextState>({ value: {} });
+  type TBlock = z.infer<typeof BlockSchema>;
+  type TDocument = Record<string, TBlock>;
 
-  type TProviderProps = {
-    value: z.infer<typeof schema>;
-    children?: Parameters<typeof Context.Provider>[0]['children'];
-  };
-
-  const useDocument = () => useContext(Context).value;
-  const useBlock = (id: string) => useDocument()[id];
+  const Context = createContext<TDocument>({});
+  const useDocument = () => useContext(Context);
 
   return {
+    BlockSchema,
+    DocumentSchema,
+    RawBlock,
     useDocument,
-    useBlock,
-    DocumentConfigurationSchema: schema,
+    DocumentProvider: Context.Provider,
     Block: ({ id }: { id: string }) => {
-      const block = useBlock(id);
+      const block = useDocument()[id];
       if (!block) {
         throw new BlockNotFoundError(id);
       }
-      const { type, data } = block;
-      return React.createElement(BlockComponent, { type, data });
-    },
-    DocumentReaderProvider: ({ value, children }: TProviderProps) => {
-      const v = useMemo(() => ({ value }), [value]);
-      return React.createElement(Context.Provider, { value: v, children });
+      return React.createElement(RawBlock, block);
     },
   };
 }

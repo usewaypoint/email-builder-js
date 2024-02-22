@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import buildDocumentReader from '../../src/builders/buildDocumentReader';
 
 describe('builders/buildDocumentReader', () => {
-  const { DocumentReaderProvider, Block, useBlock, useDocument } = buildDocumentReader({
+  const { DocumentProvider, Block, useDocument } = buildDocumentReader({
     SampleBlock: {
       schema: z.object({ text: z.string() }),
       Component: ({ text }) => <div>{text.toUpperCase()}</div>,
@@ -29,9 +29,9 @@ describe('builders/buildDocumentReader', () => {
         return <pre>{JSON.stringify(RESULT)}</pre>;
       };
       render(
-        <DocumentReaderProvider value={SAMPLE_DATA}>
+        <DocumentProvider value={SAMPLE_DATA}>
           <ViewBlockConfig />
-        </DocumentReaderProvider>
+        </DocumentProvider>
       );
       expect(RESULT).toEqual({
         'my id': {
@@ -47,13 +47,13 @@ describe('builders/buildDocumentReader', () => {
     it('gets the value given an id', () => {
       let RESULT;
       const ViewBlockConfig = () => {
-        RESULT = useBlock('my id');
+        RESULT = useDocument()['my id'];
         return <pre>{JSON.stringify(RESULT)}</pre>;
       };
       render(
-        <DocumentReaderProvider value={SAMPLE_DATA}>
+        <DocumentProvider value={SAMPLE_DATA}>
           <ViewBlockConfig />
-        </DocumentReaderProvider>
+        </DocumentProvider>
       );
       expect(RESULT).toEqual({
         id: 'my id',
@@ -67,9 +67,9 @@ describe('builders/buildDocumentReader', () => {
     it('renders the component from the BlocksConfiguration', () => {
       expect(
         render(
-          <DocumentReaderProvider value={SAMPLE_DATA}>
+          <DocumentProvider value={SAMPLE_DATA}>
             <Block id="my id" />
-          </DocumentReaderProvider>
+          </DocumentProvider>
         ).queryAllByText('TEST TEXT!')
       ).toHaveLength(1);
     });

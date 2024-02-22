@@ -7,7 +7,7 @@ import { BaseZodDictionary, BlockConfiguration, DocumentBlocksDictionary } from 
  * @returns React component that can render a BlockConfiguration that is compatible with blocks
  */
 export default function buildBlockComponent<T extends BaseZodDictionary>(blocks: DocumentBlocksDictionary<T>) {
-  return function BlockComponent({ type, data }: BlockConfiguration<T>): React.ReactNode {
+  return function BlockComponent({ type, data }: BlockConfiguration<T>) {
     return React.createElement(blocks[type].Component, data);
   };
 }
