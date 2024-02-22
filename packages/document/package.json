@@ -1,0 +1,20 @@
+{
+  "name": "@usewaypoint/document",
+  "version": "0.0.6",
+  "description": "Tools to render waypoint-style documents (core package)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "target": "ES2022",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "author": "carlos@usewaypoint.com",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "zod": "^1 || ^2 || ^3"
+  }
+}
