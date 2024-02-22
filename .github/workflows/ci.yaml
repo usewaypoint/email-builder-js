@@ -21,4 +21,5 @@ jobs:
       - run: npm ci
       - run: npx eslint .
       - run: npx prettier . --check
+      - run: npx tsc --noEmit
       - run: npm test
