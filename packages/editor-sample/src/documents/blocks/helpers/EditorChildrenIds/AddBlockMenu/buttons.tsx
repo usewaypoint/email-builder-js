@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   AccountCircleOutlined,
   Crop32Outlined,
@@ -11,10 +13,10 @@ import {
   ViewColumnOutlined,
 } from '@mui/icons-material';
 
-import { TBlockConfiguration } from '../../../../documents';
+import { TEditorBlock } from '../../../../editor/core';
 import { AvatarPropsSchema } from '../../../Avatar';
 import { ButtonPropsSchema } from '../../../Button';
-import { ColumnsContainerPropsSchema } from '../../../ColumnsContainer';
+import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
 import { ContainerPropsSchema } from '../../../Container';
 import { DividerPropsSchema } from '../../../Divider';
 import { HeadingPropsSchema } from '../../../Heading';
@@ -26,7 +28,7 @@ import { TextPropsSchema } from '../../../Text';
 type TButtonProps = {
   label: string;
   icon: JSX.Element;
-  block: () => TBlockConfiguration;
+  block: () => TEditorBlock;
 };
 export const BUTTONS: TButtonProps[] = [
   {
