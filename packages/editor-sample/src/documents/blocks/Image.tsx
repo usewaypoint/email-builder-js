@@ -18,7 +18,7 @@ export const ImagePropsSchema = z.object({
     .default({}),
   props: z.object({
     height: z.number().nullable().default(null),
-    width: z.number().nullable().default(null),
+    width: z.number().nullable(),
     url: z.string(),
     alt: z.string(),
     linkHref: z.union([z.string(), z.null()]).default(null),

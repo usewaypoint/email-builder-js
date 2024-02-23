@@ -13,8 +13,8 @@ export const ContainerPropsSchema = z.object({
   style: z
     .object({
       backgroundColor: zColor().nullable().default(null),
-      borderColor: zColor().nullable().default(null),
-      borderRadius: z.number().default(0),
+      borderColor: zColor().optional().nullable().default(null),
+      borderRadius: z.number().optional().nullable().default(0),
       padding: zPadding().optional().default({
         top: 16,
         bottom: 16,

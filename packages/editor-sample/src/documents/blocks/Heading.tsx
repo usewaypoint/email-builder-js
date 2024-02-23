@@ -9,7 +9,7 @@ export const HeadingPropsSchema = z.object({
       color: zColor().optional().nullable().default(null),
       backgroundColor: zColor().optional().nullable().default(null),
       fontFamily: zFontFamily().optional().nullable().default(null),
-      fontWeight: zFontWeight().optional().default('bold'),
+      fontWeight: zFontWeight().optional().nullable().default('bold'),
       textAlign: zTextAlign().optional().nullable().default(null),
       padding: zPadding().optional().default({
         top: 16,
