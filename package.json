@@ -1,7 +1,6 @@
 {
-  "name": "@usewaypoint/document",
+  "name": "@usewaypoint-monorepo",
   "version": "0.0.6",
-  "description": "Tools to render waypoint-style documents.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "target": "ES2022",
@@ -10,7 +9,6 @@
   ],
   "scripts": {
     "build": "npx tsc",
-    "prepublish": "npx tsc --project tsconfig.build.json",
     "test": "npx jest"
   },
   "author": "carlos@usewaypoint.com",
@@ -29,10 +27,7 @@
     "react-test-renderer": "^18.2.0",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
+    "typescript": "^5.3.3",
     "zod": "^3.22.4"
   }
 }
