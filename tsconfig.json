@@ -5,7 +5,6 @@
     "lib": [],
     "moduleResolution": "node",
     "jsx": "react",
-    "outDir": "dist",
     "strict": true,
     "sourceMap": true,
     "esModuleInterop": true,
