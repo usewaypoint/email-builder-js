@@ -1,3 +1,4 @@
+import React from 'react';
 import { z } from 'zod';
 
 export const SpacerPropsSchema = z.object({

@@ -1,6 +1,6 @@
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 
-import { TStyle } from '../../../App/sidebar/ConfigurationPanel/input-panels/helpers/style-inputs/SingleStylePropertyPanel';
+import { TStyle } from '../TStyle';
 
 type TReaderBlockWrapperProps = {
   style: TStyle;

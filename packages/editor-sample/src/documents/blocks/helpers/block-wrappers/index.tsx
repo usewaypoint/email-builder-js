@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TStyle } from '../../../App/sidebar/ConfigurationPanel/input-panels/helpers/style-inputs/SingleStylePropertyPanel';
+import { TStyle } from '../TStyle';
 
 import EditorBlockWrapper from './EditorBlockWrapper';
 import ReaderBlockWrapper from './ReaderBlockWrapper';

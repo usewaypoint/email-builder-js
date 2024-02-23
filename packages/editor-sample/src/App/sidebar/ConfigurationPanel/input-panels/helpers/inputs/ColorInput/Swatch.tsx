@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Box, Button, SxProps } from '@mui/material';
 
 type Props = {

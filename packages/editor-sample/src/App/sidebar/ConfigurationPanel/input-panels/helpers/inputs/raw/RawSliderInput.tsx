@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Box, Slider, Stack, Typography } from '@mui/material';
 
 type SliderInputProps = {

@@ -5,7 +5,7 @@ import { IconButton, Paper, Stack, Tooltip } from '@mui/material';
 
 import { TEditorBlock } from '../../../editor/core';
 import { useEditorState } from '../../../editor/EditorContext';
-import { ColumnsContainerProps } from '../../ColumnsContainer';
+import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
 
 const STYLE: CSSProperties = {
   position: 'absolute',

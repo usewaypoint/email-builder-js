@@ -1,3 +1,4 @@
+import React from 'react';
 import { HexColorInput, HexColorPicker } from 'react-colorful';
 
 import { Box, Stack, SxProps, Typography } from '@mui/material';

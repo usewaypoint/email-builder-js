@@ -1,4 +1,8 @@
-import SingleStylePropertyPanel, { TStyle } from './SingleStylePropertyPanel';
+import React from 'react';
+
+import { TStyle } from '../../../../../../documents/blocks/helpers/TStyle';
+
+import SingleStylePropertyPanel from './SingleStylePropertyPanel';
 
 type MultiStylePropertyPanelProps = {
   names: (keyof TStyle)[];

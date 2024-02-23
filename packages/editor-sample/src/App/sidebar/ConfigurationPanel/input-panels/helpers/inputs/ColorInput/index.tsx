@@ -1,3 +1,5 @@
+import React from 'react';
+
 import BaseColorInput from './BaseColorInput';
 
 type Props = {

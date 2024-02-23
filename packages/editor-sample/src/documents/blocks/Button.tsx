@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import { z } from 'zod';
 
 import { zColor, zFontFamily, zFontWeight, zPadding, zTextAlign } from './helpers/zod';

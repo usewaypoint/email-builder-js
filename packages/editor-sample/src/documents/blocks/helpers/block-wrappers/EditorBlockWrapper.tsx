@@ -4,24 +4,13 @@ import { Box } from '@mui/material';
 
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
 import { useEditorState } from '../../../editor/EditorContext';
+import { TStyle } from '../TStyle';
 
 import ReaderBlockWrapper from './ReaderBlockWrapper';
 import TuneMenu from './TuneMenu';
 
 type TEditorBlockWrapperProps = {
-  style: {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    backgroundColor?: any;
-    borderColor?: any;
-    borderRadius?: any;
-    color?: any;
-    fontFamily?: any;
-    fontSize?: any;
-    fontWeight?: any;
-    padding?: any;
-    textAlign?: any;
-    /* eslint-enable @typescript-eslint/no-explicit-any */
-  };
+  style: TStyle;
   children: JSX.Element;
 };
 

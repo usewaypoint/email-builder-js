@@ -1,3 +1,4 @@
+import React from 'react';
 import { z } from 'zod';
 
 import { zColor, zFontFamily, zFontWeight, zPadding, zTextAlign } from './helpers/zod';
