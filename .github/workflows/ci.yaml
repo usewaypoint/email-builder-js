@@ -19,6 +19,8 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm ci
+      - run: (cd ./packages/document-core;npm ci)
+      - run: (cd ./packages/editor-sample;npm ci)
       - run: npx eslint .
       - run: npx prettier . --check
       - run: npx tsc --noEmit
