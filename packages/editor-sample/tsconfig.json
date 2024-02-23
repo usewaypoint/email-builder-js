@@ -5,5 +5,5 @@
     "module": "esnext",
     "outDir": "dist"
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist"]
 }

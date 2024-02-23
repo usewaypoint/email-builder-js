@@ -9,6 +9,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
 
+    "skipLibCheck": true,
     "declarationMap": true,
     "declaration": true,
     "noUnusedLocals": true,
@@ -16,5 +17,5 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist"]
 }
