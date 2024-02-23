@@ -8,11 +8,13 @@
     "strict": true,
     "sourceMap": true,
     "esModuleInterop": true,
+
     "declarationMap": true,
     "declaration": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules", "dist"]
 }
