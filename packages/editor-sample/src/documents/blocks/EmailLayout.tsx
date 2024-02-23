@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { z } from 'zod';
 
 import { TEditorBlock } from '../editor/core';
+import { useCurrentBlockId } from '../editor/EditorBlock';
 import { useEditorState } from '../editor/EditorContext';
 import ReaderBlock from '../reader/ReaderBlock';
 
@@ -44,31 +45,29 @@ export function EmailLayout(props: EmailLayoutProps) {
 }
 
 export function EditorEmailLayout(props: EmailLayoutProps) {
-  const [{ document, selectedBlockId }, setEditorState] = useEditorState();
+  const [{ document }, setEditorState] = useEditorState();
+  const blockId = useCurrentBlockId();
   const childrenIds = props.childrenIds;
 
   const insertBlock = (blockConfiguration: TEditorBlock, i: number | null) => {
-    if (!selectedBlockId) {
-      return;
-    }
     const id = `block-${Date.now()}`;
-    let nChildrenIds: string[];
-    if (i === null) {
-      nChildrenIds = [...childrenIds, id];
-    } else {
-      nChildrenIds = [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
-    }
+    const getChildrenIds = () => {
+      if (i === null) {
+        return [...childrenIds, id];
+      }
+      return [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
+    };
 
     setEditorState({
       selectedBlockId: id,
       document: {
         ...document,
         [id]: blockConfiguration,
-        [selectedBlockId]: {
-          ...document[selectedBlockId],
+        [blockId]: {
+          type: 'EmailLayout',
           data: {
-            ...document[selectedBlockId].data,
-            childrenIds: nChildrenIds,
+            ...document[blockId].data,
+            childrenIds: getChildrenIds(),
           },
         } as TEditorBlock,
       },

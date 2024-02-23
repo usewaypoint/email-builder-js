@@ -2,6 +2,7 @@ import React from 'react';
 import { z } from 'zod';
 
 import { TEditorBlock } from '../editor/core';
+import { useCurrentBlockId } from '../editor/EditorBlock';
 import { useEditorState } from '../editor/EditorContext';
 import ReaderBlock from '../reader/ReaderBlock';
 
@@ -40,12 +41,10 @@ export function Container({ props: { childrenIds } }: ContainerProps) {
 }
 
 export function EditorContainer({ props: { childrenIds } }: ContainerProps) {
-  const [{ document, selectedBlockId }, setEditorState] = useEditorState();
+  const [{ document }, setEditorState] = useEditorState();
+  const blockId = useCurrentBlockId();
 
   const insertBlock = (blockConfiguration: TEditorBlock, i: number | null) => {
-    if (!selectedBlockId) {
-      return;
-    }
     const id = `block-${Date.now()}`;
     let nChildrenIds: string[];
     if (i === null) {
@@ -53,16 +52,15 @@ export function EditorContainer({ props: { childrenIds } }: ContainerProps) {
     } else {
       nChildrenIds = [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
     }
-    const containerBlock = document[selectedBlockId];
     setEditorState({
       selectedBlockId: id,
       document: {
         ...document,
         [id]: blockConfiguration,
-        [selectedBlockId]: {
+        [blockId]: {
           type: 'Container',
           data: {
-            ...containerBlock.data,
+            ...document[blockId].data,
             props: { childrenIds: nChildrenIds },
           },
         } as TEditorBlock,

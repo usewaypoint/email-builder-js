@@ -11,10 +11,10 @@ import theme from './theme';
 
 function getConfiguration() {
   if (window.location.hash && window.location.hash.startsWith('#sample/')) {
-    // const sample =
+    const sample =
   }
 
-  if (window.location.hash) {
+
     const encodedString = window.location.hash.slice(1);
     const configurationString = atob(encodedString);
     try {
