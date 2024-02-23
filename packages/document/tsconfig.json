@@ -5,6 +5,5 @@
     "module": "esnext",
     "outDir": "dist"
   },
-  "include": ["./src/**/*.ts", "./tests/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
 }
