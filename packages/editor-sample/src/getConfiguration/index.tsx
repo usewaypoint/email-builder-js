@@ -6,10 +6,9 @@ import RESET_PASSWORD from './sample/reset-password';
 import RESPOND_TO_MESSAGE from './sample/respond-to-message';
 import SUBSCRIPTION_RECEIPT from './sample/subscription-receipt';
 
-export default function getConfiguration() {
-  const hash = window.location.hash;
-  if (hash.startsWith('#sample/')) {
-    const sampleName = hash.replace('#sample/', '');
+export default function getConfiguration(template: string) {
+  if (template.startsWith('#sample/')) {
+    const sampleName = template.replace('#sample/', '');
     switch (sampleName) {
       case 'one-time-password':
         return ONE_TIME_PASSCODE;
@@ -26,12 +25,10 @@ export default function getConfiguration() {
       case 'subscription-receipt':
         return SUBSCRIPTION_RECEIPT;
     }
-
-    console.error('Invalid sample configuration');
   }
 
-  if (hash.startsWith('#')) {
-    const encodedString = window.location.hash.slice(1);
+  if (template.startsWith('#code/')) {
+    const encodedString = template.replace('#sample/', '');
     const configurationString = atob(encodedString);
     try {
       return JSON.parse(configurationString);

@@ -7,6 +7,7 @@ import { useEditorState } from '../documents/editor/EditorContext';
 import ReaderBlock from '../documents/reader/ReaderBlock';
 import { ReaderProvider } from '../documents/reader/ReaderContext';
 
+import ExamplesButton from './ExamplesButton';
 import HtmlPanel from './panels/HtmlPanel';
 import ShareButton from './ShareButton';
 import ConfigurationPanel from './sidebar/ConfigurationPanel';
@@ -62,6 +63,7 @@ export default function App() {
           sx={{ height: 49, borderBottom: 1, borderColor: 'divider', backgroundColor: 'white' }}
           direction="row"
           justifyContent="space-between"
+          alignItems="center"
         >
           <Tabs value={selectedMainTab} onChange={(_, v) => setEditorState({ selectedMainTab: v })}>
             <Tab value="editor" label="Edit" />
@@ -69,7 +71,10 @@ export default function App() {
             <Tab value="html" label="HTML" />
             <Tab value="data" label="JSON" />
           </Tabs>
-          <ShareButton />
+          <Box pr={3}>
+            <ExamplesButton />
+            <ShareButton />
+          </Box>
         </Stack>
         <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto' }}>{renderMainPanel()}</Box>
       </Grid>
