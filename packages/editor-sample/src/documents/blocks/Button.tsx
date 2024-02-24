@@ -9,7 +9,7 @@ export const ButtonPropsSchema = z.object({
       backgroundColor: zColor().nullable().default(null),
       fontSize: z.number().min(0).default(16),
       fontFamily: zFontFamily().nullable().default(null),
-      fontWeight: zFontWeight().default('bold'),
+      fontWeight: zFontWeight().nullable().default('bold'),
       textAlign: zTextAlign().optional().nullable().default('center'),
       padding: zPadding().optional().default({
         top: 16,

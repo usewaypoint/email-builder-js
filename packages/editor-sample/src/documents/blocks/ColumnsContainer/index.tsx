@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { TEditorBlock } from '../../editor/core';
+import { useCurrentBlockId } from '../../editor/EditorBlock';
 import { useEditorState } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
-import { ColumnsContainerProps } from './ColumnsContainerPropsSchema';
+import ColumnsContainerPropsSchema, { ColumnsContainerProps } from './ColumnsContainerPropsSchema';
 
 export function ColumnsContainer({ props: { columnsCount, columns } }: ColumnsContainerProps) {
   let lastColumn = null;
@@ -47,19 +48,20 @@ export function ColumnsContainer({ props: { columnsCount, columns } }: ColumnsCo
 
 export function EditorColumnsContainer(data: ColumnsContainerProps) {
   const { columnsCount, columns } = data.props;
-  const [{ document, selectedBlockId }, setEditorState] = useEditorState();
+  const [{ document }, setEditorState] = useEditorState();
+  const blockId = useCurrentBlockId();
 
   const insertBlock = (columnIndex: 0 | 1 | 2, blockConfiguration: TEditorBlock, i: number | null) => {
-    if (!selectedBlockId) {
-      return;
-    }
     const id = `block-${Date.now()}`;
-    const columnsCopy: ColumnsContainerProps['props']['columns'] = [...columns];
-    if (i === null) {
-      columnsCopy[columnIndex] = {
-        childrenIds: [...columns[columnIndex].childrenIds, id],
-      };
-    } else {
+
+    const getColumns = () => {
+      const columnsCopy: ColumnsContainerProps['props']['columns'] = [...columns];
+      if (i === null) {
+        columnsCopy[columnIndex] = {
+          childrenIds: [...columns[columnIndex].childrenIds, id],
+        };
+        return columnsCopy;
+      }
       columnsCopy[columnIndex] = {
         childrenIds: [
           ...columns[columnIndex].childrenIds.slice(0, i),
@@ -67,27 +69,21 @@ export function EditorColumnsContainer(data: ColumnsContainerProps) {
           ...columns[columnIndex].childrenIds.slice(i),
         ],
       };
-    }
+      return columnsCopy;
+    };
+    const data = ColumnsContainerPropsSchema.parse(document[blockId].data);
     setEditorState({
       selectedBlockId: id,
       document: {
         ...document,
         [id]: blockConfiguration,
-        [selectedBlockId]: {
-          type: 'ColumnsContainer' as const,
+        [blockId]: {
+          type: 'ColumnsContainer',
           data: {
-            style: {
-              backgroundColor: null,
-              padding: {
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-              },
-            },
+            ...data,
             props: {
-              columnsCount,
-              columns: columnsCopy,
+              ...data.props,
+              columns: getColumns(),
             },
           },
         },

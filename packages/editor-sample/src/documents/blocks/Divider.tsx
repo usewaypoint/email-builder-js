@@ -18,7 +18,7 @@ export const DividerPropsSchema = z.object({
   props: z
     .object({
       lineColor: zColor().default('#333333'),
-      lineHeight: z.number().default(1),
+      lineHeight: z.number().nullable().default(1),
     })
     .default({}),
 });
@@ -33,7 +33,7 @@ export function Divider({ props: { lineColor, lineHeight } }: DividerProps) {
         border: 'none',
         borderTop: '1px solid #eaeaea',
         borderColor: lineColor,
-        borderTopWidth: lineHeight,
+        borderTopWidth: lineHeight ?? 1,
       }}
     />
   );

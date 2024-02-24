@@ -40,7 +40,7 @@ export default function DividerSidebarPanel({ data, setData }: DividerSidebarPan
         step={1}
         min={1}
         max={24}
-        defaultValue={data.props.lineHeight}
+        defaultValue={data.props.lineHeight ?? 1}
         onChange={(lineHeight) => updateData({ ...data, props: { ...data.props, lineHeight } })}
       />
       <MultiStylePropertyPanel
