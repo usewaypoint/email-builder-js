@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spacer renders with default values 1`] = `
+<DocumentFragment>
+  <div
+    style="height: 16px;"
+  />
+</DocumentFragment>
+`;
+
+exports[`Spacer renders with props 1`] = `
+<DocumentFragment>
+  <div
+    style="height: 10px;"
+  />
+</DocumentFragment>
+`;

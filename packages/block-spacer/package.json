@@ -1,7 +1,7 @@
 {
-  "name": "@usewaypoint/block-heading",
+  "name": "@usewaypoint/block-spacer",
   "version": "0.0.1",
-  "description": "@usewaypoint/document compatible Heading component",
+  "description": "@usewaypoint/document compatible Spacer component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
