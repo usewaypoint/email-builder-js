@@ -80,7 +80,7 @@ const ONE_TIME_PASSCODE: TEditorConfiguration = {
       },
       props: {
         level: 'h1',
-        text: '{{passcode}}',
+        text: '0123456',
       },
     },
   },
@@ -102,7 +102,7 @@ const ONE_TIME_PASSCODE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'This code will expire in {{expiresIn}}.',
+        text: 'This code will expire in 30 minutes.',
       },
     },
   },
@@ -124,7 +124,7 @@ const ONE_TIME_PASSCODE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '*Problems? Just reply to this email.*',
+        text: 'Problems? Just reply to this email.',
       },
     },
   },

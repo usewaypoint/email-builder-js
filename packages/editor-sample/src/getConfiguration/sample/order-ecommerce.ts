@@ -43,7 +43,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
       props: {
         level: 'h2',
-        text: '{{store.name}}',
+        text: 'Unbranded Supply',
       },
     },
   },
@@ -84,7 +84,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '#{{order.id}}',
+        text: '#103571871',
       },
     },
   },
@@ -194,7 +194,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Hi {{order.customer.displayName}},\n\nWe are preparing your package. Your tracking number will be generated once the package is ready to ship.',
+        text: 'Hi Jordan,\n\nWe are preparing your package. Your tracking number will be generated once the package is ready to ship.',
       },
     },
   },
@@ -221,7 +221,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         fullWidth: false,
         size: 'large',
         text: 'View your order',
-        url: 'https://www.example.com/orders/{{order.id}}',
+        url: 'https://example.usewaypoint.com/orders/103571871',
       },
     },
   },
@@ -326,7 +326,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{lineItem.productName}} x {{lineItem.qty}}',
+        text: 'Unbranded Pen x 5',
       },
     },
   },
@@ -348,7 +348,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{lineItem.variant}}',
+        text: 'Black / Black ink',
       },
     },
   },
@@ -412,7 +412,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '({{lineItem.discount}})',
+        text: '($5.00)',
       },
     },
   },
@@ -519,7 +519,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '<s>{{lineItem.originalPrice}}</s>',
+        text: 'Original: $30.00',
       },
     },
   },
@@ -541,7 +541,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{lineItem.price}}',
+        text: '$25.00',
       },
     },
   },
@@ -685,7 +685,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Discount {% if order.discountCode %} ({{order.discountCode}}){% endif %}',
+        text: 'Discount (BLKFRI)',
       },
     },
   },
@@ -726,7 +726,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.discount}}',
+        text: '$5.00',
       },
     },
   },
@@ -855,7 +855,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.subtotal}}',
+        text: '$25.00',
       },
     },
   },
@@ -984,7 +984,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.shipping}}',
+        text: '$5.00',
       },
     },
   },
@@ -1113,7 +1113,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.taxes}}',
+        text: '$0.00',
       },
     },
   },
@@ -1260,7 +1260,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.total}}',
+        text: '$30.00',
       },
     },
   },
@@ -1465,7 +1465,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.shippingAddress.name}}\n{{order.shippingAddress.line1}}\n{{order.shippingAddress.city}}, {{order.shippingAddress.state}} {{order.shippingAddress.zip}}\n{{order.shippingAddress.country}}',
+        text: 'Jordan Isip\n123 Main St\nNew York, NY 10002\nUnited States',
       },
     },
   },
@@ -1528,7 +1528,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.shippingAddress.name}}\n{{order.shippingAddress.line1}}\n{{order.shippingAddress.city}}, {{order.shippingAddress.state}} {{order.shippingAddress.zip}}\n{{order.shippingAddress.country}}',
+        text: 'Jordan Isip\n123 Main St\nNew York, NY 10002\nUnited States',
       },
     },
   },
@@ -1638,7 +1638,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{order.shippingMethod}}',
+        text: 'Ground – Standard',
       },
     },
   },
@@ -1678,7 +1678,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'If you have any questions, just reply to this email.\n\n[Edit or Cancel Order](https://www.example.com/orders/{{order.id}}/edit)\n\n[Reorder](https://www.example.com/orders/{{order.id}}/reorder)',
+        text: 'If you have any questions, just reply to this email.',
       },
     },
   },

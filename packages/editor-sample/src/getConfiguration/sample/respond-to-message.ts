@@ -59,7 +59,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
       },
       props: {
         level: 'h2',
-        text: `Respond to {{reservationRequest.displayName}}'s Inquiry`,
+        text: 'Respond to Anna&apos;s Inquiry',
       },
     },
   },
@@ -81,7 +81,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Dog boarding for {{reservationRequest.startDate}} - {{reservationRequest.endDate}}.',
+        text: 'Dog boarding for Aug 1 - Aug 29.',
       },
     },
   },
@@ -103,7 +103,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
         },
       },
       props: {
-        text: '*{{reservationRequest.message}}*',
+        text: 'Any chance you can watch Emma again next month?',
       },
     },
   },
@@ -148,7 +148,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
         size: 'large',
         buttonStyle: 'pill',
         text: 'Respond',
-        url: 'http://boop-marketplace.com/request/{{reservationRequest.id}}',
+        url: 'http://example.usewaypoint.com/request/2334234',
         fullWidth: false,
       },
     },
@@ -171,7 +171,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
         },
       },
       props: {
-        text: `*You need {{reservationRequest.walksUntilSuperWalker}} {{reservationRequest.walksUntilSuperWalker | pluralize: 'more walk', 'more walks'}} to become a Super Walker on Boop!*`,
+        text: 'You need 2 more walks to become a Super Walker on Boop!',
       },
     },
   },

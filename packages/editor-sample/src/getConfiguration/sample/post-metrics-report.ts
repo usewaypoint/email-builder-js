@@ -79,8 +79,8 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
       props: {
         size: 32,
         shape: 'circle',
-        imageUrl: '{{user.avatarUrl}}',
-        fallbackText: '{{user.displayName}}',
+        imageUrl: '',
+        fallbackText: 'Jordan',
         fallbackColor: null,
       },
     },
@@ -169,7 +169,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
       },
       props: {
         level: 'h3',
-        text: '{{report.duration}}, your posts received',
+        text: 'Last week, your posts received',
       },
     },
   },
@@ -191,7 +191,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{report.metric.value}}',
+        text: '1,511',
       },
     },
   },
@@ -213,7 +213,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{report.metric.title}}',
+        text: 'Post impressions',
       },
     },
   },
@@ -240,7 +240,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         fullWidth: false,
         size: 'medium',
         text: 'View your analytics →',
-        url: 'https://narrative.example.com/{{user.username}}/analytics',
+        url: 'https://example.usewaypoint.com/jordanisip/analytics',
       },
     },
   },
@@ -262,7 +262,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
       },
       props: {
         level: 'h3',
-        text: 'Top performing post {{report.duration | downcase}}',
+        text: 'Top performing post last week',
       },
     },
   },
@@ -284,7 +284,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{report.topPerformingPost}}',
+        text: 'So excited to now have drag and drop on Waypoint. This builds on top of our new Navigator feature that we shipped earlier this week 🚢.',
       },
     },
   },
@@ -349,7 +349,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         fullWidth: false,
         size: 'medium',
         text: 'Show more',
-        url: 'https://narrative.example.com/{{user.username}}/posts',
+        url: 'https://example.usewaypoint.com/jordanisip/posts',
       },
     },
   },
