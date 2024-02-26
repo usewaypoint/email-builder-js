@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider renders with default values 1`] = `
+<DocumentFragment>
+  <div>
+    <hr
+      style="width: 100%; border-top: 1px solid #eaeaea; border-color: #333333; border-top-width: 1px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Divider renders with props 1`] = `
+<DocumentFragment>
+  <div
+    style="padding: 1px 4px 3px 2px; background-color: rgb(255, 240, 0);"
+  >
+    <hr
+      style="width: 100%; border-top: 1px solid #eaeaea; border-color: #444222; border-top-width: 10px;"
+    />
+  </div>
+</DocumentFragment>
+`;
