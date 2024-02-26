@@ -18,11 +18,21 @@ type TPaddingValue = {
 };
 type Props = {
   label: string;
-  defaultValue: TPaddingValue;
+  defaultValue: TPaddingValue | null;
   onChange: (value: TPaddingValue) => void;
 };
 export default function PaddingInput({ label, defaultValue, onChange }: Props) {
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(() => {
+    if (defaultValue) {
+      return defaultValue;
+    }
+    return {
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+    };
+  });
 
   function handleChange(internalName: keyof TPaddingValue, nValue: number) {
     const v = {

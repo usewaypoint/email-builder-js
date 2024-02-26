@@ -1,6 +1,7 @@
 import React from 'react';
 import { z } from 'zod';
 
+import { Divider, DividerProps, DividerPropsSchema } from '@usewaypoint/block-divider';
 import { Heading, HeadingProps, HeadingPropsSchema } from '@usewaypoint/block-heading';
 import { Spacer, SpacerProps, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
@@ -11,7 +12,6 @@ import { EditorColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { EditorContainer } from '../blocks/Container';
 import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
-import { Divider, DividerPropsSchema } from '../blocks/Divider';
 import { EditorEmailLayout, EmailLayoutProps } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import { addEditorBlockWrapper } from '../blocks/helpers/block-wrappers';
@@ -36,10 +36,6 @@ const EDITOR_DICTIONARY = {
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema,
     Component: addEditorBlockWrapper(EditorColumnsContainer),
-  },
-  Divider: {
-    schema: DividerPropsSchema,
-    Component: addEditorBlockWrapper(Divider),
   },
   Heading: {
     schema: HeadingPropsSchema,
@@ -74,6 +70,14 @@ const EDITOR_DICTIONARY = {
     Component: (props: SpacerProps) => (
       <EditorBlockWrapper>
         <Spacer {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  Divider: {
+    schema: DividerPropsSchema,
+    Component: (props: DividerProps) => (
+      <EditorBlockWrapper>
+        <Divider {...props} />
       </EditorBlockWrapper>
     ),
   },

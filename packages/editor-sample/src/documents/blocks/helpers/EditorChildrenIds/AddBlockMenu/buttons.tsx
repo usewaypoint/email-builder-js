@@ -13,14 +13,12 @@ import {
   ViewColumnOutlined,
 } from '@mui/icons-material';
 import { HeadingPropsSchema } from '@usewaypoint/block-heading';
-import { SpacerPropsSchema } from '@usewaypoint/block-spacer';
 
 import { TEditorBlock } from '../../../../editor/core';
 import { AvatarPropsSchema } from '../../../Avatar';
 import { ButtonPropsSchema } from '../../../Button';
 import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
 import { ContainerPropsSchema } from '../../../Container/ContainerPropsSchema';
-import { DividerPropsSchema } from '../../../Divider';
 import { HtmlPropsSchema } from '../../../Html';
 import { ImagePropsSchema } from '../../../Image';
 import { TextPropsSchema } from '../../../Text';
@@ -101,7 +99,14 @@ export const BUTTONS: TButtonProps[] = [
     icon: <HorizontalRuleOutlined />,
     block: () => ({
       type: 'Divider',
-      data: DividerPropsSchema.parse({}),
+      data: {
+        style: {
+          padding: { top: 16, right: 0, bottom: 16, left: 0 },
+        },
+        props: {
+          lineColor: '#CCCCCC',
+        },
+      },
     }),
   },
   {
@@ -109,7 +114,7 @@ export const BUTTONS: TButtonProps[] = [
     icon: <Crop32Outlined />,
     block: () => ({
       type: 'Spacer',
-      data: SpacerPropsSchema.parse({}),
+      data: { style: {}, props: {} },
     }),
   },
   {
