@@ -18,9 +18,9 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
 
   let outline: CSSProperties['outline'];
   if (selectedBlockId === blockId) {
-    outline = '2px solid blue';
+    outline = '2px solid rgba(0,121,204, 1)';
   } else if (mouseInside) {
-    outline = '2px dashed blue';
+    outline = '2px solid rgba(0,121,204, 0.3)';
   }
 
   const renderMenu = () => {

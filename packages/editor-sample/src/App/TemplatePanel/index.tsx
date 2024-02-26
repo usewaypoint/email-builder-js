@@ -39,22 +39,33 @@ export default function TemplatePanel() {
   return (
     <>
       <Stack
-        sx={{ height: 49, borderBottom: 1, borderColor: 'divider', backgroundColor: 'white' }}
+        sx={{
+          height: 49,
+          borderBottom: 1,
+          borderColor: 'divider',
+          backgroundColor: 'white',
+          position: 'sticky',
+          top: 0,
+          zIndex: 'appBar',
+          px: 1,
+        }}
         direction="row"
         justifyContent="space-between"
         alignItems="center"
       >
         <ToggleSamplesPanelButton />
-        <Tabs value={selectedMainTab} onChange={(_, v) => setEditorState({ selectedMainTab: v })}>
-          <Tab value="editor" label="Edit" />
-          <Tab value="preview" label="Preview" />
-          <Tab value="html" label="HTML" />
-          <Tab value="data" label="JSON" />
-        </Tabs>
-        <Box pr={3}>
+        <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
+          <Tabs value={selectedMainTab} onChange={(_, v) => setEditorState({ selectedMainTab: v })}>
+            <Tab value="editor" label="Edit" />
+            <Tab value="preview" label="Preview" />
+            <Tab value="html" label="HTML" />
+            <Tab value="data" label="JSON" />
+          </Tabs>
+
           <ShareButton />
-          <ToggleInspectorPanelButton />
-        </Box>
+        </Stack>
+
+        <ToggleInspectorPanelButton />
       </Stack>
       <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto' }}>{renderMainPanel()}</Box>
     </>

@@ -12,7 +12,6 @@ const STYLE: CSSProperties = {
   top: 0,
   left: -52,
   borderRadius: 64,
-  padding: '8px 4px',
 };
 
 type Props = {

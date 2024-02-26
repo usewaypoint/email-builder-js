@@ -23,7 +23,7 @@ const ONE_TIME_PASSCODE: TEditorConfiguration = {
       style: {
         backgroundColor: null,
         padding: {
-          top: 48,
+          top: 24,
           bottom: 24,
           left: 24,
           right: 24,

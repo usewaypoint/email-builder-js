@@ -8,7 +8,7 @@ type SidebarPanelProps = {
 };
 export default function BaseSidebarPanel({ title, children }: SidebarPanelProps) {
   return (
-    <Box p={3}>
+    <Box p={2}>
       <Typography variant="overline" color="text.secondary" sx={{ display: 'block', mb: 2 }}>
         {title}
       </Typography>
