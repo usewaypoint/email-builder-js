@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Button, Snackbar } from '@mui/material';
 
-import { useEditorState } from '../documents/editor/EditorContext';
+import { useEditorState } from '../../documents/editor/EditorContext';
 
 export default function ShareButton() {
   const [{ document }] = useEditorState();

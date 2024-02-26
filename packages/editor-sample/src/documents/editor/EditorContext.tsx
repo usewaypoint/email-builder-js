@@ -9,8 +9,8 @@ type TValue = {
   selectedSidebarTab: 'block-configuration' | 'styles';
   selectedMainTab: 'editor' | 'preview' | 'data' | 'html';
 
-  inspectorPanelOpen: boolean;
-  samplesPanelOpen: boolean;
+  inspectorDrawerOpen: boolean;
+  samplesDrawerOpen: boolean;
 };
 type TEditorContextState = [state: TValue, setState: (v: Partial<TValue>) => void];
 
@@ -20,8 +20,8 @@ const DEFAULT_STATE: TValue = {
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
 
-  inspectorPanelOpen: false,
-  samplesPanelOpen: false,
+  inspectorDrawerOpen: false,
+  samplesDrawerOpen: false,
 };
 const EditorContext = createContext<TEditorContextState>([DEFAULT_STATE, () => {}]);
 
