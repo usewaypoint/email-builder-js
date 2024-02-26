@@ -1,0 +1,23 @@
+{
+  "name": "@usewaypoint/block-heading",
+  "version": "0.0.1",
+  "description": "@usewaypoint/document compatible Heading component",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "carlos@usewaypoint.com",
+  "license": "MIT",
+  "peerDependencies": {
+    "@usewaypoint/document-core": "^0.0.1",
+    "react": "^16 || ^17 || ^18",
+    "zod": "^1 || ^2 || ^3"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.2.1"
+  }
+}
