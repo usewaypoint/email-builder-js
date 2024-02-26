@@ -12,6 +12,7 @@ import {
   SmartButtonOutlined,
   ViewColumnOutlined,
 } from '@mui/icons-material';
+import { HeadingPropsSchema } from '@usewaypoint/block-heading';
 
 import { TEditorBlock } from '../../../../editor/core';
 import { AvatarPropsSchema } from '../../../Avatar';
@@ -19,7 +20,6 @@ import { ButtonPropsSchema } from '../../../Button';
 import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
 import { ContainerPropsSchema } from '../../../Container';
 import { DividerPropsSchema } from '../../../Divider';
-import { HeadingPropsSchema } from '../../../Heading';
 import { HtmlPropsSchema } from '../../../Html';
 import { ImagePropsSchema } from '../../../Image';
 import { SpacerPropsSchema } from '../../../Spacer';

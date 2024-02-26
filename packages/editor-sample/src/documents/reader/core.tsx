@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
 import { Avatar, AvatarPropsSchema } from '../blocks/Avatar';
@@ -9,7 +10,6 @@ import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsConta
 import { Container, ContainerPropsSchema } from '../blocks/Container';
 import { Divider, DividerPropsSchema } from '../blocks/Divider';
 import { EmailLayout, EmailLayoutPropsSchema } from '../blocks/EmailLayout';
-import { Heading, HeadingPropsSchema } from '../blocks/Heading';
 import { addReaderBlockWrapper } from '../blocks/helpers/block-wrappers';
 import { Html, HtmlPropsSchema } from '../blocks/Html';
 import { Image, ImagePropsSchema } from '../blocks/Image';
