@@ -35,15 +35,16 @@ export function Divider({ style, props }: DividerProps) {
     padding: getPadding(style),
     backgroundColor: style?.backgroundColor ?? undefined,
   };
+  const borderTopWidth = props?.lineHeight ?? 1;
+  const borderTopColor = props?.lineColor ?? '#333333';
   return (
     <div style={st}>
       <hr
         style={{
           width: '100%',
           border: 'none',
-          borderTop: '1px solid #eaeaea',
-          borderColor: props?.lineColor ?? '#333333',
-          borderTopWidth: props?.lineHeight ?? 1,
+          borderTop: `${borderTopWidth}px solid ${borderTopColor}`,
+          margin: 0,
         }}
       />
     </div>

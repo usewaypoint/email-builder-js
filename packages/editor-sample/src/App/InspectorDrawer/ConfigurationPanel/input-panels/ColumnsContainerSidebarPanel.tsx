@@ -27,7 +27,7 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
   };
 
   return (
-    <BaseSidebarPanel title="Button block">
+    <BaseSidebarPanel title="Columns block">
       <RadioGroupInput
         label="Number of columns"
         defaultValue={data.props.columnsCount === 2 ? '2' : '3'}

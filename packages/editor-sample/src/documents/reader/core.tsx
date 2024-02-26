@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { Divider, DividerPropsSchema } from '@usewaypoint/block-divider';
 import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
 import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
@@ -10,7 +11,6 @@ import { ColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { Container } from '../blocks/Container';
 import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
-import { Divider, DividerPropsSchema } from '../blocks/Divider';
 import { EmailLayout } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import { addReaderBlockWrapper } from '../blocks/helpers/block-wrappers';
@@ -37,7 +37,7 @@ const READER_DICTIONARY = {
   },
   Divider: {
     schema: DividerPropsSchema,
-    Component: addReaderBlockWrapper(Divider),
+    Component: Divider,
   },
   Heading: {
     schema: HeadingPropsSchema,
