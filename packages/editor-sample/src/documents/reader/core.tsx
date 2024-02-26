@@ -39,7 +39,7 @@ const READER_DICTIONARY = {
   },
   Heading: {
     schema: HeadingPropsSchema,
-    Component: addReaderBlockWrapper(Heading),
+    Component: Heading,
   },
   Html: {
     schema: HtmlPropsSchema,
@@ -59,7 +59,7 @@ const READER_DICTIONARY = {
   },
   Spacer: {
     schema: SpacerPropsSchema,
-    Component: addReaderBlockWrapper(Spacer),
+    Component: Spacer,
   },
 };
 
