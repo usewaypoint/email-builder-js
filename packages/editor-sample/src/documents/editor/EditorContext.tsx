@@ -8,6 +8,9 @@ type TValue = {
   selectedBlockId: string | null;
   selectedSidebarTab: 'block-configuration' | 'styles';
   selectedMainTab: 'editor' | 'preview' | 'data' | 'html';
+
+  inspectorDrawerOpen: boolean;
+  samplesDrawerOpen: boolean;
 };
 type TEditorContextState = [state: TValue, setState: (v: Partial<TValue>) => void];
 
@@ -16,6 +19,9 @@ const DEFAULT_STATE: TValue = {
   selectedBlockId: null,
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
+
+  inspectorDrawerOpen: false,
+  samplesDrawerOpen: false,
 };
 const EditorContext = createContext<TEditorContextState>([DEFAULT_STATE, () => {}]);
 
@@ -29,10 +35,8 @@ type EditorProviderProps = {
 };
 export function EditorProvider({ defaultValue, children }: EditorProviderProps) {
   const [state, setState] = useState<TValue>(() => ({
+    ...DEFAULT_STATE,
     document: defaultValue,
-    selectedBlockId: null,
-    selectedSidebarTab: 'styles',
-    selectedMainTab: 'editor',
   }));
   const value = useMemo<TEditorContextState>(
     () => [
