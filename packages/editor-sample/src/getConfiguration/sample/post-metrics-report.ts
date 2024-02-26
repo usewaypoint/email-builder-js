@@ -79,7 +79,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
       props: {
         size: 32,
         shape: 'circle',
-        imageUrl: '',
+        imageUrl: 'https://ui-avatars.com/api/?name=John+Doe',
         fallbackText: 'Jordan',
         fallbackColor: null,
       },
