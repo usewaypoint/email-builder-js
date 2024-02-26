@@ -1,13 +1,13 @@
 import React, { CSSProperties } from 'react';
 import { z } from 'zod';
 
-import { TEditorBlock } from '../editor/core';
-import { useCurrentBlockId } from '../editor/EditorBlock';
-import { useEditorState } from '../editor/EditorContext';
-import ReaderBlock from '../reader/ReaderBlock';
+import { TEditorBlock } from '../../editor/core';
+import { useCurrentBlockId } from '../../editor/EditorBlock';
+import { useEditorState } from '../../editor/EditorContext';
+import ReaderBlock from '../../reader/ReaderBlock';
+import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
-import EditorChildrenIds from './helpers/EditorChildrenIds';
-import { zColor, zFontFamily } from './helpers/zod';
+import { EmailLayoutPropsSchema } from './EmailLayoutPropsSchema';
 
 // Based on https://modernfontstacks.com/#font-stacks
 const FONT_FAMILY_MAPPINGS = {
@@ -23,14 +23,6 @@ const FONT_FAMILY_MAPPINGS = {
   BOOK_SERIF: '"Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif',
   MONOSPACE: '"Nimbus Mono PS", "Courier New", "Cutive Mono", monospace',
 };
-
-export const EmailLayoutPropsSchema = z.object({
-  backdropColor: zColor(),
-  canvasColor: zColor(),
-  textColor: zColor(),
-  fontFamily: zFontFamily().default('MODERN_SANS'),
-  childrenIds: z.array(z.string()),
-});
 
 export type EmailLayoutProps = z.infer<typeof EmailLayoutPropsSchema>;
 

@@ -19,7 +19,7 @@ import { TEditorBlock } from '../../../../editor/core';
 import { AvatarPropsSchema } from '../../../Avatar';
 import { ButtonPropsSchema } from '../../../Button';
 import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
-import { ContainerPropsSchema } from '../../../Container';
+import { ContainerPropsSchema } from '../../../Container/ContainerPropsSchema';
 import { DividerPropsSchema } from '../../../Divider';
 import { HtmlPropsSchema } from '../../../Html';
 import { ImagePropsSchema } from '../../../Image';

@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { Divider } from '@mui/material';
 
-import { EmailLayoutPropsSchema } from '../../../../documents/blocks/EmailLayout';
+import { EmailLayoutPropsSchema } from '../../../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
