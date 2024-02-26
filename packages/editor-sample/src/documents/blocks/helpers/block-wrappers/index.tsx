@@ -23,8 +23,10 @@ export function addReaderBlockWrapper<TProps extends TCommonProps>(ChildComponen
 export function addEditorBlockWrapper<TProps extends TCommonProps>(ChildComponent: (props: TProps) => React.ReactNode) {
   return (props: TProps) => {
     return (
-      <EditorBlockWrapper style={props.style}>
-        <ChildComponent {...props} />
+      <EditorBlockWrapper>
+        <ReaderBlockWrapper style={props.style}>
+          <ChildComponent {...props} />
+        </ReaderBlockWrapper>
       </EditorBlockWrapper>
     );
   };

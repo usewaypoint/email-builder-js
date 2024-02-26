@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import { HeightOutlined } from '@mui/icons-material';
-
-import { SpacerProps, SpacerPropsSchema } from '../../../../documents/blocks/Spacer';
+import { SpacerProps, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import SliderInput from './helpers/inputs/SliderInput';
@@ -33,7 +32,7 @@ export default function SpacerSidebarPanel({ data, setData }: SpacerSidebarPanel
         step={4}
         min={4}
         max={128}
-        defaultValue={data.props.height}
+        defaultValue={data.props.height ?? 16}
         onChange={(height) => updateData({ ...data, props: { ...data.props, height } })}
       />
     </BaseSidebarPanel>

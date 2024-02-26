@@ -4,17 +4,14 @@ import { Box } from '@mui/material';
 
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
 import { useEditorState } from '../../../editor/EditorContext';
-import { TStyle } from '../TStyle';
 
-import ReaderBlockWrapper from './ReaderBlockWrapper';
 import TuneMenu from './TuneMenu';
 
 type TEditorBlockWrapperProps = {
-  style: TStyle;
   children: JSX.Element;
 };
 
-export default function EditorBlockWrapper({ style, children }: TEditorBlockWrapperProps) {
+export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProps) {
   const [{ selectedBlockId }, setEditorState] = useEditorState();
   const [mouseInside, setMouseInside] = useState(false);
   const blockId = useCurrentBlockId();
@@ -59,7 +56,7 @@ export default function EditorBlockWrapper({ style, children }: TEditorBlockWrap
       }}
     >
       {renderMenu()}
-      <ReaderBlockWrapper style={style}>{children}</ReaderBlockWrapper>
+      {children}
     </Box>
   );
 }

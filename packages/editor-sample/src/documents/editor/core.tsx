@@ -1,7 +1,8 @@
 import React from 'react';
 import { z } from 'zod';
 
-import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Heading, HeadingProps, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Spacer, SpacerProps, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
 import { Avatar, AvatarPropsSchema } from '../blocks/Avatar';
@@ -12,9 +13,9 @@ import { ContainerPropsSchema, EditorContainer } from '../blocks/Container';
 import { Divider, DividerPropsSchema } from '../blocks/Divider';
 import { EditorEmailLayout, EmailLayoutProps, EmailLayoutPropsSchema } from '../blocks/EmailLayout';
 import { addEditorBlockWrapper } from '../blocks/helpers/block-wrappers';
+import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
 import { Html, HtmlPropsSchema } from '../blocks/Html';
 import { Image, ImagePropsSchema } from '../blocks/Image';
-import { Spacer, SpacerPropsSchema } from '../blocks/Spacer';
 import { Text, TextPropsSchema } from '../blocks/Text';
 
 const EDITOR_DICTIONARY = {
@@ -40,7 +41,11 @@ const EDITOR_DICTIONARY = {
   },
   Heading: {
     schema: HeadingPropsSchema,
-    Component: addEditorBlockWrapper(Heading),
+    Component: (props: HeadingProps) => (
+      <EditorBlockWrapper>
+        <Heading {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   Html: {
     schema: HtmlPropsSchema,
@@ -64,7 +69,11 @@ const EDITOR_DICTIONARY = {
   },
   Spacer: {
     schema: SpacerPropsSchema,
-    Component: addEditorBlockWrapper(Spacer),
+    Component: (props: SpacerProps) => (
+      <EditorBlockWrapper>
+        <Spacer {...props} />
+      </EditorBlockWrapper>
+    ),
   },
 };
 
