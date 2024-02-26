@@ -38,6 +38,9 @@ export const BUTTONS: TButtonProps[] = [
       type: 'Heading',
       data: HeadingPropsSchema.parse({
         props: { text: 'Hello friend' },
+        style: {
+          padding: { top: 16, bottom: 16, left: 24, right: 24 },
+        },
       }),
     }),
   },
