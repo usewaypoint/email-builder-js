@@ -13,6 +13,7 @@ import {
   ViewColumnOutlined,
 } from '@mui/icons-material';
 import { HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { SpacerPropsSchema } from '@usewaypoint/block-spacer';
 
 import { TEditorBlock } from '../../../../editor/core';
 import { AvatarPropsSchema } from '../../../Avatar';
@@ -22,7 +23,6 @@ import { ContainerPropsSchema } from '../../../Container';
 import { DividerPropsSchema } from '../../../Divider';
 import { HtmlPropsSchema } from '../../../Html';
 import { ImagePropsSchema } from '../../../Image';
-import { SpacerPropsSchema } from '../../../Spacer';
 import { TextPropsSchema } from '../../../Text';
 
 type TButtonProps = {

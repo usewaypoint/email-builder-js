@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
 import { Avatar, AvatarPropsSchema } from '../blocks/Avatar';
@@ -13,7 +14,6 @@ import { EmailLayout, EmailLayoutPropsSchema } from '../blocks/EmailLayout';
 import { addReaderBlockWrapper } from '../blocks/helpers/block-wrappers';
 import { Html, HtmlPropsSchema } from '../blocks/Html';
 import { Image, ImagePropsSchema } from '../blocks/Image';
-import { Spacer, SpacerPropsSchema } from '../blocks/Spacer';
 import { Text, TextPropsSchema } from '../blocks/Text';
 
 const READER_DICTIONARY = {

@@ -2,6 +2,7 @@ import React from 'react';
 import { z } from 'zod';
 
 import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
 import { Avatar, AvatarPropsSchema } from '../blocks/Avatar';
@@ -14,7 +15,6 @@ import { EditorEmailLayout, EmailLayoutProps, EmailLayoutPropsSchema } from '../
 import { addEditorBlockWrapper } from '../blocks/helpers/block-wrappers';
 import { Html, HtmlPropsSchema } from '../blocks/Html';
 import { Image, ImagePropsSchema } from '../blocks/Image';
-import { Spacer, SpacerPropsSchema } from '../blocks/Spacer';
 import { Text, TextPropsSchema } from '../blocks/Text';
 
 const EDITOR_DICTIONARY = {
@@ -64,7 +64,7 @@ const EDITOR_DICTIONARY = {
   },
   Spacer: {
     schema: SpacerPropsSchema,
-    Component: addEditorBlockWrapper(Spacer),
+    Component: Spacer,
   },
 };
 

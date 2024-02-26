@@ -786,25 +786,6 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
   block_UQHMPb5NFLrY9PkWUckmHb: {
     type: 'Spacer',
     data: {
-      style: {
-        backgroundColor: null,
-        border: null,
-        borderRadius: null,
-        color: null,
-        fontFamily: null,
-        fontSize: null,
-        fontWeight: null,
-        height: null,
-        margin: null,
-        maxHeight: null,
-        maxWidth: null,
-        minHeight: null,
-        minWidth: null,
-        padding: null,
-        textAlign: null,
-        textTransform: null,
-        width: null,
-      },
       props: {
         height: 24,
       },
