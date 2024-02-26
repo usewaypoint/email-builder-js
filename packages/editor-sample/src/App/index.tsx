@@ -9,41 +9,17 @@ import { ReaderProvider } from '../documents/reader/ReaderContext';
 
 import ExamplesButton from './ExamplesButton';
 import HtmlPanel from './panels/HtmlPanel';
+import SamplesPanel from './SamplesPanel';
 import ShareButton from './ShareButton';
 import ConfigurationPanel from './sidebar/ConfigurationPanel';
 import StylesPanel from './sidebar/StylesPanel';
 
 const drawerWidth = 400;
 
-// const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-//   open?: boolean;
-// }>(({ theme, open }) => ({
-//
-//   padding: theme.spacing(3),
-//   transition: theme.transitions.create('margin', {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-
-//   ...(open && {
-//     transition: theme.transitions.create('margin', {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//     marginLeft: 0,
-//   }),
-// }));
-
 export default function App() {
   const theme = useTheme();
-  const [{ document, selectedSidebarTab, selectedMainTab, sidebarPanelOpen }, setEditorState] = useEditorState();
-
-  const openSidebarPanel = () => {
-    setEditorState({ sidebarPanelOpen: true });
-  };
-  const closeSidebarPanel = () => {
-    setEditorState({ sidebarPanelOpen: false });
-  };
+  const [{ document, selectedSidebarTab, selectedMainTab, inspectorPanelOpen, samplesPanelOpen }, setEditorState] =
+    useEditorState();
 
   const renderCurrentSidebarPanel = () => {
     switch (selectedSidebarTab) {
@@ -78,10 +54,10 @@ export default function App() {
     <>
       <Drawer
         variant="persistent"
-        anchor="left"
-        open={sidebarPanelOpen}
+        anchor="right"
+        open={inspectorPanelOpen}
         sx={{
-          width: sidebarPanelOpen ? drawerWidth : 0,
+          width: inspectorPanelOpen ? drawerWidth : 0,
         }}
       >
         <Box sx={{ width: drawerWidth, height: 49, borderBottom: 1, borderColor: 'divider' }}>
@@ -90,25 +66,43 @@ export default function App() {
               <Tab value="styles" label="Styles" />
               <Tab value="block-configuration" label="Inspect" />
             </Tabs>
-            <Button onClick={() => closeSidebarPanel()}>CLOSE</Button>
           </Box>
         </Box>
         <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto' }}>{renderCurrentSidebarPanel()}</Box>
       </Drawer>
+
+      <Drawer
+        variant="persistent"
+        anchor="left"
+        open={samplesPanelOpen}
+        sx={{
+          width: samplesPanelOpen ? drawerWidth : 0,
+        }}
+      >
+        <Box width={drawerWidth}>
+          <SamplesPanel />
+        </Box>
+      </Drawer>
+
       <Stack
         sx={{
-          // flexGrow: 1,
-          marginLeft: sidebarPanelOpen ? `${drawerWidth}px` : 0,
-          transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-          }),
-          ...(sidebarPanelOpen && {
-            transition: theme.transitions.create('margin', {
-              easing: theme.transitions.easing.easeOut,
-              duration: theme.transitions.duration.enteringScreen,
+          marginRight: inspectorPanelOpen ? `${drawerWidth}px` : 0,
+          marginLeft: samplesPanelOpen ? `${drawerWidth}px` : 0,
+
+          transition: [
+            theme.transitions.create('margin-left', {
+              easing: !samplesPanelOpen ? theme.transitions.easing.sharp : theme.transitions.easing.easeOut,
+              duration: !samplesPanelOpen
+                ? theme.transitions.duration.leavingScreen
+                : theme.transitions.duration.enteringScreen,
             }),
-          }),
+            theme.transitions.create('margin-right', {
+              easing: !inspectorPanelOpen ? theme.transitions.easing.sharp : theme.transitions.easing.easeOut,
+              duration: !inspectorPanelOpen
+                ? theme.transitions.duration.leavingScreen
+                : theme.transitions.duration.enteringScreen,
+            }),
+          ].join(', '),
         }}
       >
         <Stack
@@ -117,7 +111,7 @@ export default function App() {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Button onClick={() => openSidebarPanel()}>OPEN</Button>
+          <ToggleSamplesPanelButton />
           <Tabs value={selectedMainTab} onChange={(_, v) => setEditorState({ selectedMainTab: v })}>
             <Tab value="editor" label="Edit" />
             <Tab value="preview" label="Preview" />
@@ -127,10 +121,33 @@ export default function App() {
           <Box pr={3}>
             <ExamplesButton />
             <ShareButton />
+            <ToggleInspectorPanelButton />
           </Box>
         </Stack>
         <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto' }}>{renderMainPanel()}</Box>
       </Stack>
     </>
   );
+}
+
+function ToggleSamplesPanelButton() {
+  const [{ samplesPanelOpen }, setEditorState] = useEditorState();
+  const handleClick = () => {
+    setEditorState({ samplesPanelOpen: !samplesPanelOpen });
+  };
+  if (samplesPanelOpen) {
+    return <Button onClick={handleClick}>CLOSE</Button>;
+  }
+  return <Button onClick={handleClick}>OPEN</Button>;
+}
+
+function ToggleInspectorPanelButton() {
+  const [{ inspectorPanelOpen }, setEditorState] = useEditorState();
+  const handleClick = () => {
+    setEditorState({ inspectorPanelOpen: !inspectorPanelOpen });
+  };
+  if (inspectorPanelOpen) {
+    return <Button onClick={handleClick}>CLOSE</Button>;
+  }
+  return <Button onClick={handleClick}>OPEN</Button>;
 }
