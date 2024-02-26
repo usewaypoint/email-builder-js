@@ -69,7 +69,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
       },
       props: {
         level: 'h2',
-        text: `{{reservation.user.displayName}} arrives {{reservation.checkIn | date: '%A, %B %e' }}.`,
+        text: 'Elaina arrives Sunday, May 21.',
       },
     },
   },
@@ -91,7 +91,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'If you haven’t already, reach out to {{reservation.user.displayName}} to send directions and coordinate check-in time.',
+        text: 'If you haven’t already, reach out to Elaina to send directions and coordinate check-in time.',
       },
     },
   },
@@ -110,8 +110,8 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
       props: {
         size: 64,
         shape: 'circle',
-        imageUrl: '{{reservation.user.avatarUrl}}',
-        fallbackText: '{{reservation.user.displayName}}',
+        imageUrl: '',
+        fallbackText: 'Elaina',
         fallbackColor: null,
       },
     },
@@ -153,7 +153,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
       },
       props: {
         level: 'h3',
-        text: '{{reservation.user.displayName}}',
+        text: 'Elaina',
       },
     },
   },
@@ -175,7 +175,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.user.location}}\nMember since {{reservation.user.memberSince}}',
+        text: 'United States\nMember since 2013',
       },
     },
   },
@@ -286,7 +286,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         buttonTextColor: '#FFFFFF',
         fullWidth: false,
         size: 'large',
-        text: 'Send {{reservation.user.displayName}} a message',
+        text: 'Send Elaina a message',
         url: 'https://www.usewaypoint.com',
       },
     },
@@ -309,7 +309,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_QWeWcucRbjPqoewY/L1030293.jpg',
         alt: 'Photo',
-        linkHref: 'https://reservations.example.com/listings/{{reservation.listing.id}}',
+        linkHref: 'https://example.usewaypoint.com/listings/r029348209842',
         contentAlignment: 'middle',
       },
     },
@@ -332,7 +332,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
       },
       props: {
         level: 'h2',
-        text: '{{reservation.listing.title}}',
+        text: 'Private Hideaway in the North Shore',
       },
     },
   },
@@ -354,7 +354,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.listing.type}}',
+        text: 'Entire home/apartment',
       },
     },
   },
@@ -416,7 +416,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: `{{reservation.checkIn | date: '%A, %B %e %Y' }}.\nCheck-in anytime after 3:00 PM`,
+        text: 'Sunday, May 21 2023.\nCheck-in anytime after 3:00 PM',
       },
     },
   },
@@ -460,7 +460,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: `{{reservation.checkOut | date: '%A, %B %e %Y' }}.\nCheckout by 11:00 AM`,
+        text: 'Tuesday, May 23 2023.\nCheckout by 11:00 AM',
       },
     },
   },
@@ -547,7 +547,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.guests}}\n\nLet them know upfront if your listing is suitable for children by updating your [House Rules](https://reservations.example.com/account/listings/{{reservation.listing.id}}/settings).',
+        text: '2\n\nLet them know upfront if your listing is suitable for children by updating your [House Rules](https://example.usewaypoint.com/account/listings/r029348209842/settings).',
       },
     },
   },
@@ -628,7 +628,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.confirmationCode}}',
+        text: 'HMFN35C4MH',
       },
     },
   },
@@ -669,7 +669,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '[View itinerary](https://reservations.example.com/account/reservations/{{reservation.id}})',
+        text: 'View itinerary',
       },
     },
   },
@@ -816,7 +816,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.nightlyPrice}} x {{reservation.nights}} nights',
+        text: '$99.00 x 2 nights',
       },
     },
   },
@@ -857,7 +857,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.basePriceSubtotal}}',
+        text: '$198.00',
       },
     },
   },
@@ -986,7 +986,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.cleaningFee}}',
+        text: '$50.00',
       },
     },
   },
@@ -1115,7 +1115,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.guestServiceFee}}',
+        text: '$35.01',
       },
     },
   },
@@ -1244,7 +1244,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.occupancyTaxesFee}}',
+        text: '$46.02',
       },
     },
   },
@@ -1373,7 +1373,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.totalGuestPaid}}',
+        text: '$329.03',
       },
     },
   },
@@ -1528,7 +1528,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.nightlyPrice}} x {{reservation.nights}} nights',
+        text: '$99.00 x 2 nights',
       },
     },
   },
@@ -1569,7 +1569,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.basePriceSubtotal}}',
+        text: '$198.00',
       },
     },
   },
@@ -1698,7 +1698,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.cleaningFee}}',
+        text: '$50.00',
       },
     },
   },
@@ -1827,7 +1827,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.hostServiceFee}}',
+        text: '$7.44',
       },
     },
   },
@@ -1956,7 +1956,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{reservation.totalHostPayout}}',
+        text: '$240.56',
       },
     },
   },
@@ -2044,7 +2044,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'The money you earn hosting will be sent to you 24 hours after your guest arrives. You can check your upcoming payments in your **[Transaction History](https://reservations.example.com/account/transaction-history)**.',
+        text: 'The money you earn hosting will be sent to you 24 hours after your guest arrives. You can check your upcoming payments in your transaction history.',
       },
     },
   },
@@ -2133,7 +2133,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Your cancellation policy for guests is **[{{reservation.cancellationPolicy}}](https://reservations.example.com/account/listings/{{reservation.listing.id}}/settings)**.\n\nThe penalties for canceling this reservation include getting a public review that shows you canceled, paying a cancellation fee, and having the canceled nights blocked on your calendar.\n\n**[Read cancellation penalties](https://reservations.example.com/cancellation-policies)**',
+        text: 'Your cancellation policy for guests is Moderate.\n\nThe penalties for canceling this reservation include getting a public review that shows you canceled, paying a cancellation fee, and having the canceled nights blocked on your calendar.',
       },
     },
   },
@@ -2192,7 +2192,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Need help? **[Contact our support team](mailto:support@usewaypoint.com)** 24/7 from anywhere in the world.',
+        text: 'Need help? Just reply to this email.',
       },
     },
   },

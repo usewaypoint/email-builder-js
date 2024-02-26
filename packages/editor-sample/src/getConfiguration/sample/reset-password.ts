@@ -108,7 +108,7 @@ const RESET_PASSWORD: TEditorConfiguration = {
         fullWidth: false,
         size: 'medium',
         text: 'Change my password',
-        url: 'https://marketbase.example.com/reset_password?token={{token}}',
+        url: 'https://example.usewaypoint.com/reset_password?token=02938409809w8r09a83wr098aw0',
       },
     },
   },

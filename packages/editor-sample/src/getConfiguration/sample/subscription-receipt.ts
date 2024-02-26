@@ -170,7 +170,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Receipt from {{company.name}}',
+        text: 'Receipt from Remix Studios, Inc.',
       },
     },
   },
@@ -192,7 +192,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
       },
       props: {
         level: 'h1',
-        text: '{{summary.amountPaid}}',
+        text: '$99.75',
       },
     },
   },
@@ -214,7 +214,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: `Paid {{summary.paidDate | date: '%B %e, %Y' }}`,
+        text: 'Paid August 1, 2023',
       },
     },
   },
@@ -254,7 +254,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '[Download receipt](http://remix.example.com/receipt/{{summary.receiptNumber}})',
+        text: 'Download receipt',
       },
     },
   },
@@ -301,7 +301,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_8yUGBZcXaAtTEofB/invoice-skeleton.png',
         alt: 'Your invoice has been paid.',
-        linkHref: 'http://remix.example.com/receipt/{{summary.receiptNumber}}',
+        linkHref: 'http://remix.example.com/receipt/1923-2093',
         contentAlignment: 'middle',
       },
     },
@@ -431,7 +431,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{summary.receiptNumber}}',
+        text: '1923-2093',
       },
     },
   },
@@ -560,7 +560,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{summary.invoiceNumber}}',
+        text: '2ABC1234-20923',
       },
     },
   },
@@ -689,7 +689,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{summary.paymentMethod}}',
+        text: 'VISA – 4252',
       },
     },
   },
@@ -828,7 +828,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
       },
       props: {
         level: 'h3',
-        text: 'Receipt #{{summary.receiptNumber}}',
+        text: 'Receipt #1923-2093',
       },
     },
   },
@@ -850,7 +850,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: `{{summary.startDate | date: '%B %e, %Y' | upcase }} – {{summary.endDate | date: '%B %e, %Y' | upcase}}`,
+        text: `JULY 10, 2023 – AUGUST 1, 2023`,
       },
     },
   },
@@ -872,7 +872,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{lineItem.title}}',
+        text: 'Remix Pro',
       },
     },
   },
@@ -894,7 +894,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{lineItem.description}}',
+        text: '5 seats',
       },
     },
   },
@@ -935,7 +935,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{lineItem.price}}',
+        text: '$99.75',
       },
     },
   },
@@ -1101,7 +1101,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{summary.total}}',
+        text: '$99.75',
       },
     },
   },
@@ -1248,7 +1248,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: '{{summary.amountPaid}}',
+        text: '$99.75',
       },
     },
   },
@@ -1362,7 +1362,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Can we help? [Email](mailto:support@usewaypoint.com) - [Docs & support](https://www.usewaypoint.com/docs)',
+        text: 'Can we help? Just reply to this email.',
       },
     },
   },
