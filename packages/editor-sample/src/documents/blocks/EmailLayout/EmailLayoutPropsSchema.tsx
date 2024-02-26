@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 import { zColor, zFontFamily } from '../helpers/zod';
 
 export const EmailLayoutPropsSchema = z.object({
