@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import { ToggleButton } from '@mui/material';
-
-import { HeadingProps, HeadingPropsSchema } from '../../../../documents/blocks/Heading';
+import { HeadingProps, HeadingPropsSchema } from '@usewaypoint/block-heading';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
