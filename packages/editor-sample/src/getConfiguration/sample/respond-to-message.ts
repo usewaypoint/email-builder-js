@@ -74,7 +74,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
         fontWeight: null,
         textAlign: null,
         padding: {
-          top: 16,
+          top: 8,
           bottom: 16,
           left: 24,
           right: 24,

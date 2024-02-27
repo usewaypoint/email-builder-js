@@ -774,8 +774,8 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       style: {
         backgroundColor: null,
         padding: {
-          top: 8,
-          bottom: 8,
+          top: 4,
+          bottom: 4,
           left: 0,
           right: 0,
         },
@@ -1465,7 +1465,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Jordan Isip\n123 Main St\nNew York, NY 10002\nUnited States',
+        text: '123 Main St New York, NY 10002',
       },
     },
   },
@@ -1528,7 +1528,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        text: 'Jordan Isip\n123 Main St\nNew York, NY 10002\nUnited States',
+        text: '123 Main St New York, NY 10002',
       },
     },
   },

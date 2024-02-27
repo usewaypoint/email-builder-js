@@ -547,7 +547,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
-        text: '2\n\nLet them know upfront if your listing is suitable for children by updating your [House Rules](https://example.usewaypoint.com/account/listings/r029348209842/settings).',
+        text: 'Let them know upfront if your listing is suitable for children by updating your House Rules.',
       },
     },
   },
