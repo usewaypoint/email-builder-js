@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`block-image renders with default values 1`] = `
+<DocumentFragment>
+  <div
+    style="text-align: center;"
+  >
+    <img
+      alt=""
+      src=""
+      style="outline: none; text-decoration: none; vertical-align: middle; display: inline-block; max-width: 100%;"
+    />
+  </div>
+</DocumentFragment>
+`;
