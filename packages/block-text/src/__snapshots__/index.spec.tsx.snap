@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`block-text renders with default values 1`] = `
+<DocumentFragment>
+  <div
+    style="font-size: 16px;"
+  />
+</DocumentFragment>
+`;
