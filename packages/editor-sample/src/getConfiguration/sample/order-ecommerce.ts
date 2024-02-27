@@ -261,8 +261,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
-        height: null,
-        width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_FBfTeYhbdXtqYpCA/kiran-ck-6rXpQzfCYlw-unsplash.jpg',
         alt: '',
         linkHref: null,
@@ -366,8 +364,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
-        height: null,
-        width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_vjmjV2NrQ52h1iLj/coupon.png',
         alt: '',
         linkHref: null,

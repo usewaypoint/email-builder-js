@@ -18,10 +18,20 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm ci
-      - run: (cd ./packages/document-core;npm ci)
-      - run: (cd ./packages/editor-sample;npm ci)
+          cache-dependency-path: '**/package-lock.json'
+      - run: |
+          npm ci
+          (cd ./packages/block-avatar;pwd;npm ci)
+          (cd ./packages/block-button;pwd;npm ci)
+          (cd ./packages/block-divider;pwd;npm ci)
+          (cd ./packages/block-heading;pwd;npm ci)
+          (cd ./packages/block-html;pwd;npm ci)
+          (cd ./packages/block-image;pwd;npm ci)
+          (cd ./packages/block-spacer;pwd;npm ci)
+          (cd ./packages/block-text;pwd;npm ci)
+          (cd ./packages/document-core;pwd;npm ci)
+          (cd ./packages/editor-sample;pwd;npm ci)
       - run: npx eslint .
       - run: npx prettier . --check
-      - run: npx tsc --noEmit
       - run: npm test
+      - run: ./node_modules/.bin/tsc --noEmit

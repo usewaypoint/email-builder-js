@@ -8,7 +8,7 @@ type TCommonProps = {
   style: Record<string, unknown>;
 };
 
-export function addReaderBlockWrapper<TProps extends TCommonProps>(ChildComponent: (props: TProps) => React.ReactNode) {
+export function addReaderBlockWrapper<TProps extends TCommonProps>(ChildComponent: (props: TProps) => JSX.Element) {
   return (props: TProps) => {
     return (
       <ReaderBlockWrapper style={props.style}>
@@ -18,7 +18,7 @@ export function addReaderBlockWrapper<TProps extends TCommonProps>(ChildComponen
   };
 }
 
-export function addEditorBlockWrapper<TProps extends TCommonProps>(ChildComponent: (props: TProps) => React.ReactNode) {
+export function addEditorBlockWrapper<TProps extends TCommonProps>(ChildComponent: (props: TProps) => JSX.Element) {
   return (props: TProps) => {
     return (
       <EditorBlockWrapper>

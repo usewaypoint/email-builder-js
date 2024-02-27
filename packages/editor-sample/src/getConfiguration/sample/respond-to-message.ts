@@ -32,8 +32,6 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
         textAlign: null,
       },
       props: {
-        height: 32,
-        width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_hW6RusynHUNTKoLm/boop.png',
         alt: '',
         linkHref: null,
