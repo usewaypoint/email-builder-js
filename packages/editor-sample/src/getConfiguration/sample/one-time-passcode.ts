@@ -68,7 +68,7 @@ const ONE_TIME_PASSCODE: TEditorConfiguration = {
       style: {
         color: null,
         backgroundColor: null,
-        fontFamily: null,
+        fontFamily: 'MONOSPACE',
         fontWeight: 'bold',
         textAlign: 'center',
         padding: {
