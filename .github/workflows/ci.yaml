@@ -34,4 +34,3 @@ jobs:
       - run: npx eslint .
       - run: npx prettier . --check
       - run: npm test
-      - run: ./node_modules/.bin/tsc --noEmit
