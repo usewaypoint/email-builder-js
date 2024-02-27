@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { HtmlProps, HtmlPropsSchema } from '../../../../documents/blocks/Html';
+import { HtmlProps, HtmlPropsSchema } from '@usewaypoint/block-html';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import TextInput from './helpers/inputs/TextInput';
@@ -28,7 +28,7 @@ export default function HtmlSidebarPanel({ data, setData }: HtmlSidebarPanelProp
       <TextInput
         label="Content"
         rows={5}
-        defaultValue={data.props.contents}
+        defaultValue={data.props?.contents ?? ''}
         onChange={(contents) => updateData({ ...data, props: { ...data.props, contents } })}
       />
       <MultiStylePropertyPanel

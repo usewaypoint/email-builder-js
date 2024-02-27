@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 
 import { AspectRatioOutlined } from '@mui/icons-material';
 import { ToggleButton } from '@mui/material';
-
-import { AvatarProps, AvatarPropsSchema } from '../../../../documents/blocks/Avatar';
+import { AvatarProps, AvatarPropsDefaults, AvatarPropsSchema } from '@usewaypoint/block-avatar';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
-import { NullableColorInput } from './helpers/inputs/ColorInput';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import SliderInput from './helpers/inputs/SliderInput';
 import TextInput from './helpers/inputs/TextInput';
@@ -28,6 +26,11 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
     }
   };
 
+  const size = data.props?.size ?? AvatarPropsDefaults.size;
+  const imageUrl = data.props?.imageUrl ?? AvatarPropsDefaults.imageUrl;
+  const alt = data.props?.alt ?? AvatarPropsDefaults.alt;
+  const shape = data.props?.shape ?? AvatarPropsDefaults.shape;
+
   return (
     <BaseSidebarPanel title="Avatar block">
       <SliderInput
@@ -37,14 +40,14 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
         step={3}
         min={32}
         max={256}
-        defaultValue={data.props.size}
+        defaultValue={size}
         onChange={(size) => {
           updateData({ ...data, props: { ...data.props, size } });
         }}
       />
       <RadioGroupInput
         label="Shape"
-        defaultValue={data.props.shape}
+        defaultValue={shape}
         onChange={(shape) => {
           updateData({ ...data, props: { ...data.props, shape } });
         }}
@@ -56,7 +59,7 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
       <TextInput
         label="Image URL"
         helperText="Leave blank to use fallback text."
-        defaultValue={data.props.imageUrl}
+        defaultValue={imageUrl}
         onChange={(imageUrl) => {
           updateData({ ...data, props: { ...data.props, imageUrl } });
         }}
@@ -64,17 +67,9 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
       <TextInput
         label="Fallback text"
         helperText="Automatically truncates to 2 characters max."
-        defaultValue={data.props.fallbackText}
-        onChange={(fallbackText) => {
-          updateData({ ...data, props: { ...data.props, fallbackText } });
-        }}
-      />
-      <NullableColorInput
-        label="Fallback text background color"
-        secondarySwatch={[]}
-        defaultValue={data.props.fallbackColor}
-        onChange={(fallbackColor) => {
-          updateData({ ...data, props: { ...data.props, fallbackColor } });
+        defaultValue={alt}
+        onChange={(alt) => {
+          updateData({ ...data, props: { ...data.props, alt } });
         }}
       />
 

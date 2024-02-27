@@ -1,12 +1,15 @@
 import { z } from 'zod';
 
+import { Avatar, AvatarPropsSchema } from '@usewaypoint/block-avatar';
+import { Button, ButtonPropsSchema } from '@usewaypoint/block-button';
 import { Divider, DividerPropsSchema } from '@usewaypoint/block-divider';
 import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Html, HtmlPropsSchema } from '@usewaypoint/block-html';
+import { Image, ImagePropsSchema } from '@usewaypoint/block-image';
 import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
+import { Text, TextPropsSchema } from '@usewaypoint/block-text';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
-import { Avatar, AvatarPropsSchema } from '../blocks/Avatar';
-import { Button, ButtonPropsSchema } from '../blocks/Button';
 import { ColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { Container } from '../blocks/Container';
@@ -14,18 +17,15 @@ import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
 import { EmailLayout } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import { addReaderBlockWrapper } from '../blocks/helpers/block-wrappers';
-import { Html, HtmlPropsSchema } from '../blocks/Html';
-import { Image, ImagePropsSchema } from '../blocks/Image';
-import { Text, TextPropsSchema } from '../blocks/Text';
 
 const READER_DICTIONARY = {
   Avatar: {
     schema: AvatarPropsSchema,
-    Component: addReaderBlockWrapper(Avatar),
+    Component: Avatar,
   },
   Button: {
     schema: ButtonPropsSchema,
-    Component: addReaderBlockWrapper(Button),
+    Component: Button,
   },
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema,
@@ -45,15 +45,15 @@ const READER_DICTIONARY = {
   },
   Html: {
     schema: HtmlPropsSchema,
-    Component: addReaderBlockWrapper(Html),
+    Component: Html,
   },
   Image: {
     schema: ImagePropsSchema,
-    Component: addReaderBlockWrapper(Image),
+    Component: Image,
   },
   Text: {
     schema: TextPropsSchema,
-    Component: addReaderBlockWrapper(Text),
+    Component: Text,
   },
   EmailLayout: {
     schema: EmailLayoutPropsSchema,
