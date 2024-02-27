@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TextProps, TextPropsSchema } from '../../../../documents/blocks/Text';
+import { TextProps, TextPropsSchema } from '@usewaypoint/block-text';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import TextInput from './helpers/inputs/TextInput';
@@ -28,7 +28,7 @@ export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProp
       <TextInput
         label="Content"
         rows={5}
-        defaultValue={data.props.text}
+        defaultValue={data.props?.text ?? ''}
         onChange={(text) => updateData({ ...data, props: { ...data.props, text } })}
       />
 

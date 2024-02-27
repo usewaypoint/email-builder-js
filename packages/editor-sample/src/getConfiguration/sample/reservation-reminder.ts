@@ -42,8 +42,6 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
-        height: 32,
-        width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_RAFATLGe3CN1wDsb/birdhouse.png',
         alt: '',
         linkHref: null,
@@ -111,8 +109,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         size: 64,
         shape: 'circle',
         imageUrl: '',
-        fallbackText: 'Elaina',
-        fallbackColor: null,
+        alt: 'Elaina',
       },
     },
   },
@@ -305,8 +302,6 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
-        height: null,
-        width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_QWeWcucRbjPqoewY/L1030293.jpg',
         alt: 'Photo',
         linkHref: 'https://example.usewaypoint.com/listings/r029348209842',

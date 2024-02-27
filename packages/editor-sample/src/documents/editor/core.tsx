@@ -1,13 +1,16 @@
 import React from 'react';
 import { z } from 'zod';
 
+import { Avatar, AvatarProps, AvatarPropsSchema } from '@usewaypoint/block-avatar';
+import { Button, ButtonProps, ButtonPropsSchema } from '@usewaypoint/block-button';
 import { Divider, DividerProps, DividerPropsSchema } from '@usewaypoint/block-divider';
 import { Heading, HeadingProps, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Html, HtmlProps, HtmlPropsSchema } from '@usewaypoint/block-html';
+import { Image, ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
 import { Spacer, SpacerProps, SpacerPropsSchema } from '@usewaypoint/block-spacer';
+import { Text, TextProps, TextPropsSchema } from '@usewaypoint/block-text';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
-import { Avatar, AvatarPropsSchema } from '../blocks/Avatar';
-import { Button, ButtonPropsSchema } from '../blocks/Button';
 import { EditorColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { EditorContainer } from '../blocks/Container';
@@ -16,18 +19,23 @@ import { EditorEmailLayout, EmailLayoutProps } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import { addEditorBlockWrapper } from '../blocks/helpers/block-wrappers';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
-import { Html, HtmlPropsSchema } from '../blocks/Html';
-import { Image, ImagePropsSchema } from '../blocks/Image';
-import { Text, TextPropsSchema } from '../blocks/Text';
 
 const EDITOR_DICTIONARY = {
   Avatar: {
     schema: AvatarPropsSchema,
-    Component: addEditorBlockWrapper(Avatar),
+    Component: (props: AvatarProps) => (
+      <EditorBlockWrapper>
+        <Avatar {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   Button: {
     schema: ButtonPropsSchema,
-    Component: addEditorBlockWrapper(Button),
+    Component: (props: ButtonProps) => (
+      <EditorBlockWrapper>
+        <Button {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   Container: {
     schema: ContainerPropsSchema,
@@ -47,15 +55,27 @@ const EDITOR_DICTIONARY = {
   },
   Html: {
     schema: HtmlPropsSchema,
-    Component: addEditorBlockWrapper(Html),
+    Component: (props: HtmlProps) => (
+      <EditorBlockWrapper>
+        <Html {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   Image: {
     schema: ImagePropsSchema,
-    Component: addEditorBlockWrapper(Image),
+    Component: (props: ImageProps) => (
+      <EditorBlockWrapper>
+        <Image {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   Text: {
     schema: TextPropsSchema,
-    Component: addEditorBlockWrapper(Text),
+    Component: (props: TextProps) => (
+      <EditorBlockWrapper>
+        <Text {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   EmailLayout: {
     schema: EmailLayoutPropsSchema,

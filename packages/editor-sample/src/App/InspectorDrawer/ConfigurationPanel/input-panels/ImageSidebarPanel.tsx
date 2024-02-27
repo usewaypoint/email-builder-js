@@ -6,8 +6,7 @@ import {
   VerticalAlignTopOutlined,
 } from '@mui/icons-material';
 import { ToggleButton } from '@mui/material';
-
-import { ImageProps, ImagePropsSchema } from '../../../../documents/blocks/Image';
+import { ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
@@ -35,7 +34,7 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
     <BaseSidebarPanel title="Image block">
       <RadioGroupInput
         label="Alignment"
-        defaultValue={data.props.contentAlignment}
+        defaultValue={data.props?.contentAlignment ?? 'middle'}
         onChange={(contentAlignment) => updateData({ ...data, props: { ...data.props, contentAlignment } })}
       >
         <ToggleButton value="top">
@@ -50,12 +49,12 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
       </RadioGroupInput>
       <TextInput
         label="Alt text"
-        defaultValue={data.props.alt}
+        defaultValue={data.props?.alt ?? ''}
         onChange={(alt) => updateData({ ...data, props: { ...data.props, alt } })}
       />
       <TextInput
         label="Click through URL"
-        defaultValue={data.props.linkHref || ''}
+        defaultValue={data.props?.linkHref ?? ''}
         onChange={(v) => {
           const linkHref = v.trim().length === 0 ? null : v.trim();
           updateData({ ...data, props: { ...data.props, linkHref } });

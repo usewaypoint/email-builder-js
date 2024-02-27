@@ -12,16 +12,10 @@ import {
   SmartButtonOutlined,
   ViewColumnOutlined,
 } from '@mui/icons-material';
-import { HeadingPropsSchema } from '@usewaypoint/block-heading';
 
 import { TEditorBlock } from '../../../../editor/core';
-import { AvatarPropsSchema } from '../../../Avatar';
-import { ButtonPropsSchema } from '../../../Button';
 import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
 import { ContainerPropsSchema } from '../../../Container/ContainerPropsSchema';
-import { HtmlPropsSchema } from '../../../Html';
-import { ImagePropsSchema } from '../../../Image';
-import { TextPropsSchema } from '../../../Text';
 
 type TButtonProps = {
   label: string;
@@ -34,12 +28,12 @@ export const BUTTONS: TButtonProps[] = [
     icon: <HMobiledataOutlined />,
     block: () => ({
       type: 'Heading',
-      data: HeadingPropsSchema.parse({
+      data: {
         props: { text: 'Hello friend' },
         style: {
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
         },
-      }),
+      },
     }),
   },
   {
@@ -47,9 +41,9 @@ export const BUTTONS: TButtonProps[] = [
     icon: <NotesOutlined />,
     block: () => ({
       type: 'Text',
-      data: TextPropsSchema.parse({
+      data: {
         props: { text: 'My new text block' },
-      }),
+      },
     }),
   },
 
@@ -58,12 +52,12 @@ export const BUTTONS: TButtonProps[] = [
     icon: <SmartButtonOutlined />,
     block: () => ({
       type: 'Button',
-      data: ButtonPropsSchema.parse({
+      data: {
         props: {
           text: 'Button',
           url: 'https://www.usewaypoint.com',
         },
-      }),
+      },
     }),
   },
   {
@@ -71,14 +65,14 @@ export const BUTTONS: TButtonProps[] = [
     icon: <ImageOutlined />,
     block: () => ({
       type: 'Image',
-      data: ImagePropsSchema.parse({
+      data: {
         props: {
           url: 'https://logowik.com/content/uploads/images/street-fighter6886.jpg',
           alt: 'Street fighter',
           contentAlignment: 'middle',
           linkHref: null,
         },
-      }),
+      },
     }),
   },
   {
@@ -86,12 +80,12 @@ export const BUTTONS: TButtonProps[] = [
     icon: <AccountCircleOutlined />,
     block: () => ({
       type: 'Avatar',
-      data: AvatarPropsSchema.parse({
+      data: {
         props: {
           imageUrl: 'https://ui-avatars.com/api/?size=128',
           shape: 'circle',
         },
-      }),
+      },
     }),
   },
   {
@@ -122,7 +116,9 @@ export const BUTTONS: TButtonProps[] = [
     icon: <HtmlOutlined />,
     block: () => ({
       type: 'Html',
-      data: HtmlPropsSchema.parse({ props: { contents: 'Hello world' } }),
+      data: {
+        props: { contents: 'Hello world' },
+      },
     }),
   },
   {

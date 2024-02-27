@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { HeightOutlined } from '@mui/icons-material';
-import { DividerProps, DividerPropsSchema } from '@usewaypoint/block-divider';
+import { DividerProps, DividerPropsDefaults, DividerPropsSchema } from '@usewaypoint/block-divider';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
@@ -24,11 +24,14 @@ export default function DividerSidebarPanel({ data, setData }: DividerSidebarPan
     }
   };
 
+  const lineColor = data.props?.lineColor ?? DividerPropsDefaults.lineColor;
+  const lineHeight = data.props?.lineHeight ?? DividerPropsDefaults.lineHeight;
+
   return (
     <BaseSidebarPanel title="Divider block">
       <ColorInput
         label="Color"
-        defaultValue={data.props?.lineColor ?? '#333333'}
+        defaultValue={lineColor}
         onChange={(lineColor) => updateData({ ...data, props: { ...data.props, lineColor } })}
         secondarySwatch={[]}
       />
@@ -39,7 +42,7 @@ export default function DividerSidebarPanel({ data, setData }: DividerSidebarPan
         step={1}
         min={1}
         max={24}
-        defaultValue={data.props?.lineHeight ?? 1}
+        defaultValue={lineHeight}
         onChange={(lineHeight) => updateData({ ...data, props: { ...data.props, lineHeight } })}
       />
       <MultiStylePropertyPanel

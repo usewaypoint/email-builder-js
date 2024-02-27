@@ -36,8 +36,6 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
-        height: 16,
-        width: null,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_n3eLjsf37dcjFaj5/Narrative.png',
         alt: '',
         linkHref: null,
@@ -80,8 +78,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         size: 32,
         shape: 'circle',
         imageUrl: 'https://ui-avatars.com/api/?name=John+Doe',
-        fallbackText: 'Jordan',
-        fallbackColor: null,
+        alt: 'Jordan',
       },
     },
   },
