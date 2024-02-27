@@ -1,7 +1,7 @@
 {
-  "name": "@usewaypoint/block-heading",
-  "version": "0.0.2",
-  "description": "@usewaypoint/document compatible Heading component",
+  "name": "@usewaypoint/block-html",
+  "version": "0.0.1",
+  "description": "@usewaypoint/document compatible HTML component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

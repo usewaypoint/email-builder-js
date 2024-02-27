@@ -2,23 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { Heading } from '../src';
+import { Heading } from '.';
 
 describe('Heading', () => {
   it('renders with default values', () => {
-    const style = {
-      backgroundColor: null,
-      color: null,
-      fontFamily: null,
-      fontWeight: 'bold' as const,
-      padding: null,
-      textAlign: null,
-    };
-    const props = {
-      text: 'Hello!',
-      level: 'h2' as const,
-    };
-    expect(render(<Heading style={style} props={props} />).asFragment()).toMatchSnapshot();
+    expect(render(<Heading />).asFragment()).toMatchSnapshot();
   });
 
   it('renders with style', () => {

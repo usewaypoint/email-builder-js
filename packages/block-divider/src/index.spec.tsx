@@ -2,11 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { Divider } from '../src';
+import { Divider } from '.';
 
 describe('Divider', () => {
   it('renders with default values', () => {
-    expect(render(<Divider style={{}} props={{}} />).asFragment()).toMatchSnapshot();
+    expect(render(<Divider />).asFragment()).toMatchSnapshot();
   });
 
   it('renders with props', () => {

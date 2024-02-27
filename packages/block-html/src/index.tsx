@@ -1,25 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { z } from 'zod';
 
-const COLOR_SCHEMA = z
-  .string()
-  .regex(/^#[0-9a-fA-F]{6}$/)
-  .nullable()
-  .optional();
-
-const PADDING_SCHEMA = z
-  .object({
-    top: z.number(),
-    bottom: z.number(),
-    right: z.number(),
-    left: z.number(),
-  })
-  .optional()
-  .nullable();
-
-const getPadding = (padding: z.infer<typeof PADDING_SCHEMA>) =>
-  padding ? `${padding.top}px ${padding.right}px ${padding.bottom}px ${padding.left}px` : undefined;
-
 const FONT_FAMILY_SCHEMA = z
   .enum([
     'MODERN_SANS',
@@ -59,64 +40,59 @@ function getFontFamily(fontFamily: z.infer<typeof FONT_FAMILY_SCHEMA>) {
   return undefined;
 }
 
-export const HeadingPropsSchema = z.object({
-  props: z
-    .object({
-      text: z.string().optional().nullable(),
-      level: z.enum(['h1', 'h2', 'h3']).optional().nullable(),
-    })
-    .optional()
-    .nullable(),
+const COLOR_SCHEMA = z
+  .string()
+  .regex(/^#[0-9a-fA-F]{6}$/)
+  .nullable()
+  .optional();
+
+const PADDING_SCHEMA = z
+  .object({
+    top: z.number(),
+    bottom: z.number(),
+    right: z.number(),
+    left: z.number(),
+  })
+  .optional()
+  .nullable();
+
+const getPadding = (padding: z.infer<typeof PADDING_SCHEMA>) =>
+  padding ? `${padding.top}px ${padding.right}px ${padding.bottom}px ${padding.left}px` : undefined;
+
+export const HtmlPropsSchema = z.object({
   style: z
     .object({
       color: COLOR_SCHEMA,
       backgroundColor: COLOR_SCHEMA,
       fontFamily: FONT_FAMILY_SCHEMA,
-      fontWeight: z.enum(['bold', 'normal']).optional().nullable(),
-      textAlign: z.enum(['left', 'center', 'right']).optional().nullable(),
+      fontSize: z.number().min(0),
+      textAlign: z.enum(['left', 'right', 'center']).optional().nullable().default(null),
       padding: PADDING_SCHEMA,
+    })
+    .optional()
+    .nullable(),
+  props: z
+    .object({
+      contents: z.string(),
     })
     .optional()
     .nullable(),
 });
 
-export type HeadingProps = z.infer<typeof HeadingPropsSchema>;
+export type HtmlProps = z.infer<typeof HtmlPropsSchema>;
 
-export const HeadingPropsDefaults = {
-  level: 'h2',
-  text: '',
-} as const;
-
-export function Heading({ props, style }: HeadingProps) {
-  const level = props?.level ?? HeadingPropsDefaults.level;
-  const text = props?.text ?? HeadingPropsDefaults.text;
-  const hStyle: CSSProperties = {
+export function Html({ style, props }: HtmlProps) {
+  const children = props?.contents;
+  const cssStyle: CSSProperties = {
     color: style?.color ?? undefined,
     backgroundColor: style?.backgroundColor ?? undefined,
-    fontWeight: style?.fontWeight ?? 'bold',
-    textAlign: style?.textAlign ?? undefined,
-    margin: 0,
     fontFamily: getFontFamily(style?.fontFamily),
-    fontSize: getFontSize(level),
+    fontSize: style?.fontSize ?? undefined,
+    textAlign: style?.textAlign ?? undefined,
     padding: getPadding(style?.padding),
   };
-  switch (level) {
-    case 'h1':
-      return <h1 style={hStyle}>{text}</h1>;
-    case 'h2':
-      return <h2 style={hStyle}>{text}</h2>;
-    case 'h3':
-      return <h3 style={hStyle}>{text}</h3>;
+  if (!children) {
+    return <div style={cssStyle} />;
   }
-}
-
-function getFontSize(level: 'h1' | 'h2' | 'h3') {
-  switch (level) {
-    case 'h1':
-      return 32;
-    case 'h2':
-      return 24;
-    case 'h3':
-      return 20;
-  }
+  return <div style={cssStyle} dangerouslySetInnerHTML={{ __html: children }} />;
 }
