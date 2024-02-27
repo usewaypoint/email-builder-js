@@ -2,11 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { Spacer } from '../src';
+import { Spacer } from '.';
 
 describe('Spacer', () => {
   it('renders with default values', () => {
-    expect(render(<Spacer props={{}} />).asFragment()).toMatchSnapshot();
+    expect(render(<Spacer />).asFragment()).toMatchSnapshot();
   });
 
   it('renders with props', () => {

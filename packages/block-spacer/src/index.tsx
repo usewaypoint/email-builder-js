@@ -4,23 +4,21 @@ import { z } from 'zod';
 export const SpacerPropsSchema = z.object({
   props: z
     .object({
-      height: z.number().optional().nullish(),
+      height: z.number().gte(0).optional().nullish(),
     })
-    .default({}),
+    .optional()
+    .nullable(),
 });
 
 export type SpacerProps = z.infer<typeof SpacerPropsSchema>;
 
-export function Spacer({ props: { height } }: SpacerProps) {
+export const SpacerPropsDefaults = {
+  height: 16,
+};
+
+export function Spacer({ props }: SpacerProps) {
   const style: CSSProperties = {
-    height: getHeight(height),
+    height: props?.height ?? SpacerPropsDefaults.height,
   };
   return <div style={style} />;
-}
-
-function getHeight(height: number | null | undefined) {
-  if (typeof height !== 'number') {
-    return 16;
-  }
-  return height >= 0 ? height : 16;
 }
