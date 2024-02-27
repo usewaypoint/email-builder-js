@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`block-avatar Avatar renders with default values 1`] = `
+<DocumentFragment>
+  <div>
+    <img
+      alt=""
+      height="64"
+      src=""
+      style="outline: none; text-decoration: none; object-fit: cover; height: 64px; width: 64px; max-width: 100%; display: inline-block; vertical-align: middle; text-align: center;"
+      width="64"
+    />
+  </div>
+</DocumentFragment>
+`;
