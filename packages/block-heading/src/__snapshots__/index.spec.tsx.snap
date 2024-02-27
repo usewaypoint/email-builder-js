@@ -4,9 +4,7 @@ exports[`Heading renders with default values 1`] = `
 <DocumentFragment>
   <h2
     style="font-weight: bold; margin: 0px; font-size: 24px;"
-  >
-    Hello!
-  </h2>
+  />
 </DocumentFragment>
 `;
 
