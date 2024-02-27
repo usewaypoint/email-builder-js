@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`block-button renders with default values 1`] = `
+<DocumentFragment>
+  <div
+    style="text-align: center;"
+  >
+    <a
+      href=""
+      style="color: rgb(255, 255, 255); font-size: 16px; font-weight: bold; background-color: rgb(153, 153, 153); border-radius: 4px; display: inline-block; padding: 12px 20px; text-decoration: none;"
+      target="_blank"
+    >
+      <span>
+        <!--[if mso]&gt;&lt;i style="letter-spacing: 20px;mso-font-width:-100%;mso-text-raise:30" hidden&gt;&nbsp;&lt;/i&gt;&lt;![endif]-->
+      </span>
+      <span />
+      <span>
+        <!--[if mso]&gt;&lt;i style="letter-spacing: 20px;mso-font-width:-100%" hidden&gt;&nbsp;&lt;/i&gt;&lt;![endif]-->
+      </span>
+    </a>
+  </div>
+</DocumentFragment>
+`;
