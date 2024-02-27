@@ -1,7 +1,7 @@
 {
-  "name": "@usewaypoint/block-spacer",
+  "name": "@usewaypoint/block-image",
   "version": "0.0.2",
-  "description": "@usewaypoint/document compatible Spacer component",
+  "description": "@usewaypoint/document compatible Image component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
