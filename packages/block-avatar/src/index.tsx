@@ -51,8 +51,8 @@ export const AvatarPropsDefaults = {
   size: 64,
   imageUrl: '',
   alt: '',
-  shape: 'square' as const,
-};
+  shape: 'square',
+} as const;
 
 export function Avatar({ style, props }: AvatarProps) {
   const size = props?.size ?? AvatarPropsDefaults.size;
