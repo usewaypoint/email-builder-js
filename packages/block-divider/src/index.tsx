@@ -26,13 +26,15 @@ export const DividerPropsSchema = z.object({
       backgroundColor: COLOR_SCHEMA,
       padding: PADDING_SCHEMA,
     })
-    .optional(),
+    .optional()
+    .nullable(),
   props: z
     .object({
       lineColor: COLOR_SCHEMA,
       lineHeight: z.number().optional().nullable(),
     })
-    .optional(),
+    .optional()
+    .nullable(),
 });
 
 export type DividerProps = z.infer<typeof DividerPropsSchema>;
