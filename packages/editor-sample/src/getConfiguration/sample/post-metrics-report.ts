@@ -228,7 +228,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         textAlign: 'center',
         padding: {
           top: 16,
-          bottom: 40,
+          bottom: 24,
           left: 24,
           right: 24,
         },
@@ -292,7 +292,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
     type: 'Container',
     data: {
       style: {
-        backgroundColor: null,
+        backgroundColor: '#FAFAFA',
         borderColor: null,
         borderRadius: 8,
         padding: {
@@ -343,9 +343,9 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         },
       },
       props: {
-        buttonBackgroundColor: '#EEEEEE',
+        buttonBackgroundColor: '#FAFAFA',
         buttonStyle: 'rounded',
-        buttonTextColor: '#FFFFFF',
+        buttonTextColor: '#474849',
         fullWidth: false,
         size: 'medium',
         text: 'Show more',

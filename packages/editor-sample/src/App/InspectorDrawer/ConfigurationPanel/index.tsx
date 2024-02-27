@@ -29,7 +29,7 @@ export default function ConfigurationPanel() {
   const [{ document, selectedBlockId }, setEditorState] = useEditorState();
 
   if (!selectedBlockId) {
-    return renderMessage('No block selected. Click on a block to inspect.');
+    return renderMessage('Click on a block to inspect.');
   }
   const block = document[selectedBlockId];
   if (!block) {

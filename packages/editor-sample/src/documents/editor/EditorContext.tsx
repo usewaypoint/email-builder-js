@@ -20,8 +20,8 @@ const DEFAULT_STATE: TValue = {
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
 
-  inspectorDrawerOpen: false,
-  samplesDrawerOpen: false,
+  inspectorDrawerOpen: true,
+  samplesDrawerOpen: true,
 };
 const EditorContext = createContext<TEditorContextState>([DEFAULT_STATE, () => {}]);
 

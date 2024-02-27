@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Button } from '@mui/material';
+import { AppRegistrationOutlined, LastPageOutlined } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 import { useEditorState } from '../../documents/editor/EditorContext';
 
@@ -10,7 +11,15 @@ export default function ToggleInspectorPanelButton() {
     setEditorState({ inspectorDrawerOpen: !inspectorDrawerOpen });
   };
   if (inspectorDrawerOpen) {
-    return <Button onClick={handleClick}>CLOSE</Button>;
+    return (
+      <IconButton onClick={handleClick}>
+        <LastPageOutlined fontSize="small" />
+      </IconButton>
+    );
   }
-  return <Button onClick={handleClick}>OPEN</Button>;
+  return (
+    <IconButton onClick={handleClick}>
+      <AppRegistrationOutlined fontSize="small" />
+    </IconButton>
+  );
 }
