@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`block-columns-container columnsCount 2 renders column children 1`] = `
+<DocumentFragment>
+  <div>
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      style="table-layout: fixed; border-collapse: collapse;"
+      width="100%"
+    >
+      <tbody
+        style="width: 100%;"
+      >
+        <tr
+          style="width: 100%;"
+        >
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          >
+            bread
+          </td>
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          >
+            tomato
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`block-columns-container columnsCount 2 uses padding correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      style="table-layout: fixed; border-collapse: collapse;"
+      width="100%"
+    >
+      <tbody
+        style="width: 100%;"
+      >
+        <tr
+          style="width: 100%;"
+        >
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 6px;"
+          >
+            bread
+          </td>
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 6px; padding-right: 0px;"
+          >
+            tomato
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`block-columns-container columnsCount 3 renders column children 1`] = `
+<DocumentFragment>
+  <div>
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      style="table-layout: fixed; border-collapse: collapse;"
+      width="100%"
+    >
+      <tbody
+        style="width: 100%;"
+      >
+        <tr
+          style="width: 100%;"
+        >
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          >
+            bread
+          </td>
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          >
+            tomato
+          </td>
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          >
+            lettuce
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`block-columns-container columnsCount 3 uses padding correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      style="table-layout: fixed; border-collapse: collapse;"
+      width="100%"
+    >
+      <tbody
+        style="width: 100%;"
+      >
+        <tr
+          style="width: 100%;"
+        >
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 8px;"
+          >
+            bread
+          </td>
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 4px; padding-right: 4px;"
+          >
+            tomato
+          </td>
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 8px; padding-right: 0px;"
+          >
+            lettuce
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`block-columns-container renders with default values 1`] = `
+<DocumentFragment>
+  <div>
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      style="table-layout: fixed; border-collapse: collapse;"
+      width="100%"
+    >
+      <tbody
+        style="width: 100%;"
+      >
+        <tr
+          style="width: 100%;"
+        >
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          />
+          <td
+            style="box-sizing: content-box; vertical-align: middle; padding-left: 0px; padding-right: 0px;"
+          />
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
