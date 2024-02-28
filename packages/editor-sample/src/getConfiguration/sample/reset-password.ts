@@ -124,7 +124,7 @@ const RESET_PASSWORD: TEditorConfiguration = {
       },
       props: {
         lineHeight: 1,
-        lineColor: '#2458AF',
+        lineColor: '#EEEEEE',
       },
     },
   },

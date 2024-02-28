@@ -364,7 +364,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
       },
       props: {
         lineHeight: 1,
-        lineColor: '#24AF7F',
+        lineColor: '#EEEEEE',
       },
     },
   },
