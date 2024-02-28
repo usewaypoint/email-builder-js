@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Stack, Tab, Tabs } from '@mui/material';
+import { CodeOutlined, DataObjectOutlined, EditOutlined, PreviewOutlined } from '@mui/icons-material';
+import { Box, Stack, Tab, Tabs, Tooltip } from '@mui/material';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
 import { useEditorState } from '../../documents/editor/EditorContext';
@@ -56,10 +57,38 @@ export default function TemplatePanel() {
         <ToggleSamplesPanelButton />
         <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
           <Tabs value={selectedMainTab} onChange={(_, v) => setEditorState({ selectedMainTab: v })}>
-            <Tab value="editor" label="Edit" />
-            <Tab value="preview" label="Preview" />
-            <Tab value="html" label="HTML" />
-            <Tab value="data" label="JSON" />
+            <Tab
+              value="editor"
+              label={
+                <Tooltip title="Edit">
+                  <EditOutlined fontSize="small" />
+                </Tooltip>
+              }
+            />
+            <Tab
+              value="preview"
+              label={
+                <Tooltip title="Preview">
+                  <PreviewOutlined fontSize="small" />
+                </Tooltip>
+              }
+            />
+            <Tab
+              value="html"
+              label={
+                <Tooltip title="HTML output">
+                  <CodeOutlined fontSize="small" />
+                </Tooltip>
+              }
+            />
+            <Tab
+              value="data"
+              label={
+                <Tooltip title="JSON output">
+                  <DataObjectOutlined fontSize="small" />
+                </Tooltip>
+              }
+            />
           </Tabs>
 
           <ShareButton />
@@ -67,7 +96,7 @@ export default function TemplatePanel() {
 
         <ToggleInspectorPanelButton />
       </Stack>
-      <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto' }}>{renderMainPanel()}</Box>
+      <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
     </>
   );
 }

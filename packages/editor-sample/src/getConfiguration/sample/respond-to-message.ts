@@ -59,7 +59,7 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
       },
       props: {
         level: 'h2',
-        text: 'Respond to Anna&apos;s Inquiry',
+        text: `Respond to Anna's Inquiry`,
       },
     },
   },

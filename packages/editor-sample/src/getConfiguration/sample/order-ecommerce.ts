@@ -625,7 +625,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
       props: {
         lineHeight: 1,
-        lineColor: '#5696e5',
+        lineColor: '#EEEEEE',
       },
     },
   },
@@ -1197,7 +1197,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
       props: {
         lineHeight: 1,
-        lineColor: '#5696e5',
+        lineColor: '#EEEEEE',
       },
     },
   },
@@ -1656,7 +1656,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
       props: {
         lineHeight: 1,
-        lineColor: '#5696e5',
+        lineColor: '#EEEEEE',
       },
     },
   },

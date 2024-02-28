@@ -21,7 +21,6 @@ export default function App() {
         sx={{
           marginRight: inspectorDrawerOpen ? `${INSPECTOR_DRAWER_WIDTH}px` : 0,
           marginLeft: samplesDrawerOpen ? `${SAMPLES_DRAWER_WIDTH}px` : 0,
-
           transition: [
             theme.transitions.create('margin-left', {
               easing: !samplesDrawerOpen ? theme.transitions.easing.sharp : theme.transitions.easing.easeOut,

@@ -7,7 +7,7 @@ import { useEditorState } from '../../documents/editor/EditorContext';
 import ConfigurationPanel from './ConfigurationPanel';
 import StylesPanel from './StylesPanel';
 
-export const INSPECTOR_DRAWER_WIDTH = 240;
+export const INSPECTOR_DRAWER_WIDTH = 320;
 
 export default function InspectorDrawer() {
   const [{ selectedSidebarTab, inspectorDrawerOpen }, setEditorState] = useEditorState();
