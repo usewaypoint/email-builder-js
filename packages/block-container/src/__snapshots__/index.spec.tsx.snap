@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`block-html renders with default values 1`] = `
+exports[`block-container renders with default values 1`] = `
 <DocumentFragment>
   <div />
 </DocumentFragment>
