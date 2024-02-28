@@ -1,22 +1,15 @@
 import { z } from 'zod';
 
-import { zColor, zPadding } from '../helpers/zod';
+import { ContainerPropsSchema as BaseContainerPropsSchema } from '@usewaypoint/block-container';
 
 export const ContainerPropsSchema = z.object({
-  style: z
+  style: BaseContainerPropsSchema.shape.style,
+  props: z
     .object({
-      backgroundColor: zColor().nullable().default(null),
-      borderColor: zColor().optional().nullable().default(null),
-      borderRadius: z.number().optional().nullable().default(0),
-      padding: zPadding().optional().default({
-        top: 16,
-        bottom: 16,
-        left: 24,
-        right: 24,
-      }),
+      childrenIds: z.array(z.string()).optional().nullable(),
     })
-    .default({}),
-  props: z.object({
-    childrenIds: z.array(z.string()),
-  }),
+    .optional()
+    .nullable(),
 });
+
+export type ContainerProps = z.infer<typeof ContainerPropsSchema>;

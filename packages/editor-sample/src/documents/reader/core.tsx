@@ -33,7 +33,7 @@ const READER_DICTIONARY = {
   },
   Container: {
     schema: ContainerPropsSchema,
-    Component: addReaderBlockWrapper(Container),
+    Component: Container,
   },
   Divider: {
     schema: DividerPropsSchema,

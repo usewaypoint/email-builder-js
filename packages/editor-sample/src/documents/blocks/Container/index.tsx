@@ -1,5 +1,6 @@
 import React from 'react';
-import { z } from 'zod';
+
+import { Container as BaseContainer } from '@usewaypoint/block-container';
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
@@ -7,21 +8,22 @@ import { useEditorState } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
-import { ContainerPropsSchema } from './ContainerPropsSchema';
+import { ContainerProps } from './ContainerPropsSchema';
 
-export type ContainerProps = z.infer<typeof ContainerPropsSchema>;
-
-export function Container({ props: { childrenIds } }: ContainerProps) {
+export function Container({ style, props }: ContainerProps) {
+  const childrenIds = props?.childrenIds ?? [];
   return (
-    <>
+    <BaseContainer style={style}>
       {childrenIds.map((childId) => (
         <ReaderBlock key={childId} id={childId} />
       ))}
-    </>
+    </BaseContainer>
   );
 }
 
-export function EditorContainer({ props: { childrenIds } }: ContainerProps) {
+export function EditorContainer({ style, props }: ContainerProps) {
+  const childrenIds = props?.childrenIds ?? [];
+
   const [{ document }, setEditorState] = useEditorState();
   const blockId = useCurrentBlockId();
 
@@ -33,6 +35,7 @@ export function EditorContainer({ props: { childrenIds } }: ContainerProps) {
     } else {
       nChildrenIds = [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
     }
+
     setEditorState({
       selectedBlockId: id,
       document: {
@@ -44,11 +47,14 @@ export function EditorContainer({ props: { childrenIds } }: ContainerProps) {
             ...document[blockId].data,
             props: { childrenIds: nChildrenIds },
           },
-        } as TEditorBlock,
+        },
       },
     });
-    setEditorState({});
   };
 
-  return <EditorChildrenIds childrenIds={childrenIds} insertBlock={insertBlock} />;
+  return (
+    <BaseContainer style={style}>
+      <EditorChildrenIds childrenIds={childrenIds} insertBlock={insertBlock} />
+    </BaseContainer>
+  );
 }
