@@ -29,6 +29,8 @@ export const ImagePropsSchema = z.object({
     .nullable(),
   props: z
     .object({
+      width: z.number().optional().nullable(),
+      height: z.number().optional().nullable(),
       url: z.string().optional().nullable(),
       alt: z.string().optional().nullable(),
       linkHref: z.string().optional().nullable(),
@@ -48,11 +50,18 @@ export function Image({ style, props }: ImageProps) {
   };
 
   const linkHref = props?.linkHref ?? null;
+  const width = props?.width ?? undefined;
+  const height = props?.height ?? undefined;
+
   const imageElement = (
     <img
       alt={props?.alt ?? ''}
       src={props?.url ?? ''}
+      width={width}
+      height={height}
       style={{
+        width,
+        height,
         outline: 'none',
         border: 'none',
         textDecoration: 'none',
