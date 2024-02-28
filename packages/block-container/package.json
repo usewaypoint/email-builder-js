@@ -1,6 +1,6 @@
 {
   "name": "@usewaypoint/block-container",
-  "version": "0.0.1alpha1",
+  "version": "0.0.1",
   "description": "@usewaypoint/document compatible Container component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
