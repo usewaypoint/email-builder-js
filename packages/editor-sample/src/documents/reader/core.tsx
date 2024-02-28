@@ -16,7 +16,6 @@ import { Container } from '../blocks/Container';
 import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
 import { EmailLayout } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
-import { addReaderBlockWrapper } from '../blocks/helpers/block-wrappers';
 
 const READER_DICTIONARY = {
   Avatar: {
@@ -29,7 +28,7 @@ const READER_DICTIONARY = {
   },
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema,
-    Component: addReaderBlockWrapper(ColumnsContainer),
+    Component: ColumnsContainer,
   },
   Container: {
     schema: ContainerPropsSchema,

@@ -12,12 +12,13 @@ import { Text, TextProps, TextPropsSchema } from '@usewaypoint/block-text';
 import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
 
 import { EditorColumnsContainer } from '../blocks/ColumnsContainer';
-import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
+import ColumnsContainerPropsSchema, {
+  ColumnsContainerProps,
+} from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { EditorContainer } from '../blocks/Container';
 import { ContainerProps, ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
 import { EditorEmailLayout, EmailLayoutProps } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
-import { addEditorBlockWrapper } from '../blocks/helpers/block-wrappers';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
 
 const EDITOR_DICTIONARY = {
@@ -47,7 +48,11 @@ const EDITOR_DICTIONARY = {
   },
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema,
-    Component: addEditorBlockWrapper(EditorColumnsContainer),
+    Component: (props: ColumnsContainerProps) => (
+      <EditorBlockWrapper>
+        <EditorColumnsContainer {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   Heading: {
     schema: HeadingPropsSchema,

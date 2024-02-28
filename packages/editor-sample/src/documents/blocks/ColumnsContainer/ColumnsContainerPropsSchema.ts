@@ -1,27 +1,22 @@
 import { z } from 'zod';
 
-import { zColor, zPadding } from '../helpers/zod';
+import { ColumnsContainerPropsSchema as BaseColumnsContainerPropsSchema } from '@usewaypoint/block-columns-container';
+
+const BasePropsShape = BaseColumnsContainerPropsSchema.shape.props.unwrap().unwrap().shape;
 
 const ColumnsContainerPropsSchema = z.object({
-  style: z
+  style: BaseColumnsContainerPropsSchema.shape.style,
+  props: z
     .object({
-      backgroundColor: zColor().nullable().default(null),
-      padding: zPadding().optional().default({
-        top: 16,
-        bottom: 16,
-        left: 24,
-        right: 24,
-      }),
+      ...BasePropsShape,
+      columns: z.tuple([
+        z.object({ childrenIds: z.array(z.string()) }),
+        z.object({ childrenIds: z.array(z.string()) }),
+        z.object({ childrenIds: z.array(z.string()) }),
+      ]),
     })
-    .default({}),
-  props: z.object({
-    columnsCount: z.union([z.literal(2), z.literal(3)]),
-    columns: z.tuple([
-      z.object({ childrenIds: z.array(z.string()) }),
-      z.object({ childrenIds: z.array(z.string()) }),
-      z.object({ childrenIds: z.array(z.string()) }),
-    ]),
-  }),
+    .optional()
+    .nullable(),
 });
 
 export type ColumnsContainerProps = z.infer<typeof ColumnsContainerPropsSchema>;
