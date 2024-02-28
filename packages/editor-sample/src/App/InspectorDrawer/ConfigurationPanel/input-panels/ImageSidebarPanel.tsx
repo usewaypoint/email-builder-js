@@ -5,11 +5,12 @@ import {
   VerticalAlignCenterOutlined,
   VerticalAlignTopOutlined,
 } from '@mui/icons-material';
-import { ToggleButton } from '@mui/material';
+import { Stack, ToggleButton } from '@mui/material';
 import { ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
+import TextDimensionInput from './helpers/inputs/TextDimensionInput';
 import TextInput from './helpers/inputs/TextInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
 
@@ -32,6 +33,19 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
 
   return (
     <BaseSidebarPanel title="Image block">
+      <Stack direction="row" spacing={2}>
+        <TextDimensionInput
+          label="Width"
+          defaultValue={30}
+          onChange={(width) => updateData({ ...data, props: { ...data.props, width } })}
+        />
+        <TextDimensionInput
+          label="Height"
+          defaultValue={30}
+          onChange={(height) => updateData({ ...data, props: { ...data.props, height } })}
+        />
+      </Stack>
+
       <RadioGroupInput
         label="Alignment"
         defaultValue={data.props?.contentAlignment ?? 'middle'}
