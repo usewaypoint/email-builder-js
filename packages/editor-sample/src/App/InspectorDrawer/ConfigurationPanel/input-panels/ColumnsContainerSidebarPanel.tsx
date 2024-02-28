@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 
+import {
+  SpaceBarOutlined,
+  VerticalAlignBottomOutlined,
+  VerticalAlignCenterOutlined,
+  VerticalAlignTopOutlined,
+} from '@mui/icons-material';
 import { ToggleButton } from '@mui/material';
 
 import ColumnsContainerPropsSchema, {
@@ -8,6 +14,7 @@ import ColumnsContainerPropsSchema, {
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
+import SliderInput from './helpers/inputs/SliderInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
 
 type ColumnsContainerPanelProps = {
@@ -30,7 +37,7 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
     <BaseSidebarPanel title="Columns block">
       <RadioGroupInput
         label="Number of columns"
-        defaultValue={data.props.columnsCount === 2 ? '2' : '3'}
+        defaultValue={data.props?.columnsCount === 2 ? '2' : '3'}
         onChange={(v) => {
           updateData({ ...data, props: { ...data.props, columnsCount: v === '2' ? 2 : 3 } });
         }}
@@ -38,8 +45,37 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
         <ToggleButton value="2">2</ToggleButton>
         <ToggleButton value="3">3</ToggleButton>
       </RadioGroupInput>
+      <SliderInput
+        label="Columns gap"
+        iconLabel={<SpaceBarOutlined sx={{ color: 'text.secondary' }} />}
+        units="px"
+        step={4}
+        marks
+        min={0}
+        max={80}
+        defaultValue={data.props?.columnsGap ?? 0}
+        onChange={(columnsGap) => updateData({ ...data, props: { ...data.props, columnsGap } })}
+      />
+      <RadioGroupInput
+        label="Alignment"
+        defaultValue={data.props?.contentAlignment ?? 'middle'}
+        onChange={(contentAlignment) => {
+          updateData({ ...data, props: { ...data.props, contentAlignment } });
+        }}
+      >
+        <ToggleButton value="top">
+          <VerticalAlignTopOutlined fontSize="small" />
+        </ToggleButton>
+        <ToggleButton value="middle">
+          <VerticalAlignCenterOutlined fontSize="small" />
+        </ToggleButton>
+        <ToggleButton value="bottom">
+          <VerticalAlignBottomOutlined fontSize="small" />
+        </ToggleButton>
+      </RadioGroupInput>
+
       <MultiStylePropertyPanel
-        names={['backgroundColor', 'borderColor', 'borderRadius', 'padding']}
+        names={['backgroundColor', 'padding']}
         value={data.style}
         onChange={(style) => updateData({ ...data, style })}
       />
