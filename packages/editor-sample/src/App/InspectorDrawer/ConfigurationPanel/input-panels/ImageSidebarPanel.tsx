@@ -36,12 +36,12 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
       <Stack direction="row" spacing={2}>
         <TextDimensionInput
           label="Width"
-          defaultValue={30}
+          defaultValue={data.props?.width}
           onChange={(width) => updateData({ ...data, props: { ...data.props, width } })}
         />
         <TextDimensionInput
           label="Height"
-          defaultValue={30}
+          defaultValue={data.props?.height}
           onChange={(height) => updateData({ ...data, props: { ...data.props, height } })}
         />
       </Stack>
