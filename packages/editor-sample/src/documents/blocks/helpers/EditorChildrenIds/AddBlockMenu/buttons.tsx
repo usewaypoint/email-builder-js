@@ -15,7 +15,6 @@ import {
 
 import { TEditorBlock } from '../../../../editor/core';
 import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
-import { ContainerPropsSchema } from '../../../Container/ContainerPropsSchema';
 
 type TButtonProps = {
   label: string;
@@ -139,9 +138,7 @@ export const BUTTONS: TButtonProps[] = [
     icon: <LibraryAddOutlined />,
     block: () => ({
       type: 'Container',
-      data: ContainerPropsSchema.parse({
-        props: { childrenIds: [] },
-      }),
+      data: {},
     }),
   },
 

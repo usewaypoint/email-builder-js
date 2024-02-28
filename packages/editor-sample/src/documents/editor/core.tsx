@@ -14,7 +14,7 @@ import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint
 import { EditorColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { EditorContainer } from '../blocks/Container';
-import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
+import { ContainerProps, ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
 import { EditorEmailLayout, EmailLayoutProps } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import { addEditorBlockWrapper } from '../blocks/helpers/block-wrappers';
@@ -39,7 +39,11 @@ const EDITOR_DICTIONARY = {
   },
   Container: {
     schema: ContainerPropsSchema,
-    Component: addEditorBlockWrapper(EditorContainer),
+    Component: (props: ContainerProps) => (
+      <EditorBlockWrapper>
+        <EditorContainer {...props} />
+      </EditorBlockWrapper>
+    ),
   },
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema,
