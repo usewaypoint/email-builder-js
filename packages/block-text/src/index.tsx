@@ -64,9 +64,9 @@ export const TextPropsSchema = z.object({
     .object({
       color: COLOR_SCHEMA,
       backgroundColor: COLOR_SCHEMA,
-      fontSize: z.number().min(0).optional().nullable(),
+      fontSize: z.number().gte(0).optional().nullable(),
       fontFamily: FONT_FAMILY_SCHEMA,
-      fontWeight: z.enum(['bold', 'normal']).nullable(),
+      fontWeight: z.enum(['bold', 'normal']).optional().nullable(),
       textAlign: z.enum(['left', 'center', 'right']).optional().nullable(),
       padding: PADDING_SCHEMA,
     })
@@ -90,7 +90,7 @@ export function Text({ style, props }: TextProps) {
   const wStyle: CSSProperties = {
     color: style?.color ?? undefined,
     backgroundColor: style?.backgroundColor ?? undefined,
-    fontSize: style?.fontSize ?? 16,
+    fontSize: style?.fontSize ?? undefined,
     fontFamily: getFontFamily(style?.fontFamily),
     fontWeight: style?.fontWeight ?? undefined,
     textAlign: style?.textAlign ?? undefined,

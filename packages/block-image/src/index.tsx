@@ -46,7 +46,7 @@ export function Image({ style, props }: ImageProps) {
   const sectionStyle: CSSProperties = {
     padding: getPadding(style?.padding),
     backgroundColor: style?.backgroundColor ?? undefined,
-    textAlign: style?.textAlign ?? 'center',
+    textAlign: style?.textAlign ?? undefined,
   };
 
   const linkHref = props?.linkHref ?? null;
