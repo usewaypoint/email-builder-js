@@ -7,5 +7,5 @@ import TextEditorPanel from './helper/TextEditorPanel';
 export default function JsonPanel() {
   const document = useDocument();
   const string = useMemo(() => JSON.stringify(document, null, '  '), [document]);
-  return <TextEditorPanel value={string} />;
+  return <TextEditorPanel type="json" value={string} />;
 }

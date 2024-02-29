@@ -12,11 +12,16 @@ export default function HtmlPanel() {
 
   const string = React.useMemo(() => {
     return renderToStaticMarkup(
-      <ReaderProvider value={document}>
-        <ReaderBlock id="root" />
-      </ReaderProvider>
+      <html>
+        <head></head>
+        <body>
+          <ReaderProvider value={document}>
+            <ReaderBlock id="root" />
+          </ReaderProvider>
+        </body>
+      </html>
     );
   }, [document]);
 
-  return <TextEditorPanel value={string} />;
+  return <TextEditorPanel type="html" value={string} />;
 }
