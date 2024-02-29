@@ -137,7 +137,7 @@ export function Button({ style, props }: ButtonProps) {
   const textRaise = (padding[1] * 2 * 3) / 4;
   const wrapperStyle: CSSProperties = {
     backgroundColor: style?.backgroundColor ?? undefined,
-    textAlign: style?.textAlign ?? 'center',
+    textAlign: style?.textAlign ?? undefined,
     padding: getPadding(style?.padding),
   };
   const linkStyle: CSSProperties = {
