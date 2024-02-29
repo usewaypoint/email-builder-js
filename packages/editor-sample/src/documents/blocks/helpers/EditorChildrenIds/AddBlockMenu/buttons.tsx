@@ -70,8 +70,8 @@ export const BUTTONS: TButtonProps[] = [
       type: 'Image',
       data: {
         props: {
-          url: 'https://logowik.com/content/uploads/images/street-fighter6886.jpg',
-          alt: 'Street fighter',
+          url: 'https://assets.usewaypoint.com/sample-image.jpg',
+          alt: 'Sample product',
           contentAlignment: 'middle',
           linkHref: null,
         },

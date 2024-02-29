@@ -33,6 +33,28 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
 
   return (
     <BaseSidebarPanel title="Image block">
+      <TextInput
+        label="Source URL"
+        defaultValue={data.props?.url ?? ''}
+        onChange={(v) => {
+          const url = v.trim().length === 0 ? null : v.trim();
+          updateData({ ...data, props: { ...data.props, url } });
+        }}
+      />
+
+      <TextInput
+        label="Alt text"
+        defaultValue={data.props?.alt ?? ''}
+        onChange={(alt) => updateData({ ...data, props: { ...data.props, alt } })}
+      />
+      <TextInput
+        label="Click through URL"
+        defaultValue={data.props?.linkHref ?? ''}
+        onChange={(v) => {
+          const linkHref = v.trim().length === 0 ? null : v.trim();
+          updateData({ ...data, props: { ...data.props, linkHref } });
+        }}
+      />
       <Stack direction="row" spacing={2}>
         <TextDimensionInput
           label="Width"
@@ -61,28 +83,7 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
           <VerticalAlignBottomOutlined fontSize="small" />
         </ToggleButton>
       </RadioGroupInput>
-      <TextInput
-        label="Alt text"
-        defaultValue={data.props?.alt ?? ''}
-        onChange={(alt) => updateData({ ...data, props: { ...data.props, alt } })}
-      />
-      <TextInput
-        label="URL"
-        defaultValue={data.props?.url ?? ''}
-        onChange={(v) => {
-          const url = v.trim().length === 0 ? null : v.trim();
-          updateData({ ...data, props: { ...data.props, url } });
-        }}
-      />
 
-      <TextInput
-        label="Click through URL"
-        defaultValue={data.props?.linkHref ?? ''}
-        onChange={(v) => {
-          const linkHref = v.trim().length === 0 ? null : v.trim();
-          updateData({ ...data, props: { ...data.props, linkHref } });
-        }}
-      />
       <MultiStylePropertyPanel
         names={['backgroundColor', 'textAlign', 'padding']}
         value={data.style}
