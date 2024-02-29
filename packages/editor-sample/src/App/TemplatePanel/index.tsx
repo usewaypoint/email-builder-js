@@ -11,7 +11,12 @@ import {
 import { Box, Stack, Tab, Tabs, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
-import { setEditorState, useDocument, useSelectedMainTab } from '../../documents/editor/EditorContext';
+import {
+  setEditorState,
+  useDocument,
+  useSelectedMainTab,
+  useSelectedScreenSize,
+} from '../../documents/editor/EditorContext';
 import ReaderBlock from '../../documents/reader/ReaderBlock';
 import { ReaderProvider } from '../../documents/reader/ReaderContext';
 import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelButton';
@@ -24,6 +29,18 @@ import ShareButton from './ShareButton';
 export default function TemplatePanel() {
   const document = useDocument();
   const selectedMainTab = useSelectedMainTab();
+  const selectedScreenSize = useSelectedScreenSize();
+  const handleScreenSizeChange = (_, value: unknown) => {
+    console.log(value);
+    switch (value) {
+      case 'mobile':
+        setEditorState({ selectedScreenSize: 'mobile' });
+        return;
+      case 'desktop':
+      default:
+        setEditorState({ selectedScreenSize: 'desktop' });
+    }
+  };
 
   const renderMainPanel = () => {
     switch (selectedMainTab) {
@@ -96,13 +113,13 @@ export default function TemplatePanel() {
             />
           </Tabs>
           <Stack direction="row" spacing={2}>
-            <ToggleButtonGroup value="DESKTOP" exclusive size="small">
-              <ToggleButton value="DESKTOP">
+            <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
+              <ToggleButton value="desktop">
                 <Tooltip title="Desktop view">
                   <MonitorOutlined fontSize="small" />
                 </Tooltip>
               </ToggleButton>
-              <ToggleButton value="MOBILE">
+              <ToggleButton value="mobile">
                 <Tooltip title="Mobile view">
                   <PhoneIphoneOutlined fontSize="small" />
                 </Tooltip>

@@ -10,6 +10,7 @@ type TValue = {
   selectedBlockId: string | null;
   selectedSidebarTab: 'block-configuration' | 'styles';
   selectedMainTab: 'editor' | 'preview' | 'data' | 'html';
+  selectedScreenSize: 'desktop' | 'mobile';
 
   inspectorDrawerOpen: boolean;
   samplesDrawerOpen: boolean;
@@ -20,6 +21,7 @@ const useEditorState = create<TValue>(() => ({
   selectedBlockId: null,
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
+  selectedScreenSize: 'desktop',
 
   inspectorDrawerOpen: true,
   samplesDrawerOpen: true,
@@ -31,6 +33,10 @@ export function useDocument() {
 
 export function useSelectedBlockId() {
   return useEditorState((s) => s.selectedBlockId);
+}
+
+export function useSelectedScreenSize() {
+  return useEditorState((s) => s.selectedScreenSize);
 }
 
 export function useSelectedMainTab() {
