@@ -44,23 +44,23 @@ export default function TuneMenu({ blockId }: Props) {
               ...block.data,
               props: {
                 ...block.data.props,
-                childrenIds: block.data.props.childrenIds.filter((f) => f !== blockId),
+                childrenIds: (block.data.props?.childrenIds ?? []).filter((f) => f !== blockId),
               },
             },
           };
           break;
         case 'ColumnsContainer':
           nDocument[id] = {
-            ...block,
+            type: 'ColumnsContainer',
             data: {
-              ...block.data,
+              style: block.data.style,
               props: {
                 ...block.data.props,
-                columns: block.data.props.columns.map((c) => ({
+                columns: block.data.props?.columns?.map((c) => ({
                   childrenIds: c.childrenIds.filter((f) => f !== blockId),
-                })) as ColumnsContainerProps['props']['columns'],
+                })),
               },
-            },
+            } as ColumnsContainerProps,
           };
           break;
         default:
