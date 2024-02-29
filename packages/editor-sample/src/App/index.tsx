@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Stack, useTheme } from '@mui/material';
 
-import { setEditorState, useInspectorDrawerOpen, useSamplesDrawerOpen } from '../documents/editor/EditorContext';
-import getConfiguration from '../getConfiguration';
+import { useInspectorDrawerOpen, useSamplesDrawerOpen } from '../documents/editor/EditorContext';
 
 import InspectorDrawer, { INSPECTOR_DRAWER_WIDTH } from './InspectorDrawer';
 import SamplesDrawer, { SAMPLES_DRAWER_WIDTH } from './SamplesDrawer';
@@ -13,15 +12,6 @@ export default function App() {
   const theme = useTheme();
   const inspectorDrawerOpen = useInspectorDrawerOpen();
   const samplesDrawerOpen = useSamplesDrawerOpen();
-
-  useEffect(() => {
-    function refresh() {
-      setEditorState({ document: getConfiguration(window.location.hash) });
-    }
-    refresh();
-    window.addEventListener('hashchange', refresh);
-    return () => window.removeEventListener('hashchange', refresh);
-  });
 
   return (
     <>
