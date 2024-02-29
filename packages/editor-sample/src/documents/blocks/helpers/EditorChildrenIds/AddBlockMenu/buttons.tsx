@@ -120,7 +120,7 @@ export const BUTTONS: TButtonProps[] = [
     block: () => ({
       type: 'Html',
       data: {
-        props: { contents: 'Hello world' },
+        props: { contents: '<strong>Hello world</strong>' },
         style: {
           fontSize: 16,
           textAlign: null,

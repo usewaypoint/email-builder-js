@@ -67,6 +67,15 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
         onChange={(alt) => updateData({ ...data, props: { ...data.props, alt } })}
       />
       <TextInput
+        label="URL"
+        defaultValue={data.props?.url ?? ''}
+        onChange={(v) => {
+          const url = v.trim().length === 0 ? null : v.trim();
+          updateData({ ...data, props: { ...data.props, url } });
+        }}
+      />
+
+      <TextInput
         label="Click through URL"
         defaultValue={data.props?.linkHref ?? ''}
         onChange={(v) => {
