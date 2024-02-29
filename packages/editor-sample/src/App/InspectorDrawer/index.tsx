@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Drawer, Tab, Tabs } from '@mui/material';
 
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { setEditorState, useInspectorDrawerOpen, useSelectedSidebarTab } from '../../documents/editor/EditorContext';
 
 import ConfigurationPanel from './ConfigurationPanel';
 import StylesPanel from './StylesPanel';
@@ -10,7 +10,8 @@ import StylesPanel from './StylesPanel';
 export const INSPECTOR_DRAWER_WIDTH = 320;
 
 export default function InspectorDrawer() {
-  const [{ selectedSidebarTab, inspectorDrawerOpen }, setEditorState] = useEditorState();
+  const selectedSidebarTab = useSelectedSidebarTab();
+  const inspectorDrawerOpen = useInspectorDrawerOpen();
 
   const renderCurrentSidebarPanel = () => {
     switch (selectedSidebarTab) {

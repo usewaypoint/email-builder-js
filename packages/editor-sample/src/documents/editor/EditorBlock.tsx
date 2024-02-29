@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 
 import { EditorBlock as CoreEditorBlock } from './core';
-import { useEditorState } from './EditorContext';
+import { useDocument } from './EditorContext';
 
 const EditorBlockContext = createContext<string | null>(null);
 export const useCurrentBlockId = () => useContext(EditorBlockContext)!;
@@ -16,8 +16,8 @@ type EditorBlockProps = {
  * @returns EditorBlock component that loads data from the EditorDocumentContext
  */
 export default function EditorBlock({ id }: EditorBlockProps) {
-  const [state] = useEditorState();
-  const block = state.document[id];
+  const document = useDocument();
+  const block = document[id];
   if (!block) {
     throw new Error('Could not find block');
   }

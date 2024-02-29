@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 import { TEditorBlock } from '../../../documents/editor/core';
-import { useEditorState } from '../../../documents/editor/EditorContext';
+import { setEditorState, useDocument, useSelectedBlockId } from '../../../documents/editor/EditorContext';
 
 import AvatarSidebarPanel from './input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './input-panels/ButtonSidebarPanel';
@@ -26,7 +26,8 @@ function renderMessage(val: string) {
 }
 
 export default function ConfigurationPanel() {
-  const [{ document, selectedBlockId }, setEditorState] = useEditorState();
+  const document = useDocument();
+  const selectedBlockId = useSelectedBlockId();
 
   if (!selectedBlockId) {
     return renderMessage('Click on a block to inspect.');

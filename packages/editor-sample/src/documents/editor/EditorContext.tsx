@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import { create } from 'zustand';
+
+import EMPTY_EMAIL_MESSAGE from '../../getConfiguration/sample/empty-email-message';
 
 import { TEditorConfiguration } from './core';
 
@@ -12,40 +14,41 @@ type TValue = {
   inspectorDrawerOpen: boolean;
   samplesDrawerOpen: boolean;
 };
-type TEditorContextState = [state: TValue, setState: (v: Partial<TValue>) => void];
 
-const DEFAULT_STATE: TValue = {
-  document: {},
+const useEditorState = create<TValue>(() => ({
+  document: EMPTY_EMAIL_MESSAGE,
   selectedBlockId: null,
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
 
   inspectorDrawerOpen: true,
   samplesDrawerOpen: true,
-};
-const EditorContext = createContext<TEditorContextState>([DEFAULT_STATE, () => {}]);
+}));
 
-export function useEditorState() {
-  return useContext(EditorContext);
+export function useDocument() {
+  return useEditorState((s) => s.document);
 }
 
-type EditorProviderProps = {
-  defaultValue: TEditorConfiguration;
-  children: Parameters<typeof EditorContext.Provider>[0]['children'];
-};
-export function EditorProvider({ defaultValue, children }: EditorProviderProps) {
-  const [state, setState] = useState<TValue>(() => ({
-    ...DEFAULT_STATE,
-    document: defaultValue,
-  }));
-  const value = useMemo<TEditorContextState>(
-    () => [
-      state,
-      (s: Partial<TValue>) => {
-        setState({ ...state, ...s });
-      },
-    ],
-    [state, setState]
-  );
-  return <EditorContext.Provider value={value}>{children}</EditorContext.Provider>;
+export function useSelectedBlockId() {
+  return useEditorState((s) => s.selectedBlockId);
+}
+
+export function useSelectedMainTab() {
+  return useEditorState((s) => s.selectedMainTab);
+}
+
+export function useSelectedSidebarTab() {
+  return useEditorState((s) => s.selectedSidebarTab);
+}
+
+export function useInspectorDrawerOpen() {
+  return useEditorState((s) => s.inspectorDrawerOpen);
+}
+
+export function useSamplesDrawerOpen() {
+  return useEditorState((s) => s.samplesDrawerOpen);
+}
+
+export function setEditorState(state: Partial<TValue>) {
+  useEditorState.setState({ ...state });
 }

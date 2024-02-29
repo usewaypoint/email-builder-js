@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Box, Button, Drawer, Link, Stack, Typography } from '@mui/material';
 
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { useSamplesDrawerOpen } from '../../documents/editor/EditorContext';
 
 import logo from './waypoint.svg';
 
 export const SAMPLES_DRAWER_WIDTH = 240;
 
 export default function SamplesDrawer() {
-  const [{ samplesDrawerOpen }] = useEditorState();
+  const samplesDrawerOpen = useSamplesDrawerOpen();
 
   const select = (val: string) => {
     window.location.hash = `#sample/${val}`;

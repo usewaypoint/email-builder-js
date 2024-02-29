@@ -3,7 +3,7 @@ import React, { CSSProperties, useState } from 'react';
 import { Box } from '@mui/material';
 
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
-import { useEditorState } from '../../../editor/EditorContext';
+import { setEditorState, useSelectedBlockId } from '../../../editor/EditorContext';
 
 import TuneMenu from './TuneMenu';
 
@@ -12,7 +12,7 @@ type TEditorBlockWrapperProps = {
 };
 
 export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProps) {
-  const [{ selectedBlockId }, setEditorState] = useEditorState();
+  const selectedBlockId = useSelectedBlockId();
   const [mouseInside, setMouseInside] = useState(false);
   const blockId = useCurrentBlockId();
 

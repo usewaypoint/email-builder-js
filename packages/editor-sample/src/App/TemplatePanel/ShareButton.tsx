@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { IosShareOutlined } from '@mui/icons-material';
 import { IconButton, Snackbar, Tooltip } from '@mui/material';
 
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { useDocument } from '../../documents/editor/EditorContext';
 
 export default function ShareButton() {
-  const [{ document }] = useEditorState();
+  const document = useDocument();
   const [message, setMessage] = useState<string | null>(null);
 
   const onClick = async () => {
