@@ -10,14 +10,9 @@ export default function ShareButton() {
   const [message, setMessage] = useState<string | null>(null);
 
   const onClick = async () => {
-    const c = JSON.stringify(document);
-    location.hash = `#${btoa(c)}`;
-    if (navigator.clipboard) {
-      await navigator.clipboard.writeText(location.href.toString());
-      setMessage('The configuration URL was copied to your clipboard');
-    } else {
-      setMessage('The URL was updated. You can copy it to share');
-    }
+    const c = encodeURIComponent(JSON.stringify(document));
+    location.hash = `#code/${btoa(c)}`;
+    setMessage('The URL was updated. You can copy it to share');
   };
 
   const onClose = () => {
