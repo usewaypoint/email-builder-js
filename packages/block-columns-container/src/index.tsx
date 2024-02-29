@@ -17,6 +17,11 @@ const PADDING_SCHEMA = z
   .optional()
   .nullable();
 
+const FIXED_WIDTHS_SCHEMA = z
+  .tuple([z.number().nullish(), z.number().nullish(), z.number().nullish()])
+  .optional()
+  .nullable();
+
 const getPadding = (padding: z.infer<typeof PADDING_SCHEMA>) =>
   padding ? `${padding.top}px ${padding.right}px ${padding.bottom}px ${padding.left}px` : undefined;
 
@@ -30,6 +35,7 @@ export const ColumnsContainerPropsSchema = z.object({
     .nullable(),
   props: z
     .object({
+      fixedWidths: FIXED_WIDTHS_SCHEMA,
       columnsCount: z
         .union([z.literal(2), z.literal(3)])
         .optional()
@@ -62,6 +68,7 @@ export function ColumnsContainer({ style, columns, props }: ColumnsContainerProp
     columnsCount: props?.columnsCount ?? ColumnsContainerPropsDefaults.columnsCount,
     columnsGap: props?.columnsGap ?? ColumnsContainerPropsDefaults.columnsGap,
     contentAlignment: props?.contentAlignment ?? ColumnsContainerPropsDefaults.contentAlignment,
+    fixedWidths: props?.fixedWidths,
   };
 
   return (
@@ -87,6 +94,7 @@ export function ColumnsContainer({ style, columns, props }: ColumnsContainerProp
 
 type Props = {
   props: {
+    fixedWidths: z.infer<typeof FIXED_WIDTHS_SCHEMA>;
     columnsCount: 2 | 3;
     columnsGap: number;
     contentAlignment: 'top' | 'middle' | 'bottom';
@@ -107,6 +115,7 @@ function TableCell({ index, props, columns }: Props) {
     verticalAlign: contentAlignment,
     paddingLeft: getPaddingBefore(index, props),
     paddingRight: getPaddingAfter(index, props),
+    width: props.fixedWidths?.[index] ?? undefined,
   };
   const children = (columns && columns[index]) ?? null;
   return <td style={style}>{children}</td>;

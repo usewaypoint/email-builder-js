@@ -1,6 +1,6 @@
 {
   "name": "@usewaypoint/block-columns-container",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "@usewaypoint/document compatible ColumnsContainer component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

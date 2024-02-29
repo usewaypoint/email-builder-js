@@ -13,6 +13,7 @@ import ColumnsContainerPropsSchema, {
 } from '../../../../documents/blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
+import ColumnWidthsInput from './helpers/inputs/ColumnWidthsInput';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import SliderInput from './helpers/inputs/SliderInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
@@ -45,6 +46,12 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
         <ToggleButton value="2">2</ToggleButton>
         <ToggleButton value="3">3</ToggleButton>
       </RadioGroupInput>
+      <ColumnWidthsInput
+        defaultValue={null}
+        onChange={(fixedWidths) => {
+          updateData({ ...data, props: { ...data.props, fixedWidths } });
+        }}
+      />
       <SliderInput
         label="Columns gap"
         iconLabel={<SpaceBarOutlined sx={{ color: 'text.secondary' }} />}
