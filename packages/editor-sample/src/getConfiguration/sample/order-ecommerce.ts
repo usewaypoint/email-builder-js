@@ -321,7 +321,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         textAlign: 'left',
         padding: {
           top: 0,
-          bottom: 8,
+          bottom: 0,
           left: 0,
           right: 0,
         },
@@ -410,28 +410,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_RJU6wqWp4io29SK1kEESC7: {
-    type: 'Text',
-    data: {
-      style: {
-        color: '#808080',
-        backgroundColor: null,
-        fontSize: 14,
-        fontFamily: null,
-        fontWeight: 'normal',
-        textAlign: 'right',
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        text: 'Original: $30.00',
-      },
-    },
-  },
   block_6VvTYskm3BULZZEfYCkjwN: {
     type: 'Text',
     data: {
@@ -469,7 +447,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        childrenIds: ['block_RJU6wqWp4io29SK1kEESC7', 'block_6VvTYskm3BULZZEfYCkjwN'],
+        childrenIds: ['block_6VvTYskm3BULZZEfYCkjwN'],
       },
     },
   },
@@ -479,13 +457,14 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       style: {
         backgroundColor: null,
         padding: {
-          top: 16,
-          bottom: 16,
+          top: 0,
+          bottom: 0,
           right: 0,
           left: 0,
         },
       },
       props: {
+        fixedWidths: [64, null, 80],
         columnsCount: 3,
         columnsGap: 16,
         columns: [
@@ -1186,6 +1165,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
       props: {
         columnsCount: 2,
+        columnsGap: 16,
         columns: [
           {
             childrenIds: ['block_Wnt477QxYNynetWGwkLg89'],

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Drawer, Link, Stack, Typography } from '@mui/material';
+import { Box, Button, Divider, Drawer, Link, Stack, Typography } from '@mui/material';
 
 import { useSamplesDrawerOpen } from '../../documents/editor/EditorContext';
 
@@ -23,14 +23,10 @@ export default function SamplesDrawer() {
     >
       <Stack spacing={3} py={1} px={2} width={SAMPLES_DRAWER_WIDTH} justifyContent="space-between" height="100%">
         <Stack spacing={2} sx={{ '& .MuiButtonBase-root': { width: '100%', justifyContent: 'flex-start' } }}>
-          <Button
-            size="small"
-            href="https://www.usewaypoint.com/open-source/emailbuilderjs"
-            target="_blank"
-            sx={{ fontSize: 16 }}
-          >
+          <Typography variant="h6" component="h1" sx={{ p: 0.75 }}>
             EmailBuilder.js
-          </Button>
+          </Typography>
+
           <Stack alignItems="flex-start">
             <SidebarButton href="#">Empty</SidebarButton>
             <SidebarButton href="#sample/one-time-password">One-time passcode (OTP)</SidebarButton>
@@ -39,7 +35,18 @@ export default function SamplesDrawer() {
             <SidebarButton href="#sample/subscription-receipt">Subscription receipt</SidebarButton>
             <SidebarButton href="#sample/reservation-reminder">Reservation reminder</SidebarButton>
             <SidebarButton href="#sample/post-metrics-report">Post metrics</SidebarButton>
-            <SidebarButton href="#sample/respond-to-message">Respond to message</SidebarButton>
+            <SidebarButton href="#sample/respond-to-message">Respond to inquiry</SidebarButton>
+          </Stack>
+
+          <Divider />
+
+          <Stack>
+            <Button size="small" href="https://www.usewaypoint.com/open-source/emailbuilderjs" target="_blank">
+              Learn more
+            </Button>
+            <Button size="small" href="https://github.com/usewaypoint/email-builder-js" target="_blank">
+              View on GitHub
+            </Button>
           </Stack>
         </Stack>
         <Stack spacing={2} px={0.75} py={3}>

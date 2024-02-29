@@ -58,15 +58,13 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
       </RadioGroupInput>
       <TextInput
         label="Image URL"
-        helperText="Leave blank to use fallback text."
         defaultValue={imageUrl}
         onChange={(imageUrl) => {
           updateData({ ...data, props: { ...data.props, imageUrl } });
         }}
       />
       <TextInput
-        label="Fallback text"
-        helperText="Automatically truncates to 2 characters max."
+        label="Alt text"
         defaultValue={alt}
         onChange={(alt) => {
           updateData({ ...data, props: { ...data.props, alt } });

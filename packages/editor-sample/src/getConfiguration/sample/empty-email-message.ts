@@ -4,7 +4,7 @@ const EMPTY_EMAIL_MESSAGE: TEditorConfiguration = {
   root: {
     type: 'EmailLayout',
     data: {
-      backdropColor: '#e5e7e5',
+      backdropColor: '#F5F5F5',
       canvasColor: '#FFFFFF',
       textColor: '#242424',
       fontFamily: 'MODERN_SANS',
