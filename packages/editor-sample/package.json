@@ -13,7 +13,7 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@usewaypoint/block-avatar": "^0.0.1",
-    "@usewaypoint/block-button": "^0.0.1",
+    "@usewaypoint/block-button": "^0.0.2",
     "@usewaypoint/block-columns-container": "^0.0.2",
     "@usewaypoint/block-container": "^0.0.1",
     "@usewaypoint/block-divider": "^0.0.3",
