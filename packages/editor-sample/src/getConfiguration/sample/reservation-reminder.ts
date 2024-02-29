@@ -226,7 +226,9 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         },
       },
       props: {
+        fixedWidths: [64, null, null],
         columnsCount: 2,
+        columnsGap: 16,
         columns: [
           {
             childrenIds: ['block_7MDe4niz9sWkSR7Un5BvRo'],
@@ -270,7 +272,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         fontWeight: 'bold',
         textAlign: 'left',
         padding: {
-          top: 24,
+          top: 16,
           bottom: 16,
           left: 24,
           right: 24,

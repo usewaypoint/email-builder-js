@@ -236,7 +236,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         fullWidth: false,
         size: 'medium',
         text: 'View your analytics →',
-        url: 'https://example.usewaypoint.com/jordanisip/analytics',
+        url: 'https://example.usewaypoint.com/post/1234/analytics',
       },
     },
   },
@@ -339,7 +339,7 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         },
       },
       props: {
-        buttonBackgroundColor: '#FAFAFA',
+        buttonBackgroundColor: '#EEEEEE',
         buttonStyle: 'rounded',
         buttonTextColor: '#474849',
         fullWidth: false,
