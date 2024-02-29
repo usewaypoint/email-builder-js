@@ -45,7 +45,7 @@ export default function TemplatePanel() {
     };
   }
 
-  const handleScreenSizeChange = (_, value: unknown) => {
+  const handleScreenSizeChange = (_: unknown, value: unknown) => {
     console.log(value);
     switch (value) {
       case 'mobile':
