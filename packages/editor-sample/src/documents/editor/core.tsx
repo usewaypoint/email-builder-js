@@ -1,7 +1,6 @@
 import React from 'react';
 import { z } from 'zod';
 
-import { ImageOutlined } from '@mui/icons-material';
 import { Avatar, AvatarProps, AvatarPropsSchema } from '@usewaypoint/block-avatar';
 import { Button, ButtonProps, ButtonPropsSchema } from '@usewaypoint/block-button';
 import { Divider, DividerProps, DividerPropsSchema } from '@usewaypoint/block-divider';
@@ -74,28 +73,16 @@ const EDITOR_DICTIONARY = {
   Image: {
     schema: ImagePropsSchema,
     Component: (data: ImageProps) => {
-      const url = data.props?.url ?? '';
-      if (url.trim().length === 0) {
-        return (
-          <EditorBlockWrapper>
-            <div
-              style={{
-                width: '100%',
-                height: 320,
-                backgroundColor: 'rgba(0,0,0, 0.05)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <ImageOutlined sx={{ fontSize: 'small', color: 'inherit' }} />
-            </div>
-          </EditorBlockWrapper>
-        );
-      }
+      const props = {
+        ...data,
+        props: {
+          ...data.props,
+          url: data.props?.url ?? 'https://placehold.co/600x400@2x/F8F8F8/CCC?text=Your%20image',
+        },
+      };
       return (
         <EditorBlockWrapper>
-          <Image {...data} />
+          <Image {...props} />
         </EditorBlockWrapper>
       );
     },
