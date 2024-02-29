@@ -4,7 +4,7 @@ import { DeleteOutlined } from '@mui/icons-material';
 import { IconButton, Paper, Stack, Tooltip } from '@mui/material';
 
 import { TEditorBlock } from '../../../editor/core';
-import { useEditorState } from '../../../editor/EditorContext';
+import { setEditorState, useDocument } from '../../../editor/EditorContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
 
 const STYLE: CSSProperties = {
@@ -18,7 +18,7 @@ type Props = {
   blockId: string;
 };
 export default function TuneMenu({ blockId }: Props) {
-  const [{ document }, setEditorState] = useEditorState();
+  const document = useDocument();
 
   const handleDeleteClick = () => {
     const nDocument: typeof document = { ...document };

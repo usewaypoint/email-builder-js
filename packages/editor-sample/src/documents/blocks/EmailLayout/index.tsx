@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { useEditorState } from '../../editor/EditorContext';
+import { useDocument, setEditorState } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
@@ -37,7 +37,7 @@ export function EmailLayout(props: EmailLayoutProps) {
 }
 
 export function EditorEmailLayout(props: EmailLayoutProps) {
-  const [{ document }, setEditorState] = useEditorState();
+  const document = useDocument();
   const blockId = useCurrentBlockId();
   const childrenIds = props.childrenIds;
 

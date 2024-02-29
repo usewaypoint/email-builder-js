@@ -3,10 +3,11 @@ import React from 'react';
 import { AppRegistrationOutlined, LastPageOutlined } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { setEditorState, useInspectorDrawerOpen } from '../../documents/editor/EditorContext';
 
 export default function ToggleInspectorPanelButton() {
-  const [{ inspectorDrawerOpen }, setEditorState] = useEditorState();
+  const inspectorDrawerOpen = useInspectorDrawerOpen();
+
   const handleClick = () => {
     setEditorState({ inspectorDrawerOpen: !inspectorDrawerOpen });
   };

@@ -4,7 +4,7 @@ import { CodeOutlined, DataObjectOutlined, EditOutlined, PreviewOutlined } from 
 import { Box, Stack, Tab, Tabs, Tooltip } from '@mui/material';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { setEditorState, useDocument, useSelectedMainTab } from '../../documents/editor/EditorContext';
 import ReaderBlock from '../../documents/reader/ReaderBlock';
 import { ReaderProvider } from '../../documents/reader/ReaderContext';
 import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelButton';
@@ -14,7 +14,8 @@ import HtmlPanel from './HtmlPanel';
 import ShareButton from './ShareButton';
 
 export default function TemplatePanel() {
-  const [{ document, selectedMainTab }, setEditorState] = useEditorState();
+  const document = useDocument();
+  const selectedMainTab = useSelectedMainTab();
 
   const renderMainPanel = () => {
     switch (selectedMainTab) {

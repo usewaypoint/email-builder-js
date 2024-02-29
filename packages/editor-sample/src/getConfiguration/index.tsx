@@ -1,3 +1,4 @@
+import EMPTY_EMAIL_MESSAGE from './sample/empty-email-message';
 import ONE_TIME_PASSCODE from './sample/one-time-passcode';
 import ORDER_ECOMMERCE from './sample/order-ecommerce';
 import POST_METRICS_REPORT from './sample/post-metrics-report';
@@ -46,17 +47,5 @@ export default function getConfiguration(template: string) {
     }
   }
 
-  return {
-    root: {
-      type: 'EmailLayout',
-      data: {
-        backdropColor: '#e5e7e5',
-        canvasColor: '#FFFFFF',
-        textColor: '#242424',
-        accentColor: '#0b5499',
-        fontFamily: 'MODERN_SANS',
-        childrenIds: [],
-      },
-    },
-  };
+  return EMPTY_EMAIL_MESSAGE;
 }

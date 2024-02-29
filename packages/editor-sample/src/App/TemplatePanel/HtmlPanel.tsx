@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { useDocument } from '../../documents/editor/EditorContext';
 import ReaderBlock from '../../documents/reader/ReaderBlock';
 import { ReaderProvider } from '../../documents/reader/ReaderContext';
 
 export default function HtmlPanel() {
-  const [{ document }] = useEditorState();
+  const document = useDocument();
+
   const string = React.useMemo(() => {
     return renderToStaticMarkup(
       <ReaderProvider value={document}>

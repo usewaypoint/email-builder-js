@@ -4,7 +4,7 @@ import { Container as BaseContainer } from '@usewaypoint/block-container';
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { useEditorState } from '../../editor/EditorContext';
+import { setEditorState, useDocument } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
@@ -24,7 +24,7 @@ export function Container({ style, props }: ContainerProps) {
 export function EditorContainer({ style, props }: ContainerProps) {
   const childrenIds = props?.childrenIds ?? [];
 
-  const [{ document }, setEditorState] = useEditorState();
+  const document = useDocument();
   const blockId = useCurrentBlockId();
 
   const insertBlock = (blockConfiguration: TEditorBlock, i: number | null) => {

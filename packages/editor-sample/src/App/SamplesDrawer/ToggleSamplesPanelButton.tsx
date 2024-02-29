@@ -3,10 +3,11 @@ import React from 'react';
 import { FirstPageOutlined, MenuOutlined } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
-import { useEditorState } from '../../documents/editor/EditorContext';
+import { setEditorState, useSamplesDrawerOpen } from '../../documents/editor/EditorContext';
 
 export default function ToggleSamplesPanelButton() {
-  const [{ samplesDrawerOpen }, setEditorState] = useEditorState();
+  const samplesDrawerOpen = useSamplesDrawerOpen();
+
   const handleClick = () => {
     setEditorState({ samplesDrawerOpen: !samplesDrawerOpen });
   };

@@ -4,7 +4,7 @@ import { ColumnsContainer as BaseColumnsContainer } from '@usewaypoint/block-col
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { useEditorState } from '../../editor/EditorContext';
+import { setEditorState, useDocument } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
@@ -23,7 +23,7 @@ export function ColumnsContainer({ style, props }: ColumnsContainerProps) {
 const EMPTY_COLUMNS = [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }];
 
 export function EditorColumnsContainer({ style, props }: ColumnsContainerProps) {
-  const [{ document }, setEditorState] = useEditorState();
+  const document = useDocument();
   const blockId = useCurrentBlockId();
 
   const { columns, ...restProps } = props ?? {};
