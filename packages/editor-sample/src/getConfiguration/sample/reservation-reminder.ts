@@ -42,9 +42,8 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
+        height: 32,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_RAFATLGe3CN1wDsb/birdhouse.png',
-        alt: '',
-        linkHref: null,
         contentAlignment: 'middle',
       },
     },
@@ -108,7 +107,7 @@ const RESERVATION_REMINDER: TEditorConfiguration = {
       props: {
         size: 64,
         shape: 'circle',
-        imageUrl: '',
+        imageUrl: 'https://ui-avatars.com/api/?size=128&name=Elaina',
         alt: 'Elaina',
       },
     },

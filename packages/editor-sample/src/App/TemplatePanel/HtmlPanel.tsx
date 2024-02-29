@@ -5,6 +5,8 @@ import { useDocument } from '../../documents/editor/EditorContext';
 import ReaderBlock from '../../documents/reader/ReaderBlock';
 import { ReaderProvider } from '../../documents/reader/ReaderContext';
 
+import TextEditorPanel from './helper/TextEditorPanel';
+
 export default function HtmlPanel() {
   const document = useDocument();
 
@@ -16,5 +18,5 @@ export default function HtmlPanel() {
     );
   }, [document]);
 
-  return <pre>{string}</pre>;
+  return <TextEditorPanel value={string} />;
 }

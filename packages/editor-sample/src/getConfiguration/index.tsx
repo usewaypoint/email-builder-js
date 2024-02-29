@@ -38,14 +38,5 @@ export default function getConfiguration(template: string) {
     }
   }
 
-  const configurationString = localStorage.getItem('configuration');
-  if (typeof configurationString === 'string') {
-    try {
-      return JSON.parse(configurationString);
-    } catch {
-      console.error(`Couldn't load configuration from localStorage.`);
-    }
-  }
-
   return EMPTY_EMAIL_MESSAGE;
 }

@@ -31,6 +31,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
+        height: 18,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_9TcdHLq5SpEkRADB/REMIX.png',
         alt: 'Remix',
         linkHref: 'https://remix.example.com',
@@ -292,7 +293,7 @@ const SUBSCRIPTION_RECEIPT: TEditorConfiguration = {
           left: 0,
           right: 0,
         },
-        textAlign: 'left',
+        textAlign: 'right',
       },
       props: {
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_8yUGBZcXaAtTEofB/invoice-skeleton.png',

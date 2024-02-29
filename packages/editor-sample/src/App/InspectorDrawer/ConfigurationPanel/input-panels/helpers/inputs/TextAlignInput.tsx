@@ -19,7 +19,7 @@ export default function TextAlignInput({ label, defaultValue, onChange }: Props)
       defaultValue={value}
       onChange={(value) => {
         setValue(value);
-        onChange(value === 'left' ? null : value);
+        onChange(value);
       }}
     >
       <ToggleButton value="left">

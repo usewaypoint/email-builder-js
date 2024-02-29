@@ -350,27 +350,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_JbZJ8FqT6GxQ4i6wEiWztp: {
-    type: 'Image',
-    data: {
-      style: {
-        backgroundColor: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-        textAlign: 'left',
-      },
-      props: {
-        url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_vjmjV2NrQ52h1iLj/coupon.png',
-        alt: '',
-        linkHref: null,
-        contentAlignment: 'middle',
-      },
-    },
-  },
   block_92JgagxxVxzyfnbvj5iUUJ: {
     type: 'Container',
     data: {
@@ -386,7 +365,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        childrenIds: ['block_JbZJ8FqT6GxQ4i6wEiWztp'],
+        childrenIds: [],
       },
     },
   },
@@ -412,25 +391,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_TdFvCzpv5j9SZgktRbSTwu: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: ['block_9bNBgfiJJyh65pfsy1fu7e'],
-      },
-    },
-  },
   block_7JwR5SHM2Bfjihamh45tRL: {
     type: 'Container',
     data: {
@@ -450,34 +410,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_S8F4TkiuTVLF2GTQn67eGY: {
-    type: 'ColumnsContainer',
-    data: {
-      style: {
-        backgroundColor: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        columnsCount: 2,
-        columns: [
-          {
-            childrenIds: ['block_92JgagxxVxzyfnbvj5iUUJ'],
-          },
-          {
-            childrenIds: ['block_TdFvCzpv5j9SZgktRbSTwu'],
-          },
-          {
-            childrenIds: ['block_7JwR5SHM2Bfjihamh45tRL'],
-          },
-        ],
-      },
-    },
-  },
   block_GQ77o7MDMwj48B5nocEJNq: {
     type: 'Container',
     data: {
@@ -493,7 +425,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         },
       },
       props: {
-        childrenIds: ['block_TBZZDHvoKHcW3j2nwQgmhC', 'block_KqpmZUcZajsnFMbTMhizZs', 'block_S8F4TkiuTVLF2GTQn67eGY'],
+        childrenIds: ['block_TBZZDHvoKHcW3j2nwQgmhC', 'block_KqpmZUcZajsnFMbTMhizZs'],
       },
     },
   },
@@ -568,12 +500,13 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
         padding: {
           top: 16,
           bottom: 16,
-          left: 0,
           right: 0,
+          left: 0,
         },
       },
       props: {
         columnsCount: 3,
+        columnsGap: 16,
         columns: [
           {
             childrenIds: ['block_4sAeV4cLVKV8y4QFGV3Gf7'],
