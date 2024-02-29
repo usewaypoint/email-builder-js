@@ -65,15 +65,15 @@ export const HtmlPropsSchema = z.object({
       color: COLOR_SCHEMA,
       backgroundColor: COLOR_SCHEMA,
       fontFamily: FONT_FAMILY_SCHEMA,
-      fontSize: z.number().min(0),
-      textAlign: z.enum(['left', 'right', 'center']).optional().nullable().default(null),
+      fontSize: z.number().min(0).optional().nullable(),
+      textAlign: z.enum(['left', 'right', 'center']).optional().nullable(),
       padding: PADDING_SCHEMA,
     })
     .optional()
     .nullable(),
   props: z
     .object({
-      contents: z.string(),
+      contents: z.string().optional().nullable(),
     })
     .optional()
     .nullable(),
