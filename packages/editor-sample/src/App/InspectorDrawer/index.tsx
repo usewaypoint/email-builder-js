@@ -39,7 +39,9 @@ export default function InspectorDrawer() {
           </Tabs>
         </Box>
       </Box>
-      <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto' }}>{renderCurrentSidebarPanel()}</Box>
+      <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 'calc(100% - 49px)', overflow: 'auto' }}>
+        {renderCurrentSidebarPanel()}
+      </Box>
     </Drawer>
   );
 }

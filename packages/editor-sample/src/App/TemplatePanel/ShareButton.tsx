@@ -11,7 +11,6 @@ export default function ShareButton() {
 
   const onClick = async () => {
     const c = JSON.stringify(document);
-    localStorage.setItem('configuration', c);
     location.hash = `#${btoa(c)}`;
     if (navigator.clipboard) {
       await navigator.clipboard.writeText(location.href.toString());

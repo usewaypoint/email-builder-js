@@ -22,19 +22,16 @@ const RESPOND_TO_MESSAGE: TEditorConfiguration = {
     type: 'Image',
     data: {
       style: {
-        backgroundColor: null,
         padding: {
           top: 8,
           bottom: 24,
           left: 24,
           right: 24,
         },
-        textAlign: null,
       },
       props: {
+        height: 32,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_hW6RusynHUNTKoLm/boop.png',
-        alt: '',
-        linkHref: null,
         contentAlignment: 'middle',
       },
     },

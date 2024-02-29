@@ -32,6 +32,7 @@ const RESET_PASSWORD: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
+        height: 40,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_w9brVHZobEBhsJSK/marketbase.png',
         alt: '',
         linkHref: null,

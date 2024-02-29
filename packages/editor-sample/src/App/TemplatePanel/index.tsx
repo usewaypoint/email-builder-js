@@ -11,6 +11,7 @@ import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelB
 import ToggleSamplesPanelButton from '../SamplesDrawer/ToggleSamplesPanelButton';
 
 import HtmlPanel from './HtmlPanel';
+import JsonPanel from './JsonPanel';
 import ShareButton from './ShareButton';
 
 export default function TemplatePanel() {
@@ -30,11 +31,7 @@ export default function TemplatePanel() {
       case 'html':
         return <HtmlPanel />;
       case 'data':
-        return (
-          <Box p={3}>
-            <pre>{JSON.stringify(document, null, '  ')}</pre>
-          </Box>
-        );
+        return <JsonPanel />;
     }
   };
 
@@ -97,7 +94,7 @@ export default function TemplatePanel() {
 
         <ToggleInspectorPanelButton />
       </Stack>
-      <Box sx={{ height: 'calc(100% - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
+      <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
     </>
   );
 }

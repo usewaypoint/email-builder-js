@@ -36,9 +36,8 @@ const POST_METRICS_REPORT: TEditorConfiguration = {
         textAlign: 'left',
       },
       props: {
+        height: 16,
         url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_n3eLjsf37dcjFaj5/Narrative.png',
-        alt: '',
-        linkHref: null,
         contentAlignment: 'middle',
       },
     },

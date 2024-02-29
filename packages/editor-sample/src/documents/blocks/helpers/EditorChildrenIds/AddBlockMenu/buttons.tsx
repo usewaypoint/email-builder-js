@@ -14,7 +14,6 @@ import {
 } from '@mui/icons-material';
 
 import { TEditorBlock } from '../../../../editor/core';
-import ColumnsContainerPropsSchema from '../../../ColumnsContainer/ColumnsContainerPropsSchema';
 
 type TButtonProps = {
   label: string;
@@ -42,6 +41,10 @@ export const BUTTONS: TButtonProps[] = [
       type: 'Text',
       data: {
         props: { text: 'My new text block' },
+        style: {
+          padding: { top: 16, bottom: 16, left: 24, right: 24 },
+          fontWeight: 'normal',
+        },
       },
     }),
   },
@@ -56,6 +59,7 @@ export const BUTTONS: TButtonProps[] = [
           text: 'Button',
           url: 'https://www.usewaypoint.com',
         },
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
     }),
   },
@@ -71,6 +75,7 @@ export const BUTTONS: TButtonProps[] = [
           contentAlignment: 'middle',
           linkHref: null,
         },
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
     }),
   },
@@ -84,6 +89,7 @@ export const BUTTONS: TButtonProps[] = [
           imageUrl: 'https://ui-avatars.com/api/?size=128',
           shape: 'circle',
         },
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
     }),
   },
@@ -93,9 +99,7 @@ export const BUTTONS: TButtonProps[] = [
     block: () => ({
       type: 'Divider',
       data: {
-        style: {
-          padding: { top: 16, right: 0, bottom: 16, left: 0 },
-        },
+        style: { padding: { top: 16, right: 0, bottom: 16, left: 0 } },
         props: {
           lineColor: '#CCCCCC',
         },
@@ -107,7 +111,7 @@ export const BUTTONS: TButtonProps[] = [
     icon: <Crop32Outlined />,
     block: () => ({
       type: 'Spacer',
-      data: { style: {}, props: {} },
+      data: {},
     }),
   },
   {
@@ -117,6 +121,11 @@ export const BUTTONS: TButtonProps[] = [
       type: 'Html',
       data: {
         props: { contents: 'Hello world' },
+        style: {
+          fontSize: 16,
+          textAlign: null,
+          padding: { top: 16, bottom: 16, left: 24, right: 24 },
+        },
       },
     }),
   },
@@ -125,12 +134,14 @@ export const BUTTONS: TButtonProps[] = [
     icon: <ViewColumnOutlined />,
     block: () => ({
       type: 'ColumnsContainer',
-      data: ColumnsContainerPropsSchema.parse({
+      data: {
         props: {
+          columnsGap: 16,
           columnsCount: 3,
           columns: [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }],
         },
-      }),
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+      },
     }),
   },
   {
@@ -138,7 +149,9 @@ export const BUTTONS: TButtonProps[] = [
     icon: <LibraryAddOutlined />,
     block: () => ({
       type: 'Container',
-      data: {},
+      data: {
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+      },
     }),
   },
 

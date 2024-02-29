@@ -42,12 +42,12 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
         setMouseInside(true);
         ev.stopPropagation();
       }}
-      onMouseLeave={(ev) => {
+      onMouseLeave={() => {
         setMouseInside(false);
-        ev.stopPropagation();
       }}
       onClick={(ev) => {
         setEditorState({
+          inspectorDrawerOpen: true,
           selectedSidebarTab: 'block-configuration',
           selectedBlockId: blockId,
         });

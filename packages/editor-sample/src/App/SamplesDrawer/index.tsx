@@ -4,16 +4,13 @@ import { Box, Button, Drawer, Link, Stack, Typography } from '@mui/material';
 
 import { useSamplesDrawerOpen } from '../../documents/editor/EditorContext';
 
+import SidebarButton from './SidebarButton';
 import logo from './waypoint.svg';
 
 export const SAMPLES_DRAWER_WIDTH = 240;
 
 export default function SamplesDrawer() {
   const samplesDrawerOpen = useSamplesDrawerOpen();
-
-  const select = (val: string) => {
-    window.location.hash = `#sample/${val}`;
-  };
 
   return (
     <Drawer
@@ -35,30 +32,14 @@ export default function SamplesDrawer() {
             EmailBuilder.js
           </Button>
           <Stack alignItems="flex-start">
-            <Button size="small" onClick={() => select('empty')}>
-              Empty
-            </Button>
-            <Button size="small" onClick={() => select('one-time-password')}>
-              One-time passcode (OTP)
-            </Button>
-            <Button size="small" onClick={() => select('reset-password')}>
-              Reset password
-            </Button>
-            <Button size="small" onClick={() => select('order-ecomerce')}>
-              E-commerce receipt
-            </Button>
-            <Button size="small" onClick={() => select('subscription-receipt')}>
-              Subscription receipt
-            </Button>
-            <Button size="small" onClick={() => select('reservation-reminder')}>
-              Reservation reminder
-            </Button>
-            <Button size="small" onClick={() => select('post-metrics-report')}>
-              Post metrics
-            </Button>
-            <Button size="small" onClick={() => select('respond-to-message')}>
-              Respond to message
-            </Button>
+            <SidebarButton href="#">Empty</SidebarButton>
+            <SidebarButton href="#sample/one-time-password">One-time passcode (OTP)</SidebarButton>
+            <SidebarButton href="#sample/reset-password">Reset password</SidebarButton>
+            <SidebarButton href="#sample/order-ecomerce">E-commerce receipt</SidebarButton>
+            <SidebarButton href="#sample/subscription-receipt">Subscription receipt</SidebarButton>
+            <SidebarButton href="#sample/reservation-reminder">Reservation reminder</SidebarButton>
+            <SidebarButton href="#sample/post-metrics-report">Post metrics</SidebarButton>
+            <SidebarButton href="#sample/respond-to-message">Respond to message</SidebarButton>
           </Stack>
         </Stack>
         <Stack spacing={2} px={0.75} py={3}>
