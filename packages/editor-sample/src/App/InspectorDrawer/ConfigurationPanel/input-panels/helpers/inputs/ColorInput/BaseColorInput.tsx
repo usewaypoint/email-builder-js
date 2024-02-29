@@ -20,16 +20,14 @@ type Props =
       label: string;
       onChange: (value: string | null) => void;
       defaultValue: string | null;
-      secondarySwatch: string[];
     }
   | {
       nullable: false;
       label: string;
       onChange: (value: string) => void;
       defaultValue: string;
-      secondarySwatch: string[];
     };
-export default function ColorInput({ label, defaultValue, onChange, secondarySwatch, nullable }: Props) {
+export default function ColorInput({ label, defaultValue, onChange, nullable }: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [value, setValue] = useState(defaultValue);
   const handleClickOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -87,7 +85,6 @@ export default function ColorInput({ label, defaultValue, onChange, secondarySwa
             setValue(v);
             onChange(v);
           }}
-          secondarySwatch={secondarySwatch}
         />
       </Menu>
     </Stack>

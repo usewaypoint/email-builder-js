@@ -77,13 +77,11 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
         label="Text color"
         defaultValue={buttonTextColor}
         onChange={(buttonTextColor) => updateData({ ...data, props: { ...data.props, buttonTextColor } })}
-        secondarySwatch={[]}
       />
       <ColorInput
         label="Button color"
         defaultValue={buttonBackgroundColor}
         onChange={(buttonBackgroundColor) => updateData({ ...data, props: { ...data.props, buttonBackgroundColor } })}
-        secondarySwatch={[]}
       />
       <MultiStylePropertyPanel
         names={['backgroundColor', 'fontFamily', 'fontSize', 'fontWeight', 'textAlign', 'padding']}

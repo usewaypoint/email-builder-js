@@ -33,7 +33,6 @@ export default function DividerSidebarPanel({ data, setData }: DividerSidebarPan
         label="Color"
         defaultValue={lineColor}
         onChange={(lineColor) => updateData({ ...data, props: { ...data.props, lineColor } })}
-        secondarySwatch={[]}
       />
       <SliderInput
         label="Height"

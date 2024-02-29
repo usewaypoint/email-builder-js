@@ -1,7 +1,7 @@
 import React from 'react';
 import { HexColorInput, HexColorPicker } from 'react-colorful';
 
-import { Box, Stack, SxProps, Typography } from '@mui/material';
+import { Box, Stack, SxProps } from '@mui/material';
 
 import Swatch from './Swatch';
 
@@ -63,19 +63,12 @@ const SX: SxProps = {
 type Props = {
   value: string;
   onChange: (v: string) => void;
-  secondarySwatch: string[];
 };
-export default function Picker({ value, onChange, secondarySwatch }: Props) {
+export default function Picker({ value, onChange }: Props) {
   return (
     <Stack spacing={1} sx={SX}>
       <HexColorPicker color={value} onChange={onChange} />
       <Swatch paletteColors={DEFAULT_PRESET_COLORS} value={value} onChange={onChange} />
-      <Box>
-        <Typography variant="overline" sx={{ fontSize: 11, color: 'text.secondary' }}>
-          In template / layout
-        </Typography>
-        <Swatch paletteColors={secondarySwatch} value={value} onChange={onChange} />
-      </Box>
       <Box pt={1}>
         <HexColorInput prefixed color={value} onChange={onChange} />
       </Box>
