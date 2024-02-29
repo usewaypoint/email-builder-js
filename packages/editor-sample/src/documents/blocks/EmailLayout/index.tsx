@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { useDocument, setEditorState } from '../../editor/EditorContext';
+import { setEditorState, useDocument } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
