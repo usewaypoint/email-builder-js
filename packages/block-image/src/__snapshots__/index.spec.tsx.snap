@@ -2,9 +2,7 @@
 
 exports[`block-image renders with default values 1`] = `
 <DocumentFragment>
-  <div
-    style="text-align: center;"
-  >
+  <div>
     <img
       alt=""
       src=""
