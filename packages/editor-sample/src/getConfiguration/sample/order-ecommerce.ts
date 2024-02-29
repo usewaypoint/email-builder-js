@@ -107,25 +107,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_RaSBTPwdN9QB7g2WRDUfDn: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_Ei34o65X5XnD5dexNQgXh8: {
     type: 'ColumnsContainer',
     data: {
@@ -148,7 +129,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_5fuNN9F4uZRTGa4Hy5F4Nd'],
           },
           {
-            childrenIds: ['block_RaSBTPwdN9QB7g2WRDUfDn'],
+            childrenIds: [],
           },
         ],
       },
@@ -678,25 +659,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_XDBPpdogWWkKUea5aEVxBW: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_2QEX1chf5uWU5ZZebf4gmu: {
     type: 'ColumnsContainer',
     data: {
@@ -719,7 +681,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_BgHgpkAxq2qJUttN8pimnE'],
           },
           {
-            childrenIds: ['block_XDBPpdogWWkKUea5aEVxBW'],
+            childrenIds: [],
           },
         ],
       },
@@ -807,25 +769,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_4g5P818eH6oLmfUcE9BaJT: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_Lu666sTP6hqLkHiBThmm4G: {
     type: 'ColumnsContainer',
     data: {
@@ -848,7 +791,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_4WkcuRqzqvTFvHGSBLGAAG'],
           },
           {
-            childrenIds: ['block_4g5P818eH6oLmfUcE9BaJT'],
+            childrenIds: [],
           },
         ],
       },
@@ -936,25 +879,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_WN1hfLUiC4HwsGD3bFhF4a: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_Gn2h8bajFuW8zDBsiVVitV: {
     type: 'ColumnsContainer',
     data: {
@@ -977,7 +901,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_AcDrP2ZMVByFU269wvMgtw'],
           },
           {
-            childrenIds: ['block_WN1hfLUiC4HwsGD3bFhF4a'],
+            childrenIds: [],
           },
         ],
       },
@@ -1065,25 +989,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_LhgMdiSRYUsSBtJTggegRe: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_2xkeWLDtTXj5jFg57KhfYR: {
     type: 'ColumnsContainer',
     data: {
@@ -1106,7 +1011,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_Mi7A4sXfSXaEcjFV17WgSg'],
           },
           {
-            childrenIds: ['block_LhgMdiSRYUsSBtJTggegRe'],
+            childrenIds: [],
           },
         ],
       },
@@ -1212,25 +1117,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_95CFVehcWAjR5DpfJRawF6: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_VvK99ZhLLgmycHQXKVFV7E: {
     type: 'ColumnsContainer',
     data: {
@@ -1253,7 +1139,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_YABuGb9jY34Rywk4H2wmhu'],
           },
           {
-            childrenIds: ['block_95CFVehcWAjR5DpfJRawF6'],
+            childrenIds: [],
           },
         ],
       },
@@ -1285,25 +1171,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_9MPJm4YxQrW5nt7APTB5Vx: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
+
   block_WK3b19BzGE8VNKDwiSZ8s8: {
     type: 'ColumnsContainer',
     data: {
@@ -1326,7 +1194,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_VhteQbJa7bCSmykN4AcHkp'],
           },
           {
-            childrenIds: ['block_9MPJm4YxQrW5nt7APTB5Vx'],
+            childrenIds: [],
           },
         ],
       },
@@ -1480,25 +1348,6 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
       },
     },
   },
-  block_PbayPF5XauTPe54KMAbdri: {
-    type: 'Container',
-    data: {
-      style: {
-        backgroundColor: null,
-        borderColor: null,
-        borderRadius: null,
-        padding: {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        },
-      },
-      props: {
-        childrenIds: [],
-      },
-    },
-  },
   block_SizNWJDCcqw9tGH2ComdDX: {
     type: 'ColumnsContainer',
     data: {
@@ -1521,7 +1370,7 @@ const ORDER_ECOMMERCE: TEditorConfiguration = {
             childrenIds: ['block_KaHi1FBV64emMA3kb7x4vE'],
           },
           {
-            childrenIds: ['block_PbayPF5XauTPe54KMAbdri'],
+            childrenIds: [],
           },
         ],
       },

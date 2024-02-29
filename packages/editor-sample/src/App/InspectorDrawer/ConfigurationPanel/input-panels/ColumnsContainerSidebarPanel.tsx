@@ -47,7 +47,7 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
         <ToggleButton value="3">3</ToggleButton>
       </RadioGroupInput>
       <ColumnWidthsInput
-        defaultValue={null}
+        defaultValue={data.props?.fixedWidths}
         onChange={(fixedWidths) => {
           updateData({ ...data, props: { ...data.props, fixedWidths } });
         }}
