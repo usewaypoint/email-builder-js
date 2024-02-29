@@ -1,7 +1,14 @@
 import React from 'react';
 
-import { CodeOutlined, DataObjectOutlined, EditOutlined, PreviewOutlined } from '@mui/icons-material';
-import { Box, Stack, Tab, Tabs, Tooltip } from '@mui/material';
+import {
+  CodeOutlined,
+  DataObjectOutlined,
+  EditOutlined,
+  MonitorOutlined,
+  PhoneIphoneOutlined,
+  PreviewOutlined,
+} from '@mui/icons-material';
+import { Box, Stack, Tab, Tabs, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
 import { setEditorState, useDocument, useSelectedMainTab } from '../../documents/editor/EditorContext';
@@ -88,8 +95,21 @@ export default function TemplatePanel() {
               }
             />
           </Tabs>
-
-          <ShareButton />
+          <Stack direction="row" spacing={2}>
+            <ToggleButtonGroup value="DESKTOP" exclusive size="small">
+              <ToggleButton value="DESKTOP">
+                <Tooltip title="Desktop view">
+                  <MonitorOutlined fontSize="small" />
+                </Tooltip>
+              </ToggleButton>
+              <ToggleButton value="MOBILE">
+                <Tooltip title="Mobile view">
+                  <PhoneIphoneOutlined fontSize="small" />
+                </Tooltip>
+              </ToggleButton>
+            </ToggleButtonGroup>
+            <ShareButton />
+          </Stack>
         </Stack>
 
         <ToggleInspectorPanelButton />
