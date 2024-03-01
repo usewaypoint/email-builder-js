@@ -8,10 +8,20 @@ import InspectorDrawer, { INSPECTOR_DRAWER_WIDTH } from './InspectorDrawer';
 import SamplesDrawer, { SAMPLES_DRAWER_WIDTH } from './SamplesDrawer';
 import TemplatePanel from './TemplatePanel';
 
+function useDrawerTransition(cssProperty: 'margin-left' | 'margin-right', open: boolean) {
+  const { transitions } = useTheme();
+  return transitions.create(cssProperty, {
+    easing: !open ? transitions.easing.sharp : transitions.easing.easeOut,
+    duration: !open ? transitions.duration.leavingScreen : transitions.duration.enteringScreen,
+  });
+}
+
 export default function App() {
-  const theme = useTheme();
   const inspectorDrawerOpen = useInspectorDrawerOpen();
   const samplesDrawerOpen = useSamplesDrawerOpen();
+
+  const marginLeftTransition = useDrawerTransition('margin-left', samplesDrawerOpen);
+  const marginRightTransition = useDrawerTransition('margin-right', inspectorDrawerOpen);
 
   return (
     <>
@@ -22,20 +32,7 @@ export default function App() {
         sx={{
           marginRight: inspectorDrawerOpen ? `${INSPECTOR_DRAWER_WIDTH}px` : 0,
           marginLeft: samplesDrawerOpen ? `${SAMPLES_DRAWER_WIDTH}px` : 0,
-          transition: [
-            theme.transitions.create('margin-left', {
-              easing: !samplesDrawerOpen ? theme.transitions.easing.sharp : theme.transitions.easing.easeOut,
-              duration: !samplesDrawerOpen
-                ? theme.transitions.duration.leavingScreen
-                : theme.transitions.duration.enteringScreen,
-            }),
-            theme.transitions.create('margin-right', {
-              easing: !inspectorDrawerOpen ? theme.transitions.easing.sharp : theme.transitions.easing.easeOut,
-              duration: !inspectorDrawerOpen
-                ? theme.transitions.duration.leavingScreen
-                : theme.transitions.duration.enteringScreen,
-            }),
-          ].join(', '),
+          transition: [marginLeftTransition, marginRightTransition].join(', '),
         }}
       >
         <TemplatePanel />

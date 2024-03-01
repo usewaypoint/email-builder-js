@@ -53,12 +53,18 @@ export default function TemplatePanel() {
   const renderMainPanel = () => {
     switch (selectedMainTab) {
       case 'editor':
-        return <EditorBlock id="root" />;
+        return (
+          <Box sx={mainBoxSx}>
+            <EditorBlock id="root" />
+          </Box>
+        );
       case 'preview':
         return (
-          <ReaderProvider value={document}>
-            <ReaderBlock id="root" />
-          </ReaderProvider>
+          <Box sx={mainBoxSx}>
+            <ReaderProvider value={document}>
+              <ReaderBlock id="root" />
+            </ReaderProvider>
+          </Box>
         );
       case 'html':
         return <HtmlPanel />;
@@ -105,9 +111,7 @@ export default function TemplatePanel() {
         </Stack>
         <ToggleInspectorPanelButton />
       </Stack>
-      <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>
-        <Box sx={mainBoxSx}>{renderMainPanel()}</Box>
-      </Box>
+      <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
     </>
   );
 }

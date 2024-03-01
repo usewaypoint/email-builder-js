@@ -46,7 +46,7 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
         setMouseInside(false);
       }}
       onClick={(ev) => {
-        setSelectedBlockId(blockId, { inspectorDrawerOpen: true });
+        setSelectedBlockId(blockId);
         ev.stopPropagation();
         ev.preventDefault();
       }}

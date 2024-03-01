@@ -36,7 +36,6 @@ export function EditorContainer({ style, props }: ContainerProps) {
       nChildrenIds = [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
     }
 
-    setSelectedBlockId(id);
     setDocument({
       [id]: blockConfiguration,
       [blockId]: {
@@ -47,6 +46,7 @@ export function EditorContainer({ style, props }: ContainerProps) {
         },
       },
     });
+    setSelectedBlockId(id);
   };
 
   return (

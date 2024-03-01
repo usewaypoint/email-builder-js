@@ -58,7 +58,6 @@ export function EditorColumnsContainer({ style, props }: ColumnsContainerProps) 
       return columnsCopy;
     };
 
-    setSelectedBlockId(id);
     setDocument({
       [id]: blockConfiguration,
       [blockId]: {
@@ -72,6 +71,7 @@ export function EditorColumnsContainer({ style, props }: ColumnsContainerProps) 
         }),
       },
     });
+    setSelectedBlockId(id);
   };
 
   return (
