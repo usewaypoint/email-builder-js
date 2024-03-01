@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { setEditorState, useDocument } from '../../editor/EditorContext';
+import { setDocument, setSelectedBlockId, useDocument } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
@@ -50,30 +50,24 @@ export function EditorEmailLayout(props: EmailLayoutProps) {
       return [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
     };
 
-    setEditorState({
-      selectedBlockId: id,
-      document: {
-        ...document,
-        [id]: blockConfiguration,
-        [blockId]: {
-          type: 'EmailLayout',
-          data: {
-            ...document[blockId].data,
-            childrenIds: getChildrenIds(),
-          },
-        } as TEditorBlock,
-      },
+    setDocument({
+      [id]: blockConfiguration,
+      [blockId]: {
+        type: 'EmailLayout',
+        data: {
+          ...document[blockId].data,
+          childrenIds: getChildrenIds(),
+        },
+      } as TEditorBlock,
     });
+    setSelectedBlockId(id);
   };
 
   return (
     <div
       style={{ height: '100%' }}
       onClick={() => {
-        setEditorState({
-          selectedSidebarTab: 'styles',
-          selectedBlockId: null,
-        });
+        setSelectedBlockId(null);
       }}
     >
       <SharedLayout {...props}>

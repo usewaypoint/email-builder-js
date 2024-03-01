@@ -1,18 +1,11 @@
 import React from 'react';
 
-import {
-  CodeOutlined,
-  DataObjectOutlined,
-  EditOutlined,
-  MonitorOutlined,
-  PhoneIphoneOutlined,
-  PreviewOutlined,
-} from '@mui/icons-material';
-import { Box, Stack, SxProps, Tab, Tabs, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
+import { MonitorOutlined, PhoneIphoneOutlined } from '@mui/icons-material';
+import { Box, Stack, SxProps, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
 import {
-  setEditorState,
+  setSelectedScreenSize,
   useDocument,
   useSelectedMainTab,
   useSelectedScreenSize,
@@ -24,6 +17,7 @@ import ToggleSamplesPanelButton from '../SamplesDrawer/ToggleSamplesPanelButton'
 
 import HtmlPanel from './HtmlPanel';
 import JsonPanel from './JsonPanel';
+import MainTabsGroup from './MainTabsGroup';
 import ShareButton from './ShareButton';
 
 export default function TemplatePanel() {
@@ -46,14 +40,13 @@ export default function TemplatePanel() {
   }
 
   const handleScreenSizeChange = (_: unknown, value: unknown) => {
-    console.log(value);
     switch (value) {
       case 'mobile':
-        setEditorState({ selectedScreenSize: 'mobile' });
-        return;
       case 'desktop':
+        setSelectedScreenSize(value);
+        return;
       default:
-        setEditorState({ selectedScreenSize: 'desktop' });
+        setSelectedScreenSize('desktop');
     }
   };
 
@@ -93,40 +86,7 @@ export default function TemplatePanel() {
       >
         <ToggleSamplesPanelButton />
         <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
-          <Tabs value={selectedMainTab} onChange={(_, v) => setEditorState({ selectedMainTab: v })}>
-            <Tab
-              value="editor"
-              label={
-                <Tooltip title="Edit">
-                  <EditOutlined fontSize="small" />
-                </Tooltip>
-              }
-            />
-            <Tab
-              value="preview"
-              label={
-                <Tooltip title="Preview">
-                  <PreviewOutlined fontSize="small" />
-                </Tooltip>
-              }
-            />
-            <Tab
-              value="html"
-              label={
-                <Tooltip title="HTML output">
-                  <CodeOutlined fontSize="small" />
-                </Tooltip>
-              }
-            />
-            <Tab
-              value="data"
-              label={
-                <Tooltip title="JSON output">
-                  <DataObjectOutlined fontSize="small" />
-                </Tooltip>
-              }
-            />
-          </Tabs>
+          <MainTabsGroup />
           <Stack direction="row" spacing={2}>
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
@@ -143,7 +103,6 @@ export default function TemplatePanel() {
             <ShareButton />
           </Stack>
         </Stack>
-
         <ToggleInspectorPanelButton />
       </Stack>
       <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>

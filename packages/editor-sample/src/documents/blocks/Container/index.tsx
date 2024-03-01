@@ -4,7 +4,7 @@ import { Container as BaseContainer } from '@usewaypoint/block-container';
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { setEditorState, useDocument } from '../../editor/EditorContext';
+import { setDocument, setSelectedBlockId, useDocument } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
@@ -36,17 +36,14 @@ export function EditorContainer({ style, props }: ContainerProps) {
       nChildrenIds = [...childrenIds.slice(0, i), id, ...childrenIds.slice(i)];
     }
 
-    setEditorState({
-      selectedBlockId: id,
-      document: {
-        ...document,
-        [id]: blockConfiguration,
-        [blockId]: {
-          type: 'Container',
-          data: {
-            ...document[blockId].data,
-            props: { childrenIds: nChildrenIds },
-          },
+    setSelectedBlockId(id);
+    setDocument({
+      [id]: blockConfiguration,
+      [blockId]: {
+        type: 'Container',
+        data: {
+          ...document[blockId].data,
+          props: { childrenIds: nChildrenIds },
         },
       },
     });

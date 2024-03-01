@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Drawer, Tab, Tabs } from '@mui/material';
 
-import { setEditorState, useInspectorDrawerOpen, useSelectedSidebarTab } from '../../documents/editor/EditorContext';
+import { setSidebarTab, useInspectorDrawerOpen, useSelectedSidebarTab } from '../../documents/editor/EditorContext';
 
 import ConfigurationPanel from './ConfigurationPanel';
 import StylesPanel from './StylesPanel';
@@ -33,7 +33,7 @@ export default function InspectorDrawer() {
     >
       <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 49, borderBottom: 1, borderColor: 'divider' }}>
         <Box px={2}>
-          <Tabs value={selectedSidebarTab} onChange={(_, v) => setEditorState({ selectedSidebarTab: v })}>
+          <Tabs value={selectedSidebarTab} onChange={(_, v) => setSidebarTab(v)}>
             <Tab value="styles" label="Styles" />
             <Tab value="block-configuration" label="Inspect" />
           </Tabs>

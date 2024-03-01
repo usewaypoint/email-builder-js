@@ -3,7 +3,7 @@ import React, { CSSProperties, useState } from 'react';
 import { Box } from '@mui/material';
 
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
-import { setEditorState, useSelectedBlockId } from '../../../editor/EditorContext';
+import { setSelectedBlockId, useSelectedBlockId } from '../../../editor/EditorContext';
 
 import TuneMenu from './TuneMenu';
 
@@ -46,11 +46,7 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
         setMouseInside(false);
       }}
       onClick={(ev) => {
-        setEditorState({
-          inspectorDrawerOpen: true,
-          selectedSidebarTab: 'block-configuration',
-          selectedBlockId: blockId,
-        });
+        setSelectedBlockId(blockId, { inspectorDrawerOpen: true });
         ev.stopPropagation();
         ev.preventDefault();
       }}
