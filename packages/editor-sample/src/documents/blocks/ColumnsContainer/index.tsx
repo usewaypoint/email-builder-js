@@ -4,7 +4,7 @@ import { ColumnsContainer as BaseColumnsContainer } from '@usewaypoint/block-col
 
 import { TEditorBlock } from '../../editor/core';
 import { useCurrentBlockId } from '../../editor/EditorBlock';
-import { setEditorState, useDocument } from '../../editor/EditorContext';
+import { setDocument, setSelectedBlockId } from '../../editor/EditorContext';
 import ReaderBlock from '../../reader/ReaderBlock';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
@@ -23,7 +23,6 @@ export function ColumnsContainer({ style, props }: ColumnsContainerProps) {
 const EMPTY_COLUMNS = [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }];
 
 export function EditorColumnsContainer({ style, props }: ColumnsContainerProps) {
-  const document = useDocument();
   const blockId = useCurrentBlockId();
 
   const { columns, ...restProps } = props ?? {};
@@ -59,21 +58,18 @@ export function EditorColumnsContainer({ style, props }: ColumnsContainerProps) 
       return columnsCopy;
     };
 
-    setEditorState({
-      selectedBlockId: id,
-      document: {
-        ...document,
-        [id]: blockConfiguration,
-        [blockId]: {
-          type: 'ColumnsContainer',
-          data: ColumnsContainerPropsSchema.parse({
-            style,
-            props: {
-              ...restProps,
-              columns: getColumns(),
-            },
-          }),
-        },
+    setSelectedBlockId(id);
+    setDocument({
+      [id]: blockConfiguration,
+      [blockId]: {
+        type: 'ColumnsContainer',
+        data: ColumnsContainerPropsSchema.parse({
+          style,
+          props: {
+            ...restProps,
+            columns: getColumns(),
+          },
+        }),
       },
     });
   };

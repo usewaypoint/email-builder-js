@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 import { TEditorBlock } from '../../../documents/editor/core';
-import { setEditorState, useDocument, useSelectedBlockId } from '../../../documents/editor/EditorContext';
+import { setDocument, useDocument, useSelectedBlockId } from '../../../documents/editor/EditorContext';
 
 import AvatarSidebarPanel from './input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './input-panels/ButtonSidebarPanel';
@@ -37,10 +37,7 @@ export default function ConfigurationPanel() {
     return renderMessage(`Block with id ${selectedBlockId} was not found. Click on a block to reset.`);
   }
 
-  const setBlock = (conf: TEditorBlock) =>
-    setEditorState({
-      document: { ...document, [selectedBlockId]: conf },
-    });
+  const setBlock = (conf: TEditorBlock) => setDocument({ [selectedBlockId]: conf });
   const { data, type } = block;
   switch (type) {
     case 'Avatar':
