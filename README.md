@@ -11,9 +11,9 @@
 
 EmailBuilder.js is a free and open-source email template builder for developers. Build emails faster than ever with clean JSON or HTML output that render well across clients and devices. Self-host or [use our playground](https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder) to get started building emails.
 
-![Image of builder](https://github.com/usewaypoint/email-builder-js/assets/5899/51fc3dad-f608-4459-add4-6bb118c04432)
+![Image of builder](images/builder.png)
 
-![Image of designer](https://github.com/usewaypoint/email-builder-js/assets/5899/c6aaf754-c1a7-4c68-ac57-90ef3490bd04)
+![Image of designer](images/designer.png)
 
 Brought to you by the [Waypoint](https://usewaypoint.com/) team.
 
@@ -23,7 +23,7 @@ Brought to you by the [Waypoint](https://usewaypoint.com/) team.
 
 The builder is flexible enough to handle a wide variety of template designs – From simple welcome emails to complex reports.
 
-![Image of example templates](https://github.com/usewaypoint/email-builder-js/assets/5899/9700bab5-f893-4c39-aede-39cd88ff680e)
+![Image of example templates](images/template.png)
 
 Sample templates available in the playground:
 
@@ -66,13 +66,13 @@ Each block is it's own npm package that can be included in the builder. These ar
 
 All blocks are [tested and supported](https://www.usewaypoint.com/docs/email-client-support) by modern email clients (on both desktop and mobile) including: Gmail, Apple Mail, Outlook, Yahoo! Mail, HEY and Superhuman.
 
-![Image of mobile rendering](https://github.com/usewaypoint/email-builder-js/assets/5899/db2b768e-ef17-49ca-9a21-a4d971621cf2)
+![Image of mobile rendering](images/mobile.png)
 
 ## Output and sending emails
 
 From the builder, a clean JSON or raw HTML is available for download.
 
-![Image of JSON in builder](https://github.com/usewaypoint/email-builder-js/assets/5899/c9688492-ec32-498d-832e-ba2f31411ce7)
+![Image of JSON in builder](images/json_output.png)
 
 <br>
 
