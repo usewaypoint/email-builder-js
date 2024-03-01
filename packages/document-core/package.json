@@ -1,6 +1,6 @@
 {
   "name": "@usewaypoint/document-core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tools to render waypoint-style documents (core package)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

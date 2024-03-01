@@ -8,7 +8,11 @@ import { Html, HtmlPropsSchema } from '@usewaypoint/block-html';
 import { Image, ImagePropsSchema } from '@usewaypoint/block-image';
 import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 import { Text, TextPropsSchema } from '@usewaypoint/block-text';
-import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
+import {
+  buildBlockComponent,
+  buildBlockConfigurationDictionary,
+  buildBlockConfigurationSchema,
+} from '@usewaypoint/document-core';
 
 import { ColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
@@ -17,7 +21,7 @@ import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
 import { EmailLayout } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 
-const READER_DICTIONARY = {
+const READER_DICTIONARY = buildBlockConfigurationDictionary({
   Avatar: {
     schema: AvatarPropsSchema,
     Component: Avatar,
@@ -62,7 +66,7 @@ const READER_DICTIONARY = {
     schema: SpacerPropsSchema,
     Component: Spacer,
   },
-};
+});
 
 const ReaderBlockSchema = buildBlockConfigurationSchema(READER_DICTIONARY);
 const ReaderDocumentSchema = z.record(z.string(), ReaderBlockSchema);
