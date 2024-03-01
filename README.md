@@ -1,14 +1,11 @@
 <div align="center">
-
-  # EmailBuilder.js
-  
+  <h1>EmailBuilder.js</h1>
   <p align="center">
     <a href="https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder">Demo / Playground</a>&emsp;&middot;&emsp;
     <a href="https://www.usewaypoint.com/open-source/emailbuilderjs?utm_source=emailbuilderjs-github">Website</a>&emsp;&middot;&emsp;
     <a href="https://github.com/usewaypoint/email-builder-js">GitHub</a>
   </p>
 </div>
-
 
 ## Introduction
 
@@ -17,7 +14,6 @@ EmailBuilder.js is a free and open-source email template builder for developers.
 ![Image of builder](https://github.com/usewaypoint/email-builder-js/assets/5899/51fc3dad-f608-4459-add4-6bb118c04432)
 
 ![Image of designer](https://github.com/usewaypoint/email-builder-js/assets/5899/c6aaf754-c1a7-4c68-ac57-90ef3490bd04)
-
 
 Brought to you by the [Waypoint](https://usewaypoint.com/) team.
 
@@ -71,7 +67,6 @@ Each block is it's own npm package that can be included in the builder. These ar
 All blocks are [tested and supported](https://www.usewaypoint.com/docs/email-client-support) by modern email clients (on both desktop and mobile) including: Gmail, Apple Mail, Outlook, Yahoo! Mail, HEY and Superhuman.
 
 ![Image of mobile rendering](https://github.com/usewaypoint/email-builder-js/assets/5899/db2b768e-ef17-49ca-9a21-a4d971621cf2)
-
 
 ## Output and sending emails
 
