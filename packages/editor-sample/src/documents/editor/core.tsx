@@ -1,30 +1,32 @@
 import React from 'react';
 import { z } from 'zod';
 
-import { Avatar, AvatarProps, AvatarPropsSchema } from '@usewaypoint/block-avatar';
-import { Button, ButtonProps, ButtonPropsSchema } from '@usewaypoint/block-button';
-import { Divider, DividerProps, DividerPropsSchema } from '@usewaypoint/block-divider';
-import { Heading, HeadingProps, HeadingPropsSchema } from '@usewaypoint/block-heading';
-import { Html, HtmlProps, HtmlPropsSchema } from '@usewaypoint/block-html';
-import { Image, ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
-import { Spacer, SpacerProps, SpacerPropsSchema } from '@usewaypoint/block-spacer';
-import { Text, TextProps, TextPropsSchema } from '@usewaypoint/block-text';
-import { buildBlockComponent, buildBlockConfigurationSchema } from '@usewaypoint/document-core';
+import { Avatar, AvatarPropsSchema } from '@usewaypoint/block-avatar';
+import { Button, ButtonPropsSchema } from '@usewaypoint/block-button';
+import { Divider, DividerPropsSchema } from '@usewaypoint/block-divider';
+import { Heading, HeadingPropsSchema } from '@usewaypoint/block-heading';
+import { Html, HtmlPropsSchema } from '@usewaypoint/block-html';
+import { Image, ImagePropsSchema } from '@usewaypoint/block-image';
+import { Spacer, SpacerPropsSchema } from '@usewaypoint/block-spacer';
+import { Text, TextPropsSchema } from '@usewaypoint/block-text';
+import {
+  buildBlockComponent,
+  buildBlockConfigurationDictionary,
+  buildBlockConfigurationSchema,
+} from '@usewaypoint/document-core';
 
 import { EditorColumnsContainer } from '../blocks/ColumnsContainer';
-import ColumnsContainerPropsSchema, {
-  ColumnsContainerProps,
-} from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
+import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
 import { EditorContainer } from '../blocks/Container';
-import { ContainerProps, ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
-import { EditorEmailLayout, EmailLayoutProps } from '../blocks/EmailLayout';
+import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
+import { EditorEmailLayout } from '../blocks/EmailLayout';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
 
-const EDITOR_DICTIONARY = {
+const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Avatar: {
     schema: AvatarPropsSchema,
-    Component: (props: AvatarProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Avatar {...props} />
       </EditorBlockWrapper>
@@ -32,7 +34,7 @@ const EDITOR_DICTIONARY = {
   },
   Button: {
     schema: ButtonPropsSchema,
-    Component: (props: ButtonProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Button {...props} />
       </EditorBlockWrapper>
@@ -40,7 +42,7 @@ const EDITOR_DICTIONARY = {
   },
   Container: {
     schema: ContainerPropsSchema,
-    Component: (props: ContainerProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <EditorContainer {...props} />
       </EditorBlockWrapper>
@@ -48,7 +50,7 @@ const EDITOR_DICTIONARY = {
   },
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema,
-    Component: (props: ColumnsContainerProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <EditorColumnsContainer {...props} />
       </EditorBlockWrapper>
@@ -56,7 +58,7 @@ const EDITOR_DICTIONARY = {
   },
   Heading: {
     schema: HeadingPropsSchema,
-    Component: (props: HeadingProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Heading {...props} />
       </EditorBlockWrapper>
@@ -64,7 +66,7 @@ const EDITOR_DICTIONARY = {
   },
   Html: {
     schema: HtmlPropsSchema,
-    Component: (props: HtmlProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Html {...props} />
       </EditorBlockWrapper>
@@ -72,7 +74,7 @@ const EDITOR_DICTIONARY = {
   },
   Image: {
     schema: ImagePropsSchema,
-    Component: (data: ImageProps) => {
+    Component: (data) => {
       const props = {
         ...data,
         props: {
@@ -89,7 +91,7 @@ const EDITOR_DICTIONARY = {
   },
   Text: {
     schema: TextPropsSchema,
-    Component: (props: TextProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Text {...props} />
       </EditorBlockWrapper>
@@ -97,7 +99,7 @@ const EDITOR_DICTIONARY = {
   },
   EmailLayout: {
     schema: EmailLayoutPropsSchema,
-    Component: (p: EmailLayoutProps) => (
+    Component: (p) => (
       <div style={{ height: '100%' }}>
         <EditorEmailLayout {...p} />
       </div>
@@ -105,7 +107,7 @@ const EDITOR_DICTIONARY = {
   },
   Spacer: {
     schema: SpacerPropsSchema,
-    Component: (props: SpacerProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Spacer {...props} />
       </EditorBlockWrapper>
@@ -113,13 +115,13 @@ const EDITOR_DICTIONARY = {
   },
   Divider: {
     schema: DividerPropsSchema,
-    Component: (props: DividerProps) => (
+    Component: (props) => (
       <EditorBlockWrapper>
         <Divider {...props} />
       </EditorBlockWrapper>
     ),
   },
-};
+});
 
 export const EditorBlock = buildBlockComponent(EDITOR_DICTIONARY);
 export const EditorBlockSchema = buildBlockConfigurationSchema(EDITOR_DICTIONARY);
