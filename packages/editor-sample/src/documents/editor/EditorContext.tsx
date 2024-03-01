@@ -59,12 +59,17 @@ export function useSamplesDrawerOpen() {
   return editorStateStore((s) => s.samplesDrawerOpen);
 }
 
-type SetSelectedBlockIdOptions = {
-  inspectorDrawerOpen: boolean;
-};
-export function setSelectedBlockId(selectedBlockId: TValue['selectedBlockId'], options?: SetSelectedBlockIdOptions) {
+export function setSelectedBlockId(selectedBlockId: TValue['selectedBlockId']) {
   const selectedSidebarTab = selectedBlockId === null ? 'styles' : 'block-configuration';
-  return editorStateStore.setState({ selectedBlockId, selectedSidebarTab, ...options });
+  const options: Partial<TValue> = {};
+  if (selectedBlockId !== null) {
+    options.inspectorDrawerOpen = true;
+  }
+  return editorStateStore.setState({
+    selectedBlockId,
+    selectedSidebarTab,
+    ...options,
+  });
 }
 
 export function setSidebarTab(selectedSidebarTab: TValue['selectedSidebarTab']) {
