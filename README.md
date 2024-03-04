@@ -78,15 +78,35 @@ From the builder, a clean JSON or raw HTML is available for download.
 
 ## Using EmailBuilder.js
 
-Coming soon
+Install the package in your project
 
-<br>
+```bash
+npm install --save @usewaypoint/email-builder
+```
 
-## Self-host install
+Given an EmailBuilder configuration
 
-Coming soon
+```javascript
+const CONFIGURATION = {
+  // ...
+};
+```
 
-<br>
+Rendering your HTML email into a string
+
+```javascript
+import { renderHtmlDocument } from '@usewaypoint/email-builder';
+
+const string = renderHtmlDocument(CONFIGURATION, 'root');
+```
+
+Rendering your email as a React component
+
+```javascript
+import { Reader } from '@usewaypoint/email-builder';
+
+<Reader document={CONFIGURATION} rootBlockId="root" />;
+```
 
 ## Brought to you by the Waypoint team
 

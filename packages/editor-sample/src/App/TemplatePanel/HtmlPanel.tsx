@@ -5,17 +5,15 @@ import Reader from '@usewaypoint/email-builder/dist/Reader/core';
 
 import { useDocument } from '../../documents/editor/EditorContext';
 
-import TextEditorPanel from './helper/TextEditorPanel';
+import HighlightedCodePanel from './helper/HighlightedCodePanel';
 
 export default function HtmlPanel() {
   const document = useDocument();
-
-  const string = useMemo(() => {
+  const code = useMemo(() => {
     return (
       '<!DOCTYPE html>' +
       renderToStaticMarkup(
         <html>
-          <head></head>
           <body>
             <Reader document={document} rootBlockId="root" />
           </body>
@@ -24,5 +22,5 @@ export default function HtmlPanel() {
     );
   }, [document]);
 
-  return <TextEditorPanel type="html" value={string} />;
+  return <HighlightedCodePanel type="html" value={code} />;
 }
