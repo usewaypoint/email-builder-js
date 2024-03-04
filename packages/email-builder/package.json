@@ -1,0 +1,33 @@
+{
+  "name": "@usewaypoint/email-builder",
+  "version": "0.0.2",
+  "description": "React component to render email messages",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "target": "ES2022",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "author": "carlos@usewaypoint.com",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "zod": "^1 || ^2 || ^3"
+  },
+  "dependencies": {
+    "@usewaypoint/block-avatar": "^0.0.1",
+    "@usewaypoint/block-button": "^0.0.2",
+    "@usewaypoint/block-columns-container": "^0.0.2",
+    "@usewaypoint/block-container": "^0.0.1",
+    "@usewaypoint/block-divider": "^0.0.3",
+    "@usewaypoint/block-heading": "^0.0.2",
+    "@usewaypoint/block-html": "^0.0.2",
+    "@usewaypoint/block-image": "^0.0.4",
+    "@usewaypoint/block-spacer": "^0.0.2",
+    "@usewaypoint/block-text": "^0.0.2",
+    "@usewaypoint/document-core": "^0.0.4"
+  }
+}
