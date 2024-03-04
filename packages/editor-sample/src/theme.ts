@@ -12,16 +12,6 @@ const STANDARD_FONT_FAMILY =
 const MONOSPACE_FONT_FAMILY =
   'ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace';
 
-const CUSTOM_COLORS = {
-  marketbaseNavy: BRAND_NAVY,
-  marketbaseBlue: BRAND_BLUE,
-  marketbaseGreen: BRAND_GREEN,
-  marketbaseRed: BRAND_RED,
-  marketbaseYellow: BRAND_YELLOW,
-  marketbasePurple: BRAND_PURPLE,
-  marketbaseBrown: BRAND_BROWN,
-};
-
 const BASE_THEME = createTheme({
   palette: {
     background: {
@@ -40,23 +30,23 @@ const BASE_THEME = createTheme({
 const THEME = createTheme(BASE_THEME, {
   palette: {
     brand: {
-      navy: CUSTOM_COLORS.marketbaseNavy,
-      blue: CUSTOM_COLORS.marketbaseBlue,
-      red: CUSTOM_COLORS.marketbaseRed,
-      green: CUSTOM_COLORS.marketbaseGreen,
-      yellow: CUSTOM_COLORS.marketbaseYellow,
-      purple: CUSTOM_COLORS.marketbasePurple,
-      brown: CUSTOM_COLORS.marketbaseBrown,
+      navy: BRAND_NAVY,
+      blue: BRAND_BLUE,
+      red: BRAND_RED,
+      green: BRAND_GREEN,
+      yellow: BRAND_YELLOW,
+      purple: BRAND_PURPLE,
+      brown: BRAND_BROWN,
     },
     success: {
-      main: CUSTOM_COLORS.marketbaseGreen,
-      light: lighten(CUSTOM_COLORS.marketbaseGreen, 0.15),
-      dark: darken(CUSTOM_COLORS.marketbaseGreen, 0.15),
+      main: BRAND_GREEN,
+      light: lighten(BRAND_GREEN, 0.15),
+      dark: darken(BRAND_GREEN, 0.15),
     },
     error: {
-      main: CUSTOM_COLORS.marketbaseRed,
-      light: lighten(CUSTOM_COLORS.marketbaseRed, 0.15),
-      dark: darken(CUSTOM_COLORS.marketbaseRed, 0.15),
+      main: BRAND_RED,
+      light: lighten(BRAND_RED, 0.15),
+      dark: darken(BRAND_RED, 0.15),
     },
     cadet: {
       100: '#F9FAFB',
@@ -66,17 +56,17 @@ const THEME = createTheme(BASE_THEME, {
       500: '#6A8BA4',
     },
     highlight: {
-      100: lighten(CUSTOM_COLORS.marketbaseYellow, 0.8),
-      200: lighten(CUSTOM_COLORS.marketbaseYellow, 0.6),
-      300: lighten(CUSTOM_COLORS.marketbaseYellow, 0.4),
-      400: lighten(CUSTOM_COLORS.marketbaseYellow, 0.2),
-      500: CUSTOM_COLORS.marketbaseYellow,
+      100: lighten(BRAND_YELLOW, 0.8),
+      200: lighten(BRAND_YELLOW, 0.6),
+      300: lighten(BRAND_YELLOW, 0.4),
+      400: lighten(BRAND_YELLOW, 0.2),
+      500: BRAND_YELLOW,
     },
     info: {
-      main: CUSTOM_COLORS.marketbaseBlue,
+      main: BRAND_BLUE,
     },
     primary: {
-      main: CUSTOM_COLORS.marketbaseBlue,
+      main: BRAND_BLUE,
     },
   },
   components: {
@@ -106,7 +96,7 @@ const THEME = createTheme(BASE_THEME, {
           marginRight: 0,
         },
         filledSuccess: {
-          backgroundColor: CUSTOM_COLORS.marketbaseGreen,
+          backgroundColor: BRAND_GREEN,
         },
       },
     },
@@ -206,96 +196,10 @@ const THEME = createTheme(BASE_THEME, {
         },
       },
     },
-    MuiDataGrid: {
-      styleOverrides: {
-        root: {
-          fontSize: BASE_THEME.typography.pxToRem(14),
-          border: 'none',
-          '& .MuiDataGrid-cell:focus-within': {
-            outline: 'none !important',
-          },
-        },
-        iconSeparator: {
-          display: 'none',
-        },
-        columnHeader: {
-          outline: 'none !important',
-          padding: BASE_THEME.spacing(0, 2),
-          color: BASE_THEME.palette.text.secondary,
-          ...BASE_THEME.typography.overline,
-          letterSpacing: '0.05em',
-          fontWeight: BASE_THEME.typography.fontWeightMedium,
-        },
-        cell: {
-          padding: BASE_THEME.spacing(0, 2),
-          '& .MuiChip-root': {
-            cursor: 'pointer',
-          },
-        },
-        row: {
-          '&:hover': {
-            backgroundColor: '#F9FAFB',
-          },
-        },
-        withBorder: {
-          borderRight: 'none',
-        },
-        toolbarContainer: {
-          padding: BASE_THEME.spacing(0, 1),
-          minHeight: BASE_THEME.spacing(5),
-          '& .MuiTablePagination-toolbar': {
-            paddingRight: 0,
-            minHeight: 0,
-          },
-          '& .MuiTablePagination-displayedRows': {
-            margin: 0,
-            [BASE_THEME.breakpoints.only('xs')]: {
-              display: 'none',
-            },
-          },
-        },
-      },
-    },
     MuiDrawer: {
       defaultProps: {
         PaperProps: {
           elevation: 2,
-        },
-      },
-    },
-    MuiToolbar: {
-      defaultProps: {
-        variant: 'dense',
-      },
-    },
-    MuiAppBar: {
-      defaultProps: {
-        elevation: 2,
-      },
-      styleOverrides: {
-        root: {
-          backgroundColor: BASE_THEME.palette.background.paper,
-          '& .MuiButton-root': {
-            height: 36,
-          },
-        },
-        colorPrimary: {
-          backgroundColor: CUSTOM_COLORS.marketbaseNavy,
-          transition: 'color 0.5s',
-          '& .MuiDivider-root': {
-            borderColor: alpha(BASE_THEME.palette.common.white, 0.12),
-          },
-          '& button.MuiButton-textSecondary': {
-            color: alpha(BASE_THEME.palette.common.white, 0.5),
-          },
-          '& button.MuiButton-textPrimary': {
-            color: BASE_THEME.palette.common.white,
-          },
-          '& button.MuiButton-textPrimary:hover, & button.MuiButton-textSecondary:hover, & button.MuiButton-textInherit:hover, & button.MuiIconButton-root:hover':
-            {
-              color: BASE_THEME.palette.common.white,
-              backgroundColor: alpha(BASE_THEME.palette.common.white, 0.1),
-            },
         },
       },
     },
@@ -331,7 +235,7 @@ const THEME = createTheme(BASE_THEME, {
           width: 16,
           cursor: 'col-resize',
           '&:hover, &.Mui-active, &.Mui-focusVisible': {
-            boxShadow: `0 0 0 4px ${alpha(CUSTOM_COLORS.marketbaseBlue, 0.2)}`,
+            boxShadow: `0 0 0 4px ${alpha(BRAND_BLUE, 0.2)}`,
           },
           '&:before': {
             display: 'none',
@@ -345,29 +249,6 @@ const THEME = createTheme(BASE_THEME, {
         square: true,
       },
     },
-    MuiList: {
-      defaultProps: {
-        dense: true,
-      },
-    },
-    MuiSwitch: {
-      styleOverrides: {
-        thumb: {
-          boxShadow: BASE_THEME.shadows[2],
-        },
-      },
-    },
-    MuiListSubheader: {
-      styleOverrides: {
-        root: {
-          backgroundColor: 'transparent',
-          textTransform: 'uppercase',
-          letterSpacing: '0.08rem',
-          fontSize: BASE_THEME.typography.pxToRem(12),
-          lineHeight: '32px',
-        },
-      },
-    },
     MuiButtonBase: {
       defaultProps: {
         disableTouchRipple: true,
@@ -378,23 +259,6 @@ const THEME = createTheme(BASE_THEME, {
           '&.MuiButton-containedSecondary.Mui-disabled': {
             backgroundColor: BASE_THEME.palette.grey[100],
           },
-        },
-      },
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          fontSize: BASE_THEME.typography.pxToRem(14),
-        },
-      },
-    },
-    MuiListItemText: {
-      defaultProps: {
-        disableTypography: true,
-      },
-      styleOverrides: {
-        root: {
-          fontSize: BASE_THEME.typography.pxToRem(14),
         },
       },
     },
@@ -449,27 +313,6 @@ const THEME = createTheme(BASE_THEME, {
         root: {
           paddingLeft: BASE_THEME.spacing(1.5),
           paddingRight: BASE_THEME.spacing(1.5),
-        },
-      },
-    },
-    MuiLink: {
-      defaultProps: {
-        underline: 'none',
-      },
-    },
-    MuiFormLabel: {
-      styleOverrides: {
-        root: {
-          fontSize: BASE_THEME.typography.pxToRem(14),
-        },
-      },
-    },
-    MuiFormHelperText: {
-      styleOverrides: {
-        root: {
-          '&.Mui-disabled': {
-            color: BASE_THEME.palette.text.secondary,
-          },
         },
       },
     },
@@ -552,28 +395,6 @@ const THEME = createTheme(BASE_THEME, {
         },
       },
     },
-    MuiTimelineConnector: {
-      styleOverrides: {
-        root: {
-          width: 1,
-        },
-      },
-    },
-    MuiTimelineDot: {
-      styleOverrides: {
-        root: {
-          borderWidth: 1,
-        },
-      },
-    },
-    MuiTimelineContent: {
-      styleOverrides: {
-        root: {
-          paddingTop: 0,
-          paddingBottom: 0,
-        },
-      },
-    },
     MuiTabs: {
       defaultProps: {
         variant: 'scrollable',
@@ -618,23 +439,6 @@ const THEME = createTheme(BASE_THEME, {
         title: {
           fontSize: BASE_THEME.typography.pxToRem(18),
           fontWeight: BASE_THEME.typography.fontWeightMedium,
-        },
-      },
-    },
-    MuiCircularProgress: {
-      defaultProps: {
-        disableShrink: true,
-      },
-      styleOverrides: {
-        root: {
-          animationDuration: '700ms',
-        },
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        gutterBottom: {
-          marginBottom: BASE_THEME.spacing(1),
         },
       },
     },
@@ -708,27 +512,8 @@ const THEME = createTheme(BASE_THEME, {
     '0px 4px 15px rgba(33, 36, 67, 0.04), 0px 0px 2px rgba(33, 36, 67, 0.04), 0px 0px 1px rgba(33, 36, 67, 0.04)',
     '0px 10px 20px rgba(33, 36, 67, 0.04), 0px 2px 6px rgba(33, 36, 67, 0.04), 0px 0px 1px rgba(33, 36, 67, 0.04)',
     '0px 16px 24px rgba(33, 36, 67, 0.05), 0px 2px 6px rgba(33, 36, 67, 0.05), 0px 0px 1px rgba(33, 36, 67, 0.05)',
-    '0px 24px 32px rgba(33, 36, 67, 0.06), 0px 16px 24px rgba(33, 36, 67, 0.06), 0px 4px 8px rgba(33, 36, 67, 0.06), 0px 0px 1px rgba(33, 36, 67, 0.06)',
-    '0px 3px 5px -1px rgba(58, 53, 65, 0.2), 0px 5px 8px 0px rgba(58, 53, 65, 0.14), 0px 1px 14px 0px rgba(58, 53, 65, 0.12)',
-    '0px 2px 10px 0px rgba(58, 53, 65, 0.1)',
-    '0px 4px 5px -2px rgba(58, 53, 65, 0.2), 0px 7px 10px 1px rgba(58, 53, 65, 0.14), 0px 2px 16px 1px rgba(58, 53, 65, 0.12)',
-    '0px 5px 5px -3px rgba(58, 53, 65, 0.2), 0px 8px 10px 1px rgba(58, 53, 65, 0.14), 0px 3px 14px 2px rgba(58, 53, 65, 0.12)',
-    '0px 5px 6px -3px rgba(58, 53, 65, 0.2), 0px 9px 12px 1px rgba(58, 53, 65, 0.14), 0px 3px 16px 2px rgba(58, 53, 65, 0.12)',
-    '0px 6px 6px -3px rgba(58, 53, 65, 0.2), 0px 10px 14px 1px rgba(58, 53, 65, 0.14), 0px 4px 18px 3px rgba(58, 53, 65, 0.12)',
-    '0px 6px 7px -4px rgba(58, 53, 65, 0.2), 0px 11px 15px 1px rgba(58, 53, 65, 0.14), 0px 4px 20px 3px rgba(58, 53, 65, 0.12)',
-    '0px 7px 8px -4px rgba(58, 53, 65, 0.2), 0px 12px 17px 2px rgba(58, 53, 65, 0.14), 0px 5px 22px 4px rgba(58, 53, 65, 0.12)',
-    '0px 7px 8px -4px rgba(58, 53, 65, 0.2), 0px 13px 19px 2px rgba(58, 53, 65, 0.14), 0px 5px 24px 4px rgba(58, 53, 65, 0.12)',
-    '0px 7px 9px -4px rgba(58, 53, 65, 0.2), 0px 14px 21px 2px rgba(58, 53, 65, 0.14), 0px 5px 26px 4px rgba(58, 53, 65, 0.12)',
-    '0px 8px 9px -5px rgba(58, 53, 65, 0.2), 0px 15px 22px 2px rgba(58, 53, 65, 0.14), 0px 6px 28px 5px rgba(58, 53, 65, 0.12)',
-    '0px 8px 10px -5px rgba(58, 53, 65, 0.2), 0px 16px 24px 2px rgba(58, 53, 65, 0.14), 0px 6px 30px 5px rgba(58, 53, 65, 0.12)',
-    '0px 8px 11px -5px rgba(58, 53, 65, 0.2), 0px 17px 26px 2px rgba(58, 53, 65, 0.14), 0px 6px 32px 5px rgba(58, 53, 65, 0.12)',
-    '0px 9px 11px -5px rgba(58, 53, 65, 0.2), 0px 18px 28px 2px rgba(58, 53, 65, 0.14), 0px 7px 34px 6px rgba(58, 53, 65, 0.12)',
-    '0px 9px 12px -6px rgba(58, 53, 65, 0.2), 0px 19px 29px 2px rgba(58, 53, 65, 0.14), 0px 7px 36px 6px rgba(58, 53, 65, 0.12)',
-    '0px 10px 13px -6px rgba(58, 53, 65, 0.2), 0px 20px 31px 3px rgba(58, 53, 65, 0.14), 0px 8px 38px 7px rgba(58, 53, 65, 0.12)',
-    '0px 10px 13px -6px rgba(58, 53, 65, 0.2), 0px 21px 33px 3px rgba(58, 53, 65, 0.14), 0px 8px 40px 7px rgba(58, 53, 65, 0.12)',
-    '0px 10px 14px -6px rgba(58, 53, 65, 0.2), 0px 22px 35px 3px rgba(58, 53, 65, 0.14), 0px 8px 42px 7px rgba(58, 53, 65, 0.12)',
-    '0px 11px 14px -7px rgba(58, 53, 65, 0.2), 0px 23px 36px 3px rgba(58, 53, 65, 0.14), 0px 9px 44px 8px rgba(58, 53, 65, 0.12)',
-    '0px 11px 15px -7px rgba(58, 53, 65, 0.2), 0px 24px 38px 3px rgba(58, 53, 65, 0.14), 0px 9px 46px 8px rgba(58, 53, 65, 0.12)',
+    '0px 24px 32px rgba(33, 36, 67, 0.06), 0px 16px 24px rgba(33, 36, 67, 0.06), 0px 4px 8px rgba(33, 36, 67, 0.06)',
+    ...Array(20).fill('none'),
   ],
 });
 
