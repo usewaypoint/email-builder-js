@@ -51,7 +51,7 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
         margin: '0',
         padding: '32px 0',
         width: '100%',
-        height: '100%',
+        minHeight: '100%',
       }}
     >
       <table

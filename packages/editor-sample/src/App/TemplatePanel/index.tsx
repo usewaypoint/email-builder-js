@@ -65,7 +65,7 @@ export default function TemplatePanel() {
         );
       case 'html':
         return <HtmlPanel />;
-      case 'data':
+      case 'json':
         return <JsonPanel />;
     }
   };
