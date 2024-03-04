@@ -22,18 +22,18 @@ const RESET_PASSWORD: TEditorConfiguration = {
     type: 'Image',
     data: {
       style: {
-        backgroundColor: null,
         padding: {
           top: 24,
           bottom: 8,
-          left: 24,
           right: 24,
+          left: 24,
         },
+        backgroundColor: null,
         textAlign: 'left',
       },
       props: {
-        height: 40,
-        url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_w9brVHZobEBhsJSK/marketbase.png',
+        height: 24,
+        url: 'https://d1iiu589g39o6c.cloudfront.net/live/platforms/platform_A9wwKSL6EV6orh6f/images/wptemplateimage_Xh1R23U9ziyct9nd/codoc.png',
         alt: '',
         linkHref: null,
         contentAlignment: 'middle',
@@ -96,13 +96,13 @@ const RESET_PASSWORD: TEditorConfiguration = {
         padding: {
           top: 12,
           bottom: 32,
-          left: 24,
           right: 24,
+          left: 24,
         },
       },
       props: {
-        buttonBackgroundColor: '#2458AF',
-        buttonStyle: 'pill',
+        buttonBackgroundColor: '#0068FF',
+        buttonStyle: 'rectangle',
         buttonTextColor: '#FFFFFF',
         fullWidth: false,
         size: 'medium',
