@@ -1,6 +1,6 @@
 {
   "name": "@usewaypoint/email-builder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React component to render email messages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

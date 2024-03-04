@@ -76,8 +76,11 @@ const READER_DICTIONARY = buildBlockConfigurationDictionary({
   },
 });
 
-const ReaderBlockSchema = buildBlockConfigurationSchema(READER_DICTIONARY);
+export const ReaderBlockSchema = buildBlockConfigurationSchema(READER_DICTIONARY);
+export type TReaderBlock = z.infer<typeof ReaderBlockSchema>;
+
 export const ReaderDocumentSchema = z.record(z.string(), ReaderBlockSchema);
+export type TReaderDocument = Record<string, TReaderBlock>;
 
 const BaseReaderBlock = buildBlockComponent(READER_DICTIONARY);
 
@@ -86,7 +89,7 @@ export function ReaderBlock({ id }: TReaderBlockProps) {
   const document = useReaderDocument();
   return <BaseReaderBlock {...document[id]} />;
 }
-export type TReaderDocument = Record<string, z.infer<typeof ReaderBlockSchema>>;
+
 export type TReaderProps = {
   document: Record<string, z.infer<typeof ReaderBlockSchema>>;
   rootBlockId: string;
