@@ -23,6 +23,7 @@
     "@usewaypoint/block-spacer": "^0.0.2",
     "@usewaypoint/block-text": "^0.0.2",
     "@usewaypoint/document-core": "^0.0.4",
+    "@usewaypoint/email-builder": "^0.0.2",
     "codemirror": "^6.0.1",
     "highlight.js": "^11.9.0",
     "js-beautify": "^1.15.1",

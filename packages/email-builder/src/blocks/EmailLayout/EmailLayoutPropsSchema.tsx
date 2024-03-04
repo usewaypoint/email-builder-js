@@ -21,14 +21,12 @@ const FONT_FAMILY_SCHEMA = z
   .nullable()
   .optional();
 
-const EmailLayoutPropsSchema = z.object({
+export const EmailLayoutPropsSchema = z.object({
   backdropColor: COLOR_SCHEMA,
   canvasColor: COLOR_SCHEMA,
   textColor: COLOR_SCHEMA,
   fontFamily: FONT_FAMILY_SCHEMA,
   childrenIds: z.array(z.string()).optional().nullable(),
 });
-
-export default EmailLayoutPropsSchema;
 
 export type EmailLayoutProps = z.infer<typeof EmailLayoutPropsSchema>;

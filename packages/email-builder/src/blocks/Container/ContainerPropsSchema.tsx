@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { ContainerPropsSchema as BaseContainerPropsSchema } from '@usewaypoint/block-container';
 
-const ContainerPropsSchema = z.object({
+export const ContainerPropsSchema = z.object({
   style: BaseContainerPropsSchema.shape.style,
   props: z
     .object({
@@ -11,7 +11,5 @@ const ContainerPropsSchema = z.object({
     .optional()
     .nullable(),
 });
-
-export default ContainerPropsSchema;
 
 export type ContainerProps = z.infer<typeof ContainerPropsSchema>;

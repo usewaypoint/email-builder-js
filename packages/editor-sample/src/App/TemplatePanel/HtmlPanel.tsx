@@ -1,25 +1,26 @@
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
+import Reader from '@usewaypoint/email-builder/dist/Reader/core';
+
 import { useDocument } from '../../documents/editor/EditorContext';
-import ReaderBlock from '../../documents/reader/ReaderBlock';
-import { ReaderProvider } from '../../documents/reader/ReaderContext';
 
 import TextEditorPanel from './helper/TextEditorPanel';
 
 export default function HtmlPanel() {
   const document = useDocument();
 
-  const string = React.useMemo(() => {
-    return renderToStaticMarkup(
-      <html>
-        <head></head>
-        <body>
-          <ReaderProvider value={document}>
-            <ReaderBlock id="root" />
-          </ReaderProvider>
-        </body>
-      </html>
+  const string = useMemo(() => {
+    return (
+      '<!DOCTYPE html>' +
+      renderToStaticMarkup(
+        <html>
+          <head></head>
+          <body>
+            <Reader document={document} rootBlockId="root" />
+          </body>
+        </html>
+      )
     );
   }, [document]);
 

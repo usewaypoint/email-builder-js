@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ContainerProps, ContainerPropsSchema } from '../../../../documents/blocks/Container/ContainerPropsSchema';
+import ContainerPropsSchema, { ContainerProps } from '../../../../documents/blocks/Container/ContainerPropsSchema';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';

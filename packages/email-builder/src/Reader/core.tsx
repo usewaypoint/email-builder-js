@@ -1,3 +1,4 @@
+import React, { createContext, useContext } from 'react';
 import { z } from 'zod';
 
 import { Avatar, AvatarPropsSchema } from '@usewaypoint/block-avatar';
@@ -14,14 +15,33 @@ import {
   buildBlockConfigurationSchema,
 } from '@usewaypoint/document-core';
 
-import { ColumnsContainer } from '../blocks/ColumnsContainer';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
-import { Container } from '../blocks/Container';
+import ColumnsContainerReader from '../blocks/ColumnsContainer/ColumnsContainerReader';
 import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
-import { EmailLayout } from '../blocks/EmailLayout';
+import ContainerReader from '../blocks/Container/ContainerReader';
 import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
+import EmailLayoutReader from '../blocks/EmailLayout/EmailLayoutReader';
+
+const ReaderContext = createContext<TReaderDocument>({});
+
+function useReaderDocument() {
+  return useContext(ReaderContext);
+}
 
 const READER_DICTIONARY = buildBlockConfigurationDictionary({
+  ColumnsContainer: {
+    schema: ColumnsContainerPropsSchema,
+    Component: ColumnsContainerReader,
+  },
+  Container: {
+    schema: ContainerPropsSchema,
+    Component: ContainerReader,
+  },
+  EmailLayout: {
+    schema: EmailLayoutPropsSchema,
+    Component: EmailLayoutReader,
+  },
+  //
   Avatar: {
     schema: AvatarPropsSchema,
     Component: Avatar,
@@ -29,14 +49,6 @@ const READER_DICTIONARY = buildBlockConfigurationDictionary({
   Button: {
     schema: ButtonPropsSchema,
     Component: Button,
-  },
-  ColumnsContainer: {
-    schema: ColumnsContainerPropsSchema,
-    Component: ColumnsContainer,
-  },
-  Container: {
-    schema: ContainerPropsSchema,
-    Component: Container,
   },
   Divider: {
     schema: DividerPropsSchema,
@@ -54,25 +66,35 @@ const READER_DICTIONARY = buildBlockConfigurationDictionary({
     schema: ImagePropsSchema,
     Component: Image,
   },
-  Text: {
-    schema: TextPropsSchema,
-    Component: Text,
-  },
-  EmailLayout: {
-    schema: EmailLayoutPropsSchema,
-    Component: EmailLayout,
-  },
   Spacer: {
     schema: SpacerPropsSchema,
     Component: Spacer,
   },
+  Text: {
+    schema: TextPropsSchema,
+    Component: Text,
+  },
 });
 
 const ReaderBlockSchema = buildBlockConfigurationSchema(READER_DICTIONARY);
-const ReaderDocumentSchema = z.record(z.string(), ReaderBlockSchema);
+export const ReaderDocumentSchema = z.record(z.string(), ReaderBlockSchema);
 
-export const ReaderBlock = buildBlockComponent(READER_DICTIONARY);
+const BaseReaderBlock = buildBlockComponent(READER_DICTIONARY);
 
+export type TReaderBlockProps = { id: string };
+export function ReaderBlock({ id }: TReaderBlockProps) {
+  const document = useReaderDocument();
+  return <BaseReaderBlock {...document[id]} />;
+}
 export type TReaderDocument = Record<string, z.infer<typeof ReaderBlockSchema>>;
-
-export default ReaderDocumentSchema;
+export type TReaderProps = {
+  document: Record<string, z.infer<typeof ReaderBlockSchema>>;
+  rootBlockId: string;
+};
+export default function Reader({ document, rootBlockId }: TReaderProps) {
+  return (
+    <ReaderContext.Provider value={document}>
+      <ReaderBlock id={rootBlockId} />
+    </ReaderContext.Provider>
+  );
+}

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { MonitorOutlined, PhoneIphoneOutlined } from '@mui/icons-material';
 import { Box, Stack, SxProps, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
+import Reader from '@usewaypoint/email-builder/dist/Reader/core';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
 import {
@@ -10,8 +11,6 @@ import {
   useSelectedMainTab,
   useSelectedScreenSize,
 } from '../../documents/editor/EditorContext';
-import ReaderBlock from '../../documents/reader/ReaderBlock';
-import { ReaderProvider } from '../../documents/reader/ReaderContext';
 import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelButton';
 import ToggleSamplesPanelButton from '../SamplesDrawer/ToggleSamplesPanelButton';
 
@@ -61,9 +60,7 @@ export default function TemplatePanel() {
       case 'preview':
         return (
           <Box sx={mainBoxSx}>
-            <ReaderProvider value={document}>
-              <ReaderBlock id="root" />
-            </ReaderProvider>
+            <Reader document={document} rootBlockId="root" />
           </Box>
         );
       case 'html':
