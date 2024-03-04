@@ -50,7 +50,6 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
         lineHeight: '1.5',
         margin: '0',
         padding: '32px 0',
-        minHeight: '100%',
         width: '100%',
         height: '100%',
       }}
@@ -77,10 +76,10 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
                   setDocument({
                     [blockId]: block,
                     [currentBlockId]: {
-                      type: 'Container',
+                      type: 'EmailLayout',
                       data: {
                         ...document[currentBlockId].data,
-                        props: { childrenIds: childrenIds },
+                        childrenIds: childrenIds,
                       },
                     },
                   });
