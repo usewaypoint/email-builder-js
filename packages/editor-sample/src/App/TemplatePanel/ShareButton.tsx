@@ -12,7 +12,7 @@ export default function ShareButton() {
   const onClick = async () => {
     const c = encodeURIComponent(JSON.stringify(document));
     location.hash = `#code/${btoa(c)}`;
-    setMessage('The URL was updated. You can copy it to share');
+    setMessage('The URL was updated. Copy it to share your current template.');
   };
 
   const onClose = () => {
