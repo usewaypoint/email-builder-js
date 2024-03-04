@@ -9,24 +9,25 @@
 
 ## Introduction
 
-EmailBuilder.js is a free and open-source email template builder for developers. Build emails faster than ever with clean JSON or HTML output that render well across clients and devices. Self-host or [use our playground](https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder) to get started building emails.
+EmailBuilder.js is a free and open-source email template builder for developers. Build emails faster than ever with clean JSON or HTML output that render well across clients and devices.
+
+Self-host or [use our playground](https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder) to get started building emails.
 
 ![Image of builder](images/builder.png)
 
 ![Image of designer](images/designer.png)
 
-Brought to you by the [Waypoint](https://usewaypoint.com/) team.
-
 <br>
 
 ## Build simple welcome emails to complex reports
 
-The builder is flexible enough to handle a wide variety of template designs – From simple welcome emails to complex reports.
+Use a no-code builder that is flexible enough to create a wide variety of template designs – from simple welcome emails to complex reports.
 
 ![Image of example templates](images/template.png)
 
 Sample templates available in the playground:
 
+- [Welcome email](https://usewaypoint.github.io/email-builder-js/#sample/welcome)
 - [One-time passcode (OTP)](https://usewaypoint.github.io/email-builder-js/#sample/one-time-password)
 - [Reset password](https://usewaypoint.github.io/email-builder-js/#sample/reset-password)
 - [E-commerce receipt](https://usewaypoint.github.io/email-builder-js/#sample/order-ecomerce)
@@ -39,7 +40,7 @@ Sample templates available in the playground:
 
 ## Why?
 
-It's time to finally stop using 90's style HTML and CSS to build product emails. EmailBuilder.js takes inspiration from [editor.js](https://github.com/codex-team/editor.js) and email component libraries and puts them into an easy to use no-code builder to that allow the entire team to contibute to building emails.
+It's finally time to stop using 90's style HTML and CSS to build product emails. EmailBuilder.js takes inspiration from [editor.js](https://github.com/codex-team/editor.js) and email component libraries and puts them into an easy to use no-code builder to that allow the entire team to build emails.
 
 Since the builder is completely free and open source, teams can self-host the builder and extend as needed.
 
@@ -68,11 +69,11 @@ All blocks are [tested and supported](https://www.usewaypoint.com/docs/email-cli
 
 ![Image of mobile rendering](images/mobile.png)
 
-## Output and sending emails
+## Email builder output
 
-From the builder, a clean JSON or raw HTML is available for download.
+From the builder, a clean JSON or raw HTML is available for download. Simply click on the HTML or JSON tabs in the builder to copy and paste the output.
 
-![Image of JSON in builder](images/json_output.png)
+![Image of JSON in builder](images/output.png)
 
 <br>
 
@@ -84,7 +85,7 @@ Install the package in your project
 npm install --save @usewaypoint/email-builder
 ```
 
-Given an EmailBuilder configuration
+Given an EmailBuilder configuration (JSON output of the builder)
 
 ```javascript
 import { TReaderDocument } from '@usewaypoint/email-builder';
@@ -136,8 +137,35 @@ import { Reader } from '@usewaypoint/email-builder';
 <Reader document={CONFIGURATION} rootBlockId="root" />;
 ```
 
-## Brought to you by the Waypoint team
+<br>
 
-EmailBuilder.js is the community version of our more powerful and hosted template builder with dynamic LiquidJS variables, drag and drop, Markdown formatting, reusable layouts, loops, and additional blocks.
+## Sending emails
 
-[Learn more about Waypoint](https://usewaypoint.com/)
+- Example sending through nodemailer (coming soon).
+- Example sending through an email API (coming soon).
+
+<br>
+
+---
+
+## Contribute
+
+Feel free to report any bug on the issues page. If possible, please add steps, information, screenshots, or videos to help us reproduce them.
+
+If you are looking to provide code contribututions to EmailBuilder.js, please fork the repository and create a new pull request. We will check your code closely and provide feedback.
+
+<br>
+
+---
+
+<br>
+
+## Brought to you by Waypoint
+
+EmailBuilder.js is the community version of our much-loved no-code template builder on Waypoint. If you are looking for a better collaboration experience for your team, check out [Waypoint's email API](https://usewaypoint.com/) with a hosted template builder with dynamic LiquidJS variables, drag and drop, Markdown formatting, reusable layouts, loops, and additional blocks.
+
+<br>
+
+## Looking for something special?
+
+Need special consultation, a one-off feature, integration, or something else for your business? We can help or put you in touch with someone that can – contact us at support@usewaypoint.com and share your details.
