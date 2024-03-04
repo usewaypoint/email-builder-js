@@ -23,7 +23,7 @@
     "@usewaypoint/block-spacer": "^0.0.2",
     "@usewaypoint/block-text": "^0.0.2",
     "@usewaypoint/document-core": "^0.0.4",
-    "@usewaypoint/email-builder": "^0.0.2",
+    "@usewaypoint/email-builder": "^0.0.3",
     "highlight.js": "^11.9.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
