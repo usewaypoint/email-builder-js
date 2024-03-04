@@ -40,7 +40,7 @@ export default function EditorChildrenIds({ childrenIds, onChange }: EditorChild
     });
   };
 
-  if (!childrenIds) {
+  if (!childrenIds || childrenIds.length === 0) {
     return <AddBlockButton placeholder onSelect={appendBlock} />;
   }
 
