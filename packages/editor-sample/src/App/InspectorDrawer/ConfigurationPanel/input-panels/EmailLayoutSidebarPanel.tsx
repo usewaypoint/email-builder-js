@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { z } from 'zod';
 
 import { Divider } from '@mui/material';
 
-import { EmailLayoutPropsSchema } from '../../../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
+import EmailLayoutPropsSchema, {
+  EmailLayoutProps,
+} from '../../../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
 
-type EmailLayoutSidebarPanelProps = z.infer<typeof EmailLayoutPropsSchema>;
-
 type EmailLayoutSidebarFieldsProps = {
-  data: EmailLayoutSidebarPanelProps;
-  setData: (v: EmailLayoutSidebarPanelProps) => void;
+  data: EmailLayoutProps;
+  setData: (v: EmailLayoutProps) => void;
 };
 export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutSidebarFieldsProps) {
   const [, setErrors] = useState<Zod.ZodError | null>(null);
@@ -31,18 +30,18 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
     <BaseSidebarPanel title="Layout">
       <ColorInput
         label="Backdrop color"
-        defaultValue={data.backdropColor}
+        defaultValue={data.backdropColor ?? '#EEEEEE'}
         onChange={(backdropColor) => updateData({ ...data, backdropColor })}
       />
       <ColorInput
         label="Canvas color"
-        defaultValue={data.canvasColor}
+        defaultValue={data.canvasColor ?? '#FFFFFF'}
         onChange={(canvasColor) => updateData({ ...data, canvasColor })}
       />
       <Divider />
       <ColorInput
         label="Text color"
-        defaultValue={data.textColor}
+        defaultValue={data.textColor ?? '#242424'}
         onChange={(textColor) => updateData({ ...data, textColor })}
       />
     </BaseSidebarPanel>

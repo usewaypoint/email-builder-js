@@ -15,12 +15,12 @@ import {
   buildBlockConfigurationSchema,
 } from '@usewaypoint/document-core';
 
-import { EditorColumnsContainer } from '../blocks/ColumnsContainer';
+import ColumnsContainerEditor from '../blocks/ColumnsContainer/ColumnsContainerEditor';
 import ColumnsContainerPropsSchema from '../blocks/ColumnsContainer/ColumnsContainerPropsSchema';
-import { EditorContainer } from '../blocks/Container';
-import { ContainerPropsSchema } from '../blocks/Container/ContainerPropsSchema';
-import { EditorEmailLayout } from '../blocks/EmailLayout';
-import { EmailLayoutPropsSchema } from '../blocks/EmailLayout/EmailLayoutPropsSchema';
+import ContainerEditor from '../blocks/Container/ContainerEditor';
+import ContainerPropsSchema from '../blocks/Container/ContainerPropsSchema';
+import EmailLayoutEditor from '../blocks/EmailLayout/EmailLayoutEditor';
+import EmailLayoutPropsSchema from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
 
 const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
@@ -44,7 +44,7 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
     schema: ContainerPropsSchema,
     Component: (props) => (
       <EditorBlockWrapper>
-        <EditorContainer {...props} />
+        <ContainerEditor {...props} />
       </EditorBlockWrapper>
     ),
   },
@@ -52,7 +52,7 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
     schema: ColumnsContainerPropsSchema,
     Component: (props) => (
       <EditorBlockWrapper>
-        <EditorColumnsContainer {...props} />
+        <ColumnsContainerEditor {...props} />
       </EditorBlockWrapper>
     ),
   },
@@ -99,11 +99,7 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   },
   EmailLayout: {
     schema: EmailLayoutPropsSchema,
-    Component: (p) => (
-      <div style={{ height: '100%' }}>
-        <EditorEmailLayout {...p} />
-      </div>
-    ),
+    Component: (p) => <EmailLayoutEditor {...p} />,
   },
   Spacer: {
     schema: SpacerPropsSchema,

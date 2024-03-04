@@ -5,11 +5,45 @@ import EditorBlock from '../../../editor/EditorBlock';
 
 import AddBlockButton from './AddBlockMenu';
 
-type Props = {
+export type EditorChildrenChange = {
+  blockId: string;
+  block: TEditorBlock;
   childrenIds: string[];
-  insertBlock: (block: TEditorBlock, index: number | null) => void;
 };
-export default function EditorChildrenIds({ childrenIds, insertBlock }: Props) {
+
+function generateId() {
+  return `block-${Date.now()}`;
+}
+
+export type EditorChildrenIdsProps = {
+  childrenIds: string[] | null | undefined;
+  onChange: (val: EditorChildrenChange) => void;
+};
+export default function EditorChildrenIds({ childrenIds, onChange }: EditorChildrenIdsProps) {
+  const appendBlock = (block: TEditorBlock) => {
+    const blockId = generateId();
+    return onChange({
+      blockId,
+      block,
+      childrenIds: [...(childrenIds || []), blockId],
+    });
+  };
+
+  const insertBlock = (block: TEditorBlock, index: number) => {
+    const blockId = generateId();
+    const newChildrenIds = [...(childrenIds || [])];
+    newChildrenIds.splice(index, 0, blockId);
+    return onChange({
+      blockId,
+      block,
+      childrenIds: newChildrenIds,
+    });
+  };
+
+  if (!childrenIds) {
+    return <AddBlockButton placeholder onSelect={appendBlock} />;
+  }
+
   return (
     <>
       {childrenIds.map((childId, i) => (
@@ -18,7 +52,7 @@ export default function EditorChildrenIds({ childrenIds, insertBlock }: Props) {
           <EditorBlock id={childId} />
         </Fragment>
       ))}
-      <AddBlockButton placeholder={childrenIds.length === 0} onSelect={(block) => insertBlock(block, null)} />
+      <AddBlockButton onSelect={appendBlock} />
     </>
   );
 }

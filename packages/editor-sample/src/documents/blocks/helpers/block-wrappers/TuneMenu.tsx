@@ -21,6 +21,12 @@ export default function TuneMenu({ blockId }: Props) {
   const document = useDocument();
 
   const handleDeleteClick = () => {
+    const filterChildrenIds = (childrenIds: string[] | null | undefined) => {
+      if (!childrenIds) {
+        return childrenIds;
+      }
+      return childrenIds.filter((f) => f !== blockId);
+    };
     const nDocument: typeof document = { ...document };
     for (const [id, b] of Object.entries(nDocument)) {
       const block = b as TEditorBlock;
@@ -33,7 +39,7 @@ export default function TuneMenu({ blockId }: Props) {
             ...block,
             data: {
               ...block.data,
-              childrenIds: block.data.childrenIds.filter((f) => f !== blockId),
+              childrenIds: filterChildrenIds(block.data.childrenIds),
             },
           };
           break;
@@ -44,7 +50,7 @@ export default function TuneMenu({ blockId }: Props) {
               ...block.data,
               props: {
                 ...block.data.props,
-                childrenIds: (block.data.props?.childrenIds ?? []).filter((f) => f !== blockId),
+                childrenIds: filterChildrenIds(block.data.props?.childrenIds),
               },
             },
           };
@@ -57,7 +63,7 @@ export default function TuneMenu({ blockId }: Props) {
               props: {
                 ...block.data.props,
                 columns: block.data.props?.columns?.map((c) => ({
-                  childrenIds: c.childrenIds.filter((f) => f !== blockId),
+                  childrenIds: filterChildrenIds(c.childrenIds),
                 })),
               },
             } as ColumnsContainerProps,
