@@ -2,7 +2,7 @@
   <h1>EmailBuilder.js</h1>
   <p align="center">
     <a href="https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder">Demo / Playground</a>&emsp;&middot;&emsp;
-    <a href="https://www.usewaypoint.com/open-source/emailbuilderjs?utm_source=emailbuilderjs-github">Website</a>&emsp;&middot;&emsp;
+    <a href="https://www.emailbuilderjs.com">EmailBuilderJS.com</a>&emsp;&middot;&emsp;
     <a href="https://github.com/usewaypoint/email-builder-js">GitHub</a>
   </p>
 </div>
@@ -11,7 +11,7 @@
 
 EmailBuilder.js is a free and open-source email template builder for developers. Build emails faster than ever with clean JSON or HTML output that render well across clients and devices.
 
-Self-host or [use our playground](https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder) to get started building emails.
+[Use our playground](https://usewaypoint.github.io/email-builder-js/#sample/reservation-reminder) or learn more about how to [get started using EmailBuilder.js](#using-emailbuilderjs).
 
 ![Image of builder](images/builder.png)
 
@@ -71,7 +71,7 @@ All blocks are [tested and supported](https://www.usewaypoint.com/docs/email-cli
 
 ## Email builder output
 
-From the builder, a clean JSON or raw HTML is available for download. Simply click on the HTML or JSON tabs in the builder to copy and paste the output.
+The email builder can output to a clean JSON or raw HTML. You can see this from the playground by simply clicking on the HTML or JSON tabs in the builder.
 
 ![Image of JSON in builder](images/output.png)
 
@@ -79,13 +79,13 @@ From the builder, a clean JSON or raw HTML is available for download. Simply cli
 
 ## Using EmailBuilder.js
 
-Install the package in your project
+Install the package in your project:
 
 ```bash
 npm install --save @usewaypoint/email-builder
 ```
 
-Given an EmailBuilder configuration (JSON output of the builder)
+Given an EmailBuilder.js configuration (the JSON output of the builder):
 
 ```javascript
 import { TReaderDocument } from '@usewaypoint/email-builder';
@@ -121,7 +121,7 @@ const CONFIGURATION: TReaderDocument = {
 };
 ```
 
-Rendering your HTML email into a string
+You can render the EmailBuilder.js configuration to an HTML email string:
 
 ```javascript
 import { renderHtmlDocument } from '@usewaypoint/email-builder';
@@ -129,7 +129,7 @@ import { renderHtmlDocument } from '@usewaypoint/email-builder';
 const string = renderHtmlDocument(CONFIGURATION, 'root');
 ```
 
-Rendering your email as a React component
+Or you can render the EmailBuilder.js configuration by using the `<Reader />` React component:
 
 ```javascript
 import { Reader } from '@usewaypoint/email-builder';
@@ -141,8 +141,19 @@ import { Reader } from '@usewaypoint/email-builder';
 
 ## Sending emails
 
-- Example sending through nodemailer (coming soon).
-- Example sending through an email API (coming soon).
+In most cases, you'll want to take the EmailBuilder.js configuration, render it to HTML, and then send it as an email. Here are a couple of examples on how you can do this using the same configuration from the examples above.
+
+<br>
+
+### Sending through nodemailer
+
+Coming soon
+
+<br>
+
+### Sending through an email API
+
+We'll use [Waypoint](https://www.usewaypoint.com) for this example, however, you can use any email API like Amazon SES, SendGrid, or MailGun.
 
 <br>
 
