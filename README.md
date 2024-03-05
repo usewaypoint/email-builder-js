@@ -147,7 +147,24 @@ In most cases, you'll want to take the EmailBuilder.js configuration, render it 
 
 ### Sending through nodemailer
 
-Coming soon
+```javascript
+import { renderHtmlDocument } from '@usewaypoint/email-builder';
+import nodemailer from "nodemailer";
+
+// Replace this with your transport configuration
+const transportConfig = {}
+const transporter = nodemailer.createTransport(transportConfig);
+
+// Replace this with the JSON for your Reader document
+const CONFIGURATION: TReaderDocument = {}
+
+await transporter.sendMail({
+  from: 'no-reply@example.com'
+  to: 'friend@example.com',
+  subject: 'Hello',
+  html: renderHtmlDocument(CONFIGURATION, 'root'),
+});
+```
 
 <br>
 
@@ -175,6 +192,7 @@ await axios({
   },
 
   data: {
+    from: 'no-reply@example.com'
     to: 'friend@example.com',
     subject: 'Hello',
     bodyHtml: renderHtmlDocument(CONFIGURATION, 'root'),
