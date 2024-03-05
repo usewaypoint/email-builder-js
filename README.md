@@ -202,6 +202,12 @@ await axios({
 
 ---
 
+## Self hosting the Editor
+
+A self-hosted version of the editor is coming soon. In the mean time you can use the packages/sample-editor as an example.
+
+---
+
 ## Contribute
 
 Feel free to report any bug on the issues page. If possible, please add steps, information, screenshots, or videos to help us reproduce them.
