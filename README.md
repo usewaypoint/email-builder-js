@@ -155,7 +155,32 @@ Coming soon
 
 We'll use [Waypoint](https://www.usewaypoint.com) for this example, however, you can use any email API like Amazon SES, SendGrid, or MailGun.
 
-<br>
+```javascript
+import axios from 'axios';
+
+import { renderHtmlDocument } from '@usewaypoint/email-builder';
+
+// Replace this with the JSON for your Reader document
+const CONFIGURATION: TReaderDocument = {}
+
+await axios({
+  method: 'post',
+  url: 'https://live.waypointapi.com/v1/email_messages',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  auth: {
+    username: API_KEY_USERNAME,
+    password: API_KEY_PASSWORD,
+  },
+
+  data: {
+    to: 'friend@example.com',
+    subject: 'Hello',
+    bodyHtml: renderHtmlDocument(CONFIGURATION, 'root'),
+  },
+});
+```
 
 ---
 
