@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
-import { Divider } from '@mui/material';
-
 import EmailLayoutPropsSchema, {
   EmailLayoutProps,
 } from '../../../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
+import { NullableFontFamily } from './helpers/inputs/FontFamily';
 
 type EmailLayoutSidebarFieldsProps = {
   data: EmailLayoutProps;
@@ -27,7 +26,7 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
   };
 
   return (
-    <BaseSidebarPanel title="Layout">
+    <BaseSidebarPanel title="Global">
       <ColorInput
         label="Backdrop color"
         defaultValue={data.backdropColor ?? '#EEEEEE'}
@@ -38,7 +37,12 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
         defaultValue={data.canvasColor ?? '#FFFFFF'}
         onChange={(canvasColor) => updateData({ ...data, canvasColor })}
       />
-      <Divider />
+
+      <NullableFontFamily
+        label="Font family"
+        defaultValue="MODERN_SANS"
+        onChange={(fontFamily) => updateData({ ...data, fontFamily })}
+      />
       <ColorInput
         label="Text color"
         defaultValue={data.textColor ?? '#242424'}
