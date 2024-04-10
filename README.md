@@ -204,7 +204,7 @@ await axios({
 
 ## Self hosting the Editor
 
-A self-hosted version of the editor is coming soon. In the mean time you can use the packages/sample-editor as an example.
+You can fork this repository and use [packages/editor-sample](https://github.com/usewaypoint/email-builder-js/tree/main/packages/editor-sample) as an example. View the README file to see how to run it locally.
 
 ---
 
