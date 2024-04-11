@@ -29,7 +29,7 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
     <BaseSidebarPanel title="Global">
       <ColorInput
         label="Backdrop color"
-        defaultValue={data.backdropColor ?? '#EEEEEE'}
+        defaultValue={data.backdropColor ?? '#F5F5F5'}
         onChange={(backdropColor) => updateData({ ...data, backdropColor })}
       />
       <ColorInput
@@ -45,7 +45,7 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
       />
       <ColorInput
         label="Text color"
-        defaultValue={data.textColor ?? '#242424'}
+        defaultValue={data.textColor ?? '#262626'}
         onChange={(textColor) => updateData({ ...data, textColor })}
       />
     </BaseSidebarPanel>
