@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MonitorOutlined, PhoneIphoneOutlined } from '@mui/icons-material';
-import { Box, Stack, SxProps, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
+import { Box, Button, Stack, SxProps, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
 import { Reader } from '@usewaypoint/email-builder';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
@@ -18,6 +18,7 @@ import HtmlPanel from './HtmlPanel';
 import JsonPanel from './JsonPanel';
 import MainTabsGroup from './MainTabsGroup';
 import ShareButton from './ShareButton';
+import ImportJson from './ImportJson';
 
 export default function TemplatePanel() {
   const document = useDocument();
@@ -89,7 +90,10 @@ export default function TemplatePanel() {
       >
         <ToggleSamplesPanelButton />
         <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
-          <MainTabsGroup />
+          <Stack direction="row" spacing={2}>
+            <MainTabsGroup />
+            <ImportJson />
+          </Stack>
           <Stack direction="row" spacing={2}>
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
