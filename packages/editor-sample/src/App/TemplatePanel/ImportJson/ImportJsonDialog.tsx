@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Input } from '@mui/material';
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
 
 import { resetDocument } from '../../../documents/editor/EditorContext';
 
@@ -41,12 +41,17 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
         }}
       >
         <DialogContent>
+          <Typography color="text.secondary" paragraph>
+            Copy and paste an EmailBuilder.js JSON.
+          </Typography>
           {errorAlert}
-          <Input
+          <TextField
             error={error !== null}
             value={value}
             onChange={handleChange}
             type="text"
+            helperText="This will override your current template."
+            variant="outlined"
             fullWidth
             rows={10}
             multiline
@@ -56,8 +61,8 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
           <Button type="button" onClick={onClose}>
             Cancel
           </Button>
-          <Button type="submit" disabled={error !== null}>
-            Save
+          <Button variant="contained" type="submit" disabled={error !== null}>
+            Import
           </Button>
         </DialogActions>
       </form>
