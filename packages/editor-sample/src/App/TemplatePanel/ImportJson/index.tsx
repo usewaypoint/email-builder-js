@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { UploadFileOutlined } from '@mui/icons-material';
+import { FileUploadOutlined } from '@mui/icons-material';
 import { IconButton, Tooltip } from '@mui/material';
 
 import ImportJsonDialog from './ImportJsonDialog';
@@ -17,7 +17,7 @@ export default function ImportJson() {
     <>
       <Tooltip title="Import JSON">
         <IconButton onClick={() => setOpen(true)}>
-          <UploadFileOutlined fontSize="small" />
+          <FileUploadOutlined fontSize="small" />
         </IconButton>
       </Tooltip>
       {dialog}
