@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 import { resetDocument } from '../../../documents/editor/EditorContext';
 
@@ -42,7 +52,14 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
       >
         <DialogContent>
           <Typography color="text.secondary" paragraph>
-            Copy and paste an EmailBuilder.js JSON.
+            Copy and paste an{' '}
+            <Link
+              href="https://github.com/usewaypoint/email-builder-js?tab=readme-ov-file#using-emailbuilderjs"
+              target="_blank"
+              underline="none"
+            >
+              EmailBuilder.js JSON.
+            </Link>
           </Typography>
           {errorAlert}
           <TextField
