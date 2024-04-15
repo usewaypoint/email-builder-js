@@ -15,6 +15,7 @@ import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelB
 import ToggleSamplesPanelButton from '../SamplesDrawer/ToggleSamplesPanelButton';
 
 import HtmlPanel from './HtmlPanel';
+import ImportJson from './ImportJson';
 import JsonPanel from './JsonPanel';
 import MainTabsGroup from './MainTabsGroup';
 import ShareButton from './ShareButton';
@@ -89,8 +90,11 @@ export default function TemplatePanel() {
       >
         <ToggleSamplesPanelButton />
         <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
-          <MainTabsGroup />
           <Stack direction="row" spacing={2}>
+            <MainTabsGroup />
+          </Stack>
+          <Stack direction="row" spacing={2}>
+            <ImportJson />
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
                 <Tooltip title="Desktop view">
