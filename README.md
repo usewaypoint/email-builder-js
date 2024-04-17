@@ -124,9 +124,9 @@ const CONFIGURATION: TReaderDocument = {
 You can render the EmailBuilder.js configuration to an HTML email string:
 
 ```javascript
-import { renderHtmlDocument } from '@usewaypoint/email-builder';
+import { renderToStaticMarkup } from '@usewaypoint/email-builder';
 
-const string = renderHtmlDocument(CONFIGURATION, 'root');
+const string = renderToStaticMarkup(CONFIGURATION, { rootBlockId: 'root' });
 ```
 
 Or you can render the EmailBuilder.js configuration by using the `<Reader />` React component:
@@ -148,7 +148,7 @@ In most cases, you'll want to take the EmailBuilder.js configuration, render it 
 ### Sending through nodemailer
 
 ```javascript
-import { renderHtmlDocument } from '@usewaypoint/email-builder';
+import { renderToStaticMarkup } from '@usewaypoint/email-builder';
 import nodemailer from "nodemailer";
 
 // Replace this with your transport configuration
@@ -162,7 +162,7 @@ await transporter.sendMail({
   from: 'no-reply@example.com'
   to: 'friend@example.com',
   subject: 'Hello',
-  html: renderHtmlDocument(CONFIGURATION, 'root'),
+  html: renderToStaticMarkup(CONFIGURATION, { rootBlockId: 'root' }),
 });
 ```
 
@@ -175,7 +175,7 @@ We'll use [Waypoint](https://www.usewaypoint.com) for this example, however, you
 ```javascript
 import axios from 'axios';
 
-import { renderHtmlDocument } from '@usewaypoint/email-builder';
+import { renderToStaticMarkup } from '@usewaypoint/email-builder';
 
 // Replace this with the JSON for your Reader document
 const CONFIGURATION: TReaderDocument = {}
@@ -195,7 +195,7 @@ await axios({
     from: 'no-reply@example.com'
     to: 'friend@example.com',
     subject: 'Hello',
-    bodyHtml: renderHtmlDocument(CONFIGURATION, 'root'),
+    bodyHtml: renderToStaticMarkup(CONFIGURATION, { rootBlockId: 'root' }),
   },
 });
 ```
