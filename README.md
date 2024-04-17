@@ -204,7 +204,16 @@ await axios({
 
 ## Self hosting the Editor
 
-You can fork this repository and use [packages/editor-sample](https://github.com/usewaypoint/email-builder-js/tree/main/packages/editor-sample) as an example. View the README file to see how to run it locally.
+Fork this repository and use [packages/editor-sample](https://github.com/usewaypoint/email-builder-js/tree/main/packages/editor-sample) as an example for self-hosting.
+
+Quick start:
+
+1. Fork this repository.
+2. Open up directory in terminal.
+3. Go to the editor-sample package: `cd packages/editor-sample`
+4. Install packages: `npm install`
+5. Run the server: `npx vite`
+6. Open in browser: http://localhost:5173/email-builder-js/
 
 ---
 
