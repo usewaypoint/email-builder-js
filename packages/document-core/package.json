@@ -2,9 +2,16 @@
   "name": "@usewaypoint/document-core",
   "version": "0.0.4",
   "description": "Tools to render waypoint-style documents (core package)",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "target": "ES2022",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
