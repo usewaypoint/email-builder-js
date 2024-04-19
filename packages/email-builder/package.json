@@ -4,7 +4,6 @@
   "description": "React component to render email messages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "target": "ES2022",
   "files": [
     "dist"
   ],
@@ -15,6 +14,7 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "^16 || ^17 || ^18",
+    "react-dom": "^16 || ^17 || ^18",
     "zod": "^1 || ^2 || ^3"
   },
   "dependencies": {
