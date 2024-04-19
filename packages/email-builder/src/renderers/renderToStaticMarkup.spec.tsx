@@ -5,7 +5,7 @@
 import renderToStaticMarkup from './renderToStaticMarkup';
 
 describe('renderToStaticMarkup', () => {
-  it.only('renders into a string', () => {
+  it('renders into a string', () => {
     const result = renderToStaticMarkup(
       {
         root: {
