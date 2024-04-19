@@ -2,8 +2,16 @@
   "name": "@usewaypoint/email-builder",
   "version": "0.0.4",
   "description": "React component to render email messages",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -18,16 +26,16 @@
     "zod": "^1 || ^2 || ^3"
   },
   "dependencies": {
-    "@usewaypoint/block-avatar": "^0.0.1",
-    "@usewaypoint/block-button": "^0.0.2",
-    "@usewaypoint/block-columns-container": "^0.0.2",
-    "@usewaypoint/block-container": "^0.0.1",
-    "@usewaypoint/block-divider": "^0.0.3",
-    "@usewaypoint/block-heading": "^0.0.2",
-    "@usewaypoint/block-html": "^0.0.2",
-    "@usewaypoint/block-image": "^0.0.4",
-    "@usewaypoint/block-spacer": "^0.0.2",
-    "@usewaypoint/block-text": "^0.0.2",
-    "@usewaypoint/document-core": "^0.0.4"
+    "@usewaypoint/block-avatar": "^0.0.3",
+    "@usewaypoint/block-button": "^0.0.3",
+    "@usewaypoint/block-columns-container": "^0.0.3",
+    "@usewaypoint/block-container": "^0.0.2",
+    "@usewaypoint/block-divider": "^0.0.4",
+    "@usewaypoint/block-heading": "^0.0.3",
+    "@usewaypoint/block-html": "^0.0.3",
+    "@usewaypoint/block-image": "^0.0.5",
+    "@usewaypoint/block-spacer": "^0.0.3",
+    "@usewaypoint/block-text": "^0.0.3",
+    "@usewaypoint/document-core": "^0.0.6"
   }
 }
