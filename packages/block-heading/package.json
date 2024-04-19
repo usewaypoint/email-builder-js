@@ -1,6 +1,6 @@
 {
   "name": "@usewaypoint/block-heading",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "@usewaypoint/document compatible Heading component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

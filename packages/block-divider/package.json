@@ -1,6 +1,6 @@
 {
   "name": "@usewaypoint/block-divider",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "@usewaypoint/document compatible Divider component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
