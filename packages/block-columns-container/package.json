@@ -16,7 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "author": "carlos@usewaypoint.com",
   "license": "MIT",
@@ -25,6 +26,7 @@
     "zod": "^1 || ^2 || ^3"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.2.1"
+    "@testing-library/react": "^14.2.1",
+    "typescript": "^5.4.5"
   }
 }

@@ -8,6 +8,8 @@
     "dist"
   ],
   "scripts": {
+    "packages:install": "find ./packages -mindepth 1 -maxdepth 1 -type d -exec sh -c 'cd {} && npm install' \\;",
+    "packages:build": "find ./packages -mindepth 1 -maxdepth 1 -type d -exec sh -c 'cd {} && npm run build' \\;",
     "build": "npx tsc",
     "test": "npx jest"
   },
@@ -27,6 +29,7 @@
     "react-test-renderer": "^18.2.0",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3",
     "zod": "^3.22.4"
