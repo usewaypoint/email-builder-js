@@ -1,3 +1,4 @@
+import Markdown from 'markdown-parser-react';
 import React, { CSSProperties } from 'react';
 import { z } from 'zod';
 
@@ -74,6 +75,7 @@ export const TextPropsSchema = z.object({
     .nullable(),
   props: z
     .object({
+      markdown: z.boolean().optional().nullable(),
       text: z.string().optional().nullable(),
     })
     .optional()
@@ -98,5 +100,12 @@ export function Text({ style, props }: TextProps) {
   };
 
   const text = props?.text ?? TextPropsDefaults.text;
+  if (props?.markdown) {
+    return (
+      <div style={wStyle}>
+        <Markdown content={text} />
+      </div>
+    );
+  }
   return <div style={wStyle}>{text}</div>;
 }

@@ -5,3 +5,23 @@ exports[`block-text renders with default values 1`] = `
   <div />
 </DocumentFragment>
 `;
+
+exports[`block-text renders with safe markdown 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <h2>
+        This is &lt;span&gt;markdown&lt;/span&gt;
+      </h2>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`block-text renders without markdown 1`] = `
+<DocumentFragment>
+  <div>
+    ## This is not &lt;span&gt;markdown&lt;/span&gt;
+  </div>
+</DocumentFragment>
+`;
