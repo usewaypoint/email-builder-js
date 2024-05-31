@@ -1,7 +1,6 @@
 {
   "name": "@usewaypoint-monorepo",
   "version": "0.0.6",
-  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "target": "ES2022",
