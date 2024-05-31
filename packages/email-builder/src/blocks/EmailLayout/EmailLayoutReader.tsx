@@ -53,6 +53,14 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
           margin: '0 auto',
           maxWidth: '600px',
           backgroundColor: props.canvasColor ?? '#FFFFFF',
+          borderRadius: props.borderRadius ?? undefined,
+          border: (() => {
+            const v = props.borderColor;
+            if (!v) {
+              return undefined;
+            }
+            return `1px solid ${v}`;
+          })(),
         }}
         role="presentation"
         cellSpacing="0"
