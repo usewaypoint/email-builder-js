@@ -28,6 +28,13 @@ function getFontFamily(fontFamily: EmailLayoutProps['fontFamily']) {
   }
 }
 
+function getBorder({ borderColor }: EmailLayoutProps) {
+  if (!borderColor) {
+    return undefined;
+  }
+  return `1px solid ${borderColor}`;
+}
+
 export default function EmailLayoutReader(props: EmailLayoutProps) {
   const childrenIds = props.childrenIds ?? [];
   return (
@@ -53,6 +60,8 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
           margin: '0 auto',
           maxWidth: '600px',
           backgroundColor: props.canvasColor ?? '#FFFFFF',
+          borderRadius: props.borderRadius ?? undefined,
+          border: getBorder(props),
         }}
         role="presentation"
         cellSpacing="0"

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
+import { RoundedCornerOutlined } from '@mui/icons-material';
+
 import EmailLayoutPropsSchema, {
   EmailLayoutProps,
 } from '../../../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
-import ColorInput from './helpers/inputs/ColorInput';
+import ColorInput, { NullableColorInput } from './helpers/inputs/ColorInput';
 import { NullableFontFamily } from './helpers/inputs/FontFamily';
+import SliderInput from './helpers/inputs/SliderInput';
 
 type EmailLayoutSidebarFieldsProps = {
   data: EmailLayoutProps;
@@ -37,7 +40,22 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
         defaultValue={data.canvasColor ?? '#FFFFFF'}
         onChange={(canvasColor) => updateData({ ...data, canvasColor })}
       />
-
+      <NullableColorInput
+        label="Canvas border color"
+        defaultValue={data.borderColor ?? null}
+        onChange={(borderColor) => updateData({ ...data, borderColor })}
+      />
+      <SliderInput
+        iconLabel={<RoundedCornerOutlined />}
+        units="px"
+        step={4}
+        marks
+        min={0}
+        max={48}
+        label="Canvas border radius"
+        defaultValue={data.borderRadius ?? 0}
+        onChange={(borderRadius) => updateData({ ...data, borderRadius })}
+      />
       <NullableFontFamily
         label="Font family"
         defaultValue="MODERN_SANS"
