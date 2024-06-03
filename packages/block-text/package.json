@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@testing-library/react": "^14.2.1",
-    "@types/dompurify": "^3.0.5",
     "@types/insane": "^1.0.0"
   },
   "dependencies": {
