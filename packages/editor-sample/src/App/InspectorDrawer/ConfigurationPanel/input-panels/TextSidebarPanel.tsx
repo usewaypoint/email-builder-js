@@ -34,7 +34,7 @@ export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProp
       />
       <BooleanInput
         label="Markdown"
-        defaultValue={false}
+        defaultValue={data.props?.markdown ?? false}
         onChange={(markdown) => updateData({ ...data, props: { ...data.props, markdown } })}
       />
 
