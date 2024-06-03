@@ -57,8 +57,11 @@ function sanitizer(html: string): string {
       }, {}),
       img: ['src', 'srcset', 'alt', 'width', 'height', ...GENERIC_ALLOWED_ATTRIBUTES],
       table: ['width', ...GENERIC_ALLOWED_ATTRIBUTES],
-      td: ['width', ...GENERIC_ALLOWED_ATTRIBUTES],
+      td: ['align', 'width', ...GENERIC_ALLOWED_ATTRIBUTES],
+      th: ['align', 'width', ...GENERIC_ALLOWED_ATTRIBUTES],
       a: ['href', 'target', ...GENERIC_ALLOWED_ATTRIBUTES],
+      ol: ['start', ...GENERIC_ALLOWED_ATTRIBUTES],
+      ul: ['start', ...GENERIC_ALLOWED_ATTRIBUTES],
     },
   });
 }
