@@ -1,6 +1,7 @@
-import Markdown from 'markdown-parser-react';
 import React, { CSSProperties } from 'react';
 import { z } from 'zod';
+
+import EmailMarkdown from './EmailMarkdown';
 
 const FONT_FAMILY_SCHEMA = z
   .enum([
@@ -101,11 +102,7 @@ export function Text({ style, props }: TextProps) {
 
   const text = props?.text ?? TextPropsDefaults.text;
   if (props?.markdown) {
-    return (
-      <div style={wStyle}>
-        <Markdown content={text} />
-      </div>
-    );
+    return <EmailMarkdown style={wStyle} markdown={text} />;
   }
   return <div style={wStyle}>{text}</div>;
 }

@@ -9,11 +9,55 @@ exports[`block-text renders with default values 1`] = `
 exports[`block-text renders with safe markdown 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      <h2>
-        This is &lt;span&gt;markdown&lt;/span&gt;
-      </h2>
-    </div>
+    <p>
+      This 
+      <span>
+        text
+      </span>
+       block has the 
+      <strong>
+        Markdown
+      </strong>
+       option 
+      <em>
+        turned on
+      </em>
+      .
+    </p>
+    
+
+    <ul>
+      
+
+      <li>
+        One
+      </li>
+      
+
+      <li>
+        Two
+      </li>
+      
+
+      <li>
+        Three
+      </li>
+      
+
+    </ul>
+    
+
+    <p>
+      Powered by 
+      <a
+        href="https://usewaypoint.com"
+        target="_blank"
+      >
+        Waypoint
+      </a>
+    </p>
+    
+
   </div>
 </DocumentFragment>
 `;
@@ -22,6 +66,97 @@ exports[`block-text renders without markdown 1`] = `
 <DocumentFragment>
   <div>
     ## This is not &lt;span&gt;markdown&lt;/span&gt;
+  </div>
+</DocumentFragment>
+`;
+
+exports[`block-text sanitizes HTML 1`] = `
+<DocumentFragment>
+  <div>
+    
+
+    <img
+      src="x"
+    />
+    
+
+
+    <p>
+      <a
+        target="_blank"
+      >
+        a
+      </a>
+      <br />
+      <a
+        target="_blank"
+      >
+        Basic
+      </a>
+      <br />
+      <a
+        target="_blank"
+      >
+        Local Storage
+      </a>
+      <br />
+      <a
+        target="_blank"
+      >
+        CaseInsensitive
+      </a>
+      <br />
+      <a
+        target="_blank"
+      >
+        URL
+      </a>
+    </p>
+    
+
+    <p>
+      <a
+        target="_blank"
+      >
+        In Quotes
+      </a>
+      <br />
+      [a](j a v a s c r i p t:prompt(document.cookie))
+      <br />
+      <a
+        target="_blank"
+      >
+        a
+      </a>
+      <br />
+      <a
+        target="_blank"
+      >
+        a
+      </a>
+      <br />
+      <img
+        alt="Uh oh..."
+        src="%22onerror=%22alert('XSS')"
+      />
+      <br />
+      <img
+        alt="Uh oh..."
+        src="https://www.example.com/image.png%22onload=%22alert('XSS')"
+      />
+      <br />
+      <img
+        alt="Escape SRC - onload"
+        src="https://www.example.com/image.png%22onload=%22alert('ImageOnLoad')"
+      />
+      <br />
+      <img
+        alt="Escape SRC - onerror"
+        src="%22onerror=%22alert('ImageOnError')"
+      />
+    </p>
+    
+
   </div>
 </DocumentFragment>
 `;
