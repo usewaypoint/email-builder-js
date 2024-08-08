@@ -1,18 +1,20 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 import { ArrowDownwardOutlined, ArrowUpwardOutlined, DeleteOutlined } from '@mui/icons-material';
-import { IconButton, Paper, Stack, Tooltip } from '@mui/material';
+import { IconButton, Paper, Stack, SxProps, Tooltip } from '@mui/material';
 
 import { TEditorBlock } from '../../../editor/core';
 import { resetDocument, setSelectedBlockId, useDocument } from '../../../editor/EditorContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
 
-const STYLE: CSSProperties = {
+const sx: SxProps = {
   position: 'absolute',
   top: 0,
-  left: -52,
+  left: -56,
   borderRadius: 64,
-  padding: 2,
+  paddingX: 0.5,
+  paddingY: 1,
+  zIndex: 'fab',
 };
 
 type Props = {
@@ -147,14 +149,14 @@ export default function TuneMenu({ blockId }: Props) {
   };
 
   return (
-    <Paper style={STYLE} onClick={(ev) => ev.stopPropagation()}>
+    <Paper sx={sx} onClick={(ev) => ev.stopPropagation()}>
       <Stack>
-        <Tooltip title="Move Up" placement="left-start">
+        <Tooltip title="Move up" placement="left-start">
           <IconButton onClick={() => handleMoveClick('up')} sx={{ color: 'text.primary' }}>
             <ArrowUpwardOutlined fontSize="small" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Move Down" placement="left-start">
+        <Tooltip title="Move down" placement="left-start">
           <IconButton onClick={() => handleMoveClick('down')} sx={{ color: 'text.primary' }}>
             <ArrowDownwardOutlined fontSize="small" />
           </IconButton>
