@@ -4,7 +4,7 @@ import { ArrowDownwardOutlined, ArrowUpwardOutlined, DeleteOutlined } from '@mui
 import { IconButton, Paper, Stack, Tooltip } from '@mui/material';
 
 import { TEditorBlock } from '../../../editor/core';
-import { resetDocument, useDocument } from '../../../editor/EditorContext';
+import { resetDocument, setSelectedBlockId, useDocument } from '../../../editor/EditorContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
 
 const STYLE: CSSProperties = {
@@ -12,6 +12,7 @@ const STYLE: CSSProperties = {
   top: 0,
   left: -52,
   borderRadius: 64,
+  padding: 2,
 };
 
 type Props = {
@@ -78,19 +79,20 @@ export default function TuneMenu({ blockId }: Props) {
   };
 
   const handleMoveClick = (direction: 'up' | 'down') => {
-    const moveChildrenIds = (childrenIds: string[] | null | undefined) => {
-      if (!childrenIds) {
-        return childrenIds;
+    const moveChildrenIds = (ids: string[] | null | undefined) => {
+      if (!ids) {
+        return ids;
       }
-      const index = childrenIds.indexOf(blockId);
-      if (index !== -1) {
-        if (direction === 'up' && index > 0) {
-          [childrenIds[index], childrenIds[index - 1]] = [childrenIds[index - 1], childrenIds[index]];
-        } else if (direction === 'down' && index < childrenIds.length - 1) {
-          [childrenIds[index], childrenIds[index + 1]] = [childrenIds[index + 1], childrenIds[index]];
-        }
+      const index = ids.indexOf(blockId);
+      if (index < 0) {
+        return ids;
       }
-
+      const childrenIds = [...ids];
+      if (direction === 'up' && index > 0) {
+        [childrenIds[index], childrenIds[index - 1]] = [childrenIds[index - 1], childrenIds[index]];
+      } else if (direction === 'down' && index < childrenIds.length - 1) {
+        [childrenIds[index], childrenIds[index + 1]] = [childrenIds[index + 1], childrenIds[index]];
+      }
       return childrenIds;
     };
     const nDocument: typeof document = { ...document };
@@ -139,8 +141,9 @@ export default function TuneMenu({ blockId }: Props) {
           nDocument[id] = block;
       }
     }
-    console.log(nDocument);
+
     resetDocument(nDocument);
+    setSelectedBlockId(blockId);
   };
 
   return (
