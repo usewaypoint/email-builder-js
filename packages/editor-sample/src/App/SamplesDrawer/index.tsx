@@ -56,10 +56,10 @@ export default function SamplesDrawer() {
           </Link>
           <Box>
             <Typography variant="overline" gutterBottom>
-              Looking for more?
+              Looking to send emails?
             </Typography>
             <Typography variant="body2" color="text.secondary" paragraph>
-              Waypoint is an email API service with a hosted &apos;pro&apos; template builder with Markdown, dynamic
+              Waypoint is an end-to-end email API with a &apos;pro&apos; version of this template builder with dynamic
               variables, loops, conditionals, drag and drop, layouts, and more.
             </Typography>
           </Box>
