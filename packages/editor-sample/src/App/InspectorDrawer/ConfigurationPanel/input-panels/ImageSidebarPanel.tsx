@@ -5,7 +5,7 @@ import {
   VerticalAlignCenterOutlined,
   VerticalAlignTopOutlined,
 } from '@mui/icons-material';
-import { Stack, ToggleButton } from '@mui/material';
+import { Box, Button, Stack, ToggleButton } from '@mui/material';
 import { ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
@@ -13,6 +13,7 @@ import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import TextDimensionInput from './helpers/inputs/TextDimensionInput';
 import TextInput from './helpers/inputs/TextInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
+import { addImage, useImages } from '../../../../documents/editor/EditorContext';
 
 type ImageSidebarPanelProps = {
   data: ImageProps;
@@ -20,6 +21,7 @@ type ImageSidebarPanelProps = {
 };
 export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelProps) {
   const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const images = useImages();
 
   const updateData = (d: unknown) => {
     const res = ImagePropsSchema.safeParse(d);
@@ -31,8 +33,39 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
     }
   };
 
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      addImage({ base64: reader.result as string, file });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleImageClick = (image: { base64: string; file: File }) => () => {
+    updateData({ ...data, props: { ...data.props, url: image.file.name } });
+  };
+
   return (
     <BaseSidebarPanel title="Image block">
+      <Button component="label">
+        Upload image
+        <input type="file" accept="image/*" hidden onChange={handleFileUpload} />
+      </Button>
+
+      <Box>
+        {images.map((image) => (
+          <Box onClick={handleImageClick(image)}>
+            <img key={image.file.name} src={image.base64} alt="Uploaded" style={{ width: 50 }} />
+            {image.file.name}
+          </Box>
+        ))}
+      </Box>
+
       <TextInput
         label="Source URL"
         defaultValue={data.props?.url ?? ''}

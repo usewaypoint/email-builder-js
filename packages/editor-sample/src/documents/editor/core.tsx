@@ -22,6 +22,18 @@ import ContainerPropsSchema from '../blocks/Container/ContainerPropsSchema';
 import EmailLayoutEditor from '../blocks/EmailLayout/EmailLayoutEditor';
 import EmailLayoutPropsSchema from '../blocks/EmailLayout/EmailLayoutPropsSchema';
 import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrapper';
+import { useImages } from './EditorContext';
+
+const CustomImagePropsSchema = ImagePropsSchema.extend({});
+
+const isUrl = (value: string) => {
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+};
 
 const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Avatar: {
@@ -75,13 +87,18 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Image: {
     schema: ImagePropsSchema,
     Component: (data) => {
+      const images = useImages()
       const props = {
         ...data,
         props: {
           ...data.props,
-          url: data.props?.url ?? 'https://placehold.co/600x400@2x/F8F8F8/CCC?text=Your%20image',
+          url: data.props?.url,
         },
       };
+      if (props.props?.url && !isUrl(props.props.url)) {
+        props.props.url = images.find((i) => i.file.name === props.props.url)?.base64 ?? data.props.url;
+      }
+
       return (
         <EditorBlockWrapper>
           <Image {...props} />
@@ -114,6 +131,14 @@ const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
     Component: (props) => (
       <EditorBlockWrapper>
         <Divider {...props} />
+      </EditorBlockWrapper>
+    ),
+  },
+  CustomImage: {
+    schema: CustomImagePropsSchema,
+    Component: (props) => (
+      <EditorBlockWrapper>
+        <Image {...props} />
       </EditorBlockWrapper>
     ),
   },

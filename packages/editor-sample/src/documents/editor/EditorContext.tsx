@@ -4,6 +4,11 @@ import getConfiguration from '../../getConfiguration';
 
 import { TEditorConfiguration } from './core';
 
+export type FileWithBase64 = {
+  file: File;
+  base64: string;
+};
+
 type TValue = {
   document: TEditorConfiguration;
 
@@ -14,6 +19,8 @@ type TValue = {
 
   inspectorDrawerOpen: boolean;
   samplesDrawerOpen: boolean;
+
+  images: Array<FileWithBase64>;
 };
 
 const editorStateStore = create<TValue>(() => ({
@@ -25,6 +32,7 @@ const editorStateStore = create<TValue>(() => ({
 
   inspectorDrawerOpen: true,
   samplesDrawerOpen: true,
+  images: [],
 }));
 
 export function useDocument() {
@@ -57,6 +65,10 @@ export function useInspectorDrawerOpen() {
 
 export function useSamplesDrawerOpen() {
   return editorStateStore((s) => s.samplesDrawerOpen);
+}
+
+export function useImages() {
+  return editorStateStore((s) => s.images);
 }
 
 export function setSelectedBlockId(selectedBlockId: TValue['selectedBlockId']) {
@@ -107,3 +119,8 @@ export function toggleSamplesDrawerOpen() {
 export function setSelectedScreenSize(selectedScreenSize: TValue['selectedScreenSize']) {
   return editorStateStore.setState({ selectedScreenSize });
 }
+
+export const addImage = (image: FileWithBase64) => {
+  const images = editorStateStore.getState().images;
+  return editorStateStore.setState({ images: [...images, image] });
+};
