@@ -1,11 +1,15 @@
 {
-  "name": "@usewaypoint-monorepo",
+  "name": "@usewaypoint/email-builder-project",
   "version": "0.0.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "target": "ES2022",
   "files": [
     "dist"
+  ],
+  "packageManager": "npm@10.4.0",
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
     "build": "npx tsc",
@@ -28,7 +32,6 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3",
-    "zod": "^3.22.4"
+    "typescript": "^5.3.3"
   }
 }
