@@ -1,3 +1,4 @@
+import { Button } from "~/components/ui/button";
 import type { Route } from "./+types/index";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <>Start</>;
+  return <Button>Start</Button>;
 }
