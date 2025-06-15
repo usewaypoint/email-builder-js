@@ -1,25 +1,25 @@
-import { useState } from "react"
-import { Palette, Eye, Settings2, X } from "lucide-react"
-import { Input } from "~/components/ui/input"
-import { Label } from "~/components/ui/label"
-import { Slider } from "~/components/ui/slider"
-import { Button } from "~/components/ui/button"
-import { Sheet, SheetContent } from "~/components/ui/sheet"
-import { useIsMobile } from "~/hooks/use-mobile"
+import { useState } from 'react';
+import { Palette, Eye, Settings2, X } from 'lucide-react';
+import { Input } from '~/components/ui/input';
+import { Label } from '~/components/ui/label';
+import { Slider } from '~/components/ui/slider';
+import { Button } from '~/components/ui/button';
+import { Sheet, SheetContent } from '~/components/ui/sheet';
+import { useIsMobile } from '~/hooks/use-mobile';
 
 const tabs = [
-  { id: "inspect", label: "Inspect", icon: Eye },
-  { id: "style", label: "Style", icon: Palette },
-]
+  { id: 'inspect', label: 'Inspect', icon: Eye },
+  { id: 'style', label: 'Style', icon: Palette },
+];
 
 interface InspectorSidebarProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
-  const [activeTab, setActiveTab] = useState("inspect")
-  const isMobile = useIsMobile()
+  const [activeTab, setActiveTab] = useState('inspect');
+  const isMobile = useIsMobile();
 
   const sidebarContent = (
     <>
@@ -31,8 +31,8 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
               onClick={() => setActiveTab(tab.id)}
               className={`h-full flex flex-1 items-center justify-center gap-2 px-3 py-2 text-sm font-medium transition-colors border-b-2 cursor-pointer ${
                 activeTab === tab.id
-                  ? "text-foreground border-foreground"
-                  : "text-muted-foreground border-transparent hover:text-foreground hover:border-muted-foreground/50"
+                  ? 'text-foreground border-foreground'
+                  : 'text-muted-foreground border-transparent hover:text-foreground hover:border-muted-foreground/50'
               }`}
             >
               <tab.icon className="h-4 w-4" />
@@ -42,14 +42,14 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
         </div>
       </div>
       <div className="flex-1 overflow-auto p-4">
-        {activeTab === "inspect" && (
+        {activeTab === 'inspect' && (
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-medium mb-3 text-muted-foreground">Element Inspector</h3>
               <div className="space-y-3">
                 <div>
                   <Label className="text-xs text-muted-foreground">Element</Label>
-                  <div className="mt-1 p-2 bg-muted rounded text-sm">{"<div>"}</div>
+                  <div className="mt-1 p-2 bg-muted rounded text-sm">{'<div>'}</div>
                 </div>
                 <div>
                   <Label className="text-xs text-muted-foreground">Class</Label>
@@ -82,7 +82,7 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
           </div>
         )}
 
-        {activeTab === "style" && (
+        {activeTab === 'style' && (
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-medium mb-3 text-muted-foreground">Styling Options</h3>
@@ -129,7 +129,7 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
         )}
       </div>
     </>
-  )
+  );
 
   if (isMobile) {
     return (
@@ -141,8 +141,12 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
           {sidebarContent}
         </SheetContent>
       </Sheet>
-    )
+    );
   }
 
-  return <div className={`transition-all border-l bg-background flex flex-col ${isOpen ? 'w-80': 'w-0'}`}>{sidebarContent}</div>
+  return (
+    <div className={`transition-all border-l bg-background flex flex-col ${isOpen ? 'w-80' : 'w-0'}`}>
+      {sidebarContent}
+    </div>
+  );
 }

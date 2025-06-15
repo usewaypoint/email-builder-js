@@ -25,6 +25,7 @@
     "clsx": "^2.1.1",
     "isbot": "^5.1.27",
     "lucide-react": "^0.515.0",
+    "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.5.3",
