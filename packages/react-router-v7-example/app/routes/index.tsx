@@ -19,8 +19,8 @@ import {
 } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "~/components/ui/dropdown-menu"
 import { ToggleGroup, ToggleGroupItem } from "~/components/ui/toggle-group"
-// import { LeftSidebar } from "~/components/left-sidebar"
-// import { RightSidebar } from "~/components/right-sidebar"
+import { SampleSidebar } from "~/components/sample-sidebar"
+import { InspectorSidebar } from "~/components/inspector-sidebar"
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -104,7 +104,7 @@ export default function Home() {
 
   return (<div className="flex min-h-screen">
     {/* Left Sidebar */}
-    {/* <LeftSidebar isOpen={leftSidebarOpen} onClose={() => setLeftSidebarOpen(false)} /> */}
+    <SampleSidebar isOpen={leftSidebarOpen} onClose={() => setLeftSidebarOpen(false)} />
 
     {/* Main Content */}
     <div className="flex flex-col flex-1 min-w-0">
@@ -220,6 +220,6 @@ export default function Home() {
     </div>
 
     {/* Right Sidebar */}
-    {/* <RightSidebar isOpen={rightSidebarOpen} onClose={() => setRightSidebarOpen(false)} /> */}
+    <InspectorSidebar isOpen={rightSidebarOpen} onClose={() => setRightSidebarOpen(false)} />
   </div>)
 }
