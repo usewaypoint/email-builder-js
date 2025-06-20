@@ -1,22 +1,23 @@
-import { Button } from '~/components/ui/button';
 import type { Route } from './+types/index';
 
-import { useState, useRef, useEffect } from 'react';
 import {
-  Maximize2,
+  Braces,
+  Code,
+  Download,
+  EllipsisVertical,
+  Eye,
+  Monitor,
   PanelLeft,
   PanelRight,
-  SquarePen,
-  Eye,
-  Code,
-  Braces,
-  EllipsisVertical,
-  Download,
-  Upload,
   Share2,
-  Monitor,
   Smartphone,
+  SquarePen,
+  Upload,
 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { InspectorSidebar } from '~/components/inspector-sidebar';
+import { SampleSidebar } from '~/components/sample-sidebar';
+import { Button } from '~/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,29 +25,44 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
-import { SampleSidebar } from '~/components/sample-sidebar';
-import { InspectorSidebar } from '~/components/inspector-sidebar';
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'New React Router App' }, { name: 'description', content: 'Welcome to React Router!' }];
 }
 
-const headerTabs = ['SquarePen', 'Preview', 'Code', 'Braces'];
-const headerTabIcons = [SquarePen, Eye, Code, Braces];
+const headerOptions: { label: 'Edit' | 'Preview' | 'HTML' | 'JSON'; icon: React.ElementType }[] = [
+  { label: 'Edit', icon: SquarePen },
+  { label: 'Preview', icon: Eye },
+  { label: 'HTML', icon: Code },
+  { label: 'JSON', icon: Braces },
+];
 
-function CanvasArea() {
+function CanvasArea({ activeIndex }: { activeIndex?: number }) {
+  const currentOption = headerOptions[activeIndex || 0];
+
+  const renderContent = () => {
+    switch (currentOption.label) {
+      case 'Edit':
+        return <div className="p-3">Edit your content here.</div>;
+
+      case 'Preview':
+        return <div className="p-3">Preview your design here.</div>;
+
+      case 'HTML':
+        return <div className="p-3">HTML code will be displayed here.</div>;
+
+      case 'JSON':
+        return <div className="p-3">JSON data will be displayed here.</div>;
+
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Canvas */}
-      <div className="flex-1 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
-        <div className="absolute inset-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-center">
-          <div className="text-center space-y-2">
-            <Maximize2 className="h-12 w-12 mx-auto text-gray-400" />
-            <p className="text-gray-500 dark:text-gray-400">Canvas Area</p>
-            <p className="text-sm text-gray-400">Design your content here</p>
-          </div>
-        </div>
-      </div>
+      <div className="relative flex-1 bg-muted overflow-auto">{renderContent()}</div>
     </div>
   );
 }
@@ -140,8 +156,8 @@ export default function Home() {
 
               {/* Tabs */}
               <div className="relative flex space-x-1 items-center">
-                {headerTabs.map((tab, index) => {
-                  const Icon = headerTabIcons[index];
+                {headerOptions.map((tab, index) => {
+                  const Icon = tab.icon;
                   return (
                     <div
                       key={index}
@@ -224,7 +240,7 @@ export default function Home() {
 
         {/* Canvas Area */}
         <div className="flex flex-1 min-h-0">
-          <CanvasArea />
+          <CanvasArea activeIndex={activeIndex} />
         </div>
       </div>
 
