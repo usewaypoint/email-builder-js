@@ -25,16 +25,24 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
+import {
+  setSelectedMainTab,
+  setSelectedScreenSize,
+  toggleInspectorSidebarOpen,
+  toggleTemplatesSidebarOpen,
+  useSelectedScreenSize,
+  type MainTabOptions,
+} from '~/context/editor';
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'New React Router App' }, { name: 'description', content: 'Welcome to React Router!' }];
 }
 
-const headerOptions: { label: 'Edit' | 'Preview' | 'HTML' | 'JSON'; icon: React.ElementType }[] = [
-  { label: 'Edit', icon: SquarePen },
-  { label: 'Preview', icon: Eye },
-  { label: 'HTML', icon: Code },
-  { label: 'JSON', icon: Braces },
+const headerOptions: { label: MainTabOptions; icon: React.ElementType }[] = [
+  { label: 'editor', icon: SquarePen },
+  { label: 'preview', icon: Eye },
+  { label: 'html', icon: Code },
+  { label: 'json', icon: Braces },
 ];
 
 function CanvasArea({ activeIndex }: { activeIndex?: number }) {
@@ -42,16 +50,16 @@ function CanvasArea({ activeIndex }: { activeIndex?: number }) {
 
   const renderContent = () => {
     switch (currentOption.label) {
-      case 'Edit':
+      case 'editor':
         return <div className="p-3">Edit your content here.</div>;
 
-      case 'Preview':
+      case 'preview':
         return <div className="p-3">Preview your design here.</div>;
 
-      case 'HTML':
+      case 'html':
         return <div className="p-3">HTML code will be displayed here.</div>;
 
-      case 'JSON':
+      case 'json':
         return <div className="p-3">JSON data will be displayed here.</div>;
 
       default:
@@ -62,20 +70,20 @@ function CanvasArea({ activeIndex }: { activeIndex?: number }) {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Canvas */}
+
       <div className="relative flex-1 bg-muted overflow-auto">{renderContent()}</div>
     </div>
   );
 }
 
 export default function Home() {
-  const [leftSidebarOpen, setLeftSidebarOpen] = useState(true);
-  const [rightSidebarOpen, setRightSidebarOpen] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverStyle, setHoverStyle] = useState({});
   const [activeStyle, setActiveStyle] = useState({ left: '0px', width: '0px' });
-  const [deviceType, setDeviceType] = useState('desktop');
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const screenSize = useSelectedScreenSize();
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -121,19 +129,14 @@ export default function Home() {
   return (
     <div className="flex min-h-screen">
       {/* Left Sidebar */}
-      <TemplateSidebar isOpen={leftSidebarOpen} onClose={() => setLeftSidebarOpen(false)} />
+      <TemplateSidebar />
 
       {/* Main Content */}
       <div className="flex flex-col flex-1 min-w-0">
         {/* Header */}
         <header className="flex h-14 items-center gap-2 border-b bg-background px-3 overflow-scroll">
           <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8"
-              onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
-            >
+            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleTemplatesSidebarOpen}>
               <PanelLeft className="h-4 w-4" />
             </Button>
 
@@ -169,7 +172,10 @@ export default function Home() {
                       }`}
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      onClick={() => setActiveIndex(index)}
+                      onClick={() => {
+                        setActiveIndex(index);
+                        setSelectedMainTab(tab.label);
+                      }}
                     >
                       <Icon className="h-4 w-4" />
                     </div>
@@ -185,8 +191,8 @@ export default function Home() {
             {/* Device Toggle Group */}
             <ToggleGroup
               type="single"
-              value={deviceType}
-              onValueChange={setDeviceType}
+              value={screenSize}
+              onValueChange={setSelectedScreenSize}
               className="border rounded-md gap-0 overflow-hidden"
             >
               <ToggleGroupItem value="desktop" aria-label="Desktop view" size="sm" className="rounded-none">
@@ -227,12 +233,7 @@ export default function Home() {
 
             <div className="h-4 w-px bg-border" />
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8"
-              onClick={() => setRightSidebarOpen(!rightSidebarOpen)}
-            >
+            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleInspectorSidebarOpen}>
               <PanelRight className="h-4 w-4" />
             </Button>
           </div>
@@ -245,7 +246,7 @@ export default function Home() {
       </div>
 
       {/* Right Sidebar */}
-      <InspectorSidebar isOpen={rightSidebarOpen} onClose={() => setRightSidebarOpen(false)} />
+      <InspectorSidebar />
     </div>
   );
 }

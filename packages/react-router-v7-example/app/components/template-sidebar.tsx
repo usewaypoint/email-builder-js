@@ -1,16 +1,13 @@
 import { Separator } from '~/components/ui/separator';
 import { Sheet, SheetContent } from '~/components/ui/sheet';
+import { toggleTemplatesSidebarOpen, useTemplatesSidebarOpen } from '~/context/editor';
 import { useIsMobile } from '~/hooks/use-mobile';
 
 const tools = ['Select', 'Rectangle', 'Circle', 'Triangle', 'Text', 'Image'];
 
-interface TemplateSidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export function TemplateSidebar({ isOpen, onClose }: TemplateSidebarProps) {
+export function TemplateSidebar() {
   const isMobile = useIsMobile();
+  const isOpen = useTemplatesSidebarOpen();
 
   const sidebarContent = (
     <>
@@ -53,7 +50,7 @@ export function TemplateSidebar({ isOpen, onClose }: TemplateSidebarProps) {
 
   if (isMobile) {
     return (
-      <Sheet open={isOpen} onOpenChange={onClose}>
+      <Sheet open={isOpen} onOpenChange={toggleTemplatesSidebarOpen}>
         <SheetContent side="left" className="w-80 p-0 flex flex-col">
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Tools</h2>

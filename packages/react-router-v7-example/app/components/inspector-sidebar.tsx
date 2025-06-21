@@ -1,25 +1,27 @@
-import { useState } from 'react';
-import { Palette, Eye, Settings2, X } from 'lucide-react';
+import { Eye, Palette, Settings2 } from 'lucide-react';
+
+import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
 import { Label } from '~/components/ui/label';
-import { Slider } from '~/components/ui/slider';
-import { Button } from '~/components/ui/button';
 import { Sheet, SheetContent } from '~/components/ui/sheet';
+import { Slider } from '~/components/ui/slider';
+import {
+  setSidebarTab,
+  toggleInspectorSidebarOpen,
+  useInspectorSidebarOpen,
+  useSelectedSidebarTab,
+} from '~/context/editor';
 import { useIsMobile } from '~/hooks/use-mobile';
 
 const tabs = [
-  { id: 'inspect', label: 'Inspect', icon: Eye },
-  { id: 'style', label: 'Style', icon: Palette },
-];
+  { id: 'block-configuration', label: 'Inspect', icon: Eye },
+  { id: 'styles', label: 'Style', icon: Palette },
+] as const;
 
-interface InspectorSidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
-  const [activeTab, setActiveTab] = useState('inspect');
+export function InspectorSidebar() {
+  const sidebarTab = useSelectedSidebarTab();
   const isMobile = useIsMobile();
+  const isOpen = useInspectorSidebarOpen();
 
   const sidebarContent = (
     <>
@@ -28,9 +30,9 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => setSidebarTab(tab.id)}
               className={`h-full flex flex-1 items-center justify-center gap-2 px-3 py-2 text-sm font-medium transition-colors border-b-2 cursor-pointer ${
-                activeTab === tab.id
+                sidebarTab === tab.id
                   ? 'text-foreground border-foreground'
                   : 'text-muted-foreground border-transparent hover:text-foreground hover:border-muted-foreground/50'
               }`}
@@ -42,7 +44,7 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
         </div>
       </div>
       <div className="flex-1 overflow-auto p-4">
-        {activeTab === 'inspect' && (
+        {sidebarTab === 'block-configuration' && (
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-medium mb-3 text-muted-foreground">Element Inspector</h3>
@@ -81,8 +83,7 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
             </div>
           </div>
         )}
-
-        {activeTab === 'style' && (
+        {sidebarTab === 'styles' && (
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-medium mb-3 text-muted-foreground">Styling Options</h3>
@@ -133,7 +134,7 @@ export function InspectorSidebar({ isOpen, onClose }: InspectorSidebarProps) {
 
   if (isMobile) {
     return (
-      <Sheet open={isOpen} onOpenChange={onClose}>
+      <Sheet open={isOpen} onOpenChange={toggleInspectorSidebarOpen}>
         <SheetContent side="right" className="w-80 p-0 flex flex-col">
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Properties</h2>
