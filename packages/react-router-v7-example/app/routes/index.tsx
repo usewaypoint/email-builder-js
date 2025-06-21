@@ -26,6 +26,7 @@ import {
 } from '~/components/ui/dropdown-menu';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import {
+  resetDocument,
   setSelectedMainTab,
   setSelectedScreenSize,
   toggleInspectorSidebarOpen,
@@ -33,6 +34,8 @@ import {
   useSelectedScreenSize,
   type MainTabOptions,
 } from '~/context/editor';
+import { useDownloadUrl } from '~/lib/utils/download-json';
+import validateJsonStringValue from '~/lib/utils/validate-json-string';
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'New React Router App' }, { name: 'description', content: 'Welcome to React Router!' }];
@@ -84,6 +87,7 @@ export default function Home() {
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const screenSize = useSelectedScreenSize();
+  const downloadUrl = useDownloadUrl();
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -124,6 +128,14 @@ export default function Home() {
 
   const handleNotImplemented = (action: string) => {
     alert(`${action} not implemented`);
+  };
+
+  const handleImportJson = (value: string) => {
+    const { error, data } = validateJsonStringValue(value);
+    if (error || !data) return alert(error || 'Invalid JSON');
+
+    resetDocument(data);
+    alert('JSON imported successfully');
   };
 
   return (
@@ -211,11 +223,22 @@ export default function Home() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem onClick={() => handleNotImplemented('Download')}>
-                  <Download className="h-4 w-4 mr-2" />
-                  Download
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleNotImplemented('Import')}>
+                <a href={downloadUrl} download={'email-builder.json'}>
+                  <DropdownMenuItem>
+                    <Download className="h-4 w-4 mr-2" />
+                    Download
+                  </DropdownMenuItem>
+                </a>
+                <DropdownMenuItem
+                  onClick={() => {
+                    const jsonString = prompt('Paste your JSON here:');
+                    if (jsonString) {
+                      handleImportJson(jsonString);
+                    } else {
+                      alert('No value provided');
+                    }
+                  }}
+                >
                   <Upload className="h-4 w-4 mr-2" />
                   Import
                 </DropdownMenuItem>
