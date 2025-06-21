@@ -1,41 +1,19 @@
-import type { Route } from './+types/index';
+import type { Route } from './+types/route';
 
-import {
-  Braces,
-  Code,
-  Download,
-  EllipsisVertical,
-  Eye,
-  Monitor,
-  PanelLeft,
-  PanelRight,
-  Share2,
-  Smartphone,
-  SquarePen,
-  Upload,
-} from 'lucide-react';
+import { Braces, Code, Eye, PanelLeft, PanelRight, SquarePen } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { InspectorSidebar } from '~/components/inspector-sidebar';
 import { TemplateSidebar } from '~/components/template-sidebar';
 import { Button } from '~/components/ui/button';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '~/components/ui/dropdown-menu';
-import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
-import {
-  resetDocument,
   setSelectedMainTab,
-  setSelectedScreenSize,
   toggleInspectorSidebarOpen,
   toggleTemplatesSidebarOpen,
-  useSelectedScreenSize,
   type MainTabOptions,
 } from '~/context/editor';
-import { useDownloadUrl } from '~/lib/utils/download-json';
-import validateJsonStringValue from '~/lib/utils/validate-json-string';
+import { Canvas } from './canvas';
+import { ExtraFunctions } from './extraFunctions';
+import { ScreenToggle } from './screenToggle';
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'New React Router App' }, { name: 'description', content: 'Welcome to React Router!' }];
@@ -48,37 +26,6 @@ const headerOptions: { label: MainTabOptions; icon: React.ElementType }[] = [
   { label: 'json', icon: Braces },
 ];
 
-function CanvasArea({ activeIndex }: { activeIndex?: number }) {
-  const currentOption = headerOptions[activeIndex || 0];
-
-  const renderContent = () => {
-    switch (currentOption.label) {
-      case 'editor':
-        return <div className="p-3">Edit your content here.</div>;
-
-      case 'preview':
-        return <div className="p-3">Preview your design here.</div>;
-
-      case 'html':
-        return <div className="p-3">HTML code will be displayed here.</div>;
-
-      case 'json':
-        return <div className="p-3">JSON data will be displayed here.</div>;
-
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <div className="flex-1 flex flex-col min-h-0">
-      {/* Canvas */}
-
-      <div className="relative flex-1 bg-muted overflow-auto">{renderContent()}</div>
-    </div>
-  );
-}
-
 export default function Home() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -86,8 +33,7 @@ export default function Home() {
   const [activeStyle, setActiveStyle] = useState({ left: '0px', width: '0px' });
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const screenSize = useSelectedScreenSize();
-  const downloadUrl = useDownloadUrl();
+  const currentOption = headerOptions[activeIndex || 0];
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -125,18 +71,6 @@ export default function Home() {
       }
     });
   }, []);
-
-  const handleNotImplemented = (action: string) => {
-    alert(`${action} not implemented`);
-  };
-
-  const handleImportJson = (value: string) => {
-    const { error, data } = validateJsonStringValue(value);
-    if (error || !data) return alert(error || 'Invalid JSON');
-
-    resetDocument(data);
-    alert('JSON imported successfully');
-  };
 
   return (
     <div className="flex min-h-screen">
@@ -200,54 +134,11 @@ export default function Home() {
           <div className="flex-1" />
 
           <div className="flex items-center gap-2">
-            {/* Device Toggle Group */}
-            <ToggleGroup
-              type="single"
-              value={screenSize}
-              onValueChange={setSelectedScreenSize}
-              className="border rounded-md gap-0 overflow-hidden"
-            >
-              <ToggleGroupItem value="desktop" aria-label="Desktop view" size="sm" className="rounded-none">
-                <Monitor className="h-4 w-4" />
-              </ToggleGroupItem>
-              <ToggleGroupItem value="mobile" aria-label="Mobile view" size="sm" className="rounded-none">
-                <Smartphone className="h-4 w-4" />
-              </ToggleGroupItem>
-            </ToggleGroup>
+            {/* Screen Toggle Group */}
+            <ScreenToggle />
 
             {/* Dropdown Menu */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8">
-                  <EllipsisVertical className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <a href={downloadUrl} download={'email-builder.json'}>
-                  <DropdownMenuItem>
-                    <Download className="h-4 w-4 mr-2" />
-                    Download
-                  </DropdownMenuItem>
-                </a>
-                <DropdownMenuItem
-                  onClick={() => {
-                    const jsonString = prompt('Paste your JSON here:');
-                    if (jsonString) {
-                      handleImportJson(jsonString);
-                    } else {
-                      alert('No value provided');
-                    }
-                  }}
-                >
-                  <Upload className="h-4 w-4 mr-2" />
-                  Import
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleNotImplemented('Share')}>
-                  <Share2 className="h-4 w-4 mr-2" />
-                  Share
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <ExtraFunctions />
 
             {/* Save Button */}
             <Button variant="ghost" size="sm">
@@ -264,7 +155,7 @@ export default function Home() {
 
         {/* Canvas Area */}
         <div className="flex flex-1 min-h-0">
-          <CanvasArea activeIndex={activeIndex} />
+          <Canvas canva={currentOption.label} />
         </div>
       </div>
 
