@@ -73,7 +73,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen max-h-svh overflow-hidden">
       {/* Left Sidebar */}
       <TemplateSidebar />
 
@@ -154,7 +154,7 @@ export default function Home() {
         </header>
 
         {/* Canvas Area */}
-        <div className="flex flex-1 min-h-0">
+        <div className="flex-1 overflow-auto">
           <Canvas canva={currentOption.label} />
         </div>
       </div>
