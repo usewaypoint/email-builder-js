@@ -1,4 +1,6 @@
 import type { MainTabOptions } from '~/context/editor';
+import { HtmlCanva } from './htmlCanva';
+import { JsonCanva } from './jsonCanva';
 
 export function Canvas({ canva }: { canva: MainTabOptions }) {
   const renderContent = () => {
@@ -10,19 +12,15 @@ export function Canvas({ canva }: { canva: MainTabOptions }) {
         return <div className="p-3">Preview your design here.</div>;
 
       case 'html':
-        return <div className="p-3">HTML code will be displayed here.</div>;
+        return <HtmlCanva />;
 
       case 'json':
-        return <div className="p-3">JSON data will be displayed here.</div>;
+        return <JsonCanva />;
 
       default:
         return null;
     }
   };
 
-  return (
-    <div className="flex-1 flex flex-col min-h-0">
-      <div className="relative flex-1 bg-muted overflow-auto">{renderContent()}</div>
-    </div>
-  );
+  return <div className="relative w-full h-full flex-1 overflow-scroll p-3">{renderContent()}</div>;
 }

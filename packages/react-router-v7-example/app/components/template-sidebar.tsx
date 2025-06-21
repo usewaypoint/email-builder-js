@@ -16,7 +16,7 @@ export function TemplateSidebar() {
           <h2 className="text-lg font-semibold">EmailBuilder.js</h2>
         </div>
       )}
-      <div className="flex-1 overflow-auto p-4">
+      <div className="flex-1 overflow-hidden p-4">
         <div className="space-y-6">
           <div>
             {tools.map((tool) => (
@@ -62,7 +62,7 @@ export function TemplateSidebar() {
   }
 
   return (
-    <div className={`transition-all border-r bg-background flex flex-col ${isOpen ? 'w-48' : 'w-0'}`}>
+    <div className={`transition-all border-r bg-background flex flex-col overflow-hidden ${isOpen ? 'w-48' : 'w-0'}`}>
       {sidebarContent}
     </div>
   );
