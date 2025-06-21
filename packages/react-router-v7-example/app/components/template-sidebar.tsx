@@ -1,21 +1,15 @@
-import { Layers, Settings } from 'lucide-react';
 import { Separator } from '~/components/ui/separator';
 import { Sheet, SheetContent } from '~/components/ui/sheet';
 import { useIsMobile } from '~/hooks/use-mobile';
 
 const tools = ['Select', 'Rectangle', 'Circle', 'Triangle', 'Text', 'Image'];
 
-const navigation = [
-  { name: 'Layers', icon: Layers },
-  { name: 'Settings', icon: Settings },
-];
-
-interface SampleSidebarProps {
+interface TemplateSidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function SampleSidebar({ isOpen, onClose }: SampleSidebarProps) {
+export function TemplateSidebar({ isOpen, onClose }: TemplateSidebarProps) {
   const isMobile = useIsMobile();
 
   const sidebarContent = (

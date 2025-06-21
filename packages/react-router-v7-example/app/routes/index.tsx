@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { InspectorSidebar } from '~/components/inspector-sidebar';
-import { SampleSidebar } from '~/components/sample-sidebar';
+import { TemplateSidebar } from '~/components/template-sidebar';
 import { Button } from '~/components/ui/button';
 import {
   DropdownMenu,
@@ -121,7 +121,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen">
       {/* Left Sidebar */}
-      <SampleSidebar isOpen={leftSidebarOpen} onClose={() => setLeftSidebarOpen(false)} />
+      <TemplateSidebar isOpen={leftSidebarOpen} onClose={() => setLeftSidebarOpen(false)} />
 
       {/* Main Content */}
       <div className="flex flex-col flex-1 min-w-0">
