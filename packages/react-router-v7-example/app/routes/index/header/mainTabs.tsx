@@ -1,6 +1,7 @@
 import { Braces, Code, Eye, SquarePen } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { setSelectedMainTab, type MainTabOptions } from '~/context/editor';
+import { cn } from '~/lib/utils';
 
 const headerOptions: { label: MainTabOptions; icon: React.ElementType }[] = [
   { label: 'editor', icon: SquarePen },
@@ -14,7 +15,7 @@ export function MainTabs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverStyle, setHoverStyle] = useState({});
   const [activeStyle, setActiveStyle] = useState({ left: '0px', width: '0px' });
-  const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
     if (hoveredIndex !== null) {
@@ -80,20 +81,23 @@ export function MainTabs() {
         {headerOptions.map((tab, index) => {
           const Icon = tab.icon;
           return (
-            <div
+            <button
               key={index}
               ref={(el) => {
                 tabRefs.current[index] = el;
               }}
-              className={`px-3 py-2 cursor-pointer transition-colors duration-300 h-[32px] flex items-center gap-2 ${
-                index === activeIndex ? 'text-foreground' : 'text-muted-foreground'
-              }`}
+              className={cn(
+                'px-2 py-2 cursor-pointer transition-colors duration-300 h-[32px]',
+                'flex items-center gap-2 rounded-md overflow-hidden',
+                'outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+                `${index === activeIndex ? 'text-foreground' : 'text-muted-foreground'}`
+              )}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleMainTabClick(index, tab.label)}
             >
               <Icon className="h-4 w-4" />
-            </div>
+            </button>
           );
         })}
       </div>
