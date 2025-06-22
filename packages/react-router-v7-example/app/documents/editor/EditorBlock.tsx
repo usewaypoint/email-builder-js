@@ -11,7 +11,7 @@ type EditorBlockProps = {
 };
 
 /**
- *
+ * Pass in root block to render the layout of the editor.
  * @param id - Block id
  * @returns EditorBlock component that loads data from the EditorDocumentContext
  */

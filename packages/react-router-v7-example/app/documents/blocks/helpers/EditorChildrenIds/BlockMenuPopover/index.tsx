@@ -10,7 +10,7 @@ type Props = {
   placeholder?: boolean;
   onSelect: (block: TEditorBlock) => void;
 };
-export default function AddBlockButton({ onSelect, placeholder }: Props) {
+export default function BlockMenuPopoverTrigger({ onSelect, placeholder }: Props) {
   const [menuAnchorEl, setMenuAnchorEl] = useState<HTMLElement | null>(null);
   const [buttonElement, setButtonElement] = useState<HTMLElement | null>(null);
 

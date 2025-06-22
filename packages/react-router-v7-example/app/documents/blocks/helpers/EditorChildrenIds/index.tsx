@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { type TEditorBlock } from '../../../editor/core';
 import EditorBlock from '../../../editor/EditorBlock';
 
-import AddBlockButton from './AddBlockMenu';
+import { BlockMenuPopoverTrigger } from './BlockMenuPopover';
 
 export type EditorChildrenChange = {
   blockId: string;
@@ -41,18 +41,18 @@ export default function EditorChildrenIds({ childrenIds, onChange }: EditorChild
   };
 
   if (!childrenIds || childrenIds.length === 0) {
-    return <AddBlockButton placeholder onSelect={appendBlock} />;
+    return <BlockMenuPopoverTrigger placeholder onSelect={appendBlock} />;
   }
 
   return (
     <>
       {childrenIds.map((childId, i) => (
         <Fragment key={childId}>
-          <AddBlockButton onSelect={(block) => insertBlock(block, i)} />
+          <BlockMenuPopoverTrigger onSelect={(block) => insertBlock(block, i)} />
           <EditorBlock id={childId} />
         </Fragment>
       ))}
-      <AddBlockButton onSelect={appendBlock} />
+      <BlockMenuPopoverTrigger onSelect={appendBlock} />
     </>
   );
 }
