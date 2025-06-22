@@ -1,17 +1,20 @@
-import { useSelectedMainTab, type MainTabOptions } from '~/context/editor';
+import { useDocument, useSelectedMainTab, type MainTabOptions } from '~/context/editor';
 import { HtmlCanva } from './htmlCanva';
 import { JsonCanva } from './jsonCanva';
+import { EditorCanva } from './editorCanva';
+import { Reader } from '@usewaypoint/email-builder';
 
 export function Canvas() {
   const canva = useSelectedMainTab();
+  const document = useDocument();
 
   const renderContent = () => {
     switch (canva) {
       case 'editor':
-        return <div className="p-3">Edit your content here.</div>;
+        return <EditorCanva id="root" />;
 
       case 'preview':
-        return <div className="p-3">Preview your design here.</div>;
+        return <Reader document={document} rootBlockId="root" />;
 
       case 'html':
         return <HtmlCanva />;
