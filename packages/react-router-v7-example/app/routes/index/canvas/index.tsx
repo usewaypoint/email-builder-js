@@ -11,7 +11,7 @@ export function Canvas() {
   const renderContent = () => {
     switch (canva) {
       case 'editor':
-        return <EditorCanva id="root" />;
+        return <EditorCanva />;
 
       case 'preview':
         return <Reader document={document} rootBlockId="root" />;
@@ -27,5 +27,5 @@ export function Canvas() {
     }
   };
 
-  return <div className="relative w-full h-full flex-1 overflow-scroll p-3">{renderContent()}</div>;
+  return <div className="relative w-full h-full flex-1 overflow-scroll">{renderContent()}</div>;
 }

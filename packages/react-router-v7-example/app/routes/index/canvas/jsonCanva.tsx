@@ -7,7 +7,7 @@ export function JsonCanva() {
 
   return (
     <pre
-      className="whitespace-pre overflow-auto font-mono text-sm leading-relaxed p-4 border rounded-lg bg-muted"
+      className="whitespace-pre overflow-auto font-mono text-sm leading-relaxed m-2 p-4 border rounded-lg bg-muted"
       onClick={(e) => {
         const selection = window.getSelection();
         if (selection) {
