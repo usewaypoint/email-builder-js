@@ -1,52 +1,57 @@
 import { Separator } from '~/components/ui/separator';
 import { Sheet, SheetContent } from '~/components/ui/sheet';
-import { toggleTemplatesSidebarOpen, useTemplatesSidebarOpen } from '~/context/editor';
+import { resetDocument, toggleTemplatesSidebarOpen, useTemplatesSidebarOpen } from '~/context/editor';
 import { useIsMobile } from '~/hooks/use-mobile';
-
-const tools = ['Select', 'Rectangle', 'Circle', 'Triangle', 'Text', 'Image'];
+import { getTemplate, templateOptions } from '~/lib/utils/get-template';
 
 export function TemplateSidebar() {
   const isMobile = useIsMobile();
   const isOpen = useTemplatesSidebarOpen();
 
+  const handleTemplateSelect = (templateString: (typeof templateOptions)[number]['value']) => {
+    const template = getTemplate(templateString);
+    resetDocument(template);
+  };
+
   const sidebarContent = (
     <>
       {!isMobile && (
         <div className="h-14 border-b px-4 flex items-center">
-          <h2 className="text-lg font-semibold">EmailBuilder.js</h2>
+          <h2 className="text-base">EmailBuilder.js</h2>
         </div>
       )}
       <div className="flex-1 overflow-hidden p-4">
         <div className="space-y-6">
           <div>
-            {tools.map((tool) => (
+            {templateOptions.map((op) => (
               <button
-                key={tool}
-                className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted"
+                key={op.title}
+                onClick={() => handleTemplateSelect(op.value)}
+                className="w-full text-xs text-start text-nowrap px-1.5 py-1 my-0.25 cursor-pointer rounded-md hover:bg-muted"
               >
-                <span className="text-sm">{tool}</span>
+                {op.title}
               </button>
             ))}
           </div>
 
           <Separator />
 
-          <div>
+          <div className="flex flex-col">
             <a
               href="https://www.usewaypoint.com/open-source/emailbuilderjs"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted"
+              className="w-full text-xs text-start text-nowrap px-1.5 py-1 my-0.25 cursor-pointer rounded-md hover:bg-muted"
             >
-              <span className="text-sm">Learn more</span>
+              Learn more
             </a>
             <a
               href="https://github.com/usewaypoint/email-builder-js"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted"
+              className="w-full text-xs text-start text-nowrap px-1.5 py-1 my-0.25 cursor-pointer rounded-md hover:bg-muted"
             >
-              <span className="text-sm">View on GitHub</span>
+              View on GitHub
             </a>
           </div>
         </div>
@@ -59,7 +64,7 @@ export function TemplateSidebar() {
       <Sheet open={isOpen} onOpenChange={toggleTemplatesSidebarOpen}>
         <SheetContent side="left" className="w-80 p-0 flex flex-col">
           <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">Tools</h2>
+            <h2 className="text-base">EmailBuilder.js</h2>
           </div>
           {sidebarContent}
         </SheetContent>
@@ -69,7 +74,7 @@ export function TemplateSidebar() {
 
   return (
     <div
-      className={`transition-all border-r bg-background flex flex-col overflow-hidden ${isOpen ? 'w-48' : 'w-0'} `}
+      className={`transition-all border-r bg-background flex flex-col overflow-hidden ${isOpen ? 'w-52' : 'w-0'} `}
       aria-hidden={!isOpen}
       inert={!isOpen}
     >
