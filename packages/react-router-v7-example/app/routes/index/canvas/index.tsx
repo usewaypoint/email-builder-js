@@ -1,8 +1,10 @@
-import type { MainTabOptions } from '~/context/editor';
+import { useSelectedMainTab, type MainTabOptions } from '~/context/editor';
 import { HtmlCanva } from './htmlCanva';
 import { JsonCanva } from './jsonCanva';
 
-export function Canvas({ canva }: { canva: MainTabOptions }) {
+export function Canvas() {
+  const canva = useSelectedMainTab();
+
   const renderContent = () => {
     switch (canva) {
       case 'editor':
