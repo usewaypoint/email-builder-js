@@ -39,6 +39,7 @@
     "@usewaypoint/email-builder": "^0.0.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "isbot": "^5.1.27",
     "lucide-react": "^0.515.0",
     "prettier": "^3.5.3",
