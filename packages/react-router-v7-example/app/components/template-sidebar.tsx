@@ -16,7 +16,7 @@ export function TemplateSidebar() {
   const sidebarContent = (
     <>
       {!isMobile && (
-        <div className="h-14 border-b px-4 flex items-center">
+        <div className="h-12 border-b px-4 flex items-center">
           <h2 className="text-base">EmailBuilder.js</h2>
         </div>
       )}
@@ -63,7 +63,7 @@ export function TemplateSidebar() {
     return (
       <Sheet open={isOpen} onOpenChange={toggleTemplatesSidebarOpen}>
         <SheetContent side="left" className="w-80 p-0 flex flex-col">
-          <div className="flex items-center justify-between p-4 border-b">
+          <div className="flex items-center justify-between px-4 py-3 border-b">
             <h2 className="text-base">EmailBuilder.js</h2>
           </div>
           {sidebarContent}

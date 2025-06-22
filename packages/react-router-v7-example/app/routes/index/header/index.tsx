@@ -8,7 +8,7 @@ import { ScreenToggle } from './screenToggle';
 
 export function Header() {
   return (
-    <header className="flex h-14 items-center gap-2 border-b bg-background px-3 overflow-scroll">
+    <header className="flex h-12 items-center gap-2 border-b bg-background px-3 overflow-scroll">
       <div className="w-full flex items-center gap-2">
         <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleTemplatesSidebarOpen}>
           <PanelLeft className="h-4 w-4" />

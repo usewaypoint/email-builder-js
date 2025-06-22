@@ -14,8 +14,8 @@ import {
 import { useIsMobile } from '~/hooks/use-mobile';
 
 const tabs = [
-  { id: 'block-configuration', label: 'Inspect', icon: Eye },
-  { id: 'styles', label: 'Style', icon: Palette },
+  { id: 'styles', label: 'Styles' },
+  { id: 'block-configuration', label: 'Inspect' },
 ] as const;
 
 export function InspectorSidebar() {
@@ -25,19 +25,18 @@ export function InspectorSidebar() {
 
   const sidebarContent = (
     <>
-      <div className="h-14 border-b px-4 flex items-end">
+      <div className="h-12 border-b px-4 flex items-end">
         <div className="flex w-full h-full">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setSidebarTab(tab.id)}
-              className={`h-full flex flex-1 items-center justify-center gap-2 px-3 py-2 text-sm font-medium transition-colors border-b-2 cursor-pointer ${
+              className={`flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium transition-colors border-b cursor-pointer ${
                 sidebarTab === tab.id
                   ? 'text-foreground border-foreground'
-                  : 'text-muted-foreground border-transparent hover:text-foreground hover:border-muted-foreground/50'
+                  : 'text-muted-foreground border-transparent hover:text-foreground'
               }`}
             >
-              <tab.icon className="h-4 w-4" />
               {tab.label}
             </button>
           ))}
