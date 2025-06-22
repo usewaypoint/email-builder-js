@@ -45,17 +45,7 @@ export function HtmlCanva() {
 
   return (
     <pre
-      style={{
-        whiteSpace: 'pre',
-        overflow: 'auto',
-        fontFamily: 'monospace',
-        fontSize: '14px',
-        lineHeight: '1.4',
-        padding: '16px',
-        border: '1px solid #e1e1e1',
-        borderRadius: '4px',
-        backgroundColor: '#f8f9fa',
-      }}
+      className="whitespace-pre overflow-auto font-mono text-sm leading-relaxed p-4 border rounded-lg bg-muted"
       onClick={(e) => {
         const selection = window.getSelection();
         if (selection) {
