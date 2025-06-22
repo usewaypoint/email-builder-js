@@ -146,7 +146,11 @@ export function InspectorSidebar() {
   }
 
   return (
-    <div className={`transition-all border-l bg-background flex flex-col ${isOpen ? 'w-80' : 'w-0'}`}>
+    <div
+      className={`transition-all border-l bg-background flex flex-col ${isOpen ? 'w-80' : 'w-0'}`}
+      aria-hidden={!isOpen}
+      inert={!isOpen}
+    >
       {sidebarContent}
     </div>
   );

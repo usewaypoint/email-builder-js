@@ -4,6 +4,8 @@ import WELCOME from '~/components/templates/welcome';
 import { type TEditorConfiguration } from '../documents/editor/core';
 
 export type MainTabOptions = 'editor' | 'preview' | 'json' | 'html';
+export const screenSizeOptions = ['desktop', 'mobile'] as const;
+export type ScreenSizeOptions = (typeof screenSizeOptions)[number];
 
 type TValue = {
   document: TEditorConfiguration;
@@ -11,7 +13,7 @@ type TValue = {
   selectedBlockId: string | null;
   selectedSidebarTab: 'block-configuration' | 'styles';
   selectedMainTab: MainTabOptions;
-  selectedScreenSize: 'desktop' | 'mobile';
+  selectedScreenSize: ScreenSizeOptions;
 
   inspectorSidebarOpen: boolean;
   templatesSidebarOpen: boolean;

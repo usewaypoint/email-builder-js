@@ -32,15 +32,21 @@ export function TemplateSidebar() {
           <Separator />
 
           <div>
-            <a href="https://www.usewaypoint.com/open-source/emailbuilderjs" target="_blank">
-              <button className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted">
-                <span className="text-sm">Learn more</span>
-              </button>
+            <a
+              href="https://www.usewaypoint.com/open-source/emailbuilderjs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted"
+            >
+              <span className="text-sm">Learn more</span>
             </a>
-            <a href="https://github.com/usewaypoint/email-builder-js" target="_blank">
-              <button className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted">
-                <span className="text-sm">View on GitHub</span>
-              </button>
+            <a
+              href="https://github.com/usewaypoint/email-builder-js"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex justify-start items-center gap-2 px-1 py-0.5 cursor-pointer rounded-md hover:bg-muted"
+            >
+              <span className="text-sm">View on GitHub</span>
             </a>
           </div>
         </div>
@@ -62,7 +68,11 @@ export function TemplateSidebar() {
   }
 
   return (
-    <div className={`transition-all border-r bg-background flex flex-col overflow-hidden ${isOpen ? 'w-48' : 'w-0'}`}>
+    <div
+      className={`transition-all border-r bg-background flex flex-col overflow-hidden ${isOpen ? 'w-48' : 'w-0'} `}
+      aria-hidden={!isOpen}
+      inert={!isOpen}
+    >
       {sidebarContent}
     </div>
   );
