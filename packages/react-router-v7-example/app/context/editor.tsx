@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import WELCOME from '~/components/templates/welcome';
+import EMPTY_EMAIL_MESSAGE from '~/components/templates/empty-email-message';
 import { type TEditorConfiguration } from '../documents/editor/core';
 
 export type MainTabOptions = 'editor' | 'preview' | 'json' | 'html';
@@ -20,7 +20,7 @@ type TValue = {
 };
 
 const editorStateStore = create<TValue>(() => ({
-  document: WELCOME,
+  document: EMPTY_EMAIL_MESSAGE,
 
   selectedBlockId: null,
   selectedSidebarTab: 'styles',

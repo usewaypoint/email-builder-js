@@ -6,15 +6,20 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
-import { resetDocument } from '~/context/editor';
+import { resetDocument, useDocument } from '~/context/editor';
 import { useDownloadUrl } from '~/lib/utils/download-json';
+import { generateSharedDocument } from '~/lib/utils/get-template';
 import validateJsonStringValue from '~/lib/utils/validate-json-string';
 
 export function ExtraFunctions() {
   const downloadUrl = useDownloadUrl();
+  const document = useDocument();
 
-  const handleNotImplemented = (action: string) => {
-    alert(`${action} not implemented`);
+  const onShare = async () => {
+    const hash = generateSharedDocument(document);
+    location.hash = hash;
+    navigator.clipboard.writeText(location.href);
+    alert('The URL has updated and copied, share now!');
   };
 
   const handleImportJson = (value: string) => {
@@ -52,7 +57,7 @@ export function ExtraFunctions() {
           <Upload className="h-4 w-4 mr-2" />
           Import
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleNotImplemented('Share')}>
+        <DropdownMenuItem onClick={onShare}>
           <Share2 className="h-4 w-4 mr-2" />
           Share
         </DropdownMenuItem>

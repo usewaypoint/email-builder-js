@@ -1,7 +1,11 @@
 import type { Route } from './+types/route';
 
+import { useEffect } from 'react';
 import { InspectorSidebar } from '~/components/inspector-sidebar';
 import { TemplateSidebar } from '~/components/template-sidebar';
+import WELCOME from '~/components/templates/welcome';
+import { resetDocument } from '~/context/editor';
+import { restoreSharedDocument } from '~/lib/utils/get-template';
 import { Canvas } from './canvas';
 import { Header } from './header';
 
@@ -10,6 +14,14 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  useEffect(() => {
+    if (window && window.location.hash.startsWith('#code/')) {
+      restoreSharedDocument(window.location.hash);
+    } else {
+      resetDocument(WELCOME);
+    }
+  }, []);
+
   return (
     <div className="flex min-h-screen max-h-svh overflow-hidden">
       {/* Left Sidebar */}
