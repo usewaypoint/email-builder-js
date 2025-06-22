@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen max-h-svh overflow-hidden">
+    <div className="flex min-h-screen max-h-svh overflow-hidden bg-background">
       {/* Left Sidebar */}
       <TemplateSidebar />
 
@@ -32,7 +32,7 @@ export default function Home() {
         {/* Header */}
         <Header />
 
-        {/* Canvas Area */}
+        {/* Canvas */}
         <div className="flex-1 overflow-auto">
           <Canvas />
         </div>
