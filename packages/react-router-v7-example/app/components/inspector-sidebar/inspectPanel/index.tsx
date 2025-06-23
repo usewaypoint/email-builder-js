@@ -2,13 +2,14 @@ import { setDocument, useDocument, useSelectedBlockId } from '~/context/editor';
 import type { TEditorBlock } from '~/documents/editor/core';
 import AvatarSidebarPanel from './panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './panels/ButtonSidebarPanel';
+import ColumnsContainerSidebarPanel from './panels/ColumnsContainerSidebarPanel';
 import ContainerSidebarPanel from './panels/ContainerSidebarPanel';
 import DividerSidebarPanel from './panels/DividerSidebarPanel';
+import HeadingSidebarPanel from './panels/HeadingSidebarPanel';
 import HtmlSidebarPanel from './panels/HtmlSidebarPanel';
+import ImageSidebarPanel from './panels/ImageSidebarPanel';
 import SpacerSidebarPanel from './panels/SpacerSidebarPanel';
 import TextSidebarPanel from './panels/TextSidebarPanel';
-import HeadingSidebarPanel from './panels/HeadingSidebarPanel';
-import ColumnsContainerSidebarPanel from './panels/ColumnsContainerSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -31,7 +32,6 @@ export function InspectPanel() {
   // TypePanel will pass out new data, and setBlock will update the selected block
   const setBlock = (conf: TEditorBlock) => setDocument({ [selectedBlockId]: conf });
 
-  // TODO: Implement the inspect panel based on the block type
   switch (type) {
     case 'Avatar':
       return <AvatarSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
@@ -50,8 +50,7 @@ export function InspectPanel() {
     case 'Html':
       return <HtmlSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Image':
-      //   return <ImageSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
-      break;
+      return <ImageSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Spacer':
       return <SpacerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Text':
