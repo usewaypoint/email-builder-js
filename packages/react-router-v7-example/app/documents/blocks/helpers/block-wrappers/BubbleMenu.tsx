@@ -1,22 +1,12 @@
 /**
  * Popover menu for block actions like move up, move down, and delete.
  */
-import { ArrowDownwardOutlined, ArrowUpwardOutlined, DeleteOutlined } from '@mui/icons-material';
-import { IconButton, Paper, Stack, type SxProps, Tooltip } from '@mui/material';
-
+import { ArrowUp, Trash } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { resetDocument, setSelectedBlockId, useDocument } from '~/context/editor';
+import { cn } from '~/lib/utils';
 import { type TEditorBlock } from '../../../editor/core';
 import { type ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
-
-const sx: SxProps = {
-  position: 'absolute',
-  top: 0,
-  left: -56,
-  borderRadius: 64,
-  paddingX: 0.5,
-  paddingY: 1,
-  zIndex: 'fab',
-};
 
 type Props = {
   blockId: string;
@@ -150,24 +140,32 @@ export default function TuneMenu({ blockId }: Props) {
   };
 
   return (
-    <Paper sx={sx} onClick={(ev) => ev.stopPropagation()}>
-      <Stack>
-        <Tooltip title="Move up" placement="left-start">
-          <IconButton onClick={() => handleMoveClick('up')} sx={{ color: 'text.primary' }}>
-            <ArrowUpwardOutlined fontSize="small" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Move down" placement="left-start">
-          <IconButton onClick={() => handleMoveClick('down')} sx={{ color: 'text.primary' }}>
-            <ArrowDownwardOutlined fontSize="small" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Delete" placement="left-start">
-          <IconButton onClick={handleDeleteClick} sx={{ color: 'text.primary' }}>
-            <DeleteOutlined fontSize="small" />
-          </IconButton>
-        </Tooltip>
-      </Stack>
-    </Paper>
+    <div onClick={(e) => e.stopPropagation()} className="flex flex-col">
+      <TooltipTemplate title="Move up" onClick={() => handleMoveClick('up')}>
+        <ArrowUp className="size-5 m-2" />
+      </TooltipTemplate>
+
+      <TooltipTemplate title="Move down" onClick={() => handleMoveClick('down')}>
+        <ArrowUp className="size-5 m-2 rotate-180" />
+      </TooltipTemplate>
+
+      <TooltipTemplate title="Delete" onClick={handleDeleteClick} className="text-destructive">
+        <Trash className="size-5 m-2" />
+      </TooltipTemplate>
+    </div>
+  );
+}
+
+function TooltipTemplate({
+  title,
+  ...props
+}: React.ComponentProps<'button'> & {
+  title: string;
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger {...props} className={cn('cursor-pointer rounded-full', props.className)} />
+      <TooltipContent>{title}</TooltipContent>
+    </Tooltip>
   );
 }
