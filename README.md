@@ -5,8 +5,8 @@ I'm currently editing and extending [email-builder-js](https://github.com/useway
 > [!NOTE]
 > React Router v7 is using React 19 by default, thus, please use `npm install --legacy-peer-deps` instead of `npm install`
 
-- [ ] Styled with tailwind and shadcn
-- [ ] React Router v7 example
+- [x] Styled with tailwind and shadcn
+- [x] React Router v7 example
 
 <div align="center">
   <h1>EmailBuilder.js</h1>
