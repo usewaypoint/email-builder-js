@@ -7,6 +7,19 @@ import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover
 import { FONT_FAMILIES } from '~/documents/blocks/helpers/fontFamily';
 import { cn } from '~/lib/utils';
 
+/**
+ * @example
+ * ```tsx
+ * <FontFamilyInput
+ *   onChange={(v) =>
+ *     updateData({
+ *       ...data,
+ *       fontFamily: v,
+ *     })
+ *   }
+ * />
+ * ```
+ */
 export function FontFamilyInput({ label = 'Font family', defaultValue = 'inherit', onChange = (value: string) => {} }) {
   const [open, setOpen] = useState(false);
   const [key, setKey] = useState(defaultValue);

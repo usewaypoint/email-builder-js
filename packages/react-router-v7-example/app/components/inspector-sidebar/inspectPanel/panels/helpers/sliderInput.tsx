@@ -3,6 +3,22 @@ import { Label } from '~/components/ui/label';
 import { Slider } from '~/components/ui/slider';
 import { generateSlug } from '~/lib/utils';
 
+/**
+ * @example
+ * ```tsx
+ * <SliderInput
+ *   label="Size"
+ *   unit="px"
+ *   step={3}
+ *   min={32}
+ *   max={256}
+ *   value={size}
+ *   onChange={(size) => {
+ *     updateData({ ...data, props: { ...data.props, size } });
+ *   }}
+ * />
+ * ```
+ */
 export function SliderInput({
   value = 0,
   onChange = (v: number) => {},

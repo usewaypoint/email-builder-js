@@ -12,6 +12,18 @@ type StyleInputProps = {
   onChange?(value: Partial<TStyle>): void;
 };
 
+/**
+ * @example
+ * ```tsx
+ * <StyleInput
+ *   select={[
+ *     { style: 'textAlign', label: 'Alignment' },
+ *     { style: 'padding', label: 'Padding' },
+ *   ]}
+ *   value={data.style}
+ *   onChange={(style) => updateData({ ...data, style })}
+ * />
+ */
 export function StyleInput(props: StyleInputProps) {
   function handleStyleChange<T>(key: keyof TStyle, value: T) {
     const newStyle = { ...props.value, [key]: value };

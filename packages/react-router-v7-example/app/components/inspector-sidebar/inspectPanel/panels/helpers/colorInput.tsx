@@ -20,6 +20,17 @@ type ColorInputProps =
       onChange?: (value: string) => void;
     };
 
+/**
+ * @example
+ * ```tsx
+ * <ColorInput
+ *   nullable={true}
+ *   label="Canvas border color"
+ *   value={data.borderColor}
+ *   onChange={(borderColor) => updateData({ ...data, borderColor })}
+ * />
+ * ```
+ */
 export function ColorInput(props: ColorInputProps) {
   const { label = 'Color', nullable, value } = props;
   const id = `color-input-${generateSlug(label)}`;

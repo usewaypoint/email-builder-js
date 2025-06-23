@@ -7,6 +7,25 @@ type ToggleGroupInputProps = React.ComponentProps<typeof ToggleGroup> & {
   options?: { label: React.ReactNode; value: string }[];
 };
 
+/**
+ * @example
+ * ```tsx
+ * <ToggleGroupInput
+ *   variant={'outline'}
+ *   type="single"
+ *   options={[
+ *     { label: 'Circle', value: 'circle' },
+ *     { label: 'Square', value: 'square' },
+ *     { label: 'Rounded', value: 'rounded' },
+ *   ]}
+ *   label="Shape"
+ *   value={shape}
+ *   onValueChange={(shape) => {
+ *     updateData({ ...data, props: { ...data.props, shape } });
+ *   }}
+ * />
+ * ```
+ */
 export function ToggleGroupInput({ ...props }: ToggleGroupInputProps) {
   return (
     <div className={cn('w-full space-y-1', props.className)}>
