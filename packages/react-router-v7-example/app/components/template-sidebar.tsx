@@ -1,5 +1,5 @@
 import { Separator } from '~/components/ui/separator';
-import { Sheet, SheetContent } from '~/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from '~/components/ui/sheet';
 import { resetDocument, toggleTemplatesSidebarOpen, useTemplatesSidebarOpen } from '~/context/editor';
 import { useIsMobile } from '~/hooks/use-mobile';
 import { getTemplate, templateOptions } from '~/lib/utils/get-template';
@@ -63,9 +63,10 @@ export function TemplateSidebar() {
     return (
       <Sheet open={isOpen} onOpenChange={toggleTemplatesSidebarOpen}>
         <SheetContent side="left" className="w-80 p-0 flex flex-col">
-          <div className="flex items-center justify-between px-4 py-3 border-b">
-            <h2 className="text-base">EmailBuilder.js</h2>
-          </div>
+          <SheetTitle className="flex items-center justify-between px-4 py-3 border-b font-normal text-base">
+            EmailBuilder.js
+          </SheetTitle>
+          <SheetDescription hidden></SheetDescription>
           {sidebarContent}
         </SheetContent>
       </Sheet>

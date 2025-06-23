@@ -1,4 +1,4 @@
-import { Sheet, SheetContent } from '~/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from '~/components/ui/sheet';
 import {
   setSidebarTab,
   toggleInspectorSidebarOpen,
@@ -55,9 +55,8 @@ export function InspectorSidebar() {
     return (
       <Sheet open={isOpen} onOpenChange={toggleInspectorSidebarOpen}>
         <SheetContent side="right" className="w-80 p-0 flex flex-col">
-          <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">Properties</h2>
-          </div>
+          <SheetTitle hidden></SheetTitle>
+          <SheetDescription hidden></SheetDescription>
           {sidebarContent}
         </SheetContent>
       </Sheet>
