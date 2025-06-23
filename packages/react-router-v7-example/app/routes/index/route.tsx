@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex min-h-screen max-h-svh overflow-hidden bg-background">
+    <div className="flex h-svh overflow-hidden bg-background">
       {/* Left Sidebar */}
       <TemplateSidebar />
 
