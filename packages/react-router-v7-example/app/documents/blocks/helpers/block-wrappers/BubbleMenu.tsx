@@ -1,10 +1,11 @@
-import React from 'react';
-
+/**
+ * Popover menu for block actions like move up, move down, and delete.
+ */
 import { ArrowDownwardOutlined, ArrowUpwardOutlined, DeleteOutlined } from '@mui/icons-material';
 import { IconButton, Paper, Stack, type SxProps, Tooltip } from '@mui/material';
 
-import { type TEditorBlock } from '../../../editor/core';
 import { resetDocument, setSelectedBlockId, useDocument } from '~/context/editor';
+import { type TEditorBlock } from '../../../editor/core';
 import { type ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
 
 const sx: SxProps = {

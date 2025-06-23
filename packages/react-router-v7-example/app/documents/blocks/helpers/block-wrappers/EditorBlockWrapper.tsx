@@ -1,6 +1,6 @@
 import { setSelectedBlockId, useSelectedBlockId } from '~/context/editor';
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
-import TuneMenu from './TuneMenu';
+import BubbleMenu from './BubbleMenu';
 
 export default function EditorBlockWrapper({ children }: { children: React.ReactNode }) {
   const selectedBlockId = useSelectedBlockId();
@@ -8,11 +8,12 @@ export default function EditorBlockWrapper({ children }: { children: React.React
 
   const isSelected = selectedBlockId === blockId;
 
-  const renderMenu = () => {
+  const renderBubbleMenu = () => {
     if (selectedBlockId !== blockId) {
       return null;
     }
-    return <TuneMenu blockId={blockId} />;
+    // Only render the selected block's bubble menu
+    return <BubbleMenu blockId={blockId} />;
   };
 
   return (
@@ -26,7 +27,7 @@ export default function EditorBlockWrapper({ children }: { children: React.React
         ev.preventDefault();
       }}
     >
-      {renderMenu()}
+      {renderBubbleMenu()}
       {children}
     </div>
   );
