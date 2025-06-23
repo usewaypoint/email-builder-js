@@ -4,6 +4,8 @@ import { type AvatarProps, AvatarPropsDefaults, AvatarPropsSchema } from '@usewa
 import { PanelWrapper } from './helpers/panelWrapper';
 import { ToggleGroupInput } from './helpers/radioInput';
 import { SliderInput } from './helpers/sliderInput';
+import { StyleInput } from './helpers/styleInput';
+import { TextInput } from './helpers/textInput';
 
 type AvatarSidebarPanelProps = {
   data: AvatarProps;
@@ -11,6 +13,7 @@ type AvatarSidebarPanelProps = {
 };
 export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanelProps) {
   const [, setErrors] = useState<Zod.ZodError | null>(null);
+
   const updateData = (d: unknown) => {
     const res = AvatarPropsSchema.safeParse(d);
     if (res.success) {
@@ -55,26 +58,30 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
         }}
       />
 
-      {/* <TextInput
-        label="Image URL"
-        defaultValue={imageUrl}
-        onChange={(imageUrl) => {
-          updateData({ ...data, props: { ...data.props, imageUrl } });
-        }}
-      />
       <TextInput
-        label="Alt text"
-        defaultValue={alt}
-        onChange={(alt) => {
-          updateData({ ...data, props: { ...data.props, alt } });
+        label={'Image URL'}
+        value={imageUrl}
+        onChange={(e) => {
+          updateData({ ...data, props: { ...data.props, imageUrl: e.target.value } });
         }}
       />
 
-      <MultiStylePropertyPanel
-        names={['textAlign', 'padding']}
+      <TextInput
+        label="Alt text"
+        value={alt}
+        onChange={(e) => {
+          updateData({ ...data, props: { ...data.props, alt: e.target.value } });
+        }}
+      />
+
+      <StyleInput
+        select={[
+          { style: 'textAlign', label: 'Alignment' },
+          { style: 'padding', label: 'Padding' },
+        ]}
         value={data.style}
         onChange={(style) => updateData({ ...data, style })}
-      /> */}
+      />
     </PanelWrapper>
   );
 }
