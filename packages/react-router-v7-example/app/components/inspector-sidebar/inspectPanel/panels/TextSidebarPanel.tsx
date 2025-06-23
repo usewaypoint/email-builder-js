@@ -7,6 +7,7 @@ import { Switch } from '~/components/ui/switch';
 import { PanelWrapper } from './helpers/panelWrapper';
 import { StyleInput } from './helpers/styleInput';
 import { TextareaInput } from './helpers/textInput';
+import { BooleanInput } from './helpers/booleanInput';
 
 type TextSidebarPanelProps = {
   data: TextProps;
@@ -34,16 +35,13 @@ export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProp
         onChange={(text) => updateData({ ...data, props: { ...data.props, text } })}
       />
 
-      <div className="flex items-center space-x-2">
-        <Switch
-          id="markdown"
-          checked={data.props?.markdown ?? false}
-          onCheckedChange={(markdown) => {
-            updateData({ ...data, props: { ...data.props, markdown } });
-          }}
-        />
-        <Label htmlFor="markdown">Markdown</Label>
-      </div>
+      <BooleanInput
+        label="Markdown"
+        value={data.props?.markdown ?? false}
+        onChange={(markdown) => {
+          updateData({ ...data, props: { ...data.props, markdown } });
+        }}
+      />
 
       <StyleInput
         select={[
