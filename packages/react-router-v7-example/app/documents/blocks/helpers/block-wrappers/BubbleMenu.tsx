@@ -165,7 +165,7 @@ function TooltipTemplate({
   return (
     <Tooltip>
       <TooltipTrigger {...props} className={cn('cursor-pointer rounded-full', props.className)} />
-      <TooltipContent>{title}</TooltipContent>
+      <TooltipContent side="left">{title}</TooltipContent>
     </Tooltip>
   );
 }
