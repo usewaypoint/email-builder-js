@@ -1,8 +1,6 @@
 import { Fragment } from 'react';
-
 import { type TEditorBlock } from '../../../editor/core';
 import EditorBlock from '../../../editor/EditorBlock';
-
 import { BlockMenuPopoverTrigger } from './BlockMenuPopover';
 
 export type EditorChildrenChange = {
