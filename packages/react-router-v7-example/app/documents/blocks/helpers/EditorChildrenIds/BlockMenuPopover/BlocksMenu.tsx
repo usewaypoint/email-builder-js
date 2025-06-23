@@ -1,8 +1,8 @@
-import { Box, Menu } from '@mui/material';
+import { Menu } from '@mui/material';
 
 import { type TEditorBlock } from '../../../../editor/core';
 
-import BlockButton from './BlockButton';
+import { BlockButton } from './BlockButton';
 import { BUTTONS } from './buttons';
 
 type BlocksMenuProps = {
@@ -32,11 +32,11 @@ export default function BlocksMenu({ anchorEl, setAnchorEl, onSelect }: BlocksMe
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       transformOrigin={{ vertical: 'top', horizontal: 'center' }}
     >
-      <Box sx={{ p: 1, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+      <div className="grid grid-cols-4 gap-0.5 p-2">
         {BUTTONS.map((k, i) => (
           <BlockButton key={i} label={k.label} icon={k.icon} onClick={() => onClick(k.block())} />
         ))}
-      </Box>
+      </div>
     </Menu>
   );
 }

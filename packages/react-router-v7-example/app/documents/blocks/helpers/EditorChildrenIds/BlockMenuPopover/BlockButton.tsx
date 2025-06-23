@@ -1,36 +1,24 @@
 import React from 'react';
+import { Button } from '~/components/ui/button';
 
-import { Box, Button, type SxProps, Typography } from '@mui/material';
-
-type BlockMenuButtonProps = {
+type BlockButtonProps = {
   label: string;
   icon: React.ReactNode;
   onClick: () => void;
 };
 
-const BUTTON_SX: SxProps = { p: 1.5, display: 'flex', flexDirection: 'column' };
-const ICON_SX: SxProps = {
-  mb: 0.75,
-  width: '100%',
-  bgcolor: 'cadet.200',
-  display: 'flex',
-  justifyContent: 'center',
-  p: 1,
-  border: '1px solid',
-  borderColor: 'cadet.300',
-};
-
-export default function BlockTypeButton({ label, icon, onClick }: BlockMenuButtonProps) {
+export function BlockButton({ label, icon, onClick }: BlockButtonProps) {
   return (
     <Button
-      sx={BUTTON_SX}
-      onClick={(ev) => {
-        ev.stopPropagation();
+      onClick={(e) => {
+        e.stopPropagation();
         onClick();
       }}
+      variant="ghost"
+      className="flex flex-col gap-1 h-16 w-20 p-3"
     >
-      <Box sx={ICON_SX}>{icon}</Box>
-      <Typography variant="body2">{label}</Typography>
+      {icon}
+      <p className="text-xs text-center mt-1">{label}</p>
     </Button>
   );
 }
