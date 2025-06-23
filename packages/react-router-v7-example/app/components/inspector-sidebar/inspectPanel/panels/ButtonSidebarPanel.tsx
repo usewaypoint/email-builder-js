@@ -119,7 +119,7 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
           { style: 'textAlign', label: 'Alignment' },
           { style: 'padding', label: 'Padding' },
         ]}
-        value={data.style}
+        value={{ ...data.style, fontWeight: data.style?.fontWeight ? data.style.fontWeight : 'bold' }}
         onChange={(style) => updateData({ ...data, style })}
       />
     </PanelWrapper>
