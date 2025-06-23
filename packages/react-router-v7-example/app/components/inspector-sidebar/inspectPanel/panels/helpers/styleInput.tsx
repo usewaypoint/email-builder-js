@@ -3,7 +3,7 @@ import { Label } from '~/components/ui/label';
 import type { TStyle } from '~/documents/blocks/helpers/TStyle';
 import { cn } from '~/lib/utils';
 import { ColorInput } from './colorInput';
-import { ToggleGroupInput } from './radioInput';
+import { ToggleGroupInput } from './toggleGroupInput';
 import { SliderInput } from './sliderInput';
 import { FontFamilyInput } from './fontFamilyInput';
 

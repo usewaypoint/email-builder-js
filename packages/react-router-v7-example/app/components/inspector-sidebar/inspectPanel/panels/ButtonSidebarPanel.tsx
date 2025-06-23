@@ -4,7 +4,7 @@ import { type ButtonProps, ButtonPropsDefaults, ButtonPropsSchema } from '@usewa
 
 import { PanelWrapper } from './helpers/panelWrapper';
 import { TextInput } from './helpers/textInput';
-import { ToggleGroupInput } from './helpers/radioInput';
+import { ToggleGroupInput } from './helpers/toggleGroupInput';
 import { ColorInput } from './helpers/colorInput';
 import { StyleInput } from './helpers/styleInput';
 

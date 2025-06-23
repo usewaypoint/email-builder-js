@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { type AvatarProps, AvatarPropsDefaults, AvatarPropsSchema } from '@usewaypoint/block-avatar';
 import { PanelWrapper } from './helpers/panelWrapper';
-import { ToggleGroupInput } from './helpers/radioInput';
+import { ToggleGroupInput } from './helpers/toggleGroupInput';
 import { SliderInput } from './helpers/sliderInput';
 import { StyleInput } from './helpers/styleInput';
 import { TextInput } from './helpers/textInput';
