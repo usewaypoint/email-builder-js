@@ -1,10 +1,8 @@
-import { useState } from 'react';
-
-import { type TEditorBlock } from '../../../../editor/core';
-
 import { Plus } from 'lucide-react';
+import { useState } from 'react';
+import { type TEditorBlock } from '../../../../editor/core';
 import BlocksMenu from './BlocksMenu';
-import DividerButton from './DividerButton';
+import { DividerButton } from './DividerButton';
 
 type Props = {
   placeholder?: boolean;
@@ -21,12 +19,12 @@ export function BlockMenuPopoverTrigger({ onSelect, placeholder }: Props) {
   const renderButton = () => {
     if (placeholder) {
       return (
-        <div
-          className="flex items-center justify-center p-3 border-2 border-dashed hover:text-primary hover:border-cyan-500 transition-colors cursor-pointer group"
+        <button
+          className="w-full flex items-center justify-center p-3 border-2 border-dashed hover:text-primary hover:border-cyan-500 transition-colors cursor-pointer group"
           onClick={handleButtonClick}
         >
           <Plus className="size-5 bg-cyan-600 text-white rounded-full text-sm p-0.5 group-hover:bg-cyan-700 transition-colors" />
-        </div>
+        </button>
       );
     } else {
       return <DividerButton buttonElement={buttonElement} onClick={handleButtonClick} />;

@@ -1,13 +1,11 @@
+import { Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
-import { AddOutlined } from '@mui/icons-material';
-import { Fade, IconButton } from '@mui/material';
 
 type Props = {
   buttonElement: HTMLElement | null;
   onClick: () => void;
 };
-export default function DividerButton({ buttonElement, onClick }: Props) {
+export function DividerButton({ buttonElement, onClick }: Props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -35,30 +33,14 @@ export default function DividerButton({ buttonElement, onClick }: Props) {
   }, [buttonElement, setVisible]);
 
   return (
-    <Fade in={visible}>
-      <IconButton
-        size="small"
-        sx={{
-          p: 0.12,
-          position: 'absolute',
-          top: '-12px',
-          left: '50%',
-          transform: 'translateX(-10px)',
-          bgcolor: 'brand.blue',
-          color: 'primary.contrastText',
-          zIndex: 'fab',
-          '&:hover, &:active, &:focus': {
-            bgcolor: 'brand.blue',
-            color: 'primary.contrastText',
-          },
-        }}
-        onClick={(ev) => {
-          ev.stopPropagation();
-          onClick();
-        }}
-      >
-        <AddOutlined fontSize="small" />
-      </IconButton>
-    </Fade>
+    <button
+      className={`${visible ? 'opacity-100' : 'opacity-0'} absolute -top-3 left-1/2 -translate-x-1/2 p-0.5 bg-cyan-600 text-white rounded-full z-50 hover:bg-cyan-700 focus:bg-cyan-700 active:bg-cyan-700 transition-all cursor-pointer`}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+    >
+      <Plus className="size-5 p-0.5" />
+    </button>
   );
 }
