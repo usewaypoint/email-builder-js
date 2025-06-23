@@ -5,6 +5,7 @@ import ButtonSidebarPanel from './panels/ButtonSidebarPanel';
 import ContainerSidebarPanel from './panels/ContainerSidebarPanel';
 import DividerSidebarPanel from './panels/DividerSidebarPanel';
 import HtmlSidebarPanel from './panels/HtmlSidebarPanel';
+import SpacerSidebarPanel from './panels/SpacerSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -48,11 +49,13 @@ export function InspectPanel() {
     case 'Html':
       return <HtmlSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Image':
-    //   return <ImageSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      //   return <ImageSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      break;
     case 'EmailLayout':
-    //   return <EmailLayoutSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      //   return <EmailLayoutSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      break;
     case 'Spacer':
-    //   return <SpacerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      return <SpacerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Text':
     //   return <TextSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     default:
