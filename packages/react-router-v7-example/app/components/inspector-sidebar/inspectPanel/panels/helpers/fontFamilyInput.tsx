@@ -20,9 +20,9 @@ import { cn } from '~/lib/utils';
  * />
  * ```
  */
-export function FontFamilyInput({ label = 'Font family', defaultValue = 'inherit', onChange = (value: string) => {} }) {
+export function FontFamilyInput({ label = 'Font family', value = 'inherit', onChange = (value: string) => {} }) {
   const [open, setOpen] = useState(false);
-  const [key, setKey] = useState(defaultValue);
+  const [key, setKey] = useState(value);
 
   const fontFamiliesWithInherit = [
     {

@@ -2,8 +2,10 @@ import { AlignCenter, AlignLeft, AlignRight, AlignStartHorizontal } from 'lucide
 import { Label } from '~/components/ui/label';
 import type { TStyle } from '~/documents/blocks/helpers/TStyle';
 import { cn } from '~/lib/utils';
+import { ColorInput } from './colorInput';
 import { ToggleGroupInput } from './radioInput';
 import { SliderInput } from './sliderInput';
+import { FontFamilyInput } from './fontFamilyInput';
 
 type StyleInputProps = {
   select: { style: keyof TStyle; label: string }[];
@@ -37,33 +39,112 @@ export function StyleInput(props: StyleInputProps) {
       {props.select.map((item) => {
         switch (item.style) {
           case 'backgroundColor':
-            break;
+            return (
+              <ColorInput
+                key={item.style}
+                label={item.label}
+                nullable
+                value={props.value?.backgroundColor ?? null}
+                onChange={(backgroundColor) => {
+                  handleStyleChange('backgroundColor', backgroundColor);
+                }}
+              />
+            );
 
           case 'borderColor':
-            break;
+            return (
+              <ColorInput
+                key={item.style}
+                label={item.label}
+                nullable
+                value={props.value?.borderColor ?? null}
+                onChange={(borderColor) => {
+                  handleStyleChange('borderColor', borderColor);
+                }}
+              />
+            );
 
           case 'borderRadius':
-            break;
+            return (
+              <SliderInput
+                key={item.style}
+                label={item.label}
+                unit="px"
+                step={1}
+                min={0}
+                max={100}
+                value={props.value?.borderRadius ?? 0}
+                onChange={(borderRadius) => {
+                  handleStyleChange('borderRadius', borderRadius);
+                }}
+              />
+            );
 
           case 'color':
-            break;
+            return (
+              <ColorInput
+                key={item.style}
+                label={item.label}
+                nullable
+                value={props.value?.color ?? null}
+                onChange={(color) => {
+                  handleStyleChange('color', color);
+                }}
+              />
+            );
 
           case 'fontFamily':
-            break;
+            return (
+              <FontFamilyInput
+                key={item.style}
+                value={props.value?.fontFamily ?? 'inherit'}
+                onChange={(v) => {
+                  handleStyleChange('fontFamily', v);
+                }}
+              />
+            );
 
           case 'fontSize':
-            break;
+            return (
+              <SliderInput
+                key={item.style}
+                label={item.label}
+                unit="px"
+                step={1}
+                min={8}
+                max={64}
+                value={props.value?.fontSize ?? 16}
+                onChange={(fontSize) => {
+                  handleStyleChange('fontSize', fontSize);
+                }}
+              />
+            );
 
           case 'fontWeight':
-            break;
+            return (
+              <ToggleGroupInput
+                key={item.style}
+                variant={'outline'}
+                type="single"
+                options={[
+                  { label: 'Normal', value: 'normal' },
+                  { label: 'Bold', value: 'bold' },
+                ]}
+                label={item.label}
+                value={props.value?.fontWeight ?? 'normal'}
+                onValueChange={(fontWeight) => {
+                  handleStyleChange('fontWeight', fontWeight);
+                }}
+              />
+            );
 
           case 'padding': {
             const paddingValue = props.value?.padding || { top: 0, bottom: 0, left: 0, right: 0 };
             const icons = {
               top: <AlignStartHorizontal className="w-4 h-4" />,
               bottom: <AlignStartHorizontal className="w-4 h-4 transform rotate-180" />,
-              left: <AlignStartHorizontal className="w-4 h-4 transform rotate-90" />,
-              right: <AlignStartHorizontal className="w-4 h-4 transform -rotate-90" />,
+              left: <AlignStartHorizontal className="w-4 h-4 transform -rotate-90" />,
+              right: <AlignStartHorizontal className="w-4 h-4 transform rotate-90" />,
             };
 
             return (
@@ -118,6 +199,4 @@ export function StyleInput(props: StyleInputProps) {
       })}
     </div>
   );
-
-  return;
 }
