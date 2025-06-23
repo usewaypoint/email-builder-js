@@ -5,6 +5,7 @@ import { toggleInspectorSidebarOpen, toggleTemplatesSidebarOpen } from '~/contex
 import { ExtraFunctions } from './extraFunctions';
 import { MainTabs } from './mainTabs';
 import { ScreenToggle } from './screenToggle';
+import { SaveButton } from './saveButton';
 
 export function Header() {
   return (
@@ -26,9 +27,7 @@ export function Header() {
       <ExtraFunctions />
 
       {/* Save Button */}
-      <Button variant="ghost" size="sm">
-        SAVE
-      </Button>
+      <SaveButton />
 
       <div className="h-4 w-px shrink-0 bg-border" />
       <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleInspectorSidebarOpen}>
