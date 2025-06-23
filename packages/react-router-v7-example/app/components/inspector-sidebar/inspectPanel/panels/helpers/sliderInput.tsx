@@ -11,18 +11,33 @@ export function SliderInput({
   max = 100,
   step = 1,
   unit = 'px',
+  labelHidden = false,
+  icon = null,
+}: {
+  value?: number;
+  onChange?: (value: number) => void;
+  label?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  unit?: string;
+  labelHidden?: boolean;
+  icon?: React.ReactNode;
 }) {
   return (
-    <div className="space-y-1">
-      <Label htmlFor="border-radius">
-        {label} ({unit})
-      </Label>
+    <div className="w-full space-y-1">
+      {!labelHidden && (
+        <Label htmlFor="border-radius">
+          {label} ({unit})
+        </Label>
+      )}
       <div className="flex items-center gap-2">
+        {icon && <span className="text-muted-foreground">{icon}</span>}
         <Slider value={[value]} min={min} max={max} step={step} onValueChange={(value) => onChange(value[0])} />
         <Input
           id={`border-radius-${generateSlug(label)}`}
           type="number"
-          className="w-14 px-1.5"
+          className="w-18 px-1.5"
           value={value}
           min={min}
           max={max}
