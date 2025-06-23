@@ -29,7 +29,7 @@ export default function HtmlSidebarPanel({ data, setData }: HtmlSidebarPanelProp
         label="Content"
         rows={5}
         defaultValue={data.props?.contents ?? ''}
-        onChange={(e) => updateData({ ...data, props: { ...data.props, contents: e.target.value } })}
+        onChange={(contents) => updateData({ ...data, props: { ...data.props, contents } })}
       />
 
       <StyleInput

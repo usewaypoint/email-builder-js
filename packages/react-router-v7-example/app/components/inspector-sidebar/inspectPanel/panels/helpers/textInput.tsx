@@ -30,6 +30,7 @@ export function TextInput({ label, className, ...props }: TextInputProps) {
 
 type TextareaInputProps = React.ComponentProps<typeof Textarea> & {
   label?: string;
+  onChange?: (v: string) => void;
 };
 
 /**
@@ -44,11 +45,11 @@ type TextareaInputProps = React.ComponentProps<typeof Textarea> & {
  * />
  * ```
  */
-export function TextareaInput({ label, className, ...props }: TextareaInputProps) {
+export function TextareaInput({ label, onChange, className, ...props }: TextareaInputProps) {
   return (
     <div className={cn('space-y-1', className)}>
       <Label>{label}</Label>
-      <Textarea {...props} />
+      <Textarea {...props} onChange={(e) => onChange?.(e.target.value)} />
     </div>
   );
 }
