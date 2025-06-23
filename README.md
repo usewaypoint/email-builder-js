@@ -1,13 +1,3 @@
-## This Repository is Edited by gjc14
-
-I'm currently editing and extending [email-builder-js](https://github.com/usewaypoint/email-builder-js) by waypoint, making it a easy component pass in as a page, or to style with tailwind.
-
-> [!NOTE]
-> React Router v7 is using React 19 by default, thus, please use `npm install --legacy-peer-deps` instead of `npm install`
-
-- [x] Styled with tailwind and shadcn
-- [x] React Router v7 example
-
 <div align="center">
   <h1>EmailBuilder.js</h1>
   <p align="center">
