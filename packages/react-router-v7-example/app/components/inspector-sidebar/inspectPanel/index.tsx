@@ -4,6 +4,7 @@ import AvatarSidebarPanel from './panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './panels/ButtonSidebarPanel';
 import ContainerSidebarPanel from './panels/ContainerSidebarPanel';
 import DividerSidebarPanel from './panels/DividerSidebarPanel';
+import HtmlSidebarPanel from './panels/HtmlSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -42,9 +43,10 @@ export function InspectPanel() {
     case 'Divider':
       return <DividerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Heading':
-    //   return <HeadingSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      //   return <HeadingSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      break;
     case 'Html':
-    //   return <HtmlSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      return <HtmlSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Image':
     //   return <ImageSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'EmailLayout':
