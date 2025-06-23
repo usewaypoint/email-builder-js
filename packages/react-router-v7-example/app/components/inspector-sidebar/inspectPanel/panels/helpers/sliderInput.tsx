@@ -1,0 +1,35 @@
+import { Input } from '~/components/ui/input';
+import { Label } from '~/components/ui/label';
+import { Slider } from '~/components/ui/slider';
+import { generateSlug } from '~/lib/utils';
+
+export function SliderInput({
+  value = 0,
+  onChange = (v: number) => {},
+  label = 'Slider',
+  min = 0,
+  max = 100,
+  step = 1,
+  unit = 'px',
+}) {
+  return (
+    <div className="space-y-1">
+      <Label htmlFor="border-radius">
+        {label} ({unit})
+      </Label>
+      <div className="flex items-center gap-2">
+        <Slider value={[value]} min={min} max={max} step={step} onValueChange={(value) => onChange(value[0])} />
+        <Input
+          id={`border-radius-${generateSlug(label)}`}
+          type="number"
+          className="w-14 px-1.5"
+          value={value}
+          min={min}
+          max={max}
+          onChange={(e) => onChange(Number(e.target.value))}
+        />
+        <span className="text-muted-foreground text-xs">{unit}</span>
+      </div>
+    </div>
+  );
+}

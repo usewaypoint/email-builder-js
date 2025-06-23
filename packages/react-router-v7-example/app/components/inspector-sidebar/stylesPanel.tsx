@@ -1,11 +1,8 @@
-import { Plus, X } from 'lucide-react';
 import { setDocument, useDocument } from '~/context/editor';
 import EmailLayoutPropsSchema, { type EmailLayoutProps } from '~/documents/blocks/EmailLayout/EmailLayoutPropsSchema';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Slider } from '../ui/slider';
-import { FontFamilyInput } from './inspectPanel/panels/helpers/fontFamilyInput';
 import { ColorInput } from './inspectPanel/panels/helpers/colorInput';
+import { FontFamilyInput } from './inspectPanel/panels/helpers/fontFamilyInput';
+import { SliderInput } from './inspectPanel/panels/helpers/sliderInput';
 
 /**
  * StylesPanel is a React component that provides a user interface for editing the styles of an EmailLayout block.
@@ -64,26 +61,11 @@ export function StylesPanel() {
         onChange={(borderColor) => updateData({ ...data, borderColor })}
       />
 
-      <div>
-        <Label htmlFor="border-radius">Canvas border radius (px)</Label>
-        <div className="flex items-center gap-2">
-          <Slider
-            value={[data.borderRadius ?? 0]}
-            max={100}
-            step={1}
-            onValueChange={(value) => updateData({ ...data, borderRadius: value[0] })}
-          />
-          <Input
-            id="border-radius"
-            type="number"
-            className="w-fit"
-            value={data.borderRadius ?? 0}
-            min={0}
-            max={100}
-            onChange={(e) => updateData({ ...data, borderRadius: Number(e.target.value) })}
-          />
-        </div>
-      </div>
+      <SliderInput
+        label="Canvas border width"
+        value={data.borderRadius ?? 0}
+        onChange={(borderRadius) => updateData({ ...data, borderRadius })}
+      />
 
       <FontFamilyInput
         onChange={(v) =>
