@@ -2,6 +2,7 @@ import { setDocument, useDocument, useSelectedBlockId } from '~/context/editor';
 import type { TEditorBlock } from '~/documents/editor/core';
 import AvatarSidebarPanel from './panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './panels/ButtonSidebarPanel';
+import ContainerSidebarPanel from './panels/ContainerSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -31,11 +32,12 @@ export function InspectPanel() {
     case 'Button':
       return <ButtonSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'ColumnsContainer':
-    //   return (
-    //     <ColumnsContainerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />
-    //   );
+      //   return (
+      //     <ColumnsContainerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />
+      //   );
+      break;
     case 'Container':
-    //   return <ContainerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      return <ContainerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Divider':
     //   return <DividerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Heading':
