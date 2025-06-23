@@ -1,6 +1,7 @@
 import { Plus, X } from 'lucide-react';
 import { Input } from '~/components/ui/input';
 import { Label } from '~/components/ui/label';
+import { generateSlug } from '~/lib/utils';
 
 // Discriminated Union
 type ColorInputProps =
@@ -21,7 +22,7 @@ type ColorInputProps =
 
 export function ColorInput(props: ColorInputProps) {
   const { label = 'Color', nullable, value } = props;
-  const id = `color-input-${label.toLowerCase().replace(/\s+/g, '-')}`;
+  const id = `color-input-${generateSlug(label)}`;
 
   return (
     <div className="space-y-1">
