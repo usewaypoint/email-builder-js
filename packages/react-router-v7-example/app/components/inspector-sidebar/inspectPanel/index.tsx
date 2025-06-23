@@ -1,5 +1,6 @@
 import { setDocument, useDocument, useSelectedBlockId } from '~/context/editor';
 import type { TEditorBlock } from '~/documents/editor/core';
+import AvatarSidebarPanel from './panels/AvatarSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -25,7 +26,7 @@ export function InspectPanel() {
   // TODO: Implement the inspect panel based on the block type
   switch (type) {
     case 'Avatar':
-    //   return <AvatarSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      return <AvatarSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Button':
     //   return <ButtonSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'ColumnsContainer':
