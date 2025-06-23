@@ -132,4 +132,7 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  table {
+    @apply border-separate;
+  }
 }
