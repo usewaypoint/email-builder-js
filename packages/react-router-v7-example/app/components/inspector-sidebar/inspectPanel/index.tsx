@@ -7,6 +7,7 @@ import DividerSidebarPanel from './panels/DividerSidebarPanel';
 import HtmlSidebarPanel from './panels/HtmlSidebarPanel';
 import SpacerSidebarPanel from './panels/SpacerSidebarPanel';
 import TextSidebarPanel from './panels/TextSidebarPanel';
+import HeadingSidebarPanel from './panels/HeadingSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -45,8 +46,7 @@ export function InspectPanel() {
     case 'Divider':
       return <DividerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Heading':
-      //   return <HeadingSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
-      break;
+      return <HeadingSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Html':
       return <HtmlSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Image':
