@@ -3,6 +3,7 @@ import type { TEditorBlock } from '~/documents/editor/core';
 import AvatarSidebarPanel from './panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './panels/ButtonSidebarPanel';
 import ContainerSidebarPanel from './panels/ContainerSidebarPanel';
+import DividerSidebarPanel from './panels/DividerSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -39,7 +40,7 @@ export function InspectPanel() {
     case 'Container':
       return <ContainerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Divider':
-    //   return <DividerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      return <DividerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Heading':
     //   return <HeadingSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Html':
