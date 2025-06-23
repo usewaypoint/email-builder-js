@@ -6,6 +6,7 @@ import ContainerSidebarPanel from './panels/ContainerSidebarPanel';
 import DividerSidebarPanel from './panels/DividerSidebarPanel';
 import HtmlSidebarPanel from './panels/HtmlSidebarPanel';
 import SpacerSidebarPanel from './panels/SpacerSidebarPanel';
+import TextSidebarPanel from './panels/TextSidebarPanel';
 
 export function InspectPanel() {
   const document = useDocument();
@@ -57,7 +58,7 @@ export function InspectPanel() {
     case 'Spacer':
       return <SpacerSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     case 'Text':
-    //   return <TextSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
+      return <TextSidebarPanel key={selectedBlockId} data={data} setData={(data) => setBlock({ type, data })} />;
     default:
       return (
         <div className="space-y-3">
