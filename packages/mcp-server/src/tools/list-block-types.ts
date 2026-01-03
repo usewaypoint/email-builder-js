@@ -6,7 +6,7 @@ const BLOCK_SCHEMAS: Record<BlockType, { props: object; style: object }> = {
   Text: {
     props: {
       text: { type: 'string', description: 'The text content to display' },
-      markdown: { type: 'boolean', description: 'Whether to render as markdown' },
+      markdown: { type: 'boolean', description: 'Set to true to render text as markdown' },
     },
     style: {
       color: { type: 'string', description: 'Text color (hex, e.g., #000000)' },

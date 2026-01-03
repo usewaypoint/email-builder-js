@@ -107,7 +107,7 @@ const BLOCK_DEFAULTS: Record<BlockType, { style?: object; props?: object }> = {
 
 // Block type descriptions for the list_block_types tool
 export const BLOCK_DESCRIPTIONS: Record<BlockType, string> = {
-  Text: 'A text block for displaying paragraphs, labels, or any text content. Supports markdown.',
+  Text: 'A text block for displaying paragraphs, labels, or any text content. Set markdown=true to render as markdown.',
   Button: 'A clickable button with customizable text, URL, colors, and styles.',
   Image: 'An image block for displaying pictures with alt text and optional link.',
   Heading: 'A heading block (h1-h6) for titles and section headers.',
