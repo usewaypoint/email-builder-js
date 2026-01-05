@@ -1,6 +1,7 @@
 import React from 'react';
 import { z } from 'zod';
 
+import { describe, expect, it } from '@jest/globals';
 import { render } from '@testing-library/react';
 
 import buildBlockComponent from '../../src/builders/buildBlockComponent';

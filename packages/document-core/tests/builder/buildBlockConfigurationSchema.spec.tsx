@@ -1,6 +1,8 @@
 import React from 'react';
 import { z } from 'zod';
 
+import { describe, expect, it } from '@jest/globals';
+
 import buildBlockConfigurationSchema from '../../src/builders/buildBlockConfigurationSchema';
 
 describe('builders/buildBlockConfigurationSchema', () => {
