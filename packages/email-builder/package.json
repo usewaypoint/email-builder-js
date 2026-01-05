@@ -16,7 +16,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx tsc"
+    "build": "tsup ./src/index.ts --outDir dist --format cjs,esm --dts"
   },
   "author": "carlos@usewaypoint.com",
   "license": "MIT",

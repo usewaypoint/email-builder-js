@@ -20,6 +20,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './package-lock.json'
       - run: npm ci
+      - run: npm run build --workspaces
       - run: npx eslint .
       - run: npx prettier . --check
       - run: npx tsc --noEmit
