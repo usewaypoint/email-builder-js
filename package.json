@@ -5,6 +5,7 @@
   "files": [
     "dist"
   ],
+  "private": true,
   "packageManager": "npm@10.4.0",
   "workspaces": [
     "packages/block-avatar",
