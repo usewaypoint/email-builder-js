@@ -1,11 +1,26 @@
 {
-  "name": "@usewaypoint-monorepo",
-  "version": "0.0.6",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "name": "@usewaypoint/email-builder-project",
+  "version": "0.0.7",
   "target": "ES2022",
   "files": [
     "dist"
+  ],
+  "private": true,
+  "packageManager": "npm@10.4.0",
+  "workspaces": [
+    "packages/block-avatar",
+    "packages/block-button",
+    "packages/block-columns-container",
+    "packages/block-container",
+    "packages/block-divider",
+    "packages/block-heading",
+    "packages/block-html",
+    "packages/block-image",
+    "packages/block-spacer",
+    "packages/block-text",
+    "packages/document-core",
+    "packages/email-builder",
+    "packages/editor-sample"
   ],
   "scripts": {
     "build": "npx tsc",
@@ -28,7 +43,6 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3",
-    "zod": "^3.22.4"
+    "typescript": "^5.3.3"
   }
 }
