@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { ArrowDownwardOutlined, ArrowUpwardOutlined, DeleteOutlined } from '@mui/icons-material';
+import { ArrowDownwardOutlined, ArrowUpwardOutlined, ContentCopyOutlined, DeleteOutlined } from '@mui/icons-material';
 import { IconButton, Paper, Stack, SxProps, Tooltip } from '@mui/material';
 
-import { TEditorBlock } from '../../../editor/core';
+import { TEditorBlock, TEditorConfiguration } from '../../../editor/core';
 import { resetDocument, setSelectedBlockId, useDocument } from '../../../editor/EditorContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
+import cloneDocumentBlock from '../cloneDocumentBlock';
 
 const sx: SxProps = {
   position: 'absolute',
@@ -17,25 +18,95 @@ const sx: SxProps = {
   zIndex: 'fab',
 };
 
+function findParentBlockId(blockId: string, document: TEditorConfiguration) {
+  for (const [id, b] of Object.entries(document)) {
+    if (id === blockId) {
+      continue;
+    }
+    const block = b as TEditorBlock;
+    switch (block.type) {
+      case 'EmailLayout':
+        if (block.data.childrenIds?.includes(blockId)) {
+          return id;
+        }
+        break;
+      case 'Container':
+        if (block.data.props?.childrenIds?.includes(blockId)) {
+          return id;
+        }
+        break;
+      case 'ColumnsContainer':
+        if (block.data.props?.columns?.some((col) => col.childrenIds?.includes(blockId))) {
+          return id;
+        }
+        break;
+    }
+  }
+  return null;
+}
+
 type Props = {
   blockId: string;
 };
 export default function TuneMenu({ blockId }: Props) {
   const document = useDocument();
 
+  const handleDuplicateClick = () => {
+    const parentBlockId = findParentBlockId(blockId, document);
+
+    const { document: newDocument, blockId: newBlockId } = cloneDocumentBlock(document, blockId);
+
+    if (parentBlockId) {
+      const parentBlock = newDocument[parentBlockId];
+      switch (parentBlock.type) {
+        case 'EmailLayout': {
+          if (!parentBlock.data.childrenIds) {
+            parentBlock.data.childrenIds = [];
+          }
+          const index = parentBlock.data.childrenIds.indexOf(blockId);
+          parentBlock.data.childrenIds.splice(index + 1, 0, newBlockId);
+          break;
+        }
+        case 'Container': {
+          if (!parentBlock.data.props) {
+            parentBlock.data.props = {};
+          }
+          if (!parentBlock.data.props.childrenIds) {
+            parentBlock.data.props.childrenIds = [];
+          }
+          const index = parentBlock.data.props.childrenIds.indexOf(blockId);
+          parentBlock.data.props.childrenIds.splice(index + 1, 0, newBlockId);
+          break;
+        }
+        case 'ColumnsContainer':
+          if (!parentBlock.data.props) {
+            parentBlock.data.props = { columns: [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }] };
+          }
+
+          for (const column of parentBlock.data.props.columns) {
+            if (column.childrenIds.includes(blockId)) {
+              const index = column.childrenIds.indexOf(blockId);
+              column.childrenIds.splice(index + 1, 0, newBlockId);
+            }
+          }
+          break;
+      }
+
+      resetDocument(newDocument);
+      setSelectedBlockId(newBlockId);
+    }
+  };
+
   const handleDeleteClick = () => {
     const filterChildrenIds = (childrenIds: string[] | null | undefined) => {
-      if (!childrenIds) {
-        return childrenIds;
-      }
+      if (!childrenIds) return childrenIds;
       return childrenIds.filter((f) => f !== blockId);
     };
     const nDocument: typeof document = { ...document };
     for (const [id, b] of Object.entries(nDocument)) {
       const block = b as TEditorBlock;
-      if (id === blockId) {
-        continue;
-      }
+      if (id === blockId) continue;
+
       switch (block.type) {
         case 'EmailLayout':
           nDocument[id] = {
@@ -82,13 +153,10 @@ export default function TuneMenu({ blockId }: Props) {
 
   const handleMoveClick = (direction: 'up' | 'down') => {
     const moveChildrenIds = (ids: string[] | null | undefined) => {
-      if (!ids) {
-        return ids;
-      }
+      if (!ids) return ids;
       const index = ids.indexOf(blockId);
-      if (index < 0) {
-        return ids;
-      }
+      if (index < 0) return ids;
+
       const childrenIds = [...ids];
       if (direction === 'up' && index > 0) {
         [childrenIds[index], childrenIds[index - 1]] = [childrenIds[index - 1], childrenIds[index]];
@@ -97,12 +165,12 @@ export default function TuneMenu({ blockId }: Props) {
       }
       return childrenIds;
     };
+
     const nDocument: typeof document = { ...document };
     for (const [id, b] of Object.entries(nDocument)) {
       const block = b as TEditorBlock;
-      if (id === blockId) {
-        continue;
-      }
+      if (id === blockId) continue;
+
       switch (block.type) {
         case 'EmailLayout':
           nDocument[id] = {
@@ -159,6 +227,11 @@ export default function TuneMenu({ blockId }: Props) {
         <Tooltip title="Move down" placement="left-start">
           <IconButton onClick={() => handleMoveClick('down')} sx={{ color: 'text.primary' }}>
             <ArrowDownwardOutlined fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Duplicate" placement="left-start">
+          <IconButton onClick={handleDuplicateClick} sx={{ color: 'text.primary' }}>
+            <ContentCopyOutlined fontSize="small" />
           </IconButton>
         </Tooltip>
         <Tooltip title="Delete" placement="left-start">
