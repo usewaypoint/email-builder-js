@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HexColorInput, HexColorPicker } from 'react-colorful';
 
 import { Box, Stack, SxProps } from '@mui/material';
@@ -74,12 +74,20 @@ type Props = {
   onChange: (v: string) => void;
 };
 export default function Picker({ value, onChange }: Props) {
+  const [internalValue, setInternalValue] = useState(value);
+  const handleChange = (v: string) => {
+    setInternalValue(v);
+    if (/^#[0-9a-fA-F]{6}$/.test(v)) {
+      onChange(v);
+    }
+  };
+
   return (
     <Stack spacing={1} sx={SX}>
-      <HexColorPicker color={value} onChange={onChange} />
-      <Swatch paletteColors={DEFAULT_PRESET_COLORS} value={value} onChange={onChange} />
+      <HexColorPicker color={value} onChange={handleChange} />
+      <Swatch paletteColors={DEFAULT_PRESET_COLORS} value={value} onChange={handleChange} />
       <Box pt={1}>
-        <HexColorInput prefixed color={value} onChange={onChange} />
+        <HexColorInput prefixed color={internalValue} onChange={handleChange} />
       </Box>
     </Stack>
   );
