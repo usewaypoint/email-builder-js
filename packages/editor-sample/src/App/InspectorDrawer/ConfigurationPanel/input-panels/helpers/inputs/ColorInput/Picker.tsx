@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HexColorInput, HexColorPicker } from 'react-colorful';
 
 import { Box, Stack, SxProps } from '@mui/material';

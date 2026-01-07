@@ -16,6 +16,7 @@
     "@typescript-eslint/no-empty-interface": ["off"],
     "@typescript-eslint/no-explicit-any": ["error"],
     "@typescript-eslint/no-unused-vars": ["error"],
+    "curly": ["error", "all"],
     "indent": ["off"],
     "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-extra-boolean-cast": ["error", { "enforceForLogicalOperands": false }],

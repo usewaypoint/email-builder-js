@@ -99,13 +99,17 @@ export default function TuneMenu({ blockId }: Props) {
 
   const handleDeleteClick = () => {
     const filterChildrenIds = (childrenIds: string[] | null | undefined) => {
-      if (!childrenIds) return childrenIds;
+      if (!childrenIds) {
+        return childrenIds;
+      }
       return childrenIds.filter((f) => f !== blockId);
     };
     const nDocument: typeof document = { ...document };
     for (const [id, b] of Object.entries(nDocument)) {
       const block = b as TEditorBlock;
-      if (id === blockId) continue;
+      if (id === blockId) {
+        continue;
+      }
 
       switch (block.type) {
         case 'EmailLayout':
@@ -153,9 +157,13 @@ export default function TuneMenu({ blockId }: Props) {
 
   const handleMoveClick = (direction: 'up' | 'down') => {
     const moveChildrenIds = (ids: string[] | null | undefined) => {
-      if (!ids) return ids;
+      if (!ids) {
+        return ids;
+      }
       const index = ids.indexOf(blockId);
-      if (index < 0) return ids;
+      if (index < 0) {
+        return ids;
+      }
 
       const childrenIds = [...ids];
       if (direction === 'up' && index > 0) {
@@ -169,7 +177,9 @@ export default function TuneMenu({ blockId }: Props) {
     const nDocument: typeof document = { ...document };
     for (const [id, b] of Object.entries(nDocument)) {
       const block = b as TEditorBlock;
-      if (id === blockId) continue;
+      if (id === blockId) {
+        continue;
+      }
 
       switch (block.type) {
         case 'EmailLayout':
