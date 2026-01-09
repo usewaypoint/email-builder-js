@@ -160,9 +160,12 @@ exports[`block-text sanitizes HTML 1`] = `
     <div>
       
 
-      <a
-        href=""
-      >
+      <img
+        src=""
+      />
+      
+
+      <a>
         link 1
       </a>
       
@@ -182,7 +185,6 @@ exports[`block-text sanitizes HTML 1`] = `
       
 
       <a
-        href=""
         title=""
       >
         link 4
@@ -190,7 +192,6 @@ exports[`block-text sanitizes HTML 1`] = `
       
 
       <a
-        href=""
         title=""
       >
         link 5
@@ -198,7 +199,12 @@ exports[`block-text sanitizes HTML 1`] = `
       
 
       <a>
-        Click Me!
+        link 6
+      </a>
+      
+
+      <a>
+        link 7
       </a>
       
 
