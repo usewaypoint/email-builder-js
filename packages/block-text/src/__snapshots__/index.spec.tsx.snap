@@ -157,6 +157,54 @@ exports[`block-text sanitizes HTML 1`] = `
     </p>
     
 
+    <div>
+      
+
+      <a
+        href=""
+      >
+        link 1
+      </a>
+      
+
+      <a
+        href=""
+      >
+        link 2
+      </a>
+      
+
+      <a
+        href=""
+      >
+        link 3
+      </a>
+      
+
+      <a
+        href=""
+        title=""
+      >
+        link 4
+      </a>
+      
+
+      <a
+        href=""
+        title=""
+      >
+        link 5
+      </a>
+      
+
+      <a>
+        Click Me!
+      </a>
+      
+
+    </div>
+    
+
   </div>
 </DocumentFragment>
 `;

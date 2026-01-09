@@ -34,6 +34,15 @@ describe('block-text', () => {
 ![Uh oh...](https://www.example.com/image.png"onload="alert('XSS'))
 ![Escape SRC - onload](https://www.example.com/image.png"onload="alert('ImageOnLoad'))
 ![Escape SRC - onerror]("onerror="alert('ImageOnError'))
+
+<div>
+<a>link 1</a>
+<a href>link 2</a>
+<a href="">link 3</a>
+<a title>link 4</a>
+<a title="">link 5</a>
+<a href="javascript:alert('hello world')">Click Me!</a>
+</div>
 `,
           }}
         />

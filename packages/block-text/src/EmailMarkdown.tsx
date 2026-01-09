@@ -50,6 +50,7 @@ const GENERIC_ALLOWED_ATTRIBUTES = ['style', 'title'];
 function sanitizer(html: string): string {
   return insane(html, {
     allowedTags: ALLOWED_TAGS,
+    allowedSchemes: ['http', 'https', 'mailto'],
     allowedAttributes: {
       ...ALLOWED_TAGS.reduce<Record<string, string[]>>((res, tag) => {
         res[tag] = [...GENERIC_ALLOWED_ATTRIBUTES];
@@ -62,6 +63,14 @@ function sanitizer(html: string): string {
       a: ['href', 'target', ...GENERIC_ALLOWED_ATTRIBUTES],
       ol: ['start', ...GENERIC_ALLOWED_ATTRIBUTES],
       ul: ['start', ...GENERIC_ALLOWED_ATTRIBUTES],
+    },
+    filter: (token) => {
+      if (token.tag === 'a') {
+        if (token.attrs.href === undefined) {
+          token.attrs.href = '';
+        }
+      }
+      return true;
     },
   });
 }
