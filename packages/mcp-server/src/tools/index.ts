@@ -1,0 +1,9 @@
+export { listBlockTypes } from './list-block-types.js';
+export { createTemplate } from './create-template.js';
+export { addBlock } from './add-block.js';
+export { removeBlock } from './remove-block.js';
+export { updateBlock } from './update-block.js';
+export { moveBlock } from './move-block.js';
+export { getTemplate } from './get-template.js';
+export { listTemplates } from './list-templates.js';
+export { deleteTemplate } from './delete-template.js';
