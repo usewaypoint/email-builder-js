@@ -19,8 +19,11 @@ jobs:
           node-version: 20
           cache: 'npm'
           cache-dependency-path: './package-lock.json'
-      - run: npm ci
-      - run: npm run build --workspaces
+      - name: Setup dependencies
+        run: |
+          npm ci
+          npm run build --workspaces
+          (cd examples/vite-emailbuilder-mui && npm ci)
       - run: npx eslint .
       - run: npx prettier . --check
       - run: npx tsc --noEmit
