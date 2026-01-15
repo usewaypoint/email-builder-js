@@ -1,6 +1,5 @@
 {
   "name": "@usewaypoint/email-builder-project",
-  "version": "1.0.0",
   "target": "ES2022",
   "files": [
     "dist"
