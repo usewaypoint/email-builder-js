@@ -28,12 +28,14 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
-      - name: Build documentation
+      - name: Build internal packages
         run: npm run build --workspaces
+      - name: Build vite project
+        run: (cd examples/vite-emailbuilder-mui;vite build)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/editor-sample/dist
+          path: examples/vite-emailbuilder-mui/dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
