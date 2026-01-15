@@ -206,11 +206,11 @@ await axios({
 
 Fork this repository and use one of the examples in the [examples directory](https://github.com/usewaypoint/email-builder-js/tree/main/examples) as an example for self-hosting.
 
-Quick start:
+Quick start (Vite + MUI)
 
 1. Fork this repository.
 2. Open up directory in terminal.
-3. Go to the editor-sample package: `cd examples/vite-emailbuilder`
+3. Go to the editor-sample package: `cd examples/vite-emailbuilder-mui`
 4. Install packages: `npm install`
 5. Run the server: `npx vite`
 6. Open in browser: http://localhost:5173/email-builder-js/
