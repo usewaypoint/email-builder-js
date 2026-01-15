@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { HtmlProps, HtmlPropsSchema } from '@usewaypoint/block-html';
 
@@ -11,7 +12,7 @@ type HtmlSidebarPanelProps = {
   setData: (v: HtmlProps) => void;
 };
 export default function HtmlSidebarPanel({ data, setData }: HtmlSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = HtmlPropsSchema.safeParse(d);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { AspectRatioOutlined } from '@mui/icons-material';
 import { ToggleButton } from '@mui/material';
@@ -15,7 +16,7 @@ type AvatarSidebarPanelProps = {
   setData: (v: AvatarProps) => void;
 };
 export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = AvatarPropsSchema.safeParse(d);
     if (res.success) {

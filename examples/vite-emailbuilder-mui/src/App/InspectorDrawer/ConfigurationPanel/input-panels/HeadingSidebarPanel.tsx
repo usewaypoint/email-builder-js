@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { ToggleButton } from '@mui/material';
 import { HeadingProps, HeadingPropsDefaults, HeadingPropsSchema } from '@usewaypoint/block-heading';
@@ -13,7 +14,7 @@ type HeadingSidebarPanelProps = {
   setData: (v: HeadingProps) => void;
 };
 export default function HeadingSidebarPanel({ data, setData }: HeadingSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = HeadingPropsSchema.safeParse(d);
