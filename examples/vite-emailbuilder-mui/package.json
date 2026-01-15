@@ -27,10 +27,10 @@
     "@usewaypoint/email-builder": "^0.0.9",
     "highlight.js": "^11.9.0",
     "prettier": "^3.2.5",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-colorful": "^5.6.1",
-    "react-dom": "^18.2.0",
-    "zod": "^3.22.4",
+    "react-dom": "^18.3.1",
+    "zod": "^3.25.76",
     "zustand": "^4.5.1"
   },
   "devDependencies": {
