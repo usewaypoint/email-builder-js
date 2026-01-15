@@ -26,11 +26,10 @@ jobs:
           cache: 'npm'
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: npm ci
       - name: Build vite project
-        working-directory: examples/vite-emailbuilder-mui
-        run: |
-          npm install
-          vite build
+        run: npm run build --workspace examples/vite-emailbuilder-mui
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
