@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { TextProps, TextPropsSchema } from '@usewaypoint/block-text';
 
@@ -12,7 +13,7 @@ type TextSidebarPanelProps = {
   setData: (v: TextProps) => void;
 };
 export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = TextPropsSchema.safeParse(d);

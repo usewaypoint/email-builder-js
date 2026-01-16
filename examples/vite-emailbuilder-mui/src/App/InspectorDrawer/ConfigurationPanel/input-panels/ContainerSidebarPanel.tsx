@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type { ZodError } from 'zod';
 
 import ContainerPropsSchema, { ContainerProps } from '../../../../documents/blocks/Container/ContainerPropsSchema';
 
@@ -11,7 +12,7 @@ type ContainerSidebarPanelProps = {
 };
 
 export default function ContainerSidebarPanel({ data, setData }: ContainerSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = ContainerPropsSchema.safeParse(d);
     if (res.success) {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { RoundedCornerOutlined } from '@mui/icons-material';
 
@@ -16,7 +17,7 @@ type EmailLayoutSidebarFieldsProps = {
   setData: (v: EmailLayoutProps) => void;
 };
 export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutSidebarFieldsProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = EmailLayoutPropsSchema.safeParse(d);

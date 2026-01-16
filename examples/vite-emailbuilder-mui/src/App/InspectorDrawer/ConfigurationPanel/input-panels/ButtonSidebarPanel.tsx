@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { ToggleButton } from '@mui/material';
 import { ButtonProps, ButtonPropsDefaults, ButtonPropsSchema } from '@usewaypoint/block-button';
@@ -14,7 +15,7 @@ type ButtonSidebarPanelProps = {
   setData: (v: ButtonProps) => void;
 };
 export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = ButtonPropsSchema.safeParse(d);

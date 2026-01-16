@@ -1,6 +1,5 @@
 {
   "name": "@usewaypoint/email-builder-project",
-  "version": "0.0.7",
   "target": "ES2022",
   "files": [
     "dist"
@@ -20,7 +19,7 @@
     "packages/block-text",
     "packages/document-core",
     "packages/email-builder",
-    "packages/editor-sample"
+    "examples/*"
   ],
   "scripts": {
     "build": "npx tsc",

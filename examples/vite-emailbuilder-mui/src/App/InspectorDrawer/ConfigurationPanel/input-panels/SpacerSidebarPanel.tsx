@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { HeightOutlined } from '@mui/icons-material';
 import { SpacerProps, SpacerPropsDefaults, SpacerPropsSchema } from '@usewaypoint/block-spacer';
@@ -11,7 +12,7 @@ type SpacerSidebarPanelProps = {
   setData: (v: SpacerProps) => void;
 };
 export default function SpacerSidebarPanel({ data, setData }: SpacerSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = SpacerPropsSchema.safeParse(d);

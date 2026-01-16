@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import {
   VerticalAlignBottomOutlined,
@@ -19,7 +20,7 @@ type ImageSidebarPanelProps = {
   setData: (v: ImageProps) => void;
 };
 export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
 
   const updateData = (d: unknown) => {
     const res = ImagePropsSchema.safeParse(d);

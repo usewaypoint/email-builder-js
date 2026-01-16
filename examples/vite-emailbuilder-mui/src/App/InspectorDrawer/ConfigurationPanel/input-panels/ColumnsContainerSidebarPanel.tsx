@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import {
   SpaceBarOutlined,
@@ -23,7 +24,7 @@ type ColumnsContainerPanelProps = {
   setData: (v: ColumnsContainerProps) => void;
 };
 export default function ColumnsContainerPanel({ data, setData }: ColumnsContainerPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = ColumnsContainerPropsSchema.safeParse(d);
     if (res.success) {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { HeightOutlined } from '@mui/icons-material';
 import { DividerProps, DividerPropsDefaults, DividerPropsSchema } from '@usewaypoint/block-divider';
@@ -13,7 +14,7 @@ type DividerSidebarPanelProps = {
   setData: (v: DividerProps) => void;
 };
 export default function DividerSidebarPanel({ data, setData }: DividerSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = DividerPropsSchema.safeParse(d);
     if (res.success) {
