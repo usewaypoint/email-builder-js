@@ -1,0 +1,36 @@
+{
+  "name": "@usewaypoint/mcp-server",
+  "version": "0.0.1",
+  "description": "MCP server for building email templates with the email-builder library",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "email-builder-mcp": "./bin/mcp-server.js"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node bin/mcp-server.js",
+    "dev": "npx tsc --watch"
+  },
+  "author": "carlos@usewaypoint.com",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@usewaypoint/email-builder": "^0.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/uuid": "^9.0.0",
+    "typescript": "^5.3.3"
+  }
+}
