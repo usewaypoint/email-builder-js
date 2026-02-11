@@ -21,7 +21,7 @@
   "author": "carlos@usewaypoint.com",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16 || ^17 || ^18",
-    "zod": "^1 || ^2 || ^3"
+    "react": "^16 || ^17 || ^18 || ^19",
+    "zod": "^1 || ^2 || ^3 || ^4"
   }
 }
