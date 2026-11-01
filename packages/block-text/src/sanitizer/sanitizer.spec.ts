@@ -1,4 +1,4 @@
-/* eslint-disable quotes, no-control-regex, @typescript-eslint/no-var-requires */
+/* eslint-disable quotes, no-control-regex, @typescript-eslint/no-require-imports */
 import path from 'path';
 
 import { describe, expect, it, jest } from '@jest/globals';
