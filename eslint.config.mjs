@@ -1,11 +1,7 @@
+import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
-import { builtinRules } from 'eslint/use-at-your-own-risk';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
-
-const eslintRecommendedRules = Object.fromEntries(
-  [...builtinRules].filter(([, rule]) => rule.meta?.docs?.recommended).map(([name]) => [name, 'error'])
-);
 
 export default [
   {
@@ -13,7 +9,7 @@ export default [
   },
   {
     files: ['**/*.{ts,tsx}'],
-    rules: eslintRecommendedRules,
+    ...js.configs.recommended,
   },
   ...tseslint.configs['flat/recommended'].map((config) => ({ ...config, files: ['**/*.{ts,tsx}'] })),
   {
