@@ -31,10 +31,10 @@
     "@jest/globals": "^30.5.2",
     "@testing-library/react": "^16.3.3",
     "@types/jest": "^30.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.72.1",
+    "eslint": "^10.14.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
     "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.5.2",
     "prettier": "^3.9.10",
@@ -42,10 +42,5 @@
     "ts-node": "^10.9.2",
     "tsup": "^9.0.0",
     "typescript": "^5.3.3"
-  },
-  "overrides": {
-    "@typescript-eslint/typescript-estree": {
-      "minimatch": "9.0.9"
-    }
   }
 }
