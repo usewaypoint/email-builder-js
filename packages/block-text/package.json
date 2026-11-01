@@ -43,7 +43,7 @@
     "zod": "^4.6.6"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.2.1",
+    "@testing-library/react": "^16.3.3",
     "@types/he": "^1.2.3",
     "@types/insane": "^1.0.0",
     "insane": "2.6.2"

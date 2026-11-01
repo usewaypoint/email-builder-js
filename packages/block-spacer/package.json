@@ -39,6 +39,6 @@
     "zod": "^4.6.6"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.2.1"
+    "@testing-library/react": "^16.3.3"
   }
 }
