@@ -5,8 +5,9 @@ const config: Config = {
   testEnvironment: 'jsdom',
   transform: {
     '^.+\\.mjs$': 'ts-jest',
+    '/node_modules/marked/.+\\.js$': 'ts-jest',
   },
-  transformIgnorePatterns: ['/node_modules/(?!he/)'],
+  transformIgnorePatterns: ['/node_modules/(?!(he|marked)/)'],
 };
 
 export default config;

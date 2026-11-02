@@ -1,4 +1,4 @@
-import { marked, Renderer } from 'marked';
+import { marked, Renderer, Tokens } from 'marked';
 import React, { CSSProperties, useMemo } from 'react';
 
 import sanitize, { SanitizerOptions } from './sanitizer';
@@ -79,21 +79,39 @@ function sanitizer(html: string): string {
   return sanitize(html, SANITIZER_OPTIONS);
 }
 
+const UNESCAPED_HTML_CHARS = /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g;
+const HTML_ESCAPES: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  [`'`]: '&#39;',
+};
+
+function escapeHtml(value: string): string {
+  return value.replace(UNESCAPED_HTML_CHARS, (char) => HTML_ESCAPES[char]);
+}
+
 class CustomRenderer extends Renderer {
-  table(header: string, body: string) {
+  table({ header, rows }: Tokens.Table) {
     return `<table width="100%">
 <thead>
-${header}</thead>
+${this.renderTableRow(header)}</thead>
 <tbody>
-${body}</tbody>
+${rows.map((row) => this.renderTableRow(row)).join('')}</tbody>
 </table>`;
   }
 
-  link(href: string, title: string | null, text: string) {
+  private renderTableRow(cells: Tokens.TableCell[]) {
+    return this.tablerow({ text: cells.map((cell) => this.tablecell(cell)).join('') });
+  }
+
+  link({ href, title, tokens }: Tokens.Link) {
+    const text = this.parser.parseInline(tokens);
     if (!title) {
       return `<a href="${href}" target="_blank">${text}</a>`;
     }
-    return `<a href="${href}" title="${title}" target="_blank">${text}</a>`;
+    return `<a href="${href}" title="${escapeHtml(title)}" target="_blank">${text}</a>`;
   }
 }
 
@@ -106,9 +124,6 @@ export function renderMarkdownString(str: string): string {
     silent: false,
     renderer: new CustomRenderer(),
   });
-  if (typeof html !== 'string') {
-    throw new Error('marked.parse did not return a string');
-  }
   return sanitizer(html);
 }
 
