@@ -78,9 +78,6 @@ exports[`block-text sanitizes HTML 1`] = `
     <img
       src="x"
     />
-    
-
-
     <p>
       <a
         target="_blank"

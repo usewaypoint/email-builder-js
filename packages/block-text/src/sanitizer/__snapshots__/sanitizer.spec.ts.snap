@@ -77,7 +77,7 @@ exports[`vendored sanitizer output is identical to insane@2.6.2 keeps rendered m
 ",
   "<p><a href="https://example.com/&#x43F;&#x443;&#x442;&#x44C;?q=&#x442;&#x435;&#x441;&#x442;" title="&#x417;&#x430;&#x433;&#x43E;&#x43B;&#x43E;&#x432;&#x43E;&#x43A;" target="_blank">Привет</a></p>
 ",
-  "<p>Entities: &amp; &lt; &gt; &quot; &#39; &nbsp; &copy; &#169; &#xA9;</p>
+  "<p>Entities: &amp; &lt; &gt; &quot; &#39; &nbsp; &copy; © ©</p>
 ",
   "<p><a href="https://example.com/?a=1&#x26;b=2&#x26;c=3">amp link</a></p>
 ",

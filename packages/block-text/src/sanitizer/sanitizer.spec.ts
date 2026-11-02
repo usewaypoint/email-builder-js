@@ -1,4 +1,5 @@
 /* eslint-disable quotes, no-control-regex, @typescript-eslint/no-require-imports */
+import type { Tokens } from 'marked';
 import path from 'path';
 
 import { describe, expect, it, jest } from '@jest/globals';
@@ -357,15 +358,23 @@ describe('vendored sanitizer', () => {
 
     it('renderMarkdownString matches insane on the fixtures (Node codec)', () => {
       const { marked, Renderer } = require('marked');
+      const escapeTitle = (title: string) =>
+        title.replace(
+          /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,
+          (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char] as string
+        );
       class CustomRenderer extends Renderer {
-        table(header: string, body: string) {
-          return `<table width="100%">\n<thead>\n${header}</thead>\n<tbody>\n${body}</tbody>\n</table>`;
+        table({ header, rows }: Tokens.Table) {
+          const renderRow = (cells: Tokens.TableCell[]) =>
+            this.tablerow({ text: cells.map((cell) => this.tablecell(cell)).join('') });
+          return `<table width="100%">\n<thead>\n${renderRow(header)}</thead>\n<tbody>\n${rows.map(renderRow).join('')}</tbody>\n</table>`;
         }
-        link(href: string, title: string | null, text: string) {
+        link({ href, title, tokens }: Tokens.Link) {
+          const text = this.parser.parseInline(tokens);
           if (!title) {
             return `<a href="${href}" target="_blank">${text}</a>`;
           }
-          return `<a href="${href}" title="${title}" target="_blank">${text}</a>`;
+          return `<a href="${href}" title="${escapeTitle(title)}" target="_blank">${text}</a>`;
         }
       }
       for (const fixture of [...MARKDOWN_FIXTURES, ...XSS_FIXTURES]) {
