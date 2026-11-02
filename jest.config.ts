@@ -6,6 +6,7 @@ const config: Config = {
   transform: {
     '^.+\\.mjs$': 'ts-jest',
   },
+  transformIgnorePatterns: ['/node_modules/(?!he/)'],
 };
 
 export default config;
