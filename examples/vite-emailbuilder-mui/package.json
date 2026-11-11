@@ -18,7 +18,7 @@
     "@creally-labs/block-html": "0.0.4-creally.1",
     "@creally-labs/block-image": "0.0.6-creally.2",
     "@creally-labs/block-spacer": "0.0.4-creally.1",
-    "@creally-labs/block-text": "0.0.8-creally.4",
+    "@creally-labs/block-text": "0.0.8-creally.5",
     "@creally-labs/document-core": "0.0.7-creally.1",
     "@creally-labs/email-builder": "0.0.10-creally.2",
     "@emotion/react": "^11.11.3",
