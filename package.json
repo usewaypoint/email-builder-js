@@ -32,7 +32,7 @@
     "@jest/globals": "^30.5.2",
     "@testing-library/react": "^16.3.3",
     "@types/jest": "^30.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.72.1",
+    "@typescript-eslint/eslint-plugin": "^8.72.2",
     "eslint": "^10.14.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-simple-import-sort": "^14.0.0",
